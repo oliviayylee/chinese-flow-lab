@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Chinese Flow Lab | AI-Flipped Chinese Education Platform</title>
+  <style>
+    :root{
+      --ink:#111827;--muted:#64748b;--line:#e5e7eb;--bg:#f8fafc;--card:#ffffff;
+      --blue:#2563eb;--indigo:#4f46e5;--green:#059669;--amber:#d97706;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:linear-gradient(135deg,#f8fafc,#fff,#eef2ff);color:var(--ink)}
+    header{max-width:1180px;margin:auto;padding:24px;display:flex;justify-content:space-between;align-items:center}
+    .logo{display:flex;gap:12px;align-items:center}
+    .mark{width:46px;height:46px;border-radius:18px;background:#111827;color:white;display:grid;place-items:center;font-weight:900}
+    .small{font-size:13px;color:var(--muted);font-weight:700}
+    h1,h2,h3{margin:0}
+    .btn{border:0;background:#111827;color:white;padding:13px 18px;border-radius:18px;font-weight:800;cursor:pointer}
+    main{max-width:1180px;margin:auto;padding:0 24px 60px}
+    .hero{display:grid;grid-template-columns:1.15fr .85fr;gap:22px;margin-top:18px}
+    .card{background:var(--card);border:1px solid var(--line);border-radius:32px;box-shadow:0 10px 30px rgba(15,23,42,.06);padding:28px}
+    .badge{display:inline-flex;gap:8px;align-items:center;background:#eef2ff;color:#4338ca;padding:9px 14px;border-radius:999px;font-size:14px;font-weight:800;margin-bottom:18px}
+    .hero h2{font-size:44px;letter-spacing:-1.4px;line-height:1.08}
+    .hero p{font-size:18px;color:var(--muted);line-height:1.75}
+    .video{background:#0f172a;border-radius:28px;padding:20px;color:white}
+    .screen{height:180px;background:#1e293b;border-radius:22px;display:grid;place-items:center;font-size:56px}
+    .grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:22px}
+    .module{padding:22px}
+    .module .icon{font-size:28px;margin-bottom:12px}
+    .module p,.muted{color:var(--muted);line-height:1.65}
+    .two{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:22px}
+    .pill{border-radius:18px;background:#f8fafc;border:1px solid #eef2f7;padding:15px;margin:10px 0}
+    .student{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+    .student button{border:1px solid var(--line);border-radius:18px;background:white;padding:14px;text-align:left;cursor:pointer}
+    .student button.active{background:#111827;color:white}
+    .feedback{background:#eef2ff;color:#3730a3;border-radius:22px;padding:18px;margin-top:16px;line-height:1.7;font-weight:700}
+    .progress{height:8px;background:#e5e7eb;border-radius:999px;overflow:hidden}
+    .bar{height:100%;background:#111827;border-radius:999px}
+    .lms{display:grid;grid-template-columns:1.1fr .9fr;gap:22px;margin-top:22px}
+    .notice{background:#f8fafc;border-radius:22px;padding:16px;margin-top:12px}
+    .steps{counter-reset:item}
+    .step{display:flex;gap:14px;padding:16px;border-bottom:1px solid var(--line)}
+    .step:before{counter-increment:item;content:counter(item);width:30px;height:30px;border-radius:12px;background:#111827;color:white;display:grid;place-items:center;font-weight:900;flex:0 0 auto}
+    footer{background:#111827;color:white;border-radius:32px;padding:30px;margin-top:22px}
+    @media(max-width:900px){.hero,.two,.lms,.grid4{grid-template-columns:1fr}.hero h2{font-size:34px}header{align-items:flex-start;gap:12px;flex-direction:column}}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <div class="mark">中</div>
+      <div>
+        <div class="small">AI-Flipped Chinese Education Platform</div>
+        <h1>Chinese Flow Lab</h1>
+      </div>
+    </div>
+    <button class="btn" onclick="document.querySelector('#demo').scrollIntoView({behavior:'smooth'})">교수자 데모 보기</button>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="card">
+        <div class="badge">✨ 진단 기반 맞춤형 중국어교육</div>
+        <h2>다양한 중국어 과목에 적용 가능한 AI 플립드러닝 플랫폼</h2>
+        <p>실제 중국어 수업 운영 경험을 바탕으로, 과목별 사전평가 결과와 학습 로그를 분석하여 학습자별 맞춤형 연습문제를 제공합니다.</p>
+        <button class="btn">수업 템플릿 보기</button>
+      </div>
+      <div class="card">
+        <div class="video">
+          <div class="screen">▶</div>
+          <h3 style="margin-top:18px">대표 데모: 중급 중국어 듣기와 쓰기</h3>
+          <p style="color:#cbd5e1">문화 배경 · 핵심 어휘 · 어법 포인트 · 기초 과제</p>
+        </div>
+        <div style="margin-top:18px">
+          <div class="small">영상 시청률 86%</div>
+          <div class="progress"><div class="bar" style="width:86%"></div></div>
+          <br>
+          <div class="small">기초 퀴즈 평균 79%</div>
+          <div class="progress"><div class="bar" style="width:79%"></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="card" style="margin-top:22px">
+      <div class="badge">📚 Course Templates</div>
+      <h2>하나의 플랫폼, 여러 중국어 과목 적용</h2>
+      <p class="muted">Chinese Flow Lab은 특정 한 과목만을 위한 사이트가 아니라, 플립드러닝과 AI 맞춤형 연습을 여러 중국어 과목에 적용할 수 있는 수업 설계 플랫폼입니다.</p>
+      <div class="grid4" style="margin-top:18px">
+        <div class="pill"><b>중급 중국어 듣기와 쓰기</b><br><span class="muted">사전학습 → 심화 듣기 → 딕토글로스 → 의견쓰기</span></div>
+        <div class="pill"><b>중국어 어휘와 표현 기능</b><br><span class="muted">어휘 의미 → 문장 기능 → 표현 변별 → 맞춤 문제</span></div>
+        <div class="pill"><b>중국어 회화</b><br><span class="muted">표현 패턴 → 역할극 → 발화 피드백 → 재연습</span></div>
+        <div class="pill"><b>중국어 교재연구 및 지도법</b><br><span class="muted">교재 분석 → 수업안 설계 → 발표 → 동료 피드백</span></div>
+      </div>
+    </section>
+
+    <section class="grid4">
+      <div class="card module"><div class="icon">🎬</div><h3>사전 강의영상</h3><p>문화 강의, 어휘, 어법 포인트를 영상으로 학습합니다.</p></div>
+      <div class="card module"><div class="icon">✅</div><h3>기초 진단 퀴즈</h3><p>학생은 수업 전 과목별 기초 과제를 수행하고 이해도를 점검합니다.</p></div>
+      <div class="card module"><div class="icon">✍️</div><h3>활동형 과제</h3><p>과목 특성에 따라 받아쓰기, 문장 재구성, 표현 분석 활동을 수행합니다.</p></div>
+      <div class="card module"><div class="icon">🧠</div><h3>맞춤형 연습</h3><p>오류 유형과 과목 특성에 따라 어휘형·어순형·담화형·문화해석형 문제가 다르게 제공됩니다.</p></div>
+    </section>
+
+    <section class="two" id="demo">
+      <div class="card">
+        <h2>공통 수업 흐름</h2>
+        <div class="steps">
+          <div class="step"><div><b>사전평가</b><br><span class="muted">과목별 사전평가 결과로 학습자 수준과 취약점 분석</span></div></div>
+          <div class="step"><div><b>사전학습</b><br><span class="muted">문화 배경, 핵심 어휘, 어법 포인트 영상 시청 및 기초 과제 수행</span></div></div>
+          <div class="step"><div><b>수업 내 심화 활동</b><br><span class="muted">심화 활동을 함께 수행하고 답의 근거, 표현 기능, 담화 구조를 분석</span></div></div>
+          <div class="step"><div><b>재구성 활동</b><br><span class="muted">딕토글로스·문장 재구성·표현 분석을 통해 형태 인식과 담화 이해 강화</span></div></div>
+          <div class="step"><div><b>산출 활동</b><br><span class="muted">의견쓰기, 발표, 번역, 교재분석 등 과목별 산출 활동을 수행하고 피드백 반영</span></div></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>학습자별 맞춤 과제 생성</h2>
+        <p class="muted">사전평가 점수와 오류 유형을 바탕으로 조 편성 및 과목별 개별 연습문제를 자동 추천합니다.</p>
+        <div class="student">
+          <button class="active" onclick="pick(this,'어순 오류가 많아 把자문·시간부사 위치 중심의 문장 배열 문제를 제공합니다.')"><b>김민지</b><br>취약점: 어순</button>
+          <button onclick="pick(this,'어휘 반복이 많아 유의어·연결어·평가어 확장 연습을 제공합니다.')"><b>박서연</b><br>취약점: 어휘</button>
+          <button onclick="pick(this,'세부정보 청취가 약해 숫자·시간·장소 표현 받아쓰기 문제를 제공합니다.')"><b>이준호</b><br>취약점: 듣기 세부정보</button>
+          <button onclick="pick(this,'문장 단위는 안정적이므로 문단 연결과 근거 제시형 쓰기 문제를 제공합니다.')"><b>최하은</b><br>취약점: 담화 연결</button>
+        </div>
+        <div class="feedback" id="feedback">어순 오류가 많아 把자문·시간부사 위치 중심의 문장 배열 문제를 제공합니다.</div>
+      </div>
+    </section>
+
+    <section class="lms">
+      <div class="card">
+        <h2>LMS 기능</h2>
+        <div class="notice"><b>공지사항</b><br>이번 주 사전 영상과 과목별 활동 자료는 수업 전날 밤 10시까지 확인하세요.</div>
+        <div class="notice"><b>교수자 쪽지</b><br>취약 유형별 보강이 필요한 학생에게 개별 연습문제를 발송했습니다.</div>
+        <div class="notice"><b>조 편성</b><br>상·중·하 혼합형 또는 취약점 보완형 조 편성을 선택할 수 있습니다.</div>
+      </div>
+      <div class="card">
+        <h2>시청 체크</h2>
+        <p class="small">김민지 100%</p><div class="progress"><div class="bar" style="width:100%"></div></div><br>
+        <p class="small">이준호 68%</p><div class="progress"><div class="bar" style="width:68%"></div></div><br>
+        <p class="small">최하은 92%</p><div class="progress"><div class="bar" style="width:92%"></div></div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="small" style="color:#cbd5e1">Portfolio Demo</div>
+      <h2>실제 수업 운영 자료를 기반으로 한 AI 기반 중국어교육 모델</h2>
+      <p style="color:#cbd5e1;line-height:1.7">기존 LMS 구조를 참고하되, 다양한 중국어 과목의 단계별 수업 절차와 학습자별 맞춤형 연습 생성 기능을 결합한 전공 특화 플랫폼입니다.</p>
+    </footer>
+  </main>
+
+  <script>
+    function pick(btn,msg){
+      document.querySelectorAll('.student button').forEach(b=>b.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById('feedback').textContent = msg;
+    }
+  </script>
+</body>
+</html>
