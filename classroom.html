@@ -41,6 +41,13 @@
       margin-bottom:14px;
     }
 
+    h3{
+      font-size:24px;
+      color:#6f432a;
+      margin-top:30px;
+      margin-bottom:12px;
+    }
+
     p{ color:#5e5148; line-height:1.8; }
 
     select{
@@ -104,6 +111,7 @@
       color:#6f432a;
       font-size:24px;
       margin-bottom:12px;
+      margin-top:0;
     }
 
     .card p{
@@ -153,8 +161,10 @@
 
   <section class="panel">
     <h2>강의실 입장</h2>
+
     <p>
       수강할 과목을 선택하면 해당 강의실로 이동합니다.
+      Chinese Flow Lab은 다양한 중국어 수업에 적용 가능한 맞춤형 플립드러닝 학습 공간입니다.
     </p>
 
     <select id="courseSelect" onchange="showCourse()">
@@ -166,17 +176,11 @@
     </select>
 
     <p class="empty-note">
-      샘플 강의는 「중급 중국어 듣기와 쓰기」입니다.
+      현재 샘플 강의는 「중급 중국어 듣기와 쓰기」입니다.
     </p>
 
     <div class="course-info" id="courseInfo">
       <h2>중급 중국어 듣기와 쓰기</h2>
-
-      <p>
-        이 강의는 Chinese Flow Lab의 샘플 강의입니다.
-        학기 초 사전 진단을 바탕으로 학습자의 중국어 학습 프로필을 분석하고,
-        플립드러닝 영상, 이해 점검 퀴즈, 맞춤형 연습, 학습 파트너 매칭을 제공합니다.
-      </p>
 
       <div class="info-grid">
         <div class="info-box">
@@ -190,15 +194,28 @@
         </div>
 
         <div class="info-box">
-          <strong>수업 방식</strong>
-          플립드러닝 · 협력학습 · 맞춤형 연습
-        </div>
-
-        <div class="info-box">
-          <strong>샘플 강의</strong>
-          2025학년도 2학기
+          <strong>교재</strong>
+          스마트 중국어 듣기 2
         </div>
       </div>
+
+      <h3>교과목 해설</h3>
+
+      <p>
+        중급 수준의 중국어 듣기 자료를 이해하고, 세부 정보에 근거해 질문에 답할 수 있다.
+        딕토글로스(dictogloss) 활동을 통해 들은 내용을 요약하고 재구성하는 능력을 함양한다.
+        또한 특정 주제에 대한 의견을 구성하여 자신의 생각을 논리적으로 중국어로 표현할 수 있다.
+      </p>
+
+      <h3>강의계획서</h3>
+
+      <p>
+        중급 중국어 듣기와 쓰기 강의계획서를 다운로드할 수 있습니다.
+      </p>
+
+      <a href="syllabus.pdf" download class="btn">
+        강의계획서 다운로드
+      </a>
     </div>
   </section>
 
