@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>강의실 | Chinese Flow Lab</title>
+
+  <style>
+    body{
+      margin:0;
+      font-family:"Pretendard","Noto Sans KR",sans-serif;
+      background:#f6f1ea;
+      color:#2f241d;
+    }
+
+    header{
+      background:#3c2b22;
+      color:white;
+      padding:24px 8%;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+    }
+
+    header h1{
+      margin:0;
+      font-size:28px;
+    }
+
+    header a{
+      color:white;
+      text-decoration:none;
+      opacity:0.85;
+    }
+
+    .container{
+      padding:60px 8%;
+    }
+
+    .course-title{
+      background:white;
+      border-radius:28px;
+      padding:40px;
+      box-shadow:0 10px 24px rgba(0,0,0,0.08);
+      margin-bottom:35px;
+    }
+
+    .course-title h2{
+      font-size:36px;
+      color:#6f432a;
+      margin-bottom:12px;
+    }
+
+    .course-title p{
+      font-size:18px;
+      color:#5e5148;
+      line-height:1.8;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+      gap:26px;
+    }
+
+    .card{
+      background:white;
+      border-radius:24px;
+      padding:32px;
+      box-shadow:0 10px 24px rgba(0,0,0,0.08);
+      transition:0.3s;
+    }
+
+    .card:hover{
+      transform:translateY(-5px);
+    }
+
+    .icon{
+      font-size:38px;
+      margin-bottom:16px;
+    }
+
+    .card h3{
+      color:#6f432a;
+      font-size:24px;
+      margin-bottom:12px;
+    }
+
+    .card p{
+      color:#5e5148;
+      line-height:1.7;
+    }
+
+    .btn{
+      display:inline-block;
+      margin-top:18px;
+      padding:12px 24px;
+      border-radius:999px;
+      background:#8c5b3f;
+      color:white;
+      text-decoration:none;
+      font-size:15px;
+    }
+
+    .btn:hover{
+      background:#6f432a;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h1>Chinese Flow Lab</h1>
+  <a href="index.html">메인으로 돌아가기</a>
+</header>
+
+<div class="container">
+
+  <section class="course-title">
+    <h2>중급 중국어 듣기와 쓰기</h2>
+    <p>
+      이 강의실은 Chinese Flow Lab의 샘플 강의 공간입니다.
+      학기 초 사전 진단을 바탕으로 학습자의 중국어 학습 프로필을 분석하고,
+      플립드러닝 영상, 이해 점검 퀴즈, 맞춤형 연습, 학습 파트너 매칭을 제공합니다.
+    </p>
+  </section>
+
+  <section class="grid">
+
+    <div class="card">
+      <div class="icon">📋</div>
+      <h3>사전 진단</h3>
+      <p>
+        학기 초 사전평가를 통해 학습자의 중국어 수준과 취약점을 파악합니다.
+      </p>
+      <a href="#" class="btn">진단 시작하기</a>
+    </div>
+
+    <div class="card">
+      <div class="icon">🎥</div>
+      <h3>플립드러닝 영상</h3>
+      <p>
+        수업 전 영상을 시청하며 오늘의 핵심 표현과 학습 내용을 확인합니다.
+      </p>
+      <a href="#" class="btn">영상 보기</a>
+    </div>
+
+    <div class="card">
+      <div class="icon">📝</div>
+      <h3>이해 점검 퀴즈</h3>
+      <p>
+        영상 시청 후 간단한 퀴즈를 통해 학습 내용을 점검합니다.
+      </p>
+      <a href="#" class="btn">퀴즈 풀기</a>
+    </div>
+
+    <div class="card">
+      <div class="icon">📊</div>
+      <h3>학습 프로필</h3>
+      <p>
+        사전 진단과 퀴즈 결과를 바탕으로 학습자의 중국어 학습 특성을 분석합니다.
+      </p>
+      <a href="#" class="btn">프로필 보기</a>
+    </div>
+
+    <div class="card">
+      <div class="icon">👥</div>
+      <h3>학습 파트너</h3>
+      <p>
+        사전 진단 결과를 바탕으로 협력학습을 위한 학습 파트너를 구성합니다.
+      </p>
+      <a href="#" class="btn">매칭 확인하기</a>
+    </div>
+
+    <div class="card">
+      <div class="icon">✍️</div>
+      <h3>맞춤 연습</h3>
+      <p>
+        학습자별 취약점에 맞는 연습 활동을 제공합니다.
+      </p>
+      <a href="#" class="btn">연습 시작하기</a>
+    </div>
+
+  </section>
+
+</div>
+
+</body>
+</html>
