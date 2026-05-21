@@ -1,137 +1,381 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Chinese Flow Lab</title>
 
   <style>
-    body {
-      margin: 0;
-      font-family: 'Trebuchet MS', sans-serif;
-      background-color: #f5efe6;
-      color: #3e2f26;
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
     }
 
-    .hero {
-      height: 100vh;
-      background-image: linear-gradient(
-        rgba(0,0,0,0.4),
-        rgba(0,0,0,0.4)
+    body{
+      font-family: "Pretendard", "Noto Sans KR", sans-serif;
+      background-color:#f6f1ea;
+      color:#2f241d;
+      line-height:1.7;
+    }
+
+    a{
+      text-decoration:none;
+    }
+
+    /* HERO */
+
+    .hero{
+      height:100vh;
+
+      background:
+      linear-gradient(
+        rgba(0,0,0,0.45),
+        rgba(0,0,0,0.45)
       ),
-      url('https://images.unsplash.com/photo-1521017432531-fbd92d768814');
+      url("https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=2070&auto=format&fit=crop");
 
-      background-size: cover;
-      background-position: center;
+      background-size:cover;
+      background-position:center;
 
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      align-items:center;
 
-      text-align: center;
-      color: white;
-      padding: 20px;
+      text-align:center;
+      padding:20px;
+
+      color:white;
     }
 
-    h1 {
-      font-size: 70px;
-      margin-bottom: 20px;
-      letter-spacing: 2px;
+    .hero h1{
+      font-size:82px;
+      letter-spacing:2px;
+      margin-bottom:20px;
+      font-weight:700;
     }
 
-    .subtitle {
-      font-size: 24px;
-      max-width: 800px;
-      line-height: 1.6;
+    .hero-sub{
+      font-size:28px;
+      margin-bottom:18px;
+      font-weight:500;
     }
 
-    .button {
-      margin-top: 40px;
-      padding: 15px 35px;
-      background-color: #8b5e3c;
-      color: white;
-      text-decoration: none;
-      border-radius: 30px;
-      font-size: 18px;
-      transition: 0.3s;
+    .hero-desc{
+      max-width:900px;
+      font-size:20px;
+      opacity:0.92;
+      line-height:1.9;
     }
 
-    .button:hover {
-      background-color: #6f472c;
+    .hero-buttons{
+      margin-top:45px;
+      display:flex;
+      gap:18px;
+      flex-wrap:wrap;
+      justify-content:center;
     }
 
-    .section {
-      padding: 80px 10%;
-      background-color: #fffaf5;
+    .btn{
+      padding:16px 34px;
+      border-radius:999px;
+      font-size:17px;
+      transition:0.3s;
     }
 
-    .section h2 {
-      font-size: 40px;
-      margin-bottom: 30px;
-      text-align: center;
+    .btn-primary{
+      background:#8c5b3f;
+      color:white;
     }
 
-    .steps {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 25px;
+    .btn-primary:hover{
+      background:#6f432a;
     }
 
-    .card {
-      background: white;
-      border-radius: 20px;
-      padding: 30px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    .btn-secondary{
+      border:1px solid rgba(255,255,255,0.6);
+      color:white;
+      backdrop-filter:blur(3px);
     }
 
-    .card h3 {
-      margin-top: 0;
-      color: #8b5e3c;
+    .btn-secondary:hover{
+      background:rgba(255,255,255,0.1);
     }
+
+    /* SECTION */
+
+    .section{
+      padding:100px 10%;
+    }
+
+    .section-title{
+      text-align:center;
+      margin-bottom:60px;
+    }
+
+    .section-title h2{
+      font-size:44px;
+      margin-bottom:15px;
+      color:#4b3527;
+    }
+
+    .section-title p{
+      font-size:18px;
+      color:#6d5b50;
+    }
+
+    /* CARDS */
+
+    .card-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit, minmax(260px, 1fr));
+      gap:28px;
+    }
+
+    .card{
+      background:white;
+      padding:35px;
+      border-radius:24px;
+      box-shadow:0 10px 24px rgba(0,0,0,0.08);
+
+      transition:0.3s;
+    }
+
+    .card:hover{
+      transform:translateY(-5px);
+    }
+
+    .card-icon{
+      font-size:40px;
+      margin-bottom:20px;
+    }
+
+    .card h3{
+      font-size:24px;
+      margin-bottom:14px;
+      color:#6f432a;
+    }
+
+    .card p{
+      color:#5e5148;
+      font-size:16px;
+    }
+
+    /* COURSE */
+
+    .course-wrap{
+      margin-top:50px;
+      display:grid;
+      grid-template-columns:repeat(auto-fit, minmax(320px, 1fr));
+      gap:30px;
+    }
+
+    .course{
+      background:white;
+      padding:35px;
+      border-radius:24px;
+      box-shadow:0 10px 24px rgba(0,0,0,0.08);
+    }
+
+    .course h3{
+      margin-bottom:18px;
+      color:#6f432a;
+      font-size:28px;
+    }
+
+    .course ul{
+      margin-left:20px;
+      color:#5e5148;
+    }
+
+    .course li{
+      margin-bottom:10px;
+    }
+
+    /* FOOTER */
+
+    footer{
+      background:#3c2b22;
+      color:#f5efe8;
+      text-align:center;
+      padding:40px 20px;
+      margin-top:80px;
+    }
+
+    footer p{
+      opacity:0.85;
+    }
+
+    /* MOBILE */
+
+    @media(max-width:768px){
+
+      .hero h1{
+        font-size:52px;
+      }
+
+      .hero-sub{
+        font-size:22px;
+      }
+
+      .hero-desc{
+        font-size:17px;
+      }
+
+      .section{
+        padding:80px 7%;
+      }
+
+    }
+
   </style>
 </head>
 
 <body>
 
-  <div class="hero">
+  <!-- HERO -->
+
+  <section class="hero">
+
     <h1>Chinese Flow Lab</h1>
 
-    <p class="subtitle">
-      A café-style AI-assisted flipped learning platform
-      for Chinese listening and writing.
-    </p>
+    <div class="hero-sub">
+      함께 배우고 소통하는 중국어 학습 공간
+    </div>
 
-    <a href="#" class="button">Enter the Classroom</a>
-  </div>
+    <div class="hero-desc">
+      Chinese Flow Lab은 플립드러닝, 협력학습, 맞춤형 학습 분석을 결합한
+      중국어 학습 플랫폼입니다.
+      학생들의 중국어 학습 프로필을 분석하여 개인별 맞춤 연습과
+      학습 파트너 매칭을 지원합니다.
+    </div>
 
-  <div class="section">
-    <h2>How It Works</h2>
+    <div class="hero-buttons">
+      <a href="#" class="btn btn-primary">강의실 입장하기</a>
+      <a href="#" class="btn btn-secondary">플랫폼 둘러보기</a>
+    </div>
 
-    <div class="steps">
+  </section>
+
+  <!-- HOW IT WORKS -->
+
+  <section class="section">
+
+    <div class="section-title">
+      <h2>학습 흐름</h2>
+      <p>
+        진단 기반 맞춤형 중국어 플립드러닝 시스템
+      </p>
+    </div>
+
+    <div class="card-grid">
 
       <div class="card">
-        <h3>🎥 Flipped Video</h3>
-        <p>Watch the lesson video before class.</p>
+        <div class="card-icon">🎥</div>
+        <h3>플립드러닝 영상</h3>
+        <p>
+          수업 전 영상을 시청하며 핵심 표현과 담화를 학습합니다.
+        </p>
       </div>
 
       <div class="card">
-        <h3>📝 Quick Quiz</h3>
-        <p>Check understanding through short quizzes.</p>
+        <div class="card-icon">📝</div>
+        <h3>이해 점검 퀴즈</h3>
+        <p>
+          영상 학습 후 간단한 퀴즈를 통해 이해도를 확인합니다.
+        </p>
       </div>
 
       <div class="card">
-        <h3>📊 Weakness Analysis</h3>
-        <p>Identify listening and writing weaknesses.</p>
+        <div class="card-icon">📊</div>
+        <h3>중국어 학습 프로필 분석</h3>
+        <p>
+          학습자의 중국어 취약점과 학습 특성을 분석합니다.
+        </p>
       </div>
 
       <div class="card">
-        <h3>👥 Pair Matching</h3>
-        <p>Adaptive collaborative learning pairs.</p>
+        <div class="card-icon">👥</div>
+        <h3>학습 파트너 매칭</h3>
+        <p>
+          상·하위권 상호보완형 및 중간권 균형형 학습 파트너를 자동 추천합니다.
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">✍️</div>
+        <h3>개인별 맞춤 연습</h3>
+        <p>
+          학습자별 취약점에 맞는 듣기·쓰기·담화 활동을 제공합니다.
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">☕</div>
+        <h3>협력 기반 강의실 활동</h3>
+        <p>
+          함께 듣고, 쓰고, 토론하며 중국어를 실제로 사용합니다.
+        </p>
       </div>
 
     </div>
-  </div>
+
+  </section>
+
+  <!-- COURSES -->
+
+  <section class="section" style="background:#fffaf5;">
+
+    <div class="section-title">
+      <h2>개설 강의 예시</h2>
+      <p>
+        다양한 중국어 수업에 적용 가능한 플립드러닝 플랫폼
+      </p>
+    </div>
+
+    <div class="course-wrap">
+
+      <div class="course">
+        <h3>샘플 강의</h3>
+
+        <ul>
+          <li>중급 중국어 듣기와 쓰기</li>
+          <li>중국어 회화</li>
+          <li>HSK 쓰기 특강</li>
+          <li>비즈니스 중국어</li>
+        </ul>
+
+      </div>
+
+      <div class="course">
+        <h3>향후 확장 가능 영역</h3>
+
+        <ul>
+          <li>중국어 교재 연구 및 지도법</li>
+          <li>중국 사회와 문화</li>
+          <li>한문으로 만나는 동아시아</li>
+          <li>PBL 기반 중국어 수업</li>
+        </ul>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- FOOTER -->
+
+  <footer>
+
+    <h2 style="margin-bottom:10px;">Chinese Flow Lab</h2>
+
+    <p>
+      함께 배우고 소통하는 중국어 학습 공간
+    </p>
+
+  </footer>
 
 </body>
 </html>
