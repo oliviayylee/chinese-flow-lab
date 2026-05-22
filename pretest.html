@@ -112,14 +112,6 @@ function getVoice(type){
   const voices = speechSynthesis.getVoices();
   const zhVoices = voices.filter(v => v.lang.includes("zh"));
 
-  if(type === "female"){
-    return zhVoices.find(v => v.name.includes("Xiaoxiao")) ||
-           zhVoices.find(v => v.name.includes("Mei")) ||
-           zhVoices.find(v => v.name.includes("Ting")) ||
-           zhVoices.find(v => v.name.includes("Female")) ||
-           zhVoices[0];
-  }
-
   if(type === "male"){
     return zhVoices.find(v => v.name.includes("Yunxi")) ||
            zhVoices.find(v => v.name.includes("Yunjian")) ||
@@ -163,12 +155,10 @@ function speakParts(parts, btn){
 
     utterance.rate =
       part.type === "male" ? 0.64 :
-      part.type === "female" ? 1.25 :
       0.82;
 
     utterance.pitch =
       part.type === "male" ? 0.34 :
-      part.type === "female" ? 2 :
       1;
 
     utterance.volume = 1;
@@ -432,8 +422,43 @@ function gradeTest(){
     의견쓰기: ${writingScore.toFixed(1)} / 5점
   `;
 
-  document.getElementById("profile").innerHTML = `<span class="badge">진단 완료</span>`;
-  document.getElementById("recommendation").innerHTML = `<p>• 결과에 따라 맞춤형 듣기와 쓰기 연습을 진행하세요.</p>`;
+  let profile = "";
+  let rec = "";
+
+  if(listeningScore < 3){
+    profile += `<span class="badge">듣기 세부정보 파악 보완 필요</span>`;
+    rec += `<p>• 대화의 장소, 시간, 의도, 세부 정보를 찾는 듣기 연습을 추천합니다.</p>`;
+  }else{
+    profile += `<span class="badge">듣기 이해 양호</span>`;
+  }
+
+  if(blankScore < 3){
+    profile += `<span class="badge">어휘·표현 청취 취약</span>`;
+    rec += `<p>• 핵심 어휘와 고정 표현을 듣고 빈칸을 채우는 chunk listening 연습을 추천합니다.</p>`;
+  }else{
+    profile += `<span class="badge">표현 인식 양호</span>`;
+  }
+
+  if(dictationScore < 3){
+    profile += `<span class="badge">문장 재현 능력 보완 필요</span>`;
+    rec += `<p>• 짧은 문장 받아쓰기와 딕토글로스(dictogloss) 활동을 추천합니다.</p>`;
+  }else{
+    profile += `<span class="badge">문장 재현 양호</span>`;
+  }
+
+  if(writingScore < 3){
+    profile += `<span class="badge">의견쓰기 보완 필요</span>`;
+    rec += `<p>• 입장 제시-근거-반대 의견-결론 구조의 의견쓰기 연습을 추천합니다.</p>`;
+  }else{
+    profile += `<span class="badge">논리적 의견 구성 가능</span>`;
+  }
+
+  if(rec === ""){
+    rec = `<p>• 전반적으로 안정적인 수준입니다. 심화 듣기와 논리적 글쓰기 활동을 추천합니다.</p>`;
+  }
+
+  document.getElementById("profile").innerHTML = profile;
+  document.getElementById("recommendation").innerHTML = rec;
 
   window.scrollTo({top:document.body.scrollHeight,behavior:"smooth"});
 }
@@ -444,5 +469,7 @@ function gradeTest(){
 
    
  
-   
- 
+
+  
+     
+
