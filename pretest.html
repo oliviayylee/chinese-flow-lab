@@ -1,384 +1,196 @@
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>사전 진단 | Chinese Flow Lab</title>
-
-<style>
-body{margin:0;font-family:"Pretendard","Noto Sans KR",sans-serif;background:#f6f1ea;color:#2f241d;}
-header{background:#3c2b22;color:white;padding:24px 8%;display:flex;justify-content:space-between;align-items:center;}
-header h1{margin:0;font-size:28px;}
-header a{color:white;text-decoration:none;opacity:.85;}
-.container{padding:50px 8%;}
-.panel{background:white;border-radius:28px;padding:36px;box-shadow:0 10px 24px rgba(0,0,0,.08);margin-bottom:30px;}
-h2{font-size:32px;color:#6f432a;margin-bottom:12px;}
-h3{color:#6f432a;margin-top:24px;}
-p{color:#5e5148;line-height:1.8;}
-.student-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:15px;}
-input[type="text"],textarea{width:100%;padding:13px;border-radius:14px;border:1px solid #d8c8b8;margin-top:8px;font-size:15px;box-sizing:border-box;font-family:inherit;}
-textarea{min-height:120px;resize:vertical;}
-.question{background:#fffaf5;border-radius:18px;padding:22px;margin-top:18px;}
-label{display:block;margin-top:10px;color:#4b3527;}
-.btn{display:inline-block;margin-top:18px;padding:12px 24px;border-radius:999px;background:#8c5b3f;color:white;text-decoration:none;border:none;font-size:15px;cursor:pointer;}
-.btn:hover{background:#6f432a;}
-.listen-btn{background:#ead9c8;color:#5a3927;border:none;border-radius:999px;padding:8px 16px;cursor:pointer;margin-top:10px;}
-.listen-btn:disabled{background:#ccc;cursor:not-allowed;}
-.count{font-size:13px;color:#7a6559;margin-left:10px;}
-.result{display:none;background:#fffaf5;border:2px solid #8c5b3f;border-radius:24px;padding:30px;margin-top:30px;}
-.score{font-size:26px;color:#6f432a;font-weight:bold;}
-.badge{display:inline-block;background:#ead9c8;color:#5a3927;padding:7px 14px;border-radius:999px;margin:6px 6px 0 0;font-size:14px;}
-.note{background:#f1e5d8;border-left:5px solid #8c5b3f;padding:18px;border-radius:14px;margin-top:18px;color:#5e5148;}
-</style>
-</head>
-
-<body>
-
-<header>
-  <h1>Chinese Flow Lab</h1>
-  <a href="classroom.html">강의실로 돌아가기</a>
-</header>
-
-<div class="container">
-
-<section class="panel">
-  <h2>사전 진단 평가</h2>
-  <p>
-    학기 초 사전 진단은 학습자의 중국어 학습 수준과 취약점을 파악하기 위한 평가입니다.
-    진단 결과는 학습 프로필 분석, 학습 파트너 매칭, 개인별 맞춤 연습 활동에 활용됩니다.
-  </p>
-
-  <div class="student-grid">
-    <input type="text" placeholder="학과">
-    <input type="text" placeholder="학번">
-    <input type="text" placeholder="이름">
-  </div>
-
-  <div class="note">
-    각 듣기 문제는 최대 3회까지 재생 가능합니다.
-  </div>
-
-  <audio id="mainAudio" src="./32.mp3" controls style="width:100%; margin-top:20px;"></audio>
-</section>
-
-<section class="panel">
-  <h2>Ⅰ. 듣기: 알맞은 답을 고르시오.</h2>
-  <div id="mcqArea"></div>
-</section>
-
-<section class="panel">
-  <h2>Ⅱ. 빈칸 채우기</h2>
-
-  <div class="question">
-    <h3>11. （ ）的（ ）很冷。</h3>
-    <button class="listen-btn" onclick="playSegment(130,140,this)">▶ 듣기 재생</button>
-    <span class="count">남은 횟수: 3</span>
-    <input type="text" id="q11a" placeholder="첫 번째 빈칸">
-    <input type="text" id="q11b" placeholder="두 번째 빈칸">
-  </div>
-
-  <div class="question">
-    <h3>12. 时间不早了，（ ）去（ ）比较好。</h3>
-    <button class="listen-btn" onclick="playSegment(167,175,this)">▶ 듣기 재생</button>
-    <span class="count">남은 횟수: 3</span>
-    <input type="text" id="q12a">
-    <input type="text" id="q12b">
-  </div>
-
-  <div class="question">
-    <h3>13. 我虽然（ ）说得不太好，但常常去（ ），认识到不少中国朋友。</h3>
-    <button class="listen-btn" onclick="playSegment(200,210,this)">▶ 듣기 재생</button>
-    <span class="count">남은 횟수: 3</span>
-    <input type="text" id="q13a">
-    <input type="text" id="q13b">
-  </div>
-
-  <div class="question">
-    <h3>14. 去（ ）得花一个多小时，他建议今天还是去（ ）比较好。</h3>
-    <button class="listen-btn" onclick="playSegment(240,250,this)">▶ 듣기 재생</button>
-    <span class="count">남은 횟수: 3</span>
-    <input type="text" id="q14a">
-    <input type="text" id="q14b">
-  </div>
-
-  <div class="question">
-    <h3>15. 我（ ）花（ ）去海南岛玩一次。</h3>
-    <button class="listen-btn" onclick="playSegment(275,284,this)">▶ 듣기 재생</button>
-    <span class="count">남은 횟수: 3</span>
-    <input type="text" id="q15a">
-    <input type="text" id="q15b">
-  </div>
-</section>
-
-<section class="panel">
-  <h2>Ⅲ. 문장 받아쓰기</h2>
-
-  <div class="question">
-    <h3>16.</h3>
-    <button class="listen-btn" onclick="speakText('我去过长城',this)">▶ 문장 듣기</button>
-    <span class="count">남은 횟수: 3</span>
-    <input type="text" id="q16">
-  </div>
-
-  <div class="question">
-    <h3>17.</h3>
-    <button class="listen-btn" onclick="speakText('长城离这儿不太远',this)">▶ 문장 듣기</button>
-    <span class="count">남은 횟수: 3</span>
-    <input type="text" id="q17">
-  </div>
-
-  <div class="question">
-    <h3>18.</h3>
-    <button class="listen-btn" onclick="speakText('买不到明天去上海的飞机票',this)">▶ 문장 듣기</button>
-    <span class="count">남은 횟수: 3</span>
-    <input type="text" id="q18">
-  </div>
-
-  <div class="question">
-    <h3>19.</h3>
-    <button class="listen-btn" onclick="speakText('到火车站要多长时间',this)">▶ 문장 듣기</button>
-    <span class="count">남은 횟수: 3</span>
-    <input type="text" id="q19">
-  </div>
-
-  <div class="question">
-    <h3>20.</h3>
-    <button class="listen-btn" onclick="speakText('哪儿有时间去旅行呢',this)">▶ 문장 듣기</button>
-    <span class="count">남은 횟수: 3</span>
-    <input type="text" id="q20">
-  </div>
-</section>
-
-<section class="panel">
-  <h2>Ⅳ. 의견 제시형 글쓰기</h2>
-
-  <div class="question">
-    <h3>21. 你觉得旅行跟团好还是自由行好？为什么？</h3>
-    <textarea id="q21" placeholder="중국어로 자신의 의견을 작성하세요."></textarea>
-  </div>
-
-  <button class="btn" onclick="gradeTest()">사전 진단 제출하기</button>
-
-  <div class="result" id="resultBox">
-    <h2>진단 결과</h2>
-    <p class="score" id="totalScore"></p>
-    <p id="areaScores"></p>
-
-    <h3>중국어 학습 프로필</h3>
-    <div id="profile"></div>
-
-    <h3>추천 연습 활동</h3>
-    <div id="recommendation"></div>
-  </div>
-</section>
-
-</div>
-
 <script>
-const audio = document.getElementById("mainAudio");
 
-function playSegment(start,end,btn){
-  let countSpan = btn.nextElementSibling;
-  let remain = parseInt(countSpan.innerText.replace(/\D/g,''));
+const dialogues = [
 
-  if(remain <= 0){
-    alert("재생 제한 완료");
-    return;
-  }
+{
+question:"他们可能在哪儿？",
+choices:["家里","车里","店里"],
+answer:"2",
+parts:[
+  {type:"narrator", text:"第一题，他们可能在哪儿？"},
+  {type:"female", text:"我来开车吧，你休息一会儿。"},
+  {type:"male", text:"没关系，快到了。"}
+]
+},
 
-  remain--;
-  countSpan.innerText = "남은 횟수: " + remain;
+{
+question:"现在男的觉得怎么样？",
+choices:["累极了","想睡觉","还可以"],
+answer:"3",
+parts:[
+  {type:"narrator", text:"第二题，现在男的觉得怎么样？"},
+  {type:"female", text:"你坐了五个小时的飞机，一定很累吧。"},
+  {type:"male", text:"还行，一直在睡觉。"}
+]
+},
 
-  if(remain === 0){
-    btn.disabled = true;
-  }
+{
+question:"女的是什么意思？",
+choices:["她很累","她不知道玩什么","她玩得不多"],
+answer:"3",
+parts:[
+  {type:"narrator", text:"第三题，女的是什么意思？"},
+  {type:"male", text:"你这次玩了几个地方？"},
+  {type:"female", text:"三天都在开会，没玩什么地方。"}
+]
+},
 
-  audio.pause();
-  audio.currentTime = start;
-  audio.play();
+{
+question:"昨晚怎么了？",
+choices:["下雨了","下雪了","刮风了"],
+answer:"2",
+parts:[
+  {type:"narrator", text:"第四题，昨晚怎么了？"},
+  {type:"female", text:"昨晚下了一场大雪，杭州更漂亮了。"},
+  {type:"male", text:"我们出去拍几张照。"}
+]
+},
 
-  const stopAudio = setInterval(()=>{
-    if(audio.currentTime >= end){
-      audio.pause();
-      clearInterval(stopAudio);
-    }
-  },100);
+{
+question:"对话可能发生在什么地方？",
+choices:["机场","宾馆","学校"],
+answer:"1",
+parts:[
+  {type:"narrator", text:"第五题，对话可能发生在什么地方？"},
+  {type:"male", text:"给我一个靠窗的座位。"},
+  {type:"female", text:"好的，您有几件行李？"}
+]
 }
 
-function speakText(text,btn){
-  let countSpan = btn.nextElementSibling;
-  let remain = parseInt(countSpan.innerText.replace(/\D/g,''));
-
-  if(remain <= 0){
-    alert("재생 제한 완료");
-    return;
-  }
-
-  remain--;
-  countSpan.innerText = "남은 횟수: " + remain;
-
-  if(remain === 0){
-    btn.disabled = true;
-  }
-
-  const utterance = new SpeechSynthesisUtterance(text);
-  utterance.lang = "zh-CN";
-  speechSynthesis.speak(utterance);
-}
-
-const mcqQuestions = [
-["他们可能在哪儿？",["家里","车里","店里"],"2",325,327],
-["现在男的觉得怎么样？",["累极了","想睡觉","还可以"],"1",359,396],
-["女的是什么意思？",["她很累","她不知道玩什么","她玩得不多"],"3",398,431],
-["昨晚怎么了？",["下雨了","下雪了","刮风了"],"2",433,467],
-["对话可能发生在什么地方？",["机场","宾馆","学校"],"2",469,502],
-["大卫现在在哪儿？",["在机场里","在家里","在路上"],"3",517,555],
-["女的在韩国玩几个地方？",["４个","３个","２个"],"2",559,598],
-["男的这次是第几次来上海？",["第一次","第二次","第三次"],"1",600,655],
-["他们原来想做什么？",["看电影","吃饭","爬山"],"3",658,704],
-["女的没去过哪儿？",["青岛","天津","黄山"],"3",707,757]
 ];
 
-const mcqArea = document.getElementById("mcqArea");
+function getVoice(type){
 
-mcqQuestions.forEach((q,i)=>{
+  const voices = speechSynthesis.getVoices();
+
+  if(type === "female"){
+
+    return voices.find(v =>
+      v.lang.includes("zh") &&
+      (v.name.includes("Female") ||
+       v.name.includes("Xiaoxiao") ||
+       v.name.includes("Ting"))
+    ) || voices.find(v => v.lang.includes("zh"));
+
+  }
+
+  if(type === "male"){
+
+    return voices.find(v =>
+      v.lang.includes("zh") &&
+      (v.name.includes("Male") ||
+       v.name.includes("Yunxi") ||
+       v.name.includes("Gang"))
+    ) || voices.find(v => v.lang.includes("zh"));
+
+  }
+
+  return voices.find(v => v.lang.includes("zh"));
+
+}
+
+function speakDialogue(index, btn){
+
+  let countSpan = btn.nextElementSibling;
+
+  let remain = parseInt(countSpan.innerText.replace(/\D/g,''));
+
+  if(remain <= 0){
+    alert("재생 제한 완료");
+    return;
+  }
+
+  remain--;
+
+  countSpan.innerText = "남은 횟수: " + remain;
+
+  if(remain === 0){
+    btn.disabled = true;
+  }
+
+  const dialogue = dialogues[index];
+
+  let current = 0;
+
+  function speakNext(){
+
+    if(current >= dialogue.parts.length){
+      return;
+    }
+
+    const part = dialogue.parts[current];
+
+    const utterance =
+      new SpeechSynthesisUtterance(part.text);
+
+    utterance.lang = "zh-CN";
+
+    utterance.rate = 0.9;
+
+    utterance.voice = getVoice(part.type);
+
+    utterance.onend = function(){
+
+      current++;
+
+      setTimeout(()=>{
+        speakNext();
+      },500);
+
+    };
+
+    speechSynthesis.speak(utterance);
+
+  }
+
+  speakNext();
+
+}
+
+window.speechSynthesis.onvoiceschanged = () => {
+
+  speechSynthesis.getVoices();
+
+};
+
+const mcqArea =
+document.getElementById("mcqArea");
+
+dialogues.forEach((q,i)=>{
+
   let html = `
   <div class="question">
-    <h3>${i+1}. ${q[0]}</h3>
-    <button class="listen-btn" onclick="playSegment(${q[3]},${q[4]},this)">▶ 듣기 재생</button>
-    <span class="count">남은 횟수: 3</span>
+
+  <h3>${i+1}. ${q.question}</h3>
+
+  <button class="listen-btn"
+  onclick="speakDialogue(${i},this)">
+  ▶ 듣기 재생
+  </button>
+
+  <span class="count">
+  남은 횟수: 3
+  </span>
   `;
 
-  q[1].forEach((opt,idx)=>{
+  q.choices.forEach((opt,idx)=>{
+
     html += `
     <label>
-      <input type="radio" name="q${i+1}" value="${idx+1}">
+      <input type="radio"
+      name="q${i+1}"
+      value="${idx+1}">
+
       ${idx+1}. ${opt}
     </label>
     `;
+
   });
 
   html += `</div>`;
+
   mcqArea.innerHTML += html;
+
 });
 
-function clean(s){
-  return (s || "").replace(/\s/g,"").replace(/[，。！？,.!?]/g,"").trim();
-}
-
-function isCorrect(id,answer){
-  return clean(document.getElementById(id).value) === clean(answer);
-}
-
-function gradeTest(){
-  let listeningScore = 0;
-  let blankScore = 0;
-  let dictationScore = 0;
-  let writingScore = 0;
-
-  mcqQuestions.forEach((q,i)=>{
-    const selected = document.querySelector(`input[name="q${i+1}"]:checked`);
-    if(selected && selected.value === q[2]){
-      listeningScore += 0.5;
-    }
-  });
-
-  const blanks = [
-    ["q11a","东北"],["q11b","冬天"],
-    ["q12a","打车"],["q12b","机场"],
-    ["q13a","汉语"],["q13b","旅行"],
-    ["q14a","长城"],["q14b","植物园"],
-    ["q15a","打算"],["q15b","300块"]
-  ];
-
-  blanks.forEach(item=>{
-    if(isCorrect(item[0],item[1])){
-      blankScore += 0.5;
-    }
-  });
-
-  const dictations = [
-    ["q16","我去过长城"],
-    ["q17","长城离这儿不太远"],
-    ["q18","买不到明天去上海的飞机票"],
-    ["q19","到火车站要多长时间"],
-    ["q20","哪儿有时间去旅行呢"]
-  ];
-
-  dictations.forEach(item=>{
-    if(isCorrect(item[0],item[1])){
-      dictationScore += 1;
-    }
-  });
-
-  const writing = document.getElementById("q21").value.trim();
-  const sentenceCount = writing.split(/[。！？!?]/).filter(s=>s.trim().length>0).length;
-
-  if(writing.length === 0){
-    writingScore = 0;
-  }else if(sentenceCount >= 5){
-    writingScore = 5;
-  }else if(sentenceCount >= 3){
-    writingScore = 3;
-  }else{
-    writingScore = 2;
-  }
-
-  const total = listeningScore + blankScore + dictationScore + writingScore;
-
-  document.getElementById("resultBox").style.display = "block";
-
-  document.getElementById("totalScore").innerText =
-  `총점: ${total.toFixed(1)} / 20점`;
-
-  document.getElementById("areaScores").innerHTML = `
-  듣기 이해: ${listeningScore.toFixed(1)} / 5점<br>
-  빈칸 듣기: ${blankScore.toFixed(1)} / 5점<br>
-  문장 받아쓰기: ${dictationScore.toFixed(1)} / 5점<br>
-  의견쓰기: ${writingScore.toFixed(1)} / 5점
-  `;
-
-  let profile = "";
-  let rec = "";
-
-  if(listeningScore < 3){
-    profile += `<span class="badge">듣기 세부정보 파악 보완 필요</span>`;
-    rec += `<p>• 세부정보 파악 중심 listening 활동 추천</p>`;
-  }else{
-    profile += `<span class="badge">듣기 이해 양호</span>`;
-  }
-
-  if(blankScore < 3){
-    profile += `<span class="badge">표현 청취 취약</span>`;
-    rec += `<p>• chunk listening 및 빈칸 듣기 추천</p>`;
-  }else{
-    profile += `<span class="badge">표현 인식 양호</span>`;
-  }
-
-  if(dictationScore < 3){
-    profile += `<span class="badge">문장 재현 보완 필요</span>`;
-    rec += `<p>• 받아쓰기 및 딕토글로스 활동 추천</p>`;
-  }else{
-    profile += `<span class="badge">문장 재현 양호</span>`;
-  }
-
-  if(writingScore < 3){
-    profile += `<span class="badge">의견쓰기 보완 필요</span>`;
-    rec += `<p>• 의견쓰기 scaffold 활동 추천</p>`;
-  }else{
-    profile += `<span class="badge">논리적 의견 구성 가능</span>`;
-  }
-
-  if(rec === ""){
-    rec = `<p>• 전반적으로 안정적인 수준입니다. 심화 듣기와 논리적 글쓰기 활동을 추천합니다.</p>`;
-  }
-
-  document.getElementById("profile").innerHTML = profile;
-  document.getElementById("recommendation").innerHTML = rec;
-
-  window.scrollTo({top:document.body.scrollHeight,behavior:"smooth"});
-}
 </script>
-
-</body>
-</html>
