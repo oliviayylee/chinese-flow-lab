@@ -1,30 +1,149 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>사전 진단 | Chinese Flow Lab</title>
+
+<style>
+body{
+  margin:0;
+  font-family:"Pretendard","Noto Sans KR",sans-serif;
+  background:#f6f1ea;
+  color:#2f241d;
+}
+
+header{
+  background:#3c2b22;
+  color:white;
+  padding:24px 8%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+header h1{
+  margin:0;
+  font-size:28px;
+}
+
+header a{
+  color:white;
+  text-decoration:none;
+  opacity:.85;
+}
+
+.container{
+  padding:50px 8%;
+}
+
+.panel{
+  background:white;
+  border-radius:28px;
+  padding:36px;
+  box-shadow:0 10px 24px rgba(0,0,0,.08);
+  margin-bottom:30px;
+}
+
+h2{
+  font-size:32px;
+  color:#6f432a;
+  margin-bottom:12px;
+}
+
+.question{
+  background:#fffaf5;
+  border-radius:18px;
+  padding:22px;
+  margin-top:18px;
+}
+
+.listen-btn{
+  background:#ead9c8;
+  color:#5a3927;
+  border:none;
+  border-radius:999px;
+  padding:8px 16px;
+  cursor:pointer;
+  margin-top:10px;
+}
+
+.listen-btn:disabled{
+  background:#ccc;
+  cursor:not-allowed;
+}
+
+.count{
+  font-size:13px;
+  color:#7a6559;
+  margin-left:10px;
+}
+
+label{
+  display:block;
+  margin-top:10px;
+}
+
+input[type="text"]{
+  width:100%;
+  padding:13px;
+  border-radius:14px;
+  border:1px solid #d8c8b8;
+  margin-top:10px;
+  box-sizing:border-box;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>Chinese Flow Lab</h1>
+  <a href="#">강의실로 돌아가기</a>
+</header>
+
+<div class="container">
+
+<section class="panel">
+  <h2>Ⅰ. 듣기: 알맞은 답을 고르시오.</h2>
+
+  <div id="mcqArea"></div>
+
+</section>
+</div>
+
 <script>
-let voicesReady = false;
 
 function loadVoices(){
   speechSynthesis.getVoices();
-  voicesReady = true;
 }
 
 window.speechSynthesis.onvoiceschanged = loadVoices;
 loadVoices();
 
 function getVoice(type){
-  const voices = speechSynthesis.getVoices();
-  const zhVoices = voices.filter(v => v.lang.includes("zh"));
 
-  console.log("중국어 음성 목록:", zhVoices.map(v => v.name));
+  const voices = speechSynthesis.getVoices();
+
+  const zhVoices = voices.filter(v =>
+    v.lang.includes("zh")
+  );
+
+  console.log("중국어 음성:", zhVoices.map(v => v.name));
 
   if(type === "female"){
+
     return zhVoices.find(v =>
       v.name.includes("Xiaoxiao") ||
-      v.name.includes("Ting") ||
       v.name.includes("Mei") ||
+      v.name.includes("Ting") ||
       v.name.includes("Female")
     ) || zhVoices[0];
   }
 
   if(type === "male"){
+
     return zhVoices.find(v =>
       v.name.includes("Yunxi") ||
       v.name.includes("Yunjian") ||
@@ -40,7 +159,10 @@ function getVoice(type){
 function speakParts(parts, btn){
 
   let countSpan = btn.nextElementSibling;
-  let remain = parseInt(countSpan.innerText.replace(/\D/g,''));
+
+  let remain = parseInt(
+    countSpan.innerText.replace(/\D/g,'')
+  );
 
   if(remain <= 0){
     alert("재생 제한 완료");
@@ -48,6 +170,7 @@ function speakParts(parts, btn){
   }
 
   remain--;
+
   countSpan.innerText = "남은 횟수: " + remain;
 
   if(remain === 0){
@@ -60,26 +183,29 @@ function speakParts(parts, btn){
 
   function speakNext(){
 
-    if(current >= parts.length) return;
+    if(current >= parts.length){
+      return;
+    }
 
     const part = parts[current];
 
-    const utterance = new SpeechSynthesisUtterance(part.text);
+    const utterance =
+      new SpeechSynthesisUtterance(part.text);
 
     utterance.lang = "zh-CN";
 
     utterance.rate =
       part.type === "male"
-        ? 0.58
+        ? 0.55
         : part.type === "female"
-        ? 0.95
+        ? 0.96
         : 0.82;
 
     utterance.pitch =
       part.type === "male"
         ? 0.1
         : part.type === "female"
-        ? 1.45
+        ? 1.5
         : 1;
 
     utterance.volume = 1;
@@ -87,7 +213,9 @@ function speakParts(parts, btn){
     utterance.voice = getVoice(part.type);
 
     utterance.onend = function(){
+
       current++;
+
       setTimeout(speakNext, 450);
     };
 
@@ -96,4 +224,84 @@ function speakParts(parts, btn){
 
   speakNext();
 }
+
+const mcqQuestions = [
+
+  {
+    question:"他们可能在哪儿？",
+    choices:["家里","车里","店里"],
+    answer:"2",
+    parts:[
+      {
+        type:"female",
+        text:"我来开车吧，你休息一会儿。"
+      },
+      {
+        type:"male",
+        text:"没关系，快到了。"
+      }
+    ]
+  },
+
+  {
+    question:"现在男的觉得怎么样？",
+    choices:["累极了","想睡觉","还可以"],
+    answer:"3",
+    parts:[
+      {
+        type:"female",
+        text:"你坐了五个小时的飞机，一定很累吧。"
+      },
+      {
+        type:"male",
+        text:"还行，一直在睡觉。"
+      }
+    ]
+  }
+
+];
+
+const mcqArea =
+  document.getElementById("mcqArea");
+
+mcqQuestions.forEach((q,i)=>{
+
+  let html = `
+  <div class="question">
+
+    <h3>${i+1}. ${q.question}</h3>
+
+    <button
+      class="listen-btn"
+      onclick='speakParts(mcqQuestions[${i}].parts,this)'
+    >
+      ▶ 듣기 재생
+    </button>
+
+    <span class="count">남은 횟수: 3</span>
+  `;
+
+  q.choices.forEach((opt,idx)=>{
+
+    html += `
+      <label>
+        <input
+          type="radio"
+          name="q${i+1}"
+          value="${idx+1}"
+        >
+        ${idx+1}. ${opt}
+      </label>
+    `;
+  });
+
+  html += `</div>`;
+
+  mcqArea.innerHTML += html;
+
+});
+
 </script>
+
+</body>
+</html>
