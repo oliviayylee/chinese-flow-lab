@@ -1,40 +1,30 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>강의실 | Chinese Flow Lab</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>중급 중국어 듣기와 쓰기 | Chinese Flow Lab</title>
 
 <style>
-
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-}
-
 body{
+  margin:0;
   font-family:"Pretendard","Noto Sans KR",sans-serif;
   background:#f6f1ea;
   color:#2f241d;
 }
 
-/* 상단 */
-
 header{
   background:#3c2b22;
   color:white;
-
   padding:24px 8%;
-
   display:flex;
   justify-content:space-between;
   align-items:center;
 }
 
 header h1{
-  font-size:30px;
-  font-weight:800;
+  margin:0;
+  font-size:28px;
 }
 
 header a{
@@ -43,144 +33,113 @@ header a{
   opacity:.85;
 }
 
-/* 메인 */
-
 .container{
-  max-width:900px;
-  margin:auto;
-  padding:80px 24px;
+  padding:60px 8%;
 }
 
-/* 제목 */
-
 .title{
-  text-align:center;
-  margin-bottom:60px;
+  margin-bottom:36px;
 }
 
 .title h2{
-  font-size:52px;
-  color:#6f432a;
-  margin-bottom:18px;
+  font-size:42px;
+  margin:0;
+  color:#4a2d1f;
 }
 
-.title p{
-  font-size:22px;
-  color:#5f5148;
+.grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:32px;
 }
 
-/* 과목 리스트 */
-
-.course-list{
-  display:flex;
-  flex-direction:column;
-  gap:22px;
-}
-
-/* 선택 가능 과목 */
-
-.course-link{
-  display:block;
-
+.card{
   background:white;
+  border-radius:32px;
+  padding:46px 40px;
+  box-shadow:0 10px 30px rgba(0,0,0,.08);
+  min-height:220px;
+}
 
-  border-radius:28px;
+.icon{
+  font-size:46px;
+  margin-bottom:22px;
+}
 
-  padding:34px;
-
-  text-decoration:none;
-
-  color:#4b2f22;
-
+.card h3{
   font-size:30px;
+  margin:0 0 28px;
+  color:#5a3427;
+}
+
+.card-btn{
+  display:inline-block;
+  background:linear-gradient(135deg,#9d5a3d,#6f432a);
+  color:white;
+  text-decoration:none;
+  padding:14px 28px;
+  border-radius:999px;
   font-weight:700;
-
-  box-shadow:0 10px 24px rgba(0,0,0,.08);
-
-  transition:.25s;
+  box-shadow:0 6px 14px rgba(111,67,42,.25);
 }
-
-.course-link:hover{
-  transform:translateY(-4px);
-  background:#fffaf5;
-}
-
-/* 비활성 과목 */
-
-.course-disabled{
-  background:#ece7e1;
-
-  color:#aaa19a;
-
-  border-radius:24px;
-
-  padding:28px 34px;
-
-  font-size:24px;
-  font-weight:600;
-}
-
-/* 모바일 */
 
 @media(max-width:768px){
+  .container{
+    padding:36px 5%;
+  }
 
   .title h2{
-    font-size:42px;
+    font-size:32px;
   }
 
-  .title p{
-    font-size:19px;
+  .grid{
+    grid-template-columns:1fr;
   }
 
-  .course-link{
-    font-size:26px;
+  .card{
+    padding:32px 28px;
   }
-
 }
-
 </style>
 </head>
 
 <body>
 
 <header>
-
   <h1>Chinese Flow Lab</h1>
-
-  <a href="index.html">홈으로</a>
-
+  <a href="courses.html">과목 선택으로</a>
 </header>
 
 <div class="container">
 
   <div class="title">
-
-    <h2>강의실</h2>
-
-    <p>수강할 과목을 선택하세요.</p>
-
+    <h2>중급 중국어 듣기와 쓰기</h2>
   </div>
 
-  <div class="course-list">
+  <div class="grid">
 
-    <!-- 선택 가능 -->
-
-    <a href="course.html" class="course-link">
-      중급 중국어 듣기와 쓰기
-    </a>
-
-    <!-- 선택 불가 -->
-
-    <div class="course-disabled">
-      초급 중국어 회화
+    <div class="card">
+      <div class="icon">📋</div>
+      <h3>사전 진단</h3>
+      <a href="pretest.html" class="card-btn">진단 시작하기</a>
     </div>
 
-    <div class="course-disabled">
-      중국 문화와 콘텐츠
+    <div class="card">
+      <div class="icon">📊</div>
+      <h3>학습 프로필</h3>
+      <a href="profile.html" class="card-btn">프로필 보기</a>
     </div>
 
-    <div class="course-disabled">
-      HSK 실전 연습
+    <div class="card">
+      <div class="icon">🎥</div>
+      <h3>플립드러닝 영상</h3>
+      <a href="lecture.html" class="card-btn">강의 보러가기</a>
+    </div>
+
+    <div class="card">
+      <div class="icon">✍️</div>
+      <h3>맞춤형 연습</h3>
+      <a href="practice.html" class="card-btn">연습 시작하기</a>
     </div>
 
   </div>
@@ -189,5 +148,4 @@ header a{
 
 </body>
 </html>
-
 
