@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-
 <title>Chinese Flow Lab</title>
 
 <style>
@@ -15,12 +14,10 @@ body{
   color:#2f241d;
 }
 
-/* 헤더 */
-
 header{
   background:#3c2b22;
   color:white;
-  padding:24px 8%;
+  padding:26px 8%;
   display:flex;
   justify-content:space-between;
   align-items:center;
@@ -31,129 +28,161 @@ header h1{
   font-size:30px;
 }
 
-header nav a{
+nav a{
   color:white;
   text-decoration:none;
   margin-left:24px;
-  opacity:.88;
-  font-size:15px;
+  opacity:.9;
 }
-
-/* 메인 */
 
 .hero{
-  padding:90px 8%;
-  text-align:center;
+  padding:90px 8% 70px;
+  display:grid;
+  grid-template-columns:1.1fr 1fr;
+  gap:60px;
+  align-items:center;
 }
 
-.badge{
-  display:inline-block;
-  background:#f2e4db;
-  color:#8a4d33;
-  padding:10px 18px;
-  border-radius:999px;
-  font-size:14px;
-  font-weight:600;
-  margin-bottom:24px;
+.hero-text h2{
+  font-size:64px;
+  line-height:1.2;
+  margin:0 0 24px;
+  color:#4a2d1f;
 }
 
-.hero h2{
-  margin:0;
-  font-size:58px;
-  line-height:1.25;
-  color:#3c2b22;
-}
-
-.hero p{
-  margin:28px auto 0;
-  max-width:820px;
+.hero-text p{
   font-size:20px;
   line-height:1.9;
   color:#666;
+  margin-bottom:38px;
 }
 
-/* 버튼 */
-
-.hero-buttons{
-  margin-top:42px;
-}
-
-.main-btn{
+.hero-btn{
   display:inline-block;
   background:linear-gradient(135deg,#9d5a3d,#6f432a);
   color:white;
   text-decoration:none;
   padding:18px 36px;
   border-radius:999px;
+  font-size:18px;
   font-weight:700;
-  font-size:17px;
   box-shadow:0 8px 18px rgba(111,67,42,.25);
 }
 
-/* 소개 카드 */
+.hero-image{
+  background:white;
+  border-radius:38px;
+  padding:46px;
+  box-shadow:0 14px 36px rgba(0,0,0,.08);
+}
+
+.mock{
+  background:#faf6f2;
+  border-radius:24px;
+  padding:26px;
+}
+
+.mock-top{
+  display:flex;
+  gap:10px;
+  margin-bottom:20px;
+}
+
+.dot{
+  width:12px;
+  height:12px;
+  border-radius:50%;
+  background:#d7b7a4;
+}
+
+.mock-card{
+  background:white;
+  border-radius:20px;
+  padding:22px;
+  margin-bottom:18px;
+  box-shadow:0 4px 10px rgba(0,0,0,.05);
+}
+
+.mock-card h4{
+  margin:0 0 10px;
+  color:#5a3427;
+}
+
+.mock-card p{
+  margin:0;
+  color:#777;
+  line-height:1.7;
+}
 
 .section{
-  padding:20px 8% 80px;
+  padding:40px 8% 80px;
 }
 
-.card-grid{
+.section-title{
+  text-align:center;
+  margin-bottom:44px;
+}
+
+.section-title h3{
+  font-size:40px;
+  color:#4a2d1f;
+  margin-bottom:14px;
+}
+
+.section-title p{
+  color:#666;
+  font-size:18px;
+}
+
+.grid{
   display:grid;
   grid-template-columns:repeat(3,1fr);
-  gap:28px;
+  gap:30px;
 }
 
-.card{
+.feature{
   background:white;
-  border-radius:32px;
-  padding:36px;
-  box-shadow:0 10px 30px rgba(0,0,0,.08);
+  border-radius:30px;
+  padding:34px;
+  box-shadow:0 10px 26px rgba(0,0,0,.08);
 }
 
-.card .icon{
-  font-size:42px;
+.feature-icon{
+  font-size:44px;
   margin-bottom:18px;
 }
 
-.card h3{
-  margin:0 0 16px;
+.feature h4{
+  font-size:26px;
+  margin:0 0 14px;
   color:#5a3427;
-  font-size:28px;
 }
 
-.card p{
-  margin:0;
+.feature p{
   color:#666;
-  line-height:1.9;
-  font-size:16px;
+  line-height:1.8;
 }
-
-/* footer */
 
 footer{
+  background:#3c2b22;
+  color:white;
   text-align:center;
-  padding:40px 20px;
-  color:#888;
-  font-size:14px;
+  padding:34px;
+  line-height:1.8;
 }
 
-/* 모바일 */
-
-@media(max-width:768px){
+@media(max-width:900px){
 
   .hero{
-    padding:70px 6%;
-  }
-
-  .hero h2{
-    font-size:38px;
-  }
-
-  .hero p{
-    font-size:17px;
-  }
-
-  .card-grid{
     grid-template-columns:1fr;
+  }
+
+  .grid{
+    grid-template-columns:1fr;
+  }
+
+  .hero-text h2{
+    font-size:44px;
   }
 
 }
@@ -168,81 +197,123 @@ footer{
   <h1>Chinese Flow Lab</h1>
 
   <nav>
-    <a href="index.html">Home</a>
-    <a href="classroom.html">Classroom</a>
+    <a href="#">소개</a>
+    <a href="#">연구</a>
+    <a href="#">문의</a>
   </nav>
 
 </header>
 
-<!-- 메인 -->
-
 <section class="hero">
 
-  <div class="badge">
-    AI-Powered Chinese Learning Platform
+  <div class="hero-text">
+
+    <h2>
+      AI 기반<br>
+      학습자 중심 중국어 교육 플랫폼
+    </h2>
+
+    <p>
+      Chinese Flow Lab은 플립드러닝, 학습자 프로파일링,
+      맞춤형 연습 활동을 기반으로 한
+      중국어 교육 플랫폼입니다.
+      사전 진단 결과를 바탕으로 학습자의 특성을 분석하고,
+      유형별 맞춤 학습 활동을 제공합니다.
+    </p>
+
+    <a href="courses.html" class="hero-btn">
+      강의실 들어가기
+    </a>
+
   </div>
 
-  <h2>
-    Chinese Flow Lab
-  </h2>
+  <div class="hero-image">
 
-  <p>
-    학습자 중심의 플립드러닝 기반 중국어 학습 플랫폼입니다.<br>
-    사전 진단, 강의 영상, 학습 프로필 분석을 통해
-    학습자의 중국어 학습 경험을 확장합니다.
-  </p>
+    <div class="mock">
 
-  <div class="hero-buttons">
+      <div class="mock-top">
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+      </div>
 
-    <a href="classroom.html" class="main-btn">
-      강의실 입장하기
-    </a>
+      <div class="mock-card">
+        <h4>📋 사전 진단</h4>
+        <p>
+          문장 듣기 이해 · 딕토글로스 · 받아쓰기 · 의견제시형 글쓰기
+        </p>
+      </div>
+
+      <div class="mock-card">
+        <h4>📊 학습 프로필</h4>
+        <p>
+          음성-문자 연결 보완형 / 딕토글로스 보완형 등
+          학습 유형 자동 분석
+        </p>
+      </div>
+
+      <div class="mock-card">
+        <h4>✍️ 맞춤형 연습</h4>
+        <p>
+          학습자 유형과 주제에 따라 다른 연습 활동 제공
+        </p>
+      </div>
+
+    </div>
 
   </div>
 
 </section>
 
-<!-- 소개 카드 -->
-
 <section class="section">
 
-  <div class="card-grid">
+  <div class="section-title">
 
-    <div class="card">
+    <h3>Platform Features</h3>
 
-      <div class="icon">📋</div>
+    <p>
+      학습자 맞춤형 중국어 교육을 위한 핵심 기능
+    </p>
 
-      <h3>사전 진단</h3>
+  </div>
+
+  <div class="grid">
+
+    <div class="feature">
+
+      <div class="feature-icon">🎥</div>
+
+      <h4>Flipped Learning</h4>
 
       <p>
-        학습자의 중국어 수준과 취약 영역을 파악하여
-        학습 방향을 설정합니다.
+        플립드러닝 기반 사전 영상 학습과
+        수업 연계형 활동 제공
       </p>
 
     </div>
 
-    <div class="card">
+    <div class="feature">
 
-      <div class="icon">🎥</div>
+      <div class="feature-icon">📊</div>
 
-      <h3>플립드러닝</h3>
+      <h4>Learning Profile</h4>
 
       <p>
-        사전 강의 영상과 문화 기반 콘텐츠를 통해
-        수업 전 핵심 표현과 담화를 학습합니다.
+        사전 진단 기반 학습자 유형 분석 및
+        AI 기반 맞춤형 학습 추천
       </p>
 
     </div>
 
-    <div class="card">
+    <div class="feature">
 
-      <div class="icon">📊</div>
+      <div class="feature-icon">✍️</div>
 
-      <h3>학습 프로필</h3>
+      <h4>Adaptive Practice</h4>
 
       <p>
-        학습 데이터를 바탕으로
-        학습자의 특성과 학습 패턴을 분석합니다.
+        유형별 맞춤 연습 활동과
+        중국 문화 기반 담화 학습
       </p>
 
     </div>
@@ -253,9 +324,14 @@ footer{
 
 <footer>
 
-  © 2026 Chinese Flow Lab
+  Chinese Flow Lab<br>
+  AI-Based Adaptive Chinese Learning Platform
 
 </footer>
 
 </body>
 </html>
+
+  
+
+     
