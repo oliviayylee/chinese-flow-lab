@@ -42,7 +42,6 @@ header a{
   border-radius:28px;
   padding:36px;
   box-shadow:0 10px 24px rgba(0,0,0,.08);
-  margin-bottom:30px;
 }
 
 h2{
@@ -81,17 +80,19 @@ input[type="text"]{
   border-radius:12px;
   font-size:16px;
   margin-top:10px;
+  box-sizing:border-box;
 }
 
 textarea{
   width:100%;
-  height:150px;
+  height:160px;
   padding:14px;
   border:1px solid #ddd;
   border-radius:12px;
   font-size:16px;
   line-height:1.8;
   margin-top:10px;
+  box-sizing:border-box;
 }
 
 button{
@@ -266,27 +267,27 @@ audio{
 
       <div class="question">
         <p>11. （　　）的（　　）很冷。</p>
-        <input type="text" id="q11" placeholder="들은 내용을 입력하세요">
+        <input type="text" id="q11">
       </div>
 
       <div class="question">
         <p>12. 时间不早了，（　　）去（　　）比较好。</p>
-        <input type="text" id="q12" placeholder="들은 내용을 입력하세요">
+        <input type="text" id="q12">
       </div>
 
       <div class="question">
         <p>13. 我虽然（　　）说得不太好，但常常去（　　），认识到不少中国朋友。</p>
-        <input type="text" id="q13" placeholder="들은 내용을 입력하세요">
+        <input type="text" id="q13">
       </div>
 
       <div class="question">
         <p>14. 去（　　）得花一个多小时，他建议今天还是去（　　）比较好。</p>
-        <input type="text" id="q14" placeholder="들은 내용을 입력하세요">
+        <input type="text" id="q14">
       </div>
 
       <div class="question">
         <p>15. 我（　　）花（　　）去海南岛玩一次。</p>
-        <input type="text" id="q15" placeholder="들은 내용을 입력하세요">
+        <input type="text" id="q15">
       </div>
 
       <h3>三、받아쓰기</h3>
@@ -319,14 +320,9 @@ audio{
       <h3>四、의견제시형 글쓰기</h3>
 
       <div class="question">
-        <p>
-          21. 你觉得旅行跟团好还是自由行好？为什么？
-        </p>
+        <p>21. 你觉得旅行跟团好还是自由行好？为什么？</p>
 
-        <textarea
-          id="q21"
-          placeholder="자신의 의견을 5문장 정도로 작성하세요.">
-        </textarea>
+        <textarea id="q21"></textarea>
       </div>
 
       <button type="button" onclick="checkPretest()">
@@ -526,3 +522,5 @@ function checkPretest(){
 
 </body>
 </html>
+
+ 
