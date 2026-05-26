@@ -7,7 +7,6 @@
 <title>주제 1. 학교생활 | Chinese Flow Lab</title>
 
 <style>
-
 body{
   margin:0;
   font-family:"Pretendard","Noto Sans KR",sans-serif;
@@ -88,8 +87,6 @@ header a{
   border:0;
 }
 
-/* 학습 목표 */
-
 .info-box{
   margin-top:30px;
 }
@@ -113,8 +110,6 @@ header a{
   font-size:17px;
 }
 
-/* 퀴즈 */
-
 .quiz-box{
   margin-top:42px;
   background:#faf6f2;
@@ -128,58 +123,27 @@ header a{
   color:#5a3427;
 }
 
-.quiz-desc{
+.quiz-box p{
   color:#666;
+  line-height:1.8;
   margin-bottom:28px;
-  line-height:1.8;
 }
 
-.question{
-  background:white;
-  border-radius:22px;
-  padding:24px;
-  margin-bottom:20px;
-}
-
-.question p{
-  margin-top:0;
-  margin-bottom:16px;
-  color:#3c2b22;
-  line-height:1.8;
-}
-
-.question label{
-  display:block;
-  margin:12px 0;
-  color:#555;
-  line-height:1.8;
-  cursor:pointer;
-}
-
-.submit-btn{
-  margin-top:20px;
+.quiz-btn{
+  display:inline-block;
   background:linear-gradient(135deg,#9d5a3d,#6f432a);
   color:white;
-  border:none;
-  padding:16px 32px;
+  text-decoration:none;
+  padding:16px 34px;
   border-radius:999px;
   font-size:16px;
-  font-weight:600;
-  cursor:pointer;
+  font-weight:700;
+  box-shadow:0 6px 14px rgba(111,67,42,.25);
 }
 
-.submit-btn:hover{
+.quiz-btn:hover{
   transform:translateY(-2px);
 }
-
-#result{
-  margin-top:24px;
-  font-size:20px;
-  font-weight:700;
-  color:#6f432a;
-}
-
-/* 돌아가기 버튼 */
 
 .back-btn{
   display:inline-block;
@@ -192,10 +156,7 @@ header a{
   font-weight:600;
 }
 
-/* 모바일 */
-
 @media(max-width:768px){
-
   .container{
     padding:34px 5%;
   }
@@ -215,31 +176,22 @@ header a{
   .quiz-box{
     padding:24px;
   }
-
 }
-
 </style>
 </head>
 
 <body>
 
 <header>
-
   <h1>Chinese Flow Lab</h1>
-
-  <a href="classroom.html">
-    강의실로 돌아가기
-  </a>
-
+  <a href="classroom.html">강의실로 돌아가기</a>
 </header>
 
 <div class="container">
 
   <div class="video-card">
 
-    <div class="badge">
-      Flipped Learning
-    </div>
+    <div class="badge">Flipped Learning</div>
 
     <h2>주제 1. 학교생활</h2>
 
@@ -248,133 +200,35 @@ header a{
       영상을 시청한 후 핵심 표현과 학습 내용을 정리해 보세요.
     </p>
 
-    <!-- 유튜브 영상 -->
-
     <div class="video-wrapper">
-
       <iframe
         src="https://www.youtube.com/embed/97JeDjTzVdQ"
         title="주제1 학교생활"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
         allowfullscreen>
       </iframe>
-
     </div>
 
-    <!-- 학습 목표 -->
-
     <div class="info-box">
-
       <div class="info-item">
-
         <h4>학습 목표</h4>
-
         <p>
           중국의 대학 생활 문화를 이해하고<br>
           관련 핵심 어휘 및 어법 표현을 익힌다.
         </p>
-
       </div>
-
     </div>
 
-    <!-- 퀴즈 -->
-
     <div class="quiz-box">
-
       <h3>사전 학습 확인 퀴즈</h3>
-
-      <p class="quiz-desc">
-        영상을 시청한 후 아래 문항을 풀어보세요.
+      <p>
+        영상을 시청한 후 아래 버튼을 눌러 퀴즈를 제출하세요.<br>
+        제출 결과는 자동으로 저장되며, 학습 프로필 분석에 활용됩니다.
       </p>
 
-      <form>
-
-        <div class="question">
-          <p><strong>1. 중국 대학생활의 특징으로 가장 알맞은 것은?</strong></p>
-
-          <label><input type="radio" name="q1"> ① 자유로운 생활 중심</label>
-
-          <label><input type="radio" name="q1"> ② 규율 있는 생활 중심</label>
-
-          <label><input type="radio" name="q1"> ③ 개인 활동 중심</label>
-
-          <label><input type="radio" name="q1"> ④ 통금이 없는 생활</label>
-        </div>
-
-        <div class="question">
-          <p><strong>2. 중국 대학생들의 하루 일과 설명으로 맞는 것은?</strong></p>
-
-          <label><input type="radio" name="q2"> ① 오전 수업이 거의 없다</label>
-
-          <label><input type="radio" name="q2"> ② 점심 후 낮잠 문화가 있다</label>
-
-          <label><input type="radio" name="q2"> ③ 기숙사 생활을 거의 하지 않는다</label>
-
-          <label><input type="radio" name="q2"> ④ 밤새 자유롭게 외출 가능하다</label>
-        </div>
-
-        <div class="question">
-          <p><strong>3. “毕业论文”의 뜻은?</strong></p>
-
-          <label><input type="radio" name="q3"> ① 발표 과제</label>
-
-          <label><input type="radio" name="q3"> ② 기말 시험</label>
-
-          <label><input type="radio" name="q3"> ③ 졸업 논문</label>
-
-          <label><input type="radio" name="q3"> ④ 토론 수업</label>
-        </div>
-
-        <div class="question">
-          <p><strong>4. “趴在桌子上”의 의미는?</strong></p>
-
-          <label><input type="radio" name="q4"> ① 책상을 정리하다</label>
-
-          <label><input type="radio" name="q4"> ② 책상 위에 엎드리다</label>
-
-          <label><input type="radio" name="q4"> ③ 책상을 옮기다</label>
-
-          <label><input type="radio" name="q4"> ④ 책상 위에 놓다</label>
-        </div>
-
-        <div class="question">
-          <p><strong>5. 我到了首尔（   ）给你打电话。</strong></p>
-
-          <label><input type="radio" name="q5"> ① 才</label>
-
-          <label><input type="radio" name="q5"> ② 就</label>
-
-          <label><input type="radio" name="q5"> ③ 着</label>
-
-          <label><input type="radio" name="q5"> ④ 懂</label>
-        </div>
-
-        <div class="question">
-          <p><strong>6. 다음 중 “다시는 ~하지 않다”의 의미를 나타내는 것은?</strong></p>
-
-          <label><input type="radio" name="q6"> ① 哪儿啊</label>
-
-          <label><input type="radio" name="q6"> ② 在~呢</label>
-
-          <label><input type="radio" name="q6"> ③ 再也不</label>
-
-          <label><input type="radio" name="q6"> ④ 不如</label>
-        </div>
-
-        <button
-          type="button"
-          class="submit-btn"
-          onclick="checkQuiz()">
-
-          제출하기
-
-        </button>
-
-      </form>
-
-      <p id="result"></p>
-
+      <a href="구글폼_링크_여기에" target="_blank" class="quiz-btn">
+        퀴즈 풀기
+      </a>
     </div>
 
     <a href="classroom.html" class="back-btn">
@@ -385,47 +239,7 @@ header a{
 
 </div>
 
-<script>
-
-function checkQuiz(){
-
-  const answers = {
-    q1:1,
-    q2:1,
-    q3:2,
-    q4:1,
-    q5:1,
-    q6:2
-  };
-
-  let score = 0;
-  let total = 6;
-
-  for(let q in answers){
-
-    const selected =
-      document.querySelector(`input[name="${q}"]:checked`);
-
-    if(selected){
-
-      const options =
-        Array.from(document.querySelectorAll(`input[name="${q}"]`));
-
-      if(options.indexOf(selected) === answers[q]){
-        score++;
-      }
-
-    }
-
-  }
-
-  document.getElementById("result").innerText =
-    `총 ${total}문항 중 ${score}문항을 맞혔습니다.`;
-
-}
-
-</script>
-
 </body>
 </html>
-
+  
+  
