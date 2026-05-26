@@ -2,252 +2,136 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Chinese Flow Lab</title>
 
 <style>
+*{
+  box-sizing:border-box;
+}
+
 body{
   margin:0;
   font-family:"Pretendard","Noto Sans KR",sans-serif;
-  background:#f6f1ea;
-  color:#2f241d;
-}
-
-header{
-  background:#3c2b22;
   color:white;
-  padding:26px 8%;
-}
-
-header h1{
-  margin:0;
-  font-size:30px;
+  background:#2f241d;
 }
 
 .hero{
-  min-height:calc(100vh - 86px);
-  display:grid;
-  grid-template-columns:1fr 1fr;
+  min-height:100vh;
+  background:
+    linear-gradient(rgba(0,0,0,.48), rgba(0,0,0,.56)),
+    url("cafe.jpg");
+  background-size:cover;
+  background-position:center;
+  display:flex;
   align-items:center;
-  gap:60px;
-  padding:70px 8%;
+  justify-content:center;
+  text-align:center;
+  padding:40px 24px;
 }
 
-.hero-text h2{
-  font-size:60px;
-  line-height:1.22;
-  margin:0 0 26px;
-  color:#3c2b22;
+.content{
+  max-width:760px;
 }
 
-.hero-text p{
-  font-size:20px;
-  line-height:1.9;
-  color:#66564d;
-  margin-bottom:40px;
+h1{
+  font-size:86px;
+  line-height:1.2;
+  margin:0 0 42px;
+  font-weight:800;
+  letter-spacing:1px;
+}
+
+h2{
+  font-size:34px;
+  line-height:1.45;
+  margin:0 0 34px;
+  font-weight:700;
+}
+
+p{
+  font-size:24px;
+  line-height:1.7;
+  margin:0 0 60px;
+  font-weight:400;
+}
+
+.buttons{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:28px;
 }
 
 .btn{
   display:inline-block;
-  background:linear-gradient(135deg,#9d5a3d,#6f432a);
-  color:white;
+  width:340px;
+  padding:24px 34px;
+  border-radius:48px;
   text-decoration:none;
-  padding:18px 38px;
-  border-radius:999px;
-  font-size:18px;
-  font-weight:700;
-  box-shadow:0 8px 18px rgba(111,67,42,.25);
+  font-size:26px;
+  font-weight:600;
+  transition:.25s;
 }
 
-.cafe-card{
-  background:white;
-  border-radius:40px;
-  padding:34px;
-  box-shadow:0 16px 40px rgba(0,0,0,.10);
+.btn-primary{
+  background:#a2694d;
+  color:white;
 }
 
-.cafe-scene{
-  background:linear-gradient(180deg,#f8efe7,#efe0d4);
-  border-radius:30px;
-  padding:34px;
-  min-height:420px;
-  position:relative;
-  overflow:hidden;
+.btn-primary:hover{
+  background:#8d573e;
 }
 
-.window{
-  position:absolute;
-  top:34px;
-  right:34px;
-  width:150px;
-  height:170px;
-  background:#fffaf5;
-  border-radius:24px;
-  box-shadow:inset 0 0 0 3px #e5cdbd;
+.btn-outline{
+  border:2px solid rgba(255,255,255,.8);
+  color:white;
+  background:rgba(0,0,0,.18);
+  backdrop-filter:blur(3px);
 }
 
-.window:before{
-  content:"";
-  position:absolute;
-  left:50%;
-  top:0;
-  width:3px;
-  height:100%;
-  background:#e5cdbd;
+.btn-outline:hover{
+  background:rgba(255,255,255,.15);
 }
 
-.window:after{
-  content:"";
-  position:absolute;
-  top:50%;
-  left:0;
-  width:100%;
-  height:3px;
-  background:#e5cdbd;
-}
-
-.table{
-  position:absolute;
-  bottom:65px;
-  left:50%;
-  transform:translateX(-50%);
-  width:78%;
-  height:26px;
-  background:#8a5a3d;
-  border-radius:999px;
-}
-
-.laptop{
-  position:absolute;
-  bottom:91px;
-  left:50%;
-  transform:translateX(-50%);
-  width:220px;
-  height:135px;
-  background:#3c2b22;
-  border-radius:18px 18px 8px 8px;
-}
-
-.laptop:after{
-  content:"Chinese Flow Lab";
-  position:absolute;
-  color:#f6f1ea;
-  font-size:16px;
-  font-weight:700;
-  top:54px;
-  left:38px;
-}
-
-.student{
-  position:absolute;
-  bottom:115px;
-  width:95px;
-  height:150px;
-  background:#d7a58b;
-  border-radius:50px 50px 20px 20px;
-}
-
-.student.left{
-  left:70px;
-}
-
-.student.right{
-  right:80px;
-  background:#c58f73;
-}
-
-.head{
-  position:absolute;
-  top:-42px;
-  left:22px;
-  width:52px;
-  height:52px;
-  background:#f0c7ad;
-  border-radius:50%;
-}
-
-.hair{
-  position:absolute;
-  top:-50px;
-  left:16px;
-  width:64px;
-  height:44px;
-  background:#3c2b22;
-  border-radius:50px 50px 20px 20px;
-}
-
-.coffee{
-  position:absolute;
-  bottom:102px;
-  right:70px;
-  width:34px;
-  height:45px;
-  background:#fff;
-  border-radius:8px 8px 14px 14px;
-  box-shadow:inset 0 -12px 0 #b7835f;
-}
-
-.note{
-  position:absolute;
-  bottom:112px;
-  left:82px;
-  width:70px;
-  height:48px;
-  background:#fffaf5;
-  border-radius:8px;
-  transform:rotate(-7deg);
-}
-
-.caption{
-  margin-top:24px;
-  background:#faf6f2;
-  border-radius:24px;
-  padding:22px;
-}
-
-.caption h3{
-  margin:0 0 8px;
-  color:#5a3427;
-  font-size:22px;
-}
-
-.caption p{
-  margin:0;
-  color:#666;
-  line-height:1.8;
-}
-
-footer{
-  text-align:center;
-  padding:32px;
-  color:#8b7c72;
-  font-size:14px;
-}
-
-@media(max-width:900px){
-  .hero{
-    grid-template-columns:1fr;
-    padding:50px 6%;
+@media(max-width:768px){
+  h1{
+    font-size:58px;
+    margin-bottom:34px;
   }
 
-  .hero-text h2{
-    font-size:42px;
+  h2{
+    font-size:27px;
   }
 
-  .hero-text p{
-    font-size:17px;
+  p{
+    font-size:20px;
+    margin-bottom:48px;
   }
 
-  .cafe-scene{
-    min-height:360px;
+  .btn{
+    width:300px;
+    font-size:23px;
+    padding:22px 30px;
+  }
+}
+
+@media(max-width:420px){
+  h1{
+    font-size:52px;
   }
 
-  .student.left{
-    left:35px;
+  h2{
+    font-size:25px;
   }
 
-  .student.right{
-    right:40px;
+  p{
+    font-size:19px;
+  }
+
+  .btn{
+    width:280px;
   }
 }
 </style>
@@ -255,62 +139,23 @@ footer{
 
 <body>
 
-<header>
-  <h1>Chinese Flow Lab</h1>
-</header>
-
 <section class="hero">
+  <div class="content">
+    <h1>Chinese<br>Flow Lab</h1>
 
-  <div class="hero-text">
-    <h2>
-      학습자 중심의<br>
-      중국어 학습 공간
-    </h2>
+    <h2>함께 배우고 소통하는<br>중국어 학습 공간</h2>
 
     <p>
-      Chinese Flow Lab은 플립드러닝과 사전 진단을 바탕으로
-      학습자의 중국어 듣기·쓰기 특성을 분석하고,
-      유형별 맞춤형 연습 활동을 제공하는 학습 플랫폼입니다.
+      플립드러닝과 맞춤형 학습 분석을 기반으로 한<br>
+      중국어 학습 플랫폼입니다.
     </p>
 
-    <a href="courses.html" class="btn">
-      강의실 들어가기
-    </a>
-  </div>
-
-  <div class="cafe-card">
-    <div class="cafe-scene">
-      <div class="window"></div>
-
-      <div class="student left">
-        <div class="hair"></div>
-        <div class="head"></div>
-      </div>
-
-      <div class="student right">
-        <div class="hair"></div>
-        <div class="head"></div>
-      </div>
-
-      <div class="laptop"></div>
-      <div class="table"></div>
-      <div class="coffee"></div>
-      <div class="note"></div>
-    </div>
-
-    <div class="caption">
-      <h3>Flipped · Adaptive · Learner-Centered</h3>
-      <p>
-        사전 진단, 학습 프로필, 플립드러닝 영상, 맞춤형 연습을 하나의 흐름으로 연결합니다.
-      </p>
+    <div class="buttons">
+      <a href="classroom.html" class="btn btn-primary">강의실 입장하기</a>
+      <a href="platform.html" class="btn btn-outline">플랫폼 둘러보기</a>
     </div>
   </div>
-
 </section>
-
-<footer>
-  © 2026 Chinese Flow Lab
-</footer>
 
 </body>
 </html>
