@@ -3,26 +3,167 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>사전 진단 | Chinese Flow Lab</title>
+<title>학습 프로필 | Chinese Flow Lab</title>
 
 <style>
-body{margin:0;font-family:"Pretendard","Noto Sans KR",sans-serif;background:#f6f1ea;color:#2f241d;}
-header{background:#3c2b22;color:white;padding:24px 8%;display:flex;justify-content:space-between;align-items:center;}
-header h1{margin:0;font-size:28px;}
-header a{color:white;text-decoration:none;opacity:.85;}
-.container{padding:50px 8%;}
-.panel{background:white;border-radius:28px;padding:36px;box-shadow:0 10px 24px rgba(0,0,0,.08);margin-bottom:30px;}
-h2{font-size:36px;color:#5a3427;margin-top:0;}
-h3{color:#6f432a;margin-top:34px;}
-.question{background:#faf6f2;border-radius:20px;padding:22px;margin:18px 0;}
-.question p{font-weight:700;}
-label{display:block;margin:10px 0;line-height:1.7;}
-input[type="text"]{width:100%;padding:12px;border:1px solid #ddd;border-radius:12px;font-size:16px;}
-textarea{width:100%;height:140px;padding:14px;border:1px solid #ddd;border-radius:12px;font-size:16px;line-height:1.7;}
-button{background:linear-gradient(135deg,#9d5a3d,#6f432a);color:white;border:none;padding:16px 34px;border-radius:999px;font-size:16px;font-weight:700;cursor:pointer;}
-.result{margin-top:28px;background:#fff7f1;border-radius:20px;padding:24px;line-height:1.8;font-weight:700;color:#5a3427;}
-audio{width:100%;margin:20px 0;}
-.back-btn{display:inline-block;margin-top:26px;color:#6f432a;text-decoration:none;font-weight:700;}
+
+body{
+  margin:0;
+  font-family:"Pretendard","Noto Sans KR",sans-serif;
+  background:#f6f1ea;
+  color:#2f241d;
+}
+
+header{
+  background:#3c2b22;
+  color:white;
+  padding:24px 8%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+header h1{
+  margin:0;
+  font-size:28px;
+}
+
+header a{
+  color:white;
+  text-decoration:none;
+  opacity:.85;
+}
+
+.container{
+  padding:60px 8%;
+}
+
+.title h2{
+  font-size:42px;
+  margin:0 0 14px;
+  color:#4a2d1f;
+}
+
+.title p{
+  font-size:18px;
+  color:#666;
+  line-height:1.8;
+  margin-bottom:36px;
+}
+
+.card{
+  background:white;
+  border-radius:32px;
+  padding:38px;
+  box-shadow:0 10px 30px rgba(0,0,0,.08);
+  margin-bottom:30px;
+}
+
+.badge{
+  display:inline-block;
+  background:#f2e4db;
+  color:#8a4d33;
+  padding:10px 18px;
+  border-radius:999px;
+  font-weight:700;
+  margin-bottom:18px;
+}
+
+.profile-type{
+  font-size:38px;
+  color:#5a3427;
+  margin:0 0 18px;
+}
+
+.desc{
+  line-height:1.9;
+  color:#666;
+  font-size:17px;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:28px;
+}
+
+.box{
+  background:white;
+  border-radius:28px;
+  padding:30px;
+  box-shadow:0 10px 30px rgba(0,0,0,.08);
+}
+
+.box h3{
+  margin-top:0;
+  color:#5a3427;
+}
+
+.skill{
+  margin-bottom:24px;
+}
+
+.skill-name{
+  display:flex;
+  justify-content:space-between;
+  margin-bottom:8px;
+  font-weight:700;
+}
+
+.bar{
+  height:14px;
+  background:#eee2da;
+  border-radius:999px;
+  overflow:hidden;
+}
+
+.fill{
+  height:100%;
+  background:linear-gradient(135deg,#9d5a3d,#6f432a);
+  border-radius:999px;
+}
+
+ul{
+  line-height:2;
+  color:#555;
+  padding-left:20px;
+}
+
+.note{
+  background:#faf6f2;
+  border-radius:20px;
+  padding:24px;
+  line-height:1.9;
+  color:#555;
+}
+
+.back-btn{
+  display:inline-block;
+  margin-top:30px;
+  color:#6f432a;
+  text-decoration:none;
+  font-weight:700;
+}
+
+@media(max-width:768px){
+
+  .container{
+    padding:36px 5%;
+  }
+
+  .grid{
+    grid-template-columns:1fr;
+  }
+
+  .profile-type{
+    font-size:30px;
+  }
+
+  .title h2{
+    font-size:32px;
+  }
+}
+
 </style>
 </head>
 
@@ -34,291 +175,303 @@ audio{width:100%;margin:20px 0;}
 </header>
 
 <div class="container">
-  <div class="panel">
-    <h2>사전 진단</h2>
+
+  <div class="title">
+
+    <h2>학습 프로필</h2>
+
     <p>
-      본 평가는 중급 중국어 듣기와 쓰기 수업을 위한 사전 진단입니다.<br>
-      결과는 문장 듣기 이해, 딕토글로스, 받아쓰기, 의견제시형 글쓰기 영역별 학습 프로필에 반영됩니다.
+      사전 진단 결과를 바탕으로 학습자의 중국어 듣기·쓰기 학습 특성을 분석합니다.
     </p>
 
-    <audio controls>
-      <source src="audio/pretest.mp3" type="audio/mpeg">
-      브라우저가 오디오를 지원하지 않습니다.
-    </audio>
-
-    <form id="pretestForm">
-
-      <h3>기본 정보</h3>
-      <div class="question">
-        <p>학과</p>
-        <input type="text" id="department">
-      </div>
-      <div class="question">
-        <p>학번</p>
-        <input type="text" id="studentId">
-      </div>
-      <div class="question">
-        <p>이름</p>
-        <input type="text" id="studentName">
-      </div>
-
-      <h3>一、문장 듣기 이해</h3>
-
-      <div class="question">
-        <p>1. 他们可能在哪儿？</p>
-        <label><input type="radio" name="q1"> ① 家里</label>
-        <label><input type="radio" name="q1"> ② 车里</label>
-        <label><input type="radio" name="q1"> ③ 店里</label>
-      </div>
-
-      <div class="question">
-        <p>2. 现在男的觉得怎么样？</p>
-        <label><input type="radio" name="q2"> ① 累极了</label>
-        <label><input type="radio" name="q2"> ② 想睡觉</label>
-        <label><input type="radio" name="q2"> ③ 还可以</label>
-      </div>
-
-      <div class="question">
-        <p>3. 女的是什么意思？</p>
-        <label><input type="radio" name="q3"> ① 她很累</label>
-        <label><input type="radio" name="q3"> ② 她不知道玩什么</label>
-        <label><input type="radio" name="q3"> ③ 她玩得不多</label>
-      </div>
-
-      <div class="question">
-        <p>4. 昨晚怎么了？</p>
-        <label><input type="radio" name="q4"> ① 下雨了</label>
-        <label><input type="radio" name="q4"> ② 下雪了</label>
-        <label><input type="radio" name="q4"> ③ 刮风了</label>
-      </div>
-
-      <div class="question">
-        <p>5. 对话可能发生在什么地方？</p>
-        <label><input type="radio" name="q5"> ① 机场</label>
-        <label><input type="radio" name="q5"> ② 宾馆</label>
-        <label><input type="radio" name="q5"> ③ 学校</label>
-      </div>
-
-      <div class="question">
-        <p>6. 大卫现在在哪儿？</p>
-        <label><input type="radio" name="q6"> ① 在机场里</label>
-        <label><input type="radio" name="q6"> ② 在家里</label>
-        <label><input type="radio" name="q6"> ③ 在路上</label>
-      </div>
-
-      <div class="question">
-        <p>7. 女的在韩国玩几个地方？</p>
-        <label><input type="radio" name="q7"> ① 4个</label>
-        <label><input type="radio" name="q7"> ② 3个</label>
-        <label><input type="radio" name="q7"> ③ 2个</label>
-      </div>
-
-      <div class="question">
-        <p>8. 男的这次是第几次来上海？</p>
-        <label><input type="radio" name="q8"> ① 第一次</label>
-        <label><input type="radio" name="q8"> ② 第二次</label>
-        <label><input type="radio" name="q8"> ③ 第三次</label>
-      </div>
-
-      <div class="question">
-        <p>9. 他们原来想做什么？</p>
-        <label><input type="radio" name="q9"> ① 看电影</label>
-        <label><input type="radio" name="q9"> ② 爬山</label>
-        <label><input type="radio" name="q9"> ③ 吃饭</label>
-      </div>
-
-      <div class="question">
-        <p>10. 女的没去过哪儿？</p>
-        <label><input type="radio" name="q10"> ① 青岛</label>
-        <label><input type="radio" name="q10"> ② 天津</label>
-        <label><input type="radio" name="q10"> ③ 黄山</label>
-      </div>
-
-      <h3>二、딕토글로스: 빈칸 채우기</h3>
-
-      <div class="question">
-        <p>11. （　　）的（　　）很冷。</p>
-        <input type="text" id="q11" placeholder="예: 东北, 冬天">
-      </div>
-
-      <div class="question">
-        <p>12. 时间不早了，（　　）去（　　）比较好。</p>
-        <input type="text" id="q12" placeholder="예: 打车, 机场">
-      </div>
-
-      <div class="question">
-        <p>13. 我虽然（　　）说得不太好，但常常去（　　），认识到不少中国朋友。</p>
-        <input type="text" id="q13" placeholder="예: 汉语, 旅行">
-      </div>
-
-      <div class="question">
-        <p>14. 去（　　）得花一个多小时，他建议今天还是去（　　）比较好。</p>
-        <input type="text" id="q14" placeholder="예: 长城, 植物园">
-      </div>
-
-      <div class="question">
-        <p>15. 我（　　）花（　　）去海南岛玩一次。</p>
-        <input type="text" id="q15" placeholder="예: 打算, 300块">
-      </div>
-
-      <h3>三、받아쓰기</h3>
-
-      <div class="question"><p>16. 들은 문장을 그대로 쓰시오.</p><input type="text" id="q16"></div>
-      <div class="question"><p>17. 들은 문장을 그대로 쓰시오.</p><input type="text" id="q17"></div>
-      <div class="question"><p>18. 들은 문장을 그대로 쓰시오.</p><input type="text" id="q18"></div>
-      <div class="question"><p>19. 들은 문장을 그대로 쓰시오.</p><input type="text" id="q19"></div>
-      <div class="question"><p>20. 들은 문장을 그대로 쓰시오.</p><input type="text" id="q20"></div>
-
-      <h3>四、의견제시형 글쓰기</h3>
-
-      <div class="question">
-        <p>21. 你觉得旅行跟团好还是自由行好？为什么？</p>
-        <textarea id="q21" placeholder="입장 제시, 근거 1, 근거 2, 반대 의견 언급, 결론을 포함하여 5문장 정도로 작성하세요."></textarea>
-      </div>
-
-      <button type="button" onclick="checkPretest()">제출하기</button>
-    </form>
-
-    <div id="result" class="result" style="display:none;"></div>
-
-    <a href="profile.html" class="back-btn">학습 프로필 보기 →</a>
   </div>
+
+  <div class="card">
+
+    <div class="badge">
+      Adaptive Learning Profile
+    </div>
+
+    <h2 class="profile-type" id="profileType">
+      분석 중...
+    </h2>
+
+    <p class="desc" id="profileDesc">
+      학습 데이터를 분석하고 있습니다.
+    </p>
+
+  </div>
+
+  <div class="grid">
+
+    <div class="box">
+
+      <h3>영역별 진단 결과</h3>
+
+      <div class="skill">
+        <div class="skill-name">
+          <span>문장 듣기 이해</span>
+          <span id="listeningScore">0/10</span>
+        </div>
+
+        <div class="bar">
+          <div class="fill" id="listeningBar"></div>
+        </div>
+      </div>
+
+      <div class="skill">
+        <div class="skill-name">
+          <span>딕토글로스</span>
+          <span id="dictoglossScore">0/5</span>
+        </div>
+
+        <div class="bar">
+          <div class="fill" id="dictoglossBar"></div>
+        </div>
+      </div>
+
+      <div class="skill">
+        <div class="skill-name">
+          <span>받아쓰기</span>
+          <span id="dictationScore">0/5</span>
+        </div>
+
+        <div class="bar">
+          <div class="fill" id="dictationBar"></div>
+        </div>
+      </div>
+
+      <div class="skill">
+        <div class="skill-name">
+          <span>의견제시형 글쓰기</span>
+          <span id="writingScore">0/5</span>
+        </div>
+
+        <div class="bar">
+          <div class="fill" id="writingBar"></div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="box">
+
+      <h3>추천 연습 유형</h3>
+
+      <ul id="recommendList">
+      </ul>
+
+    </div>
+
+  </div>
+
+  <div class="card">
+
+    <h3>AI 학습 분석</h3>
+
+    <div class="note" id="analysisText">
+      분석 결과를 불러오는 중입니다.
+    </div>
+
+  </div>
+
+  <a href="classroom.html" class="back-btn">
+    ← 강의실로 돌아가기
+  </a>
+
 </div>
 
 <script>
-const choiceAnswers = {
-  q1: 1,
-  q2: 2,
-  q3: 2,
-  q4: 1,
-  q5: 1,
-  q6: 2,
-  q7: 1,
-  q8: 1,
-  q9: 1,
-  q10: 2
-};
 
-const textAnswers = {
-  q11: ["东北", "冬天"],
-  q12: ["打车", "机场"],
-  q13: ["汉语", "旅行"],
-  q14: ["长城", "植物园"],
-  q15: ["打算", "300块"],
-  q16: ["我去过长城"],
-  q17: ["长城离这儿不太远"],
-  q18: ["买不到明天去上海的飞机票"],
-  q19: ["到火车站要多长时间"],
-  q20: ["哪儿有时间去旅行呢"]
-};
+const listening =
+Number(localStorage.getItem("listening")) || 0;
 
-function normalize(text){
-  return text
-    .replaceAll("，","")
-    .replaceAll("。","")
-    .replaceAll("？","")
-    .replaceAll("?","")
-    .replaceAll(" ","")
-    .replaceAll("　","")
-    .replaceAll("東","东")
-    .replaceAll("時","时")
-    .replaceAll("漢","汉")
-    .replaceAll("語","语")
-    .replaceAll("説","说")
-    .replaceAll("認","认")
-    .replaceAll("識","识")
-    .replaceAll("長","长")
-    .replaceAll("塊","块")
-    .trim();
+const dictogloss =
+Number(localStorage.getItem("dictogloss")) || 0;
+
+const dictation =
+Number(localStorage.getItem("dictation")) || 0;
+
+const writing =
+Number(localStorage.getItem("writing")) || 0;
+
+document.getElementById("listeningScore").innerText =
+`${listening}/10`;
+
+document.getElementById("dictoglossScore").innerText =
+`${dictogloss}/5`;
+
+document.getElementById("dictationScore").innerText =
+`${dictation}/5`;
+
+document.getElementById("writingScore").innerText =
+`${writing}/5`;
+
+document.getElementById("listeningBar").style.width =
+(listening * 10) + "%";
+
+document.getElementById("dictoglossBar").style.width =
+(dictogloss * 20) + "%";
+
+document.getElementById("dictationBar").style.width =
+(dictation * 20) + "%";
+
+document.getElementById("writingBar").style.width =
+(writing * 20) + "%";
+
+let type = "";
+let desc = "";
+let analysis = "";
+let recommends = [];
+
+const listeningRate = listening / 10;
+const dictoglossRate = dictogloss / 5;
+const dictationRate = dictation / 5;
+const writingRate = writing / 5;
+
+if(dictoglossRate <= 0.5 && writingRate <= 0.5){
+
+  type =
+  "의미 재구성·출력 통합 보완형";
+
+  desc =
+  "들은 내용을 핵심 의미 중심으로 재구성하고 자신의 의견으로 확장하는 능력에 보완이 필요합니다.";
+
+  analysis =
+  "학습자는 전체적인 의미 흐름은 일부 이해하지만, 이를 자신의 언어로 재구성하거나 확장하는 과정에서 어려움을 보였습니다. 특히 딕토글로스와 의견제시형 글쓰기 영역에서 낮은 수행을 보였습니다.";
+
+  recommends = [
+    "키워드 메모 연습",
+    "딕토글로스 문장 재구성",
+    "paraphrasing 활동",
+    "我认为 구조 연습",
+    "이유 제시 문장 만들기",
+    "짧은 의견문 쓰기"
+  ];
+
 }
 
-function getChoiceScore(q){
-  const selected = document.querySelector(`input[name="${q}"]:checked`);
-  if(!selected) return 0;
-  const options = Array.from(document.querySelectorAll(`input[name="${q}"]`));
-  return options.indexOf(selected) === choiceAnswers[q] ? 1 : 0;
+else if(listeningRate <= 0.5){
+
+  type =
+  "문장 듣기 이해 보완형";
+
+  desc =
+  "짧은 담화의 핵심 의미와 전체 흐름을 이해하는 능력에 보완이 필요합니다.";
+
+  analysis =
+  "학습자는 개별 단어는 일부 이해하지만, 문장 전체의 핵심 정보와 흐름을 연결하는 과정에서 어려움을 보였습니다.";
+
+  recommends = [
+    "짧은 문장 듣기 반복",
+    "핵심 정보 찾기",
+    "내용 일치 문제",
+    "속도 조절 듣기",
+    "짧은 담화 이해 연습"
+  ];
+
 }
 
-function getTextScore(id){
-  const value = normalize(document.getElementById(id).value);
-  const answers = textAnswers[id].map(normalize);
+else if(dictoglossRate <= 0.5){
 
-  if(id >= "q11" && id <= "q15"){
-    let score = 0;
-    answers.forEach(ans => {
-      if(value.includes(ans)) score += 0.5;
-    });
-    return score;
-  }
+  type =
+  "딕토글로스 보완형";
 
-  return answers.includes(value) ? 1 : 0;
+  desc =
+  "들은 내용을 핵심 의미 중심으로 재구성하는 능력에 보완이 필요합니다.";
+
+  analysis =
+  "학습자는 들은 내용을 부분적으로 이해하지만, 이를 핵심 의미 중심으로 재구성하는 과정에서 어려움을 보였습니다.";
+
+  recommends = [
+    "키워드 메모 활동",
+    "문장 재배열 활동",
+    "의미 재구성 쓰기",
+    "paraphrasing 연습",
+    "짧은 dictogloss 활동"
+  ];
+
 }
 
-function checkWriting(){
-  const text = document.getElementById("q21").value.trim();
-  if(text.length === 0) return 0;
+else if(dictationRate <= 0.5){
 
-  const sentenceCount = text
-    .split(/[。！？!?]/)
-    .filter(s => s.trim().length > 0).length;
+  type =
+  "음성-문자 연결 보완형";
 
-  if(sentenceCount >= 5) return 5;
-  if(sentenceCount >= 3) return 3;
-  return 1;
+  desc =
+  "중국어 소리 정보를 문자 정보로 정확하게 변환하는 능력에 보완이 필요합니다.";
+
+  analysis =
+  "학습자는 전체 의미 이해는 가능하지만, 세부 음절과 한자 표기 정확도에서 반복적인 오류가 나타났습니다.";
+
+  recommends = [
+    "빈칸 받아쓰기",
+    "핵심 어휘 dictation",
+    "성조 구분 연습",
+    "짧은 문장 따라쓰기",
+    "음절 단위 듣기"
+  ];
+
 }
 
-function checkPretest(){
-  let listening = 0;
-  let dictogloss = 0;
-  let dictation = 0;
-  let writing = 0;
+else if(writingRate <= 0.5){
 
-  for(let i=1; i<=10; i++){
-    listening += getChoiceScore("q"+i);
-  }
+  type =
+  "의견 표현 확장형";
 
-  for(let i=11; i<=15; i++){
-    dictogloss += getTextScore("q"+i);
-  }
+  desc =
+  "자신의 생각을 논리적으로 확장하여 표현하는 능력에 보완이 필요합니다.";
 
-  for(let i=16; i<=20; i++){
-    dictation += getTextScore("q"+i);
-  }
+  analysis =
+  "학습자는 듣기 이해와 정보 파악은 비교적 안정적이지만, 자신의 의견을 중국어 문장으로 논리적으로 확장하는 데 어려움을 보였습니다.";
 
-  writing = checkWriting();
+  recommends = [
+    "我认为 구조 연습",
+    "因为…所以… 문장 만들기",
+    "찬반 표현 연습",
+    "짧은 의견문 쓰기",
+    "근거 제시 연습"
+  ];
 
-  const total = listening + dictogloss + dictation + writing;
-
-  localStorage.setItem("studentName", document.getElementById("studentName").value);
-  localStorage.setItem("studentId", document.getElementById("studentId").value);
-  localStorage.setItem("listening", listening);
-  localStorage.setItem("dictogloss", dictogloss);
-  localStorage.setItem("dictation", dictation);
-  localStorage.setItem("writing", writing);
-  localStorage.setItem("total", total);
-
-  let weakest = "문장 듣기 이해";
-  let minRate = listening / 10;
-
-  if(dictogloss / 5 < minRate){ weakest = "딕토글로스"; minRate = dictogloss / 5; }
-  if(dictation / 5 < minRate){ weakest = "받아쓰기"; minRate = dictation / 5; }
-  if(writing / 5 < minRate){ weakest = "의견제시형 글쓰기"; }
-
-  localStorage.setItem("weakest", weakest);
-
-  document.getElementById("result").style.display = "block";
-  document.getElementById("result").innerHTML = `
-    <p>제출이 완료되었습니다.</p>
-    <p>문장 듣기 이해: ${listening}/10</p>
-    <p>딕토글로스: ${dictogloss}/5</p>
-    <p>받아쓰기: ${dictation}/5</p>
-    <p>의견제시형 글쓰기: ${writing}/5</p>
-    <p>총점: ${total}/25</p>
-    <p>우선 보완 영역: ${weakest}</p>
-    <p>아래의 <strong>학습 프로필 보기</strong>를 눌러 맞춤형 추천을 확인하세요.</p>
-  `;
 }
+
+else{
+
+  type =
+  "균형 발전형 학습자";
+
+  desc =
+  "문장 듣기 이해, 의미 재구성, 받아쓰기, 의견 표현 영역이 비교적 균형 있게 발달되어 있습니다.";
+
+  analysis =
+  "학습자는 전반적인 중국어 듣기·쓰기 수행에서 안정적인 모습을 보였습니다. 이후에는 보다 복합적인 담화 재구성과 확장형 글쓰기 활동을 통해 심화 학습을 진행하는 것이 좋습니다.";
+
+  recommends = [
+    "심화 딕토글로스 활동",
+    "복합 담화 듣기",
+    "자유 의견 글쓰기",
+    "중국 문화 비교 토론",
+    "장문 paraphrasing"
+  ];
+
+}
+
+document.getElementById("profileType").innerText =
+type;
+
+document.getElementById("profileDesc").innerText =
+desc;
+
+document.getElementById("analysisText").innerText =
+analysis;
+
+document.getElementById("recommendList").innerHTML =
+recommends.map(item => `<li>${item}</li>`).join("");
+
 </script>
 
 </body>
 </html>
+
+
+     
