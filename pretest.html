@@ -6,23 +6,146 @@
 <title>사전 진단 | Chinese Flow Lab</title>
 
 <style>
-body{margin:0;font-family:"Pretendard","Noto Sans KR",sans-serif;background:#f6f1ea;color:#2f241d;}
-header{background:#3c2b22;color:white;padding:24px 8%;display:flex;justify-content:space-between;align-items:center;}
-header h1{margin:0;font-size:28px;}
-header a{color:white;text-decoration:none;opacity:.85;}
-.container{padding:50px 8%;}
-.panel{background:white;border-radius:28px;padding:36px;box-shadow:0 10px 24px rgba(0,0,0,.08);margin-bottom:30px;}
-h2{font-size:36px;color:#5a3427;margin-top:0;}
-h3{color:#6f432a;margin-top:34px;}
-.question{background:#faf6f2;border-radius:20px;padding:22px;margin:18px 0;}
-.question p{font-weight:700;}
-label{display:block;margin:10px 0;line-height:1.7;}
-input[type="text"]{width:100%;padding:12px;border:1px solid #ddd;border-radius:12px;font-size:16px;}
-textarea{width:100%;height:140px;padding:14px;border:1px solid #ddd;border-radius:12px;font-size:16px;line-height:1.7;}
-button{background:linear-gradient(135deg,#9d5a3d,#6f432a);color:white;border:none;padding:16px 34px;border-radius:999px;font-size:16px;font-weight:700;cursor:pointer;}
-.result{margin-top:28px;background:#fff7f1;border-radius:20px;padding:24px;line-height:1.8;font-weight:700;color:#5a3427;}
-audio{width:100%;margin:20px 0;}
-.back-btn{display:inline-block;margin-top:26px;color:#6f432a;text-decoration:none;font-weight:700;}
+body{
+  margin:0;
+  font-family:"Pretendard","Noto Sans KR",sans-serif;
+  background:#f6f1ea;
+  color:#2f241d;
+}
+
+header{
+  background:#3c2b22;
+  color:white;
+  padding:24px 8%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+header h1{
+  margin:0;
+  font-size:28px;
+}
+
+header a{
+  color:white;
+  text-decoration:none;
+  opacity:.85;
+}
+
+.container{
+  padding:50px 8%;
+}
+
+.panel{
+  background:white;
+  border-radius:28px;
+  padding:36px;
+  box-shadow:0 10px 24px rgba(0,0,0,.08);
+  margin-bottom:30px;
+}
+
+h2{
+  font-size:38px;
+  color:#5a3427;
+  margin-top:0;
+}
+
+h3{
+  margin-top:40px;
+  color:#6f432a;
+}
+
+.question{
+  background:#faf6f2;
+  border-radius:20px;
+  padding:22px;
+  margin:18px 0;
+}
+
+.question p{
+  font-weight:700;
+  line-height:1.8;
+}
+
+label{
+  display:block;
+  margin:10px 0;
+  line-height:1.8;
+}
+
+input[type="text"]{
+  width:100%;
+  padding:12px;
+  border:1px solid #ddd;
+  border-radius:12px;
+  font-size:16px;
+  margin-top:10px;
+}
+
+textarea{
+  width:100%;
+  height:150px;
+  padding:14px;
+  border:1px solid #ddd;
+  border-radius:12px;
+  font-size:16px;
+  line-height:1.8;
+  margin-top:10px;
+}
+
+button{
+  background:linear-gradient(135deg,#9d5a3d,#6f432a);
+  color:white;
+  border:none;
+  padding:16px 34px;
+  border-radius:999px;
+  font-size:16px;
+  font-weight:700;
+  cursor:pointer;
+  margin-top:20px;
+}
+
+.result{
+  margin-top:30px;
+  background:#fff7f1;
+  border-radius:20px;
+  padding:24px;
+  line-height:1.9;
+  color:#5a3427;
+  font-weight:700;
+}
+
+.profile-btn{
+  display:inline-block;
+  margin-top:26px;
+  background:linear-gradient(135deg,#9d5a3d,#6f432a);
+  color:white;
+  text-decoration:none;
+  padding:14px 28px;
+  border-radius:999px;
+  font-weight:700;
+}
+
+audio{
+  width:100%;
+  margin:24px 0;
+}
+
+@media(max-width:768px){
+
+  .container{
+    padding:36px 5%;
+  }
+
+  h2{
+    font-size:32px;
+  }
+
+  .panel{
+    padding:24px;
+  }
+}
 </style>
 </head>
 
@@ -34,29 +157,34 @@ audio{width:100%;margin:20px 0;}
 </header>
 
 <div class="container">
+
   <div class="panel">
+
     <h2>사전 진단</h2>
+
     <p>
       본 평가는 중급 중국어 듣기와 쓰기 수업을 위한 사전 진단입니다.<br>
-      결과는 문장 듣기 이해, 딕토글로스, 받아쓰기, 의견제시형 글쓰기 영역별 학습 프로필에 반영됩니다.
+      결과는 학습 프로필 및 맞춤형 학습 추천에 활용됩니다.
     </p>
 
     <audio controls>
       <source src="audio/pretest.mp3" type="audio/mpeg">
-      브라우저가 오디오를 지원하지 않습니다.
     </audio>
 
     <form id="pretestForm">
 
       <h3>기본 정보</h3>
+
       <div class="question">
         <p>학과</p>
         <input type="text" id="department">
       </div>
+
       <div class="question">
         <p>학번</p>
         <input type="text" id="studentId">
       </div>
+
       <div class="question">
         <p>이름</p>
         <input type="text" id="studentName">
@@ -134,120 +262,169 @@ audio{width:100%;margin:20px 0;}
         <label><input type="radio" name="q10"> ③ 黄山</label>
       </div>
 
-      <h3>二、딕토글로스: 빈칸 채우기</h3>
+      <h3>二、딕토글로스</h3>
+
       <div class="question">
         <p>11. （　　）的（　　）很冷。</p>
         <input type="text" id="q11" placeholder="들은 내용을 입력하세요">
       </div>
 
       <div class="question">
-       <p>12. 时间不早了，（　　）去（　　）比较好。</p>
-       <input type="text" id="q12" placeholder="들은 내용을 입력하세요">
-     </div>
+        <p>12. 时间不早了，（　　）去（　　）比较好。</p>
+        <input type="text" id="q12" placeholder="들은 내용을 입력하세요">
+      </div>
 
       <div class="question">
         <p>13. 我虽然（　　）说得不太好，但常常去（　　），认识到不少中国朋友。</p>
-      <input type="text" id="q13" placeholder="들은 내용을 입력하세요">
-     </div>
-
-      <div class="question">
-      <p>14. 去（　　）得花一个多小时，他建议今天还是去（　　）比较好。</p>
-      <input type="text" id="q14" placeholder="들은 내용을 입력하세요">
+        <input type="text" id="q13" placeholder="들은 내용을 입력하세요">
       </div>
 
       <div class="question">
-      <p>15. 我（　　）花（　　）去海南岛玩一次。</p>
-      <input type="text" id="q15" placeholder="들은 내용을 입력하세요">
+        <p>14. 去（　　）得花一个多小时，他建议今天还是去（　　）比较好。</p>
+        <input type="text" id="q14" placeholder="들은 내용을 입력하세요">
       </div>
-      
+
+      <div class="question">
+        <p>15. 我（　　）花（　　）去海南岛玩一次。</p>
+        <input type="text" id="q15" placeholder="들은 내용을 입력하세요">
+      </div>
 
       <h3>三、받아쓰기</h3>
 
-      <div class="question"><p>16. 들은 문장을 그대로 쓰시오.</p><input type="text" id="q16"></div>
-      <div class="question"><p>17. 들은 문장을 그대로 쓰시오.</p><input type="text" id="q17"></div>
-      <div class="question"><p>18. 들은 문장을 그대로 쓰시오.</p><input type="text" id="q18"></div>
-      <div class="question"><p>19. 들은 문장을 그대로 쓰시오.</p><input type="text" id="q19"></div>
-      <div class="question"><p>20. 들은 문장을 그대로 쓰시오.</p><input type="text" id="q20"></div>
+      <div class="question">
+        <p>16. 들은 문장을 그대로 쓰시오.</p>
+        <input type="text" id="q16">
+      </div>
+
+      <div class="question">
+        <p>17. 들은 문장을 그대로 쓰시오.</p>
+        <input type="text" id="q17">
+      </div>
+
+      <div class="question">
+        <p>18. 들은 문장을 그대로 쓰시오.</p>
+        <input type="text" id="q18">
+      </div>
+
+      <div class="question">
+        <p>19. 들은 문장을 그대로 쓰시오.</p>
+        <input type="text" id="q19">
+      </div>
+
+      <div class="question">
+        <p>20. 들은 문장을 그대로 쓰시오.</p>
+        <input type="text" id="q20">
+      </div>
 
       <h3>四、의견제시형 글쓰기</h3>
 
       <div class="question">
-        <p>21. 你觉得旅行跟团好还是自由行好？为什么？</p>
-        <textarea id="q21" placeholder="입장 제시, 근거 1, 근거 2, 반대 의견 언급, 결론을 포함하여 5문장 정도로 작성하세요."></textarea>
+        <p>
+          21. 你觉得旅行跟团好还是自由行好？为什么？
+        </p>
+
+        <textarea
+          id="q21"
+          placeholder="자신의 의견을 5문장 정도로 작성하세요.">
+        </textarea>
       </div>
 
-      <button type="button" onclick="checkPretest()">제출하기</button>
+      <button type="button" onclick="checkPretest()">
+        제출하기
+      </button>
+
     </form>
 
     <div id="result" class="result" style="display:none;"></div>
 
-    <a href="profile.html" class="back-btn">학습 프로필 보기 →</a>
+    <a href="profile.html" class="profile-btn">
+      학습 프로필 보기 →
+    </a>
+
   </div>
+
 </div>
 
 <script>
+
 const choiceAnswers = {
-  q1: 1,
-  q2: 2,
-  q3: 2,
-  q4: 1,
-  q5: 1,
-  q6: 2,
-  q7: 1,
-  q8: 1,
-  q9: 1,
-  q10: 2
+  q1:1,
+  q2:2,
+  q3:2,
+  q4:1,
+  q5:1,
+  q6:2,
+  q7:1,
+  q8:1,
+  q9:1,
+  q10:2
 };
 
 const textAnswers = {
-  q11: ["东北", "冬天"],
-  q12: ["打车", "机场"],
-  q13: ["汉语", "旅行"],
-  q14: ["长城", "植物园"],
-  q15: ["打算", "300块"],
-  q16: ["我去过长城"],
-  q17: ["长城离这儿不太远"],
-  q18: ["买不到明天去上海的飞机票"],
-  q19: ["到火车站要多长时间"],
-  q20: ["哪儿有时间去旅行呢"]
+  q11:["东北","冬天"],
+  q12:["打车","机场"],
+  q13:["汉语","旅行"],
+  q14:["长城","植物园"],
+  q15:["打算","300块"],
+  q16:["我去过长城"],
+  q17:["长城离这儿不太远"],
+  q18:["买不到明天去上海的飞机票"],
+  q19:["到火车站要多长时间"],
+  q20:["哪儿有时间去旅行呢"]
 };
 
 function normalize(text){
+
   return text
-    .replaceAll("，","")
-    .replaceAll("。","")
-    .replaceAll("？","")
-    .replaceAll("?","")
-    .replaceAll(" ","")
-    .replaceAll("　","")
-    .replaceAll("東","东")
-    .replaceAll("時","时")
-    .replaceAll("漢","汉")
-    .replaceAll("語","语")
-    .replaceAll("説","说")
-    .replaceAll("認","认")
-    .replaceAll("識","识")
-    .replaceAll("長","长")
-    .replaceAll("塊","块")
-    .trim();
+  .replaceAll(" ","")
+  .replaceAll("　","")
+  .replaceAll("。","")
+  .replaceAll("，","")
+  .replaceAll("？","")
+  .replaceAll("?","")
+  .replaceAll("東","东")
+  .replaceAll("漢","汉")
+  .replaceAll("語","语")
+  .replaceAll("説","说")
+  .replaceAll("長","长")
+  .replaceAll("塊","块")
+  .trim();
 }
 
 function getChoiceScore(q){
-  const selected = document.querySelector(`input[name="${q}"]:checked`);
+
+  const selected =
+  document.querySelector(`input[name="${q}"]:checked`);
+
   if(!selected) return 0;
-  const options = Array.from(document.querySelectorAll(`input[name="${q}"]`));
-  return options.indexOf(selected) === choiceAnswers[q] ? 1 : 0;
+
+  const options =
+  Array.from(document.querySelectorAll(`input[name="${q}"]`));
+
+  return options.indexOf(selected) === choiceAnswers[q]
+  ? 1 : 0;
 }
 
 function getTextScore(id){
-  const value = normalize(document.getElementById(id).value);
-  const answers = textAnswers[id].map(normalize);
+
+  const value =
+  normalize(document.getElementById(id).value);
+
+  const answers =
+  textAnswers[id].map(normalize);
 
   if(id >= "q11" && id <= "q15"){
+
     let score = 0;
+
     answers.forEach(ans => {
-      if(value.includes(ans)) score += 0.5;
+
+      if(value.includes(ans)){
+        score += 0.5;
+      }
+
     });
+
     return score;
   }
 
@@ -255,19 +432,31 @@ function getTextScore(id){
 }
 
 function checkWriting(){
-  const text = document.getElementById("q21").value.trim();
-  if(text.length === 0) return 0;
 
-  const sentenceCount = text
-    .split(/[。！？!?]/)
-    .filter(s => s.trim().length > 0).length;
+  const text =
+  document.getElementById("q21").value.trim();
 
-  if(sentenceCount >= 5) return 5;
-  if(sentenceCount >= 3) return 3;
+  if(text.length === 0){
+    return 0;
+  }
+
+  const count =
+  text.split(/[。！？!?]/)
+  .filter(s => s.trim().length > 0).length;
+
+  if(count >= 5){
+    return 5;
+  }
+
+  if(count >= 3){
+    return 3;
+  }
+
   return 1;
 }
 
 function checkPretest(){
+
   let listening = 0;
   let dictogloss = 0;
   let dictation = 0;
@@ -287,40 +476,53 @@ function checkPretest(){
 
   writing = checkWriting();
 
-  const total = listening + dictogloss + dictation + writing;
-
-  localStorage.setItem("studentName", document.getElementById("studentName").value);
-  localStorage.setItem("studentId", document.getElementById("studentId").value);
   localStorage.setItem("listening", listening);
   localStorage.setItem("dictogloss", dictogloss);
   localStorage.setItem("dictation", dictation);
   localStorage.setItem("writing", writing);
-  localStorage.setItem("total", total);
 
   let weakest = "문장 듣기 이해";
-  let minRate = listening / 10;
+  let weakestValue = listening / 10;
 
-  if(dictogloss / 5 < minRate){ weakest = "딕토글로스"; minRate = dictogloss / 5; }
-  if(dictation / 5 < minRate){ weakest = "받아쓰기"; minRate = dictation / 5; }
-  if(writing / 5 < minRate){ weakest = "의견제시형 글쓰기"; }
+  if(dictogloss / 5 < weakestValue){
+    weakest = "딕토글로스";
+    weakestValue = dictogloss / 5;
+  }
+
+  if(dictation / 5 < weakestValue){
+    weakest = "받아쓰기";
+    weakestValue = dictation / 5;
+  }
+
+  if(writing / 5 < weakestValue){
+    weakest = "의견제시형 글쓰기";
+  }
 
   localStorage.setItem("weakest", weakest);
 
   document.getElementById("result").style.display = "block";
+
   document.getElementById("result").innerHTML = `
     <p>제출이 완료되었습니다.</p>
+
     <p>문장 듣기 이해: ${listening}/10</p>
+
     <p>딕토글로스: ${dictogloss}/5</p>
+
     <p>받아쓰기: ${dictation}/5</p>
+
     <p>의견제시형 글쓰기: ${writing}/5</p>
-    <p>총점: ${total}/25</p>
+
     <p>우선 보완 영역: ${weakest}</p>
-    <p>아래의 <strong>학습 프로필 보기</strong>를 눌러 맞춤형 추천을 확인하세요.</p>
+
+    <p>
+      아래의 <strong>학습 프로필 보기</strong>를 눌러
+      맞춤형 학습 추천을 확인하세요.
+    </p>
   `;
 }
+
 </script>
 
 </body>
 </html>
-
-    
