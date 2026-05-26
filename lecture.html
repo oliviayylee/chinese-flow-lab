@@ -88,27 +88,29 @@ header a{
   border:0;
 }
 
+/* 학습 목표 */
+
 .info-box{
-  margin-top:28px;
+  margin-top:30px;
 }
 
 .info-item{
   background:#faf6f2;
-  border-radius:20px;
-  padding:24px;
+  border-radius:24px;
+  padding:28px;
 }
 
 .info-item h4{
-  margin:0 0 12px;
+  margin:0 0 14px;
   color:#8a4d33;
-  font-size:18px;
+  font-size:22px;
 }
 
 .info-item p{
   margin:0;
-  line-height:1.8;
+  line-height:1.9;
   color:#555;
-  font-size:16px;
+  font-size:17px;
 }
 
 /* 퀴즈 */
@@ -129,12 +131,12 @@ header a{
 .quiz-desc{
   color:#666;
   margin-bottom:28px;
-  line-height:1.7;
+  line-height:1.8;
 }
 
 .question{
   background:white;
-  border-radius:20px;
+  border-radius:22px;
   padding:24px;
   margin-bottom:20px;
 }
@@ -143,15 +145,15 @@ header a{
   margin-top:0;
   margin-bottom:16px;
   color:#3c2b22;
-  line-height:1.7;
+  line-height:1.8;
 }
 
 .question label{
   display:block;
-  margin:10px 0;
+  margin:12px 0;
   color:#555;
+  line-height:1.8;
   cursor:pointer;
-  line-height:1.7;
 }
 
 .submit-btn{
@@ -171,7 +173,7 @@ header a{
 }
 
 #result{
-  margin-top:22px;
+  margin-top:24px;
   font-size:20px;
   font-weight:700;
   color:#6f432a;
@@ -181,7 +183,7 @@ header a{
 
 .back-btn{
   display:inline-block;
-  margin-top:42px;
+  margin-top:40px;
   background:linear-gradient(135deg,#9d5a3d,#6f432a);
   color:white;
   text-decoration:none;
@@ -190,10 +192,12 @@ header a{
   font-weight:600;
 }
 
+/* 모바일 */
+
 @media(max-width:768px){
 
   .container{
-    padding:32px 5%;
+    padding:34px 5%;
   }
 
   .video-card{
@@ -220,8 +224,13 @@ header a{
 <body>
 
 <header>
+
   <h1>Chinese Flow Lab</h1>
-  <a href="classroom.html">강의실로 돌아가기</a>
+
+  <a href="classroom.html">
+    강의실로 돌아가기
+  </a>
+
 </header>
 
 <div class="container">
@@ -244,9 +253,9 @@ header a{
     <div class="video-wrapper">
 
       <iframe
-        src="https://www.youtube.com/embed/여기에영상ID넣기"
+        src="https://www.youtube.com/embed/97JeDjTzVdQ"
         title="주제1 학교생활"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
         allowfullscreen>
       </iframe>
 
@@ -257,6 +266,7 @@ header a{
     <div class="info-box">
 
       <div class="info-item">
+
         <h4>학습 목표</h4>
 
         <p>
@@ -352,8 +362,13 @@ header a{
           <label><input type="radio" name="q6"> ④ 不如</label>
         </div>
 
-        <button type="button" class="submit-btn" onclick="checkQuiz()">
+        <button
+          type="button"
+          class="submit-btn"
+          onclick="checkQuiz()">
+
           제출하기
+
         </button>
 
       </form>
@@ -413,3 +428,4 @@ function checkQuiz(){
 
 </body>
 </html>
+
