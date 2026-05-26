@@ -1,162 +1,221 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Chinese Flow Lab</title>
 
 <style>
+
 *{
+  margin:0;
+  padding:0;
   box-sizing:border-box;
 }
 
 body{
-  margin:0;
   font-family:"Pretendard","Noto Sans KR",sans-serif;
-  color:white;
-  background:#2f241d;
+  overflow-x:hidden;
+  background:#000;
 }
 
+/* 메인 화면 */
+
 .hero{
+  width:100%;
   min-height:100vh;
+
   background:
-    linear-gradient(rgba(0,0,0,.48), rgba(0,0,0,.56)),
-    url("cafe.jpg");
+    linear-gradient(rgba(0,0,0,.45), rgba(0,0,0,.58)),
+    url("https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1400&auto=format&fit=crop");
+
   background-size:cover;
   background-position:center;
+  background-repeat:no-repeat;
+
   display:flex;
-  align-items:center;
   justify-content:center;
+  align-items:center;
+
   text-align:center;
   padding:40px 24px;
 }
 
+/* 중앙 내용 */
+
 .content{
   max-width:760px;
+  color:white;
 }
 
+/* 제목 */
+
 h1{
-  font-size:86px;
-  line-height:1.2;
-  margin:0 0 42px;
+  font-size:92px;
   font-weight:800;
+  line-height:1.15;
+  margin-bottom:42px;
   letter-spacing:1px;
 }
 
-h2{
+/* 부제목 */
+
+.subtitle{
   font-size:34px;
-  line-height:1.45;
-  margin:0 0 34px;
   font-weight:700;
+  line-height:1.45;
+  margin-bottom:36px;
 }
 
-p{
+/* 설명 */
+
+.description{
   font-size:24px;
   line-height:1.7;
-  margin:0 0 60px;
-  font-weight:400;
+  color:rgba(255,255,255,.92);
+  margin-bottom:64px;
 }
 
-.buttons{
+/* 버튼 영역 */
+
+.button-group{
   display:flex;
   flex-direction:column;
   align-items:center;
   gap:28px;
 }
 
+/* 공통 버튼 */
+
 .btn{
-  display:inline-block;
   width:340px;
-  padding:24px 34px;
-  border-radius:48px;
-  text-decoration:none;
+  padding:24px 20px;
+
+  border-radius:60px;
+
   font-size:26px;
   font-weight:600;
-  transition:.25s;
+
+  text-decoration:none;
+
+  transition:all .25s ease;
 }
 
+/* 메인 버튼 */
+
 .btn-primary{
-  background:#a2694d;
+  background:#a36a4c;
   color:white;
 }
 
 .btn-primary:hover{
-  background:#8d573e;
+  background:#8c573c;
+  transform:translateY(-2px);
 }
 
+/* 서브 버튼 */
+
 .btn-outline{
-  border:2px solid rgba(255,255,255,.8);
+  border:2px solid rgba(255,255,255,.75);
+  background:rgba(255,255,255,.06);
+
+  backdrop-filter:blur(4px);
+
   color:white;
-  background:rgba(0,0,0,.18);
-  backdrop-filter:blur(3px);
 }
 
 .btn-outline:hover{
-  background:rgba(255,255,255,.15);
+  background:rgba(255,255,255,.14);
+  transform:translateY(-2px);
 }
 
+/* 모바일 */
+
 @media(max-width:768px){
+
   h1{
-    font-size:58px;
+    font-size:64px;
     margin-bottom:34px;
   }
 
-  h2{
-    font-size:27px;
+  .subtitle{
+    font-size:28px;
+    margin-bottom:30px;
   }
 
-  p{
+  .description{
     font-size:20px;
-    margin-bottom:48px;
+    margin-bottom:52px;
   }
 
   .btn{
     width:300px;
-    font-size:23px;
-    padding:22px 30px;
+    font-size:22px;
+    padding:22px 16px;
   }
+
 }
 
-@media(max-width:420px){
+@media(max-width:430px){
+
   h1{
-    font-size:52px;
+    font-size:56px;
   }
 
-  h2{
-    font-size:25px;
+  .subtitle{
+    font-size:24px;
   }
 
-  p{
-    font-size:19px;
+  .description{
+    font-size:18px;
+    line-height:1.6;
   }
 
   .btn{
     width:280px;
   }
+
 }
+
 </style>
 </head>
 
 <body>
 
 <section class="hero">
+
   <div class="content">
-    <h1>Chinese<br>Flow Lab</h1>
 
-    <h2>함께 배우고 소통하는<br>중국어 학습 공간</h2>
+    <h1>
+      Chinese<br>
+      Flow Lab
+    </h1>
 
-    <p>
-      플립드러닝과 맞춤형 학습 분석을 기반으로 한<br>
-      중국어 학습 플랫폼입니다.
-    </p>
-
-    <div class="buttons">
-      <a href="classroom.html" class="btn btn-primary">강의실 입장하기</a>
-      <a href="platform.html" class="btn btn-outline">플랫폼 둘러보기</a>
+    <div class="subtitle">
+      함께 배우고 소통하는<br>
+      중국어 학습 공간
     </div>
+
+    <div class="description">
+      플립드러닝, 협력학습, 맞춤형 학습 분석을 결합한<br>
+      중국어 학습 플랫폼입니다.
+    </div>
+
+    <div class="button-group">
+
+      <a href="classroom.html" class="btn btn-primary">
+        강의실 입장하기
+      </a>
+
+      <a href="platform.html" class="btn btn-outline">
+        플랫폼 둘러보기
+      </a>
+
+    </div>
+
   </div>
+
 </section>
 
 </body>
 </html>
-
