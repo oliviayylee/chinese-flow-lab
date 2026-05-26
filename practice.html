@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>맞춤형 연습 | Chinese Flow Lab</title>
+
+<style>
+body{
+  margin:0;
+  font-family:"Pretendard","Noto Sans KR",sans-serif;
+  background:#f6f1ea;
+  color:#2f241d;
+}
+
+header{
+  background:#3c2b22;
+  color:white;
+  padding:24px 8%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+header h1{margin:0;font-size:28px;}
+header a{color:white;text-decoration:none;opacity:.85;}
+
+.container{padding:60px 8%;}
+
+h2{
+  font-size:42px;
+  color:#4a2d1f;
+  margin:0 0 14px;
+}
+
+.desc{
+  font-size:18px;
+  color:#666;
+  line-height:1.8;
+  margin-bottom:34px;
+}
+
+.card{
+  background:white;
+  border-radius:32px;
+  padding:36px;
+  box-shadow:0 10px 30px rgba(0,0,0,.08);
+  margin-bottom:30px;
+}
+
+.card h3{
+  margin-top:0;
+  color:#5a3427;
+  font-size:28px;
+}
+
+select{
+  width:100%;
+  padding:16px;
+  border:1px solid #ddd;
+  border-radius:16px;
+  font-size:16px;
+  margin:12px 0 24px;
+}
+
+.btn{
+  display:inline-block;
+  background:linear-gradient(135deg,#9d5a3d,#6f432a);
+  color:white;
+  border:none;
+  text-decoration:none;
+  padding:15px 30px;
+  border-radius:999px;
+  font-weight:700;
+  cursor:pointer;
+}
+
+.problem{
+  background:#faf6f2;
+  border-radius:24px;
+  padding:26px;
+  margin:20px 0;
+  line-height:1.9;
+}
+
+.problem strong{
+  color:#5a3427;
+}
+
+textarea,input[type="text"]{
+  width:100%;
+  box-sizing:border-box;
+  padding:14px;
+  border:1px solid #ddd;
+  border-radius:14px;
+  font-size:16px;
+  margin-top:12px;
+}
+
+textarea{height:130px;}
+
+label{
+  display:block;
+  margin:10px 0;
+}
+
+@media(max-width:768px){
+  .container{padding:36px 5%;}
+  h2{font-size:32px;}
+  .card{padding:26px;}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>Chinese Flow Lab</h1>
+  <a href="classroom.html">강의실로 돌아가기</a>
+</header>
+
+<div class="container">
+
+  <h2>맞춤형 연습</h2>
+
+  <p class="desc">
+    주제와 본인의 학습 프로필을 선택하면, 유형에 맞는 연습문제가 제공됩니다.
+  </p>
+
+  <div class="card">
+    <h3>1단계. 주제 선택</h3>
+
+    <select id="topic">
+      <option value="">주제를 선택하세요</option>
+      <option value="school">주제 1. 학교생활</option>
+      <option value="travel" disabled>주제 2. 여행과 교통 — 준비 중</option>
+    </select>
+
+    <h3>2단계. 본인 학습 프로필 선택</h3>
+
+    <select id="type">
+      <option value="">학습 프로필을 선택하세요</option>
+      <option value="listening">문장 듣기 이해 보완형</option>
+      <option value="dictogloss">딕토글로스 보완형</option>
+      <option value="dictation">음성-문자 연결 보완형</option>
+      <option value="writing">의견 표현 확장형</option>
+      <option value="meaning">의미 재구성 보완형</option>
+      <option value="speed">속도 처리 보완형</option>
+      <option value="discourse">담화 확장형</option>
+      <option value="balanced">균형 발전형</option>
+    </select>
+
+    <button class="btn" onclick="showPractice()">
+      연습문제 보기
+    </button>
+  </div>
+
+  <div id="practiceArea"></div>
+
+</div>
+
+<script>
+function showPractice(){
+  const topic = document.getElementById("topic").value;
+  const type = document.getElementById("type").value;
+  const area = document.getElementById("practiceArea");
+
+  if(topic !== "school"){
+    area.innerHTML = `
+      <div class="card">
+        <h3>안내</h3>
+        <p>현재는 주제 1. 학교생활 연습만 제공됩니다.</p>
+      </div>
+    `;
+    return;
+  }
+
+  if(!type){
+    area.innerHTML = `
+      <div class="card">
+        <h3>안내</h3>
+        <p>본인의 학습 프로필을 선택해 주세요.</p>
+      </div>
+    `;
+    return;
+  }
+
+  const practices = {
+
+    listening: `
+      <div class="card">
+        <h3>문장 듣기 이해 보완형 | 주제 1. 학교생활</h3>
+
+        <div class="problem">
+          <strong>1. 핵심 정보 찾기</strong><br>
+          다음 문장을 듣는다고 생각하고, 핵심 장소를 고르세요.<br><br>
+          我下午去图书馆复习考试。<br>
+          <label><input type="radio" name="l1"> ① 食堂</label>
+          <label><input type="radio" name="l1"> ② 图书馆</label>
+          <label><input type="radio" name="l1"> ③ 宿舍</label>
+        </div>
+
+        <div class="problem">
+          <strong>2. 내용 일치 문제</strong><br>
+          “他每天早上八点去教室上课。”와 일치하는 것은?<br>
+          <label><input type="radio" name="l2"> ① 그는 아침 8시에 교실에 간다.</label>
+          <label><input type="radio" name="l2"> ② 그는 저녁 8시에 도서관에 간다.</label>
+        </div>
+      </div>
+    `,
+
+    dictogloss: `
+      <div class="card">
+        <h3>딕토글로스 보완형 | 주제 1. 학교생활</h3>
+
+        <div class="problem">
+          <strong>1. 키워드 메모</strong><br>
+          다음 문장에서 핵심어 3개를 적어보세요.<br><br>
+          上午有两节中文课，老师让我们分组讨论课堂内容。<br>
+          <input type="text" placeholder="핵심어 3개를 입력하세요">
+        </div>
+
+        <div class="problem">
+          <strong>2. 의미 재구성</strong><br>
+          위 문장의 의미를 한국어 또는 중국어로 다시 구성해 보세요.
+          <textarea></textarea>
+        </div>
+      </div>
+    `,
+
+    dictation: `
+      <div class="card">
+        <h3>음성-문자 연결 보완형 | 주제 1. 학교생활</h3>
+
+        <div class="problem">
+          <strong>1. 빈칸 받아쓰기</strong><br>
+          我每天早上八点去（　　　）上课。<br>
+          <input type="text" placeholder="들은 단어를 한자로 입력하세요">
+        </div>
+
+        <div class="problem">
+          <strong>2. 병음-한자 연결</strong><br>
+          다음 병음에 해당하는 학교생활 어휘를 한자로 쓰세요.<br><br>
+          shí táng / tú shū guǎn / sù shè
+          <input type="text" placeholder="① shí táng">
+          <input type="text" placeholder="② tú shū guǎn">
+          <input type="text" placeholder="③ sù shè">
+        </div>
+      </div>
+    `,
+
+    writing: `
+      <div class="card">
+        <h3>의견 표현 확장형 | 주제 1. 학교생활</h3>
+
+        <div class="problem">
+          <strong>1. 의견 표현 틀 연습</strong><br>
+          “중국 대학생활은 규율이 있는 편이다”라는 의견을 중국어로 써보세요.
+          <textarea placeholder="我认为..."></textarea>
+        </div>
+
+        <div class="problem">
+          <strong>2. 이유 제시</strong><br>
+          因为…所以… 구조를 사용하여 이유를 써보세요.
+          <textarea></textarea>
+        </div>
+      </div>
+    `,
+
+    meaning: `
+      <div class="card">
+        <h3>의미 재구성 보완형 | 주제 1. 학교생활</h3>
+
+        <div class="problem">
+          <strong>1. 문장 순서 배열</strong><br>
+          다음 내용을 자연스러운 순서로 배열해 보세요.<br><br>
+          A. 下课以后，我去食堂吃饭。<br>
+          B. 今天上午有两节课。<br>
+          C. 下午我去图书馆复习。<br>
+          <input type="text" placeholder="예: B-A-C">
+        </div>
+
+        <div class="problem">
+          <strong>2. 요약 재구성</strong><br>
+          위 내용을 한두 문장으로 요약해 보세요.
+          <textarea></textarea>
+        </div>
+      </div>
+    `,
+
+    speed: `
+      <div class="card">
+        <h3>속도 처리 보완형 | 주제 1. 학교생활</h3>
+
+        <div class="problem">
+          <strong>1. Chunk Listening</strong><br>
+          다음 문장을 의미 단위로 나누어 적어보세요.<br><br>
+          我每天早上八点去教室上课，然后中午去食堂吃饭。
+          <textarea placeholder="의미 단위로 나누어 적어보세요"></textarea>
+        </div>
+
+        <div class="problem">
+          <strong>2. 반복 듣기 전략</strong><br>
+          처음 들었을 때 파악해야 할 핵심어 3개를 적어보세요.
+          <input type="text">
+        </div>
+      </div>
+    `,
+
+    discourse: `
+      <div class="card">
+        <h3>담화 확장형 | 주제 1. 학교생활</h3>
+
+        <div class="problem">
+          <strong>1. 연결어 사용</strong><br>
+          因为, 所以, 但是 중 두 개 이상을 사용하여 학교생활에 대해 3문장 이상 쓰세요.
+          <textarea></textarea>
+        </div>
+
+        <div class="problem">
+          <strong>2. 비교 설명</strong><br>
+          한국 대학생활과 중국 대학생활의 차이를 간단히 비교해 보세요.
+          <textarea></textarea>
+        </div>
+      </div>
+    `,
+
+    balanced: `
+      <div class="card">
+        <h3>균형 발전형 | 주제 1. 학교생활</h3>
+
+        <div class="problem">
+          <strong>1. 심화 의견 쓰기</strong><br>
+          중국 대학생활의 장단점을 5문장 이상으로 써보세요.
+          <textarea></textarea>
+        </div>
+
+        <div class="problem">
+          <strong>2. 문화 비교 토론 준비</strong><br>
+          “중국 대학생활은 한국 대학생활보다 규율적이다”에 대한 찬반 의견을 준비하세요.
+          <textarea></textarea>
+        </div>
+      </div>
+    `
+  };
+
+  area.innerHTML = practices[type];
+}
+</script>
+
+</body>
+</html>
