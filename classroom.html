@@ -15,16 +15,16 @@
 
 body{
   font-family:"Pretendard","Noto Sans KR",sans-serif;
-  background:#f5f1eb;
+  background:#f6f1ea;
   color:#2f241d;
 }
 
 /* 상단 */
 
 header{
-  background:#3b2b22;
+  background:#3c2b22;
   color:white;
-  padding:26px 8%;
+  padding:24px 8%;
 
   display:flex;
   justify-content:space-between;
@@ -32,31 +32,29 @@ header{
 }
 
 header h1{
-  font-size:32px;
+  font-size:30px;
   font-weight:800;
 }
 
 header a{
   color:white;
   text-decoration:none;
-  opacity:.9;
-  font-size:18px;
+  opacity:.85;
 }
 
 /* 메인 */
 
 .container{
-  width:100%;
-  max-width:1200px;
+  max-width:900px;
   margin:auto;
-  padding:70px 24px;
+  padding:80px 24px;
 }
 
 /* 제목 */
 
 .title{
   text-align:center;
-  margin-bottom:60px;
+  margin-bottom:70px;
 }
 
 .title h2{
@@ -67,74 +65,60 @@ header a{
 
 .title p{
   font-size:22px;
-  line-height:1.7;
   color:#5f5148;
+  line-height:1.7;
 }
 
-/* 카드 영역 */
+/* 과목 리스트 */
 
-.course-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit, minmax(320px,1fr));
-  gap:34px;
+.course-list{
+  display:flex;
+  flex-direction:column;
+  gap:22px;
 }
 
-/* 카드 */
+/* 활성 과목 */
 
-.course-card{
+.course-active{
   background:white;
-  border-radius:30px;
-  overflow:hidden;
+  border-radius:28px;
+  padding:34px;
 
-  box-shadow:0 12px 28px rgba(0,0,0,.08);
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+
+  box-shadow:0 10px 24px rgba(0,0,0,.08);
 
   transition:.25s;
 }
 
-.course-card:hover{
-  transform:translateY(-6px);
+.course-active:hover{
+  transform:translateY(-3px);
 }
 
-/* 카드 이미지 */
-
-.course-image{
-  height:220px;
-  background-size:cover;
-  background-position:center;
-}
-
-/* 카드 내용 */
-
-.course-content{
-  padding:32px;
-}
-
-.course-content h3{
+.course-active h3{
   font-size:30px;
-  margin-bottom:18px;
+  margin-bottom:10px;
   color:#4b2f22;
 }
 
-.course-content p{
+.course-active p{
   font-size:18px;
-  line-height:1.7;
   color:#5f5148;
-  margin-bottom:30px;
 }
 
-/* 버튼 */
+/* 입장 버튼 */
 
-.course-btn{
-  display:inline-block;
-
-  padding:16px 30px;
-
-  border-radius:40px;
-
+.enter-btn{
   background:#a2694d;
   color:white;
 
   text-decoration:none;
+
+  padding:18px 30px;
+
+  border-radius:40px;
 
   font-size:18px;
   font-weight:600;
@@ -142,8 +126,22 @@ header a{
   transition:.2s;
 }
 
-.course-btn:hover{
+.enter-btn:hover{
   background:#8d573e;
+}
+
+/* 비활성 과목 */
+
+.course-disabled{
+  background:#ece7e1;
+  color:#9b928b;
+
+  border-radius:24px;
+
+  padding:28px 34px;
+
+  font-size:24px;
+  font-weight:600;
 }
 
 /* 모바일 */
@@ -151,15 +149,17 @@ header a{
 @media(max-width:768px){
 
   .title h2{
-    font-size:40px;
+    font-size:42px;
   }
 
   .title p{
     font-size:19px;
   }
 
-  .course-content h3{
-    font-size:26px;
+  .course-active{
+    flex-direction:column;
+    align-items:flex-start;
+    gap:24px;
   }
 
 }
@@ -170,73 +170,55 @@ header a{
 <body>
 
 <header>
+
   <h1>Chinese Flow Lab</h1>
+
   <a href="index.html">홈으로</a>
+
 </header>
 
 <div class="container">
 
   <div class="title">
+
     <h2>강의실</h2>
 
     <p>
-      원하는 강의를 선택하고<br>
-      맞춤형 중국어 학습을 시작해보세요.
+      현재 수강 가능한 강의를 선택해보세요.
     </p>
+
   </div>
 
-  <div class="course-grid">
+  <div class="course-list">
 
-    <!-- 중급 듣기 쓰기 -->
+    <!-- 선택 가능 -->
 
-    <div class="course-card">
+    <div class="course-active">
 
-      <div class="course-image"
-      style="background-image:url('https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=1200&auto=format&fit=crop');">
-      </div>
-
-      <div class="course-content">
+      <div>
 
         <h3>중급 중국어 듣기와 쓰기</h3>
 
         <p>
-          플립드러닝 기반의 통합형 중국어 수업입니다.<br>
-          듣기·딕토글로스·의미 재구성 쓰기를 통해
-          실전 중국어 능력을 향상합니다.
+          플립드러닝 기반 통합형 중국어 수업
         </p>
 
-        <a href="pretest.html" class="course-btn">
-          강의 입장
-        </a>
-
       </div>
+
+      <a href="pretest.html" class="enter-btn">
+        입장하기
+      </a>
 
     </div>
 
-    <!-- 초급 회화 -->
+    <!-- 선택 불가 -->
 
-    <div class="course-card">
+    <div class="course-disabled">
+      초급 중국어 회화
+    </div>
 
-      <div class="course-image"
-      style="background-image:url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1200&auto=format&fit=crop');">
-      </div>
-
-      <div class="course-content">
-
-        <h3>초급 중국어 회화</h3>
-
-        <p>
-          중국어 초급 학습자를 위한 회화 중심 수업입니다.<br>
-          상황별 표현과 실전 회화를 통해
-          기초 의사소통 능력을 기릅니다.
-        </p>
-
-        <a href="beginner-speaking.html" class="course-btn">
-          강의 입장
-        </a>
-
-      </div>
-
+    <div class="course-disabled">
+      HSK 실전 연습
     </div>
 
   </div>
@@ -245,4 +227,6 @@ header a{
 
 </body>
 </html>
+
+
 
