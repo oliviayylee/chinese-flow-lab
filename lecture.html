@@ -3,180 +3,30 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-
 <title>주제 1. 학교생활 | Chinese Flow Lab</title>
 
 <style>
-body{
-  margin:0;
-  font-family:"Pretendard","Noto Sans KR",sans-serif;
-  background:#f6f1ea;
-  color:#2f241d;
-}
-
-header{
-  background:#3c2b22;
-  color:white;
-  padding:24px 8%;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-}
-
-header h1{
-  margin:0;
-  font-size:28px;
-}
-
-header a{
-  color:white;
-  text-decoration:none;
-  opacity:.85;
-}
-
-.container{
-  padding:60px 8%;
-}
-
-.video-card{
-  background:white;
-  border-radius:32px;
-  padding:40px;
-  box-shadow:0 10px 30px rgba(0,0,0,.08);
-}
-
-.badge{
-  display:inline-block;
-  background:#f2e4db;
-  color:#8a4d33;
-  padding:10px 18px;
-  border-radius:999px;
-  font-size:14px;
-  font-weight:600;
-  margin-bottom:18px;
-}
-
-.video-card h2{
-  margin:0 0 16px;
-  font-size:42px;
-  color:#4a2d1f;
-}
-
-.desc{
-  font-size:18px;
-  line-height:1.8;
-  color:#666;
-  margin-bottom:36px;
-}
-
-.video-wrapper{
-  position:relative;
-  width:100%;
-  padding-bottom:56.25%;
-  border-radius:24px;
-  overflow:hidden;
-  background:black;
-}
-
-.video-wrapper iframe{
-  position:absolute;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
-  border:0;
-}
-
-.info-box{
-  margin-top:30px;
-}
-
-.info-item{
-  background:#faf6f2;
-  border-radius:24px;
-  padding:28px;
-}
-
-.info-item h4{
-  margin:0 0 14px;
-  color:#8a4d33;
-  font-size:22px;
-}
-
-.info-item p{
-  margin:0;
-  line-height:1.9;
-  color:#555;
-  font-size:17px;
-}
-
-.quiz-box{
-  margin-top:42px;
-  background:#faf6f2;
-  border-radius:28px;
-  padding:34px;
-}
-
-.quiz-box h3{
-  margin-top:0;
-  font-size:30px;
-  color:#5a3427;
-}
-
-.quiz-box p{
-  color:#666;
-  line-height:1.8;
-  margin-bottom:28px;
-}
-
-.quiz-btn{
-  display:inline-block;
-  background:linear-gradient(135deg,#9d5a3d,#6f432a);
-  color:white;
-  text-decoration:none;
-  padding:16px 34px;
-  border-radius:999px;
-  font-size:16px;
-  font-weight:700;
-  box-shadow:0 6px 14px rgba(111,67,42,.25);
-}
-
-.quiz-btn:hover{
-  transform:translateY(-2px);
-}
-
-.back-btn{
-  display:inline-block;
-  margin-top:40px;
-  background:linear-gradient(135deg,#9d5a3d,#6f432a);
-  color:white;
-  text-decoration:none;
-  padding:16px 28px;
-  border-radius:999px;
-  font-weight:600;
-}
-
-@media(max-width:768px){
-  .container{
-    padding:34px 5%;
-  }
-
-  .video-card{
-    padding:24px;
-  }
-
-  .video-card h2{
-    font-size:30px;
-  }
-
-  .desc{
-    font-size:16px;
-  }
-
-  .quiz-box{
-    padding:24px;
-  }
-}
+body{margin:0;font-family:"Pretendard","Noto Sans KR",sans-serif;background:#f6f1ea;color:#2f241d;}
+header{background:#3c2b22;color:white;padding:24px 8%;display:flex;justify-content:space-between;align-items:center;}
+header h1{margin:0;font-size:28px;}
+header a{color:white;text-decoration:none;opacity:.85;}
+.container{padding:60px 8%;}
+.video-card{background:white;border-radius:32px;padding:40px;box-shadow:0 10px 30px rgba(0,0,0,.08);}
+.badge{display:inline-block;background:#f2e4db;color:#8a4d33;padding:10px 18px;border-radius:999px;font-size:14px;font-weight:600;margin-bottom:18px;}
+.video-card h2{margin:0 0 16px;font-size:42px;color:#4a2d1f;}
+.desc{font-size:18px;line-height:1.8;color:#666;margin-bottom:36px;}
+.video-wrapper{position:relative;width:100%;padding-bottom:56.25%;border-radius:24px;overflow:hidden;background:black;}
+.video-wrapper iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:0;}
+.info-box{margin-top:30px;}
+.info-item{background:#faf6f2;border-radius:24px;padding:28px;}
+.info-item h4{margin:0 0 14px;color:#8a4d33;font-size:22px;}
+.info-item p{margin:0;line-height:1.9;color:#555;font-size:17px;}
+.quiz-box{margin-top:42px;background:#faf6f2;border-radius:28px;padding:34px;}
+.quiz-box h3{margin-top:0;font-size:30px;color:#5a3427;}
+.quiz-box p{color:#666;line-height:1.8;margin-bottom:28px;}
+.quiz-btn,.back-btn{display:inline-block;background:linear-gradient(135deg,#9d5a3d,#6f432a);color:white;text-decoration:none;padding:16px 32px;border-radius:999px;font-weight:700;box-shadow:0 6px 14px rgba(111,67,42,.25);}
+.back-btn{margin-top:40px;}
+@media(max-width:768px){.container{padding:34px 5%;}.video-card{padding:24px;}.video-card h2{font-size:30px;}.desc{font-size:16px;}.quiz-box{padding:24px;}}
 </style>
 </head>
 
@@ -188,7 +38,6 @@ header a{
 </header>
 
 <div class="container">
-
   <div class="video-card">
 
     <div class="badge">Flipped Learning</div>
@@ -223,23 +72,26 @@ header a{
       <h3>사전 학습 확인 퀴즈</h3>
       <p>
         영상을 시청한 후 아래 버튼을 눌러 퀴즈를 제출하세요.<br>
-        제출 결과는 자동으로 저장되며, 학습 프로필 분석에 활용됩니다.
+        제출 결과는 자동 저장되며, 학습 프로필 분석에 활용됩니다.
       </p>
 
-      <a href="https://docs.google.com/forms/d/1vx6Fl_sgLnYlQZce9-DwD3L6ZnWgwBMeDQUXiAP5O6Q/edit?usp=forms_home&ouid=109985179599358097846&ths=true&pli=1" target="_blank" class="quiz-btn">
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLScB-B_hzjn8iuXVte9x8LzaxRQklo8RrxD2GGFrL8i20OnJcw/viewform?usp=publish-editor"
+         target="_blank"
+         class="quiz-btn">
         퀴즈 풀기
       </a>
     </div>
 
-    <a href="classroom.html" class="back-btn">
-      ← 강의실로 돌아가기
-    </a>
+    <a href="classroom.html" class="back-btn">← 강의실로 돌아가기</a>
 
   </div>
-
 </div>
 
 </body>
 </html>
+
+
+
+     
   
   
