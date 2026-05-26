@@ -1,119 +1,169 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>강의실 | Chinese Flow Lab</title>
 
 <style>
-body{
+
+*{
   margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
   font-family:"Pretendard","Noto Sans KR",sans-serif;
-  background:#f6f1ea;
+  background:#f5f1eb;
   color:#2f241d;
 }
 
+/* 상단 */
+
 header{
-  background:#3c2b22;
+  background:#3b2b22;
   color:white;
-  padding:24px 8%;
+  padding:26px 8%;
+
   display:flex;
   justify-content:space-between;
   align-items:center;
 }
 
 header h1{
-  margin:0;
-  font-size:28px;
+  font-size:32px;
+  font-weight:800;
 }
 
 header a{
   color:white;
   text-decoration:none;
-  opacity:.85;
+  opacity:.9;
+  font-size:18px;
 }
+
+/* 메인 */
 
 .container{
-  padding:60px 8%;
+  width:100%;
+  max-width:1200px;
+  margin:auto;
+  padding:70px 24px;
 }
 
+/* 제목 */
+
 .title{
-  margin-bottom:36px;
+  text-align:center;
+  margin-bottom:60px;
 }
 
 .title h2{
-  font-size:42px;
-  margin:0 0 12px;
-  color:#4a2d1f;
-}
-
-.title p{
-  font-size:18px;
-  color:#666;
-  line-height:1.7;
-}
-
-.grid{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:32px;
-}
-
-.card{
-  background:white;
-  border-radius:32px;
-  padding:40px;
-  box-shadow:0 10px 30px rgba(0,0,0,.08);
-  min-height:250px;
-}
-
-.icon{
-  font-size:44px;
+  font-size:52px;
+  color:#6f432a;
   margin-bottom:20px;
 }
 
-.card h3{
+.title p{
+  font-size:22px;
+  line-height:1.7;
+  color:#5f5148;
+}
+
+/* 카드 영역 */
+
+.course-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(320px,1fr));
+  gap:34px;
+}
+
+/* 카드 */
+
+.course-card{
+  background:white;
+  border-radius:30px;
+  overflow:hidden;
+
+  box-shadow:0 12px 28px rgba(0,0,0,.08);
+
+  transition:.25s;
+}
+
+.course-card:hover{
+  transform:translateY(-6px);
+}
+
+/* 카드 이미지 */
+
+.course-image{
+  height:220px;
+  background-size:cover;
+  background-position:center;
+}
+
+/* 카드 내용 */
+
+.course-content{
+  padding:32px;
+}
+
+.course-content h3{
   font-size:30px;
-  margin:0 0 18px;
-  color:#5a3427;
+  margin-bottom:18px;
+  color:#4b2f22;
 }
 
-.card p{
-  font-size:17px;
-  line-height:1.8;
-  color:#666;
-  margin-bottom:28px;
+.course-content p{
+  font-size:18px;
+  line-height:1.7;
+  color:#5f5148;
+  margin-bottom:30px;
 }
 
-.card-btn{
+/* 버튼 */
+
+.course-btn{
   display:inline-block;
-  background:linear-gradient(135deg,#9d5a3d,#6f432a);
+
+  padding:16px 30px;
+
+  border-radius:40px;
+
+  background:#a2694d;
   color:white;
+
   text-decoration:none;
-  padding:14px 28px;
-  border-radius:999px;
+
+  font-size:18px;
   font-weight:600;
-  box-shadow:0 6px 14px rgba(111,67,42,.25);
+
+  transition:.2s;
 }
+
+.course-btn:hover{
+  background:#8d573e;
+}
+
+/* 모바일 */
 
 @media(max-width:768px){
 
-  .container{
-    padding:36px 5%;
-  }
-
   .title h2{
-    font-size:32px;
+    font-size:40px;
   }
 
-  .grid{
-    grid-template-columns:1fr;
+  .title p{
+    font-size:19px;
   }
 
-  .card{
-    padding:28px;
+  .course-content h3{
+    font-size:26px;
   }
+
 }
+
 </style>
 </head>
 
@@ -130,71 +180,63 @@ header a{
     <h2>강의실</h2>
 
     <p>
-      사전 진단 결과를 기반으로 학습 프로필을 분석하고,
-      플립드러닝 영상과 맞춤형 연습 활동을 진행하세요.
+      원하는 강의를 선택하고<br>
+      맞춤형 중국어 학습을 시작해보세요.
     </p>
   </div>
 
-  <div class="grid">
+  <div class="course-grid">
 
-    <div class="card">
-      <div class="icon">📋</div>
+    <!-- 중급 듣기 쓰기 -->
 
-      <h3>사전 진단</h3>
+    <div class="course-card">
 
-      <p>
-        문장 듣기 이해, 딕토글로스, 받아쓰기,
-        의견제시형 글쓰기 영역을 진단합니다.
-      </p>
+      <div class="course-image"
+      style="background-image:url('https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=1200&auto=format&fit=crop');">
+      </div>
 
-      <a href="pretest.html" class="card-btn">
-        진단 시작하기
-      </a>
+      <div class="course-content">
+
+        <h3>중급 중국어 듣기와 쓰기</h3>
+
+        <p>
+          플립드러닝 기반의 통합형 중국어 수업입니다.<br>
+          듣기·딕토글로스·의미 재구성 쓰기를 통해
+          실전 중국어 능력을 향상합니다.
+        </p>
+
+        <a href="pretest.html" class="course-btn">
+          강의 입장
+        </a>
+
+      </div>
+
     </div>
 
-    <div class="card">
-      <div class="icon">📊</div>
+    <!-- 초급 회화 -->
 
-      <h3>학습 프로필</h3>
+    <div class="course-card">
 
-      <p>
-        사전 진단 결과를 바탕으로 학습자의
-        중국어 듣기·쓰기 학습 유형을 분석합니다.
-      </p>
+      <div class="course-image"
+      style="background-image:url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1200&auto=format&fit=crop');">
+      </div>
 
-      <a href="profile.html" class="card-btn">
-        프로필 보기
-      </a>
-    </div>
+      <div class="course-content">
 
-    <div class="card">
-      <div class="icon">🎥</div>
+        <h3>초급 중국어 회화</h3>
 
-      <h3>플립드러닝 영상</h3>
+        <p>
+          중국어 초급 학습자를 위한 회화 중심 수업입니다.<br>
+          상황별 표현과 실전 회화를 통해
+          기초 의사소통 능력을 기릅니다.
+        </p>
 
-      <p>
-        주제별 사전 강의 영상을 시청하며
-        중국 문화와 핵심 어휘·어법 표현을 학습합니다.
-      </p>
+        <a href="beginner-speaking.html" class="course-btn">
+          강의 입장
+        </a>
 
-      <a href="lecture.html" class="card-btn">
-        강의 보러가기
-      </a>
-    </div>
+      </div>
 
-    <div class="card">
-      <div class="icon">✍️</div>
-
-      <h3>맞춤형 연습</h3>
-
-      <p>
-        학습 프로필 유형에 따라
-        맞춤형 중국어 연습 활동을 제공합니다.
-      </p>
-
-      <a href="practice.html" class="card-btn">
-        연습 시작하기
-      </a>
     </div>
 
   </div>
@@ -203,10 +245,4 @@ header a{
 
 </body>
 </html>
-
-
-
- 
-
-    
 
