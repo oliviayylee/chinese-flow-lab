@@ -4,47 +4,190 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>강의실 | Chinese Flow Lab</title>
+
 <style>
-*{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:"Pretendard","Noto Sans KR",sans-serif;background:#f6f1ea;color:#2f241d;}
-header{background:#3c2b22;color:white;padding:24px 8%;display:flex;justify-content:space-between;align-items:center;}
-header h1{font-size:30px;}
-header a{color:white;text-decoration:none;opacity:.85;}
-.container{max-width:900px;margin:auto;padding:80px 24px;}
-.title{text-align:center;margin-bottom:60px;}
-.title h2{font-size:50px;color:#6f432a;margin-bottom:18px;}
-.title p{font-size:21px;color:#5f5148;}
-.course-list{display:flex;flex-direction:column;gap:22px;}
-.course-link{display:block;background:white;border-radius:28px;padding:34px;text-decoration:none;color:#4b2f22;font-size:30px;font-weight:700;box-shadow:0 10px 24px rgba(0,0,0,.08);transition:.25s;}
-.course-link:hover{transform:translateY(-3px);background:#fffaf5;}
-.course-disabled{background:#ece7e1;color:#aaa19a;border-radius:24px;padding:28px 34px;font-size:24px;font-weight:600;}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  font-family:"Pretendard","Noto Sans KR",sans-serif;
+  background:#f6f1ea;
+  color:#2f241d;
+}
+
+/* 상단 */
+
+header{
+  background:#3c2b22;
+  color:white;
+
+  padding:24px 8%;
+
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+header h1{
+  font-size:30px;
+  font-weight:800;
+}
+
+header a{
+  color:white;
+  text-decoration:none;
+  opacity:.85;
+}
+
+/* 메인 */
+
+.container{
+  max-width:900px;
+  margin:auto;
+  padding:80px 24px;
+}
+
+/* 제목 */
+
+.title{
+  text-align:center;
+  margin-bottom:60px;
+}
+
+.title h2{
+  font-size:52px;
+  color:#6f432a;
+  margin-bottom:18px;
+}
+
+.title p{
+  font-size:22px;
+  color:#5f5148;
+}
+
+/* 과목 리스트 */
+
+.course-list{
+  display:flex;
+  flex-direction:column;
+  gap:22px;
+}
+
+/* 선택 가능 과목 */
+
+.course-link{
+  display:block;
+
+  background:white;
+
+  border-radius:28px;
+
+  padding:34px;
+
+  text-decoration:none;
+
+  color:#4b2f22;
+
+  font-size:30px;
+  font-weight:700;
+
+  box-shadow:0 10px 24px rgba(0,0,0,.08);
+
+  transition:.25s;
+}
+
+.course-link:hover{
+  transform:translateY(-4px);
+  background:#fffaf5;
+}
+
+/* 비활성 과목 */
+
+.course-disabled{
+  background:#ece7e1;
+
+  color:#aaa19a;
+
+  border-radius:24px;
+
+  padding:28px 34px;
+
+  font-size:24px;
+  font-weight:600;
+}
+
+/* 모바일 */
+
+@media(max-width:768px){
+
+  .title h2{
+    font-size:42px;
+  }
+
+  .title p{
+    font-size:19px;
+  }
+
+  .course-link{
+    font-size:26px;
+  }
+
+}
+
 </style>
 </head>
+
 <body>
 
 <header>
+
   <h1>Chinese Flow Lab</h1>
+
   <a href="index.html">홈으로</a>
+
 </header>
 
 <div class="container">
+
   <div class="title">
+
     <h2>강의실</h2>
+
     <p>수강할 과목을 선택하세요.</p>
+
   </div>
 
   <div class="course-list">
-    <a href="course.html" class="course-link">중급 중국어 듣기와 쓰기</a>
 
-    <div class="course-disabled">초급 중국어 회화</div>
-    <div class="course-disabled">중국 문화와 콘텐츠</div>
-    <div class="course-disabled">HSK 실전 연습</div>
+    <!-- 선택 가능 -->
+
+    <a href="course.html" class="course-link">
+      중급 중국어 듣기와 쓰기
+    </a>
+
+    <!-- 선택 불가 -->
+
+    <div class="course-disabled">
+      초급 중국어 회화
+    </div>
+
+    <div class="course-disabled">
+      중국 문화와 콘텐츠
+    </div>
+
+    <div class="course-disabled">
+      HSK 실전 연습
+    </div>
+
   </div>
+
 </div>
 
 </body>
 </html>
-
-
 
 
