@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>학습 프로필 | Chinese Flow Lab</title>
+
+<style>
+body{
+  margin:0;
+  font-family:"Pretendard","Noto Sans KR",sans-serif;
+  background:#f6f1ea;
+  color:#2f241d;
+}
+
+header{
+  background:#3c2b22;
+  color:white;
+  padding:24px 8%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+header h1{margin:0;font-size:28px;}
+header a{color:white;text-decoration:none;opacity:.85;}
+
+.container{padding:60px 8%;}
+
+.title h2{
+  font-size:42px;
+  margin:0 0 14px;
+  color:#4a2d1f;
+}
+
+.title p{
+  font-size:18px;
+  color:#666;
+  line-height:1.8;
+  margin-bottom:36px;
+}
+
+.profile-card{
+  background:white;
+  border-radius:32px;
+  padding:40px;
+  box-shadow:0 10px 30px rgba(0,0,0,.08);
+  margin-bottom:30px;
+}
+
+.badge{
+  display:inline-block;
+  background:#f2e4db;
+  color:#8a4d33;
+  padding:10px 18px;
+  border-radius:999px;
+  font-weight:700;
+  margin-bottom:18px;
+}
+
+.profile-type{
+  font-size:36px;
+  color:#5a3427;
+  margin:0 0 16px;
+}
+
+.desc{
+  font-size:17px;
+  line-height:1.9;
+  color:#666;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:28px;
+}
+
+.box{
+  background:white;
+  border-radius:28px;
+  padding:32px;
+  box-shadow:0 10px 30px rgba(0,0,0,.08);
+}
+
+.box h3{
+  margin-top:0;
+  color:#5a3427;
+  font-size:26px;
+}
+
+.skill{
+  margin-bottom:22px;
+}
+
+.skill-name{
+  display:flex;
+  justify-content:space-between;
+  margin-bottom:8px;
+  font-weight:600;
+}
+
+.bar{
+  height:14px;
+  background:#eee2da;
+  border-radius:999px;
+  overflow:hidden;
+}
+
+.fill{
+  height:100%;
+  background:linear-gradient(135deg,#9d5a3d,#6f432a);
+  border-radius:999px;
+}
+
+.recommend-list{
+  padding-left:20px;
+  line-height:2;
+  color:#555;
+}
+
+.practice-btn{
+  display:inline-block;
+  margin-top:18px;
+  background:linear-gradient(135deg,#9d5a3d,#6f432a);
+  color:white;
+  text-decoration:none;
+  padding:15px 28px;
+  border-radius:999px;
+  font-weight:700;
+}
+
+.note{
+  background:#faf6f2;
+  border-radius:22px;
+  padding:24px;
+  line-height:1.9;
+  color:#555;
+}
+
+.back-btn{
+  display:inline-block;
+  margin-top:34px;
+  color:#6f432a;
+  text-decoration:none;
+  font-weight:700;
+}
+
+@media(max-width:768px){
+  .container{padding:36px 5%;}
+  .title h2{font-size:32px;}
+  .profile-type{font-size:28px;}
+  .grid{grid-template-columns:1fr;}
+  .profile-card,.box{padding:26px;}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>Chinese Flow Lab</h1>
+  <a href="classroom.html">강의실로 돌아가기</a>
+</header>
+
+<div class="container">
+
+  <div class="title">
+    <h2>학습 프로필</h2>
+    <p>
+      사전 진단과 플립드러닝 퀴즈 결과를 바탕으로 학습자의 강점과 보완 영역을 분석합니다.
+    </p>
+  </div>
+
+  <div class="profile-card">
+    <div class="badge">Learning Profile</div>
+    <h2 class="profile-type">문법 보완형 학습자</h2>
+    <p class="desc">
+      문화 이해와 어휘 이해는 비교적 안정적이나, 문장 속 어법 표현을 정확하게 활용하는 데 보완이 필요합니다.
+      특히 <strong>才 / 就</strong>, <strong>再也不</strong>, 결과보어와 같은 표현을 문맥 속에서 반복적으로 연습하는 것이 좋습니다.
+    </p>
+  </div>
+
+  <div class="grid">
+
+    <div class="box">
+      <h3>영역별 진단 결과</h3>
+
+      <div class="skill">
+        <div class="skill-name"><span>문화 이해</span><span>85%</span></div>
+        <div class="bar"><div class="fill" style="width:85%"></div></div>
+      </div>
+
+      <div class="skill">
+        <div class="skill-name"><span>어휘 이해</span><span>75%</span></div>
+        <div class="bar"><div class="fill" style="width:75%"></div></div>
+      </div>
+
+      <div class="skill">
+        <div class="skill-name"><span>문법 활용</span><span>55%</span></div>
+        <div class="bar"><div class="fill" style="width:55%"></div></div>
+      </div>
+
+      <div class="skill">
+        <div class="skill-name"><span>듣기 이해</span><span>65%</span></div>
+        <div class="bar"><div class="fill" style="width:65%"></div></div>
+      </div>
+    </div>
+
+    <div class="box">
+      <h3>추천 연습문제</h3>
+      <ul class="recommend-list">
+        <li>才 / 就 비교 빈칸 문제</li>
+        <li>再也不 활용 문장 완성</li>
+        <li>결과보어 听懂 / 看懂 연습</li>
+        <li>학교생활 주제 문장 배열 연습</li>
+      </ul>
+
+      <a href="#" class="practice-btn">추천 문제 풀기</a>
+    </div>
+
+  </div>
+
+  <div class="profile-card">
+    <h3>교수자 피드백</h3>
+    <div class="note">
+      현재 학습자는 중국 대학생활 문화에 대한 이해는 비교적 높지만,
+      어법 표현을 실제 문장 안에서 선택하고 활용하는 능력은 추가 연습이 필요합니다.
+      다음 학습에서는 문법 설명을 단순 암기하기보다, 짧은 담화 안에서 표현의 기능을 파악하는 연습을 권장합니다.
+    </div>
+  </div>
+
+  <a href="classroom.html" class="back-btn">← 강의실로 돌아가기</a>
+
+</div>
+
+</body>
+</html>
