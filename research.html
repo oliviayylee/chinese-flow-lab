@@ -6,7 +6,6 @@
 <title>Research Track | Chinese Flow Lab</title>
 
 <style>
-
 body{
   margin:0;
   font-family:"Pretendard","Noto Sans KR",sans-serif;
@@ -32,11 +31,13 @@ header h1{
 header a{
   color:white;
   text-decoration:none;
+  opacity:.9;
 }
 
 .hero{
-  background:linear-gradient(rgba(60,43,34,.75),rgba(60,43,34,.75)),
-  url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1600&auto=format&fit=crop');
+  background:
+    linear-gradient(rgba(60,43,34,.76),rgba(60,43,34,.76)),
+    url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1600&auto=format&fit=crop');
   background-size:cover;
   background-position:center;
   color:white;
@@ -46,13 +47,14 @@ header a{
 
 .hero h2{
   font-size:56px;
-  margin-bottom:18px;
+  margin:0 0 18px;
 }
 
 .hero p{
   font-size:22px;
   max-width:900px;
   margin:auto;
+  line-height:1.8;
 }
 
 .container{
@@ -78,10 +80,12 @@ header a{
 .flow{
   text-align:center;
   font-size:22px;
-  font-weight:600;
+  font-weight:700;
   line-height:2.2;
   color:#6f432a;
-  padding:20px;
+  padding:22px;
+  background:#faf5ef;
+  border-radius:22px;
 }
 
 .topic-list{
@@ -94,13 +98,31 @@ header a{
   background:#faf5ef;
   border-radius:18px;
   padding:20px;
+  font-weight:600;
+}
+
+.data-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:18px;
+}
+
+.data-box{
+  background:#faf5ef;
+  border-radius:18px;
+  padding:20px;
+}
+
+.data-box strong{
+  color:#6f432a;
 }
 
 .future{
   background:#faf5ef;
   border-radius:18px;
-  padding:18px;
+  padding:18px 20px;
   margin-bottom:14px;
+  font-weight:600;
 }
 
 footer{
@@ -110,184 +132,208 @@ footer{
 }
 
 @media(max-width:768px){
+  .topic-list,
+  .data-grid{
+    grid-template-columns:1fr;
+  }
 
-.topic-list{
-grid-template-columns:1fr;
+  .hero h2{
+    font-size:40px;
+  }
+
+  .hero p{
+    font-size:18px;
+  }
+
+  .section{
+    padding:28px;
+  }
 }
-
-.hero h2{
-font-size:40px;
-}
-
-.hero p{
-font-size:18px;
-}
-
-.section{
-padding:28px;
-}
-
-}
-
 </style>
 </head>
+
 <body>
 
 <header>
-<h1>Chinese Flow Lab</h1>
-<a href="index.html">홈으로</a>
+  <h1>Chinese Flow Lab</h1>
+  <a href="index.html">홈으로</a>
 </header>
 
 <section class="hero">
-
-<h2>Research Track</h2>
-
-<p>
-AI 기반 중국어 학습 및 연구 플랫폼에서 수집되는 학습 데이터를 기반으로
-중국어 학습자의 의미 구성 과정, 프롬프트 활용 양상,
-AI 활용 글쓰기 과정을 연구합니다.
-</p>
-
+  <h2>Research Track</h2>
+  <p>
+    학습자의 프롬프트, AI 생성 결과, 초안, 수정안 및 최종 산출물을 축적하여
+    중국어 학습자의 의미 구성 과정과 작문 발달 과정을 연구합니다.
+  </p>
 </section>
 
 <div class="container">
 
-<div class="section">
+  <div class="section">
+    <h3>About Chinese Flow Lab</h3>
 
-<h3>About Chinese Flow Lab</h3>
+    <p>
+      Chinese Flow Lab은 AI 기반 중국어 학습 및 연구 플랫폼입니다.
+      본 플랫폼은 Learning Track과 Research Track으로 구성됩니다.
+    </p>
 
-<p>
-Chinese Flow Lab은 AI 기반 중국어 학습 및 연구 플랫폼입니다.
-</p>
+    <p>
+      Learning Track은 학습자의 진단 결과와 오류 유형을 기반으로
+      주제별·유형별 맞춤형 연습문제를 제공합니다.
+    </p>
 
-<p>
-본 플랫폼은 Learning Track과 Research Track으로 구성되어 있습니다.
-</p>
+    <p>
+      Research Track은 학습자의 프롬프트, AI 생성 결과, 초안, 수정안 및 최종 산출물을
+      단계적으로 수집·축적하여 중국어 학습자의 언어 이해, 의미 구성 및 산출 과정을
+      분석하기 위한 연구 공간입니다.
+    </p>
+  </div>
 
-<p>
-Learning Track은 사전 진단, 학습 프로필, 플립드러닝, 맞춤형 연습을 제공하며,
-Research Track은 학습자의 프롬프트, AI 생성 결과, 초안, 수정안 및 최종 산출물을
-체계적으로 수집·분석하기 위한 연구 공간입니다.
-</p>
+  <div class="section">
+    <h3>Learning Track</h3>
 
-</div>
+    <div class="flow">
+      사전 진단<br>
+      ↓<br>
+      학습 프로필 생성<br>
+      ↓<br>
+      플립드러닝 학습<br>
+      ↓<br>
+      맞춤형 연습
+    </div>
 
-<div class="section">
+    <p>
+      Learning Track은 문장 듣기 이해, 딕토글로스, 받아쓰기, 의견제시형 글쓰기 등의
+      진단 결과를 바탕으로 학습자의 취약 영역을 파악하고, 이에 맞는 연습 활동을 제공합니다.
+    </p>
+  </div>
 
-<h3>Learning Track</h3>
+  <div class="section">
+    <h3>Research Track</h3>
 
-<div class="flow">
+    <div class="flow">
+      Prompt<br>
+      ↓<br>
+      AI Generated Output<br>
+      ↓<br>
+      Draft<br>
+      ↓<br>
+      Revision<br>
+      ↓<br>
+      Final Version
+    </div>
 
-사전 진단<br>
-↓<br>
-학습 프로필 생성<br>
-↓<br>
-플립드러닝 학습<br>
-↓<br>
-맞춤형 연습
+    <p>
+      Research Track은 학습자가 AI와 상호작용하며 글을 구성해 가는 과정을 단계별로 기록합니다.
+      이를 통해 학습자의 프롬프트 작성 방식, AI 결과 수용 양상, 수정 전략,
+      최종 산출물의 변화 양상을 분석할 수 있습니다.
+    </p>
+  </div>
 
-</div>
+  <div class="section">
+    <h3>Collected Data</h3>
 
-<p>
-학습자의 진단 결과와 오류 유형을 기반으로
-개인화된 학습 경로를 제공합니다.
-</p>
+    <div class="data-grid">
 
-</div>
+      <div class="data-box">
+        <strong>Prompt</strong><br>
+        학습자가 AI에게 입력한 질문, 요청, 조건, 수정 지시
+      </div>
 
-<div class="section">
+      <div class="data-box">
+        <strong>AI Generated Output</strong><br>
+        AI가 생성한 중국어 문장, 단락, 표현 제안, 수정 결과
+      </div>
 
-<h3>Research Track</h3>
+      <div class="data-box">
+        <strong>Draft</strong><br>
+        학습자가 작성한 초안 및 초기 의미 구성 결과
+      </div>
 
-<div class="flow">
+      <div class="data-box">
+        <strong>Revision</strong><br>
+        AI 피드백 또는 자기 점검 이후의 수정안
+      </div>
 
-Prompt<br>
-↓<br>
-AI Generated Output<br>
-↓<br>
-Draft<br>
-↓<br>
-Revision<br>
-↓<br>
-Final Version
+      <div class="data-box">
+        <strong>Final Version</strong><br>
+        최종 제출 산출물 및 완성된 중국어 작문
+      </div>
 
-</div>
+      <div class="data-box">
+        <strong>Learning Profile Data</strong><br>
+        사전 진단 결과, 학습 유형, 맞춤형 연습 수행 결과
+      </div>
 
-<p>
-학습자의 AI 활용 과정과 의미 구성 과정을 단계적으로 수집하여
-중국어 쓰기 발달 과정과 학습 전략을 분석합니다.
-</p>
+    </div>
+  </div>
 
-</div>
+  <div class="section">
+    <h3>Research Topics</h3>
 
-<div class="section">
+    <div class="topic-list">
 
-<h3>Research Topics</h3>
+      <div class="topic">
+        프롬프트와 중국어 작문 결과의 상관관계 연구
+      </div>
 
-<div class="topic-list">
+      <div class="topic">
+        중국어 학습자의 의미 구성 과정 연구
+      </div>
 
-<div class="topic">
-중국어 학습자의 프롬프트 활용 양상 연구
-</div>
+      <div class="topic">
+        초안–수정안–최종안 비교를 통한 중국어 작문 발달 연구
+      </div>
 
-<div class="topic">
-AI 기반 중국어 쓰기 과정 연구
-</div>
+      <div class="topic">
+        AI 생성 결과의 수용 및 수정 양상 연구
+      </div>
 
-<div class="topic">
-중국어 학습자의 의미 구성 과정 연구
-</div>
+      <div class="topic">
+        학습자 유형별 AI 활용 전략 연구
+      </div>
 
-<div class="topic">
-초안-수정안 비교를 통한 작문 발달 연구
-</div>
+      <div class="topic">
+        맞춤형 연습 유형의 학습 효과 연구
+      </div>
 
-<div class="topic">
-학습자 유형별 AI 활용 전략 연구
-</div>
+      <div class="topic">
+        플립드러닝 기반 중국어 듣기·쓰기 학습 연구
+      </div>
 
-<div class="topic">
-플립드러닝 기반 중국어 학습 연구
-</div>
+      <div class="topic">
+        중국어 학습자의 프롬프트 리터러시 연구
+      </div>
 
-</div>
+      <div class="topic">
+        학습자 프로필과 작문 성취도의 관계 연구
+      </div>
 
-</div>
+      <div class="topic">
+        AI 기반 중국어 학습 데이터 분석 연구
+      </div>
 
-<div class="section">
+    </div>
+  </div>
 
-<h3>Future Directions</h3>
+  <div class="section">
+    <h3>Future Directions</h3>
 
-<div class="future">
-AI 기반 학습자 프로파일링
-</div>
+    <div class="future">AI 기반 학습자 프로파일링 시스템 구축</div>
+    <div class="future">학습자 유형별 맞춤형 추천 알고리즘 개발</div>
+    <div class="future">프롬프트 리터러시 진단 도구 개발</div>
+    <div class="future">중국어 작문 발달 추적 데이터베이스 구축</div>
+    <div class="future">Chinese Flow Lab Learning Analytics 구축</div>
+    <div class="future">학습자 코퍼스 기반 중국어 쓰기 연구</div>
+    <div class="future">AI 활용 중국어교육 연구 플랫폼 확장</div>
+    <div class="future">학습자 중심 적응형 중국어 학습 환경 구축</div>
 
-<div class="future">
-맞춤형 학습 추천 시스템 구축
-</div>
-
-<div class="future">
-Prompt Literacy 연구
-</div>
-
-<div class="future">
-중국어 작문 발달 추적 연구
-</div>
-
-<div class="future">
-Learning Analytics 구축
-</div>
-
-<div class="future">
-Chinese Flow Lab 데이터베이스 확장
-</div>
-
-</div>
+  </div>
 
 </div>
 
 <footer>
-© 2026 Chinese Flow Lab
+  © 2026 Chinese Flow Lab
 </footer>
 
 </body>
