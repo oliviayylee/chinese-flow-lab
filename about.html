@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>About Chinese Flow Lab</title>
+
+<style>
+body{
+  margin:0;
+  font-family:"Pretendard","Noto Sans KR",sans-serif;
+  background:#f6f1ea;
+  color:#2f241d;
+}
+
+header{
+  background:#3c2b22;
+  color:white;
+  padding:24px 8%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+header h1{
+  margin:0;
+  font-size:28px;
+}
+
+header a{
+  color:white;
+  text-decoration:none;
+  opacity:.9;
+}
+
+.hero{
+  min-height:75vh;
+  background:
+    linear-gradient(rgba(45,32,24,.52),rgba(45,32,24,.52)),
+    url("image/about-cafe.jpg");
+  background-size:cover;
+  background-position:center;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  color:white;
+  padding:60px 8%;
+}
+
+.hero-content{
+  max-width:900px;
+}
+
+.hero h2{
+  font-size:64px;
+  margin:0 0 22px;
+}
+
+.hero p{
+  font-size:24px;
+  line-height:1.8;
+  margin:0;
+}
+
+.container{
+  max-width:1200px;
+  margin:auto;
+  padding:70px 8%;
+}
+
+.section{
+  background:white;
+  border-radius:30px;
+  padding:42px;
+  margin-bottom:36px;
+  box-shadow:0 10px 28px rgba(0,0,0,.08);
+}
+
+.section h3{
+  font-size:34px;
+  color:#6f432a;
+  margin:0 0 20px;
+}
+
+.section p{
+  font-size:18px;
+  line-height:1.9;
+  color:#555;
+}
+
+.flow-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:24px;
+}
+
+.flow-card{
+  background:#faf5ef;
+  border-radius:22px;
+  padding:26px;
+}
+
+.flow-card h4{
+  margin:0 0 14px;
+  font-size:24px;
+  color:#5a3427;
+}
+
+.flow-card p{
+  margin:0;
+  font-size:16px;
+}
+
+.photo-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:22px;
+}
+
+.photo-grid img{
+  width:100%;
+  height:320px;
+  object-fit:cover;
+  border-radius:24px;
+  box-shadow:0 8px 20px rgba(0,0,0,.12);
+}
+
+.photo-grid img.wide{
+  grid-column:span 2;
+  height:380px;
+}
+
+footer{
+  text-align:center;
+  padding:34px;
+  color:#777;
+}
+
+@media(max-width:768px){
+  .hero h2{
+    font-size:42px;
+  }
+
+  .hero p{
+    font-size:18px;
+  }
+
+  .container{
+    padding:40px 5%;
+  }
+
+  .section{
+    padding:28px;
+  }
+
+  .flow-grid,
+  .photo-grid{
+    grid-template-columns:1fr;
+  }
+
+  .photo-grid img,
+  .photo-grid img.wide{
+    grid-column:span 1;
+    height:240px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>Chinese Flow Lab</h1>
+  <a href="index.html">홈으로</a>
+</header>
+
+<section class="hero">
+  <div class="hero-content">
+    <h2>About Chinese Flow Lab</h2>
+    <p>
+      AI 기반 중국어 학습 및 연구 플랫폼<br>
+      학습자 중심 교육, 플립드러닝, 학습 데이터 연구를 연결합니다.
+    </p>
+  </div>
+</section>
+
+<div class="container">
+
+  <div class="section">
+    <h3>Platform Overview</h3>
+    <p>
+      Chinese Flow Lab은 AI 기반 중국어 학습 및 연구 플랫폼입니다.
+      본 플랫폼은 학습자의 진단 결과와 오류 유형을 기반으로 맞춤형 연습문제를 제공하는
+      Learning Track과, 학습자의 프롬프트·AI 생성 결과·초안·수정안·최종 산출물을
+      단계적으로 수집하고 분석하는 Research Track으로 구성되어 있습니다.
+    </p>
+  </div>
+
+  <div class="section">
+    <h3>Two-Track Structure</h3>
+
+    <div class="flow-grid">
+
+      <div class="flow-card">
+        <h4>Learning Track</h4>
+        <p>
+          사전 진단, 학습 프로필, 플립드러닝 영상, 맞춤형 연습문제를 통해
+          학습자의 중국어 듣기·쓰기 학습을 지원합니다.
+        </p>
+      </div>
+
+      <div class="flow-card">
+        <h4>Research Track</h4>
+        <p>
+          프롬프트, AI 생성 결과, 초안, 수정안, 최종안을 축적하여
+          중국어 학습자의 의미 구성 과정과 작문 발달을 연구합니다.
+        </p>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="section">
+    <h3>Teaching & Research Scenes</h3>
+
+    <div class="photo-grid">
+      <img class="wide" src="image/about-presentation.jpg" alt="Academic presentation">
+      <img src="image/about-cafe.jpg" alt="Cafe-based learning and research">
+      <img src="image/about-class.jpg" alt="Classroom teaching">
+      <img src="image/about-eye.jpg" alt="Eye-tracking research">
+      <img src="image/about-experiment.jpg" alt="Research experiment">
+      <img src="image/about-aca.jpg" alt="Academic conference">
+      <img src="image/about-laptop.jpg" alt="Online teaching and learning">
+      <img src="image/about-home.jpg" alt="Research work scene">
+      <img src="image/about-sla.jpg" alt="Second language acquisition symposium">
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  © 2026 Chinese Flow Lab
+</footer>
+
+</body>
+</html>
+
