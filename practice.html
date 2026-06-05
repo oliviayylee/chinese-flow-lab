@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="ko">
 <head>
 <meta charset="UTF-8" />
@@ -29,7 +28,6 @@ label{display:block;margin:12px 0;}
 .feedback-title{font-size:22px;color:#5a3427;font-weight:800;margin-bottom:10px;}
 @media(max-width:768px){.container{padding:36px 5%;}h2{font-size:32px;}.card{padding:26px;}}
 </style>
-
 </head>
 
 <body>
@@ -53,20 +51,19 @@ label{display:block;margin:12px 0;}
       <option value="school">주제 1. 학교생활</option>
     </select>
 
-<h3>2단계. 본인 학습 프로필 선택</h3>
-<select id="type">
-  <option value="">학습 프로필을 선택하세요</option>
-  <option value="listening">문장 듣기 이해 보완형</option>
-  <option value="dictogloss">딕토글로스 보완형</option>
-  <option value="dictation">음성-문자 연결 보완형</option>
-  <option value="writing">의견 표현 확장형</option>
-  <option value="meaning">의미 재구성 보완형</option>
-  <option value="discourse">담화 확장형</option>
-  <option value="balanced">균형 발전형</option>
-</select>
+    <h3>2단계. 본인 학습 프로필 선택</h3>
+    <select id="type">
+      <option value="">학습 프로필을 선택하세요</option>
+      <option value="listening">문장 듣기 이해 보완형</option>
+      <option value="dictogloss">딕토글로스 보완형</option>
+      <option value="dictation">음성-문자 연결 보완형</option>
+      <option value="writing">의견 표현 확장형</option>
+      <option value="meaning">의미 재구성 보완형</option>
+      <option value="discourse">담화 확장형</option>
+      <option value="balanced">균형 발전형</option>
+    </select>
 
-<button class="btn" onclick="showPractice()">연습문제 보기</button>
-
+    <button id="showBtn" class="btn">연습문제 보기</button>
   </div>
 
   <div id="practiceArea"></div>
@@ -155,7 +152,6 @@ dictogloss: `
     <strong>2. 의미 재구성</strong><br>
     들은 내용을 한국어 또는 중국어로 다시 써보세요.
     <textarea></textarea>
-
   </div>
 
   <div class="problem">
@@ -182,7 +178,6 @@ dictogloss: `
 `,
 
 dictation: `
-
 <div class="card">
   <div class="result-title">음성-문자 연결 보완형 | 주제 1. 학교생활</div>
 
@@ -225,7 +220,6 @@ dictation: `
 `,
 
 writing: `
-
 <div class="card">
   <div class="result-title">의견 표현 확장형 | 주제 1. 학교생활</div>
 
@@ -258,19 +252,17 @@ writing: `
     중국 대학생활에 대해 5문장 정도의 짧은 의견문을 쓰세요.
     <textarea id="writingText" placeholder="중국어로 5문장 정도 작성하세요."></textarea>
 
-<button class="btn" onclick="getFeedback()">AI 피드백 받기</button>
+    <button class="btn" onclick="getFeedback()">AI 피드백 받기</button>
 
-<div id="feedbackResult" class="feedback-box">
-  <div class="feedback-title">AI 피드백 결과</div>
-  작성 후 버튼을 누르면 문법, 어휘, 표현, 담화 구성에 대한 피드백이 표시됩니다.
-</div>
-
+    <div id="feedbackResult" class="feedback-box">
+      <div class="feedback-title">AI 피드백 결과</div>
+      작성 후 버튼을 누르면 문법, 어휘, 표현, 담화 구성에 대한 피드백이 표시됩니다.
+    </div>
   </div>
 </div>
 `,
 
 meaning: `
-
 <div class="card">
   <div class="result-title">의미 재구성 보완형 | 주제 1. 학교생활</div>
 
@@ -311,7 +303,6 @@ meaning: `
 `,
 
 discourse: `
-
 <div class="card">
   <div class="result-title">담화 확장형 | 주제 1. 학교생활</div>
 
@@ -353,7 +344,6 @@ discourse: `
 `,
 
 balanced: `
-
 <div class="card">
   <div class="result-title">균형 발전형 | 주제 1. 학교생활</div>
 
@@ -390,50 +380,51 @@ balanced: `
 `
   };
 
-area.innerHTML = practices[type];
+  area.innerHTML = practices[type];
 }
 
 async function getFeedback(){
-const writingBox = document.getElementById("writingText");
-const resultBox = document.getElementById("feedbackResult");
+  const writingBox = document.getElementById("writingText");
+  const resultBox = document.getElementById("feedbackResult");
 
-if(!writingBox || !resultBox){
-return;
+  if(!writingBox || !resultBox){
+    return;
+  }
+
+  const writing = writingBox.value;
+
+  if(!writing.trim()){
+    resultBox.innerText = "중국어 작문을 먼저 입력해 주세요.";
+    return;
+  }
+
+  resultBox.innerText = "AI 피드백을 생성하는 중입니다. 잠시만 기다려 주세요.";
+
+  try{
+    const response = await fetch("/api/feedback", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ writing: writing })
+    });
+
+    const data = await response.json();
+
+    if(!response.ok){
+      resultBox.innerText = "AI 피드백 생성 중 오류가 발생했습니다.";
+      return;
+    }
+
+    resultBox.innerText = data.feedback || "피드백을 불러오지 못했습니다.";
+
+  }catch(error){
+    resultBox.innerText = "서버 연결 오류가 발생했습니다.";
+  }
 }
 
-const writing = writingBox.value;
-
-if(!writing.trim()){
-resultBox.innerText = "중국어 작문을 먼저 입력해 주세요.";
-return;
-}
-
-resultBox.innerText = "AI 피드백을 생성하는 중입니다. 잠시만 기다려 주세요.";
-
-try{
-const response = await fetch("/api/feedback", {
-method: "POST",
-headers: {
-"Content-Type": "application/json"
-},
-body: JSON.stringify({ writing })
-});
-
-```
-const data = await response.json();
-
-if(!response.ok){
-  resultBox.innerText = "AI 피드백 생성 중 오류가 발생했습니다.";
-  return;
-}
-
-resultBox.innerText = data.feedback || "피드백을 불러오지 못했습니다.";
-```
-
-}catch(error){
-resultBox.innerText = "서버 연결 오류가 발생했습니다.";
-}
-} </script>
+document.getElementById("showBtn").addEventListener("click", showPractice);
+</script>
 
 </body>
 </html>
