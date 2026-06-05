@@ -14,21 +14,45 @@ export default async function handler(req, res) {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "Authorization": `Bearer ${process.env.OPENAI_API_KEY}`
+        Authorization: `Bearer ${process.env.OPENAI_API_KEY}`
       },
       body: JSON.stringify({
         model: "gpt-4.1-mini",
         input: `
-You are a Chinese language writing tutor.
-Please give feedback on the following Chinese writing by a Korean learner.
+You are an expert Chinese language teacher.
 
-Give feedback in Korean.
-Focus on:
-1. Grammar
-2. Vocabulary
-3. Natural expression
+The following text was written by a Korean learner of Chinese.
+
+Please provide feedback in Korean.
+
+Analyze the writing based on the following criteria:
+
+1. Grammar errors
+2. Vocabulary usage
+3. Naturalness of expression
 4. Discourse organization
-5. Suggested revision
+5. Strengths of the writing
+6. Suggested revision
+
+Please use this output format:
+
+## 문법
+...
+
+## 어휘
+...
+
+## 표현의 자연스러움
+...
+
+## 담화 구성
+...
+
+## 잘한 점
+...
+
+## 수정 예시
+...
 
 Student writing:
 ${writing}
@@ -38,8 +62,15 @@ ${writing}
 
     const data = await response.json();
 
+    if (!response.ok) {
+      return res.status(response.status).json({
+        error: "OpenAI API error",
+        details: data
+      });
+    }
+
     const feedback =
-      data.output?.[0]?.content?.[0]?.text ||
+      data.output_text ||
       "AI 피드백을 생성하지 못했습니다.";
 
     return res.status(200).json({ feedback });
