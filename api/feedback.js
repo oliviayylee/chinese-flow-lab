@@ -1,84 +1,246 @@
-export default async function handler(req, res) {
-  if (req.method !== "POST") {
-    return res.status(405).json({ error: "Only POST requests are allowed." });
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>맞춤형 연습 | Chinese Flow Lab</title>
+
+<style>
+body{margin:0;font-family:"Pretendard","Noto Sans KR",sans-serif;background:#f6f1ea;color:#2f241d;}
+header{background:#3c2b22;color:white;padding:24px 8%;display:flex;justify-content:space-between;align-items:center;}
+header h1{margin:0;font-size:28px;}
+header a{color:white;text-decoration:none;opacity:.85;}
+.container{padding:60px 8%;}
+h2{font-size:42px;color:#4a2d1f;margin:0 0 14px;}
+.desc{font-size:18px;color:#666;line-height:1.8;margin-bottom:36px;}
+.card{background:white;border-radius:32px;padding:36px;box-shadow:0 10px 30px rgba(0,0,0,.08);margin-bottom:30px;}
+.card h3{margin-top:0;color:#5a3427;font-size:28px;}
+select{width:100%;padding:16px;border:1px solid #ddd;border-radius:16px;font-size:16px;margin:14px 0 28px;}
+.btn{display:inline-block;background:linear-gradient(135deg,#9d5a3d,#6f432a);color:white;border:none;padding:15px 30px;border-radius:999px;font-weight:700;cursor:pointer;margin-top:14px;}
+.problem{background:#faf6f2;border-radius:24px;padding:28px;margin:24px 0;line-height:1.9;}
+.problem strong{color:#5a3427;font-size:20px;}
+.problem audio{width:100%;margin:18px 0;}
+textarea,input[type="text"]{width:100%;box-sizing:border-box;padding:14px;border:1px solid #ddd;border-radius:14px;font-size:16px;margin-top:14px;}
+textarea{height:130px;}
+label{display:block;margin:12px 0;}
+.result-title{font-size:34px;color:#5a3427;margin-bottom:20px;}
+.feedback-box{margin-top:22px;background:white;border-radius:20px;padding:24px;line-height:1.9;white-space:pre-wrap;border:1px solid #ead7c4;color:#444;}
+.feedback-title{font-size:22px;color:#5a3427;font-weight:800;margin-bottom:10px;}
+@media(max-width:768px){.container{padding:36px 5%;}h2{font-size:32px;}.card{padding:26px;}}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>Chinese Flow Lab</h1>
+  <a href="classroom.html">강의실로 돌아가기</a>
+</header>
+
+<div class="container">
+
+  <h2>맞춤형 연습</h2>
+  <p class="desc">
+    주제와 본인의 학습 프로필을 선택하면 유형에 맞는 맞춤형 연습문제가 제공됩니다.
+  </p>
+
+  <div class="card">
+    <h3>1단계. 주제 선택</h3>
+    <select id="topic">
+      <option value="">주제를 선택하세요</option>
+      <option value="school">주제 1. 학교생활</option>
+    </select>
+
+    <h3>2단계. 본인 학습 프로필 선택</h3>
+    <select id="type">
+      <option value="">학습 프로필을 선택하세요</option>
+      <option value="listening">문장 듣기 이해 보완형</option>
+      <option value="dictogloss">딕토글로스 보완형</option>
+      <option value="dictation">음성-문자 연결 보완형</option>
+      <option value="writing">의견 표현 확장형</option>
+      <option value="meaning">의미 재구성 보완형</option>
+      <option value="discourse">담화 확장형</option>
+      <option value="balanced">균형 발전형</option>
+    </select>
+
+    <button id="showBtn" class="btn">연습문제 보기</button>
+  </div>
+
+  <div id="practiceArea"></div>
+
+</div>
+
+<script>
+function showPractice(){
+  const topic = document.getElementById("topic").value;
+  const type = document.getElementById("type").value;
+  const area = document.getElementById("practiceArea");
+
+  if(topic !== "school"){
+    area.innerHTML = `<div class="card"><h3>안내</h3><p>현재는 주제 1. 학교생활만 제공됩니다.</p></div>`;
+    return;
   }
 
-  try {
-    const { writing } = req.body;
+  if(!type){
+    area.innerHTML = `<div class="card"><h3>안내</h3><p>학습 프로필을 선택해 주세요.</p></div>`;
+    return;
+  }
 
-    if (!writing || writing.trim() === "") {
-      return res.status(400).json({ error: "No writing text provided." });
-    }
+  const practices = {
 
-    const response = await fetch("https://api.openai.com/v1/responses", {
+listening: `
+<div class="card">
+  <div class="result-title">문장 듣기 이해 보완형 | 주제 1. 학교생활</div>
+  <div class="problem"><strong>1. 핵심 장소 고르기</strong><br>음성을 듣고 핵심 장소를 고르세요.<audio controls><source src="audio/school_listening_1.mp3" type="audio/mpeg"></audio><label><input type="radio" name="l1"> ① 食堂</label><label><input type="radio" name="l1"> ② 图书馆</label><label><input type="radio" name="l1"> ③ 宿舍</label></div>
+  <div class="problem"><strong>2. 핵심 활동 고르기</strong><br>음성을 듣고 학생이 무엇을 하는지 고르세요.<audio controls><source src="audio/school_listening_2.mp3" type="audio/mpeg"></audio><label><input type="radio" name="l2"> ① 复习考试</label><label><input type="radio" name="l2"> ② 吃午饭</label><label><input type="radio" name="l2"> ③ 打篮球</label></div>
+  <div class="problem"><strong>3. 시간 정보 찾기</strong><br>음성을 듣고 알맞은 시간을 고르세요.<audio controls><source src="audio/school_listening_3.mp3" type="audio/mpeg"></audio><label><input type="radio" name="l3"> ① 七点</label><label><input type="radio" name="l3"> ② 八点</label><label><input type="radio" name="l3"> ③ 九点</label></div>
+  <div class="problem"><strong>4. 내용 일치 문제</strong><br>음성을 듣고 내용과 일치하는 문장을 고르세요.<audio controls><source src="audio/school_listening_4.mp3" type="audio/mpeg"></audio><label><input type="radio" name="l4"> ① 他在宿舍休息。</label><label><input type="radio" name="l4"> ② 他去教室上课。</label><label><input type="radio" name="l4"> ③ 他在食堂学习。</label></div>
+  <div class="problem"><strong>5. 핵심어 쓰기</strong><br>음성을 듣고 들린 핵심 단어 2개를 한자로 쓰세요.<audio controls><source src="audio/school_listening_5.mp3" type="audio/mpeg"></audio><input type="text" placeholder="핵심어 2개 입력"></div>
+</div>
+`,
+
+dictogloss: `
+<div class="card">
+  <div class="result-title">딕토글로스 보완형 | 주제 1. 학교생활</div>
+  <div class="problem"><strong>1. 키워드 메모</strong><br>음성을 듣고 핵심어를 3개 적으세요.<audio controls><source src="audio/school_dictogloss_1.mp3" type="audio/mpeg"></audio><input type="text" placeholder="핵심어 3개"></div>
+  <div class="problem"><strong>2. 의미 재구성</strong><br>들은 내용을 한국어 또는 중국어로 다시 써보세요.<textarea></textarea></div>
+  <div class="problem"><strong>3. 문장 순서 배열</strong><br>다음 문장을 자연스러운 순서로 배열하세요.<br>A. 中午我去食堂吃饭。<br>B. 上午有两节中文课。<br>C. 下午我去图书馆复习。<br><input type="text" placeholder="예: B-A-C"></div>
+  <div class="problem"><strong>4. 빠진 정보 채우기</strong><br>그는 오전에 중국어 수업을 듣고, 점심에는 (　　　)에 갔으며, 오후에는 (　　　)에서 복습했다.<input type="text"></div>
+  <div class="problem"><strong>5. 짧은 요약문 쓰기</strong><br>학교생활 하루 일과를 2문장으로 요약하세요.<textarea></textarea></div>
+</div>
+`,
+
+dictation: `
+<div class="card">
+  <div class="result-title">음성-문자 연결 보완형 | 주제 1. 학교생활</div>
+  <div class="problem"><strong>1. 핵심 단어 받아쓰기</strong><br>음성을 듣고 한자로 쓰세요.<audio controls><source src="audio/school_word_1.mp3" type="audio/mpeg"></audio><input type="text" placeholder="한자로 입력"></div>
+  <div class="problem"><strong>2. 핵심 단어 받아쓰기</strong><br>음성을 듣고 한자로 쓰세요.<audio controls><source src="audio/school_word_2.mp3" type="audio/mpeg"></audio><input type="text" placeholder="한자로 입력"></div>
+  <div class="problem"><strong>3. 빈칸 받아쓰기</strong><br>음성을 듣고 빈칸을 채우세요.<audio controls><source src="audio/school_dictation_1.mp3" type="audio/mpeg"></audio>我下午去（　　　）复习考试。<input type="text" placeholder="빈칸 단어 입력"></div>
+  <div class="problem"><strong>4. Chunk 받아쓰기</strong><br>음성을 듣고 들린 구를 한자로 쓰세요.<audio controls><source src="audio/school_dictation_2.mp3" type="audio/mpeg"></audio><input type="text" placeholder="예: 去图书馆"></div>
+  <div class="problem"><strong>5. 문장 받아쓰기</strong><br>음성을 듣고 문장을 그대로 쓰세요.<audio controls><source src="audio/school_dictation_3.mp3" type="audio/mpeg"></audio><input type="text" placeholder="들은 문장 입력"></div>
+</div>
+`,
+
+writing: `
+<div class="card">
+  <div class="result-title">의견 표현 확장형 | 주제 1. 학교생활</div>
+  <div class="problem"><strong>1. 의견 제시</strong><br>중국 대학생활은 규율이 있는 편이라고 생각하는지 쓰세요.<textarea placeholder="我认为"></textarea></div>
+  <div class="problem"><strong>2. 이유 제시</strong><br>因为…所以… 구조를 사용하여 이유를 쓰세요.<textarea></textarea></div>
+  <div class="problem"><strong>3. 비교 표현</strong><br>한국 대학생활과 중국 대학생활의 차이를 한 가지 쓰세요.<textarea></textarea></div>
+  <div class="problem"><strong>4. 반대 의견 언급</strong><br>“但是…”를 사용하여 반대 의견을 한 문장 쓰세요.<textarea></textarea></div>
+  <div class="problem">
+    <strong>5. 짧은 의견문 + AI 피드백</strong><br>
+    중국 대학생활에 대해 5문장 정도의 짧은 의견문을 쓰세요.
+    <textarea id="writingText" placeholder="중국어로 5문장 정도 작성하세요."></textarea>
+    <button class="btn" type="button" onclick="getFeedback()">AI 피드백 받기</button>
+    <div id="feedbackResult" class="feedback-box">
+      <div class="feedback-title">AI 피드백 결과</div>
+      작성 후 버튼을 누르면 문법, 어휘, 표현, 담화 구성에 대한 피드백이 표시됩니다.
+    </div>
+  </div>
+</div>
+`,
+
+meaning: `
+<div class="card">
+  <div class="result-title">의미 재구성 보완형 | 주제 1. 학교생활</div>
+  <div class="problem"><strong>1. 문장 순서 배열</strong><br>A. 下午我去图书馆学习。<br>B. 今天上午有两节课。<br>C. 下课以后我去食堂吃饭。<br><input type="text" placeholder="예: B-C-A"></div>
+  <div class="problem"><strong>2. 핵심 의미 고르기</strong><br>“我下午去图书馆复习考试。”의 핵심 의미는?<label><input type="radio" name="m1"> ① 오후에 도서관에서 시험 공부를 한다.</label><label><input type="radio" name="m1"> ② 오후에 식당에서 밥을 먹는다.</label></div>
+  <div class="problem"><strong>3. 요약하기</strong><br>다음 단어를 사용해 하루 일과를 요약하세요: 上课 / 食堂 / 图书馆<textarea></textarea></div>
+  <div class="problem"><strong>4. 의미 연결</strong><br>다음 두 문장을 자연스럽게 연결하세요.<br>上午有两节课。下午去图书馆复习。<textarea></textarea></div>
+  <div class="problem"><strong>5. 다시 말하기</strong><br>“老师让我们分组讨论课堂内容。”를 쉬운 중국어로 바꾸어 써보세요.<textarea></textarea></div>
+</div>
+`,
+
+discourse: `
+<div class="card">
+  <div class="result-title">담화 확장형 | 주제 1. 학교생활</div>
+  <div class="problem"><strong>1. 연결어 사용하기</strong><br>아래 한국어 키워드를 참고하여 因为 / 所以 / 但是 중 두 개 이상을 사용해 3문장으로 쓰세요.<br><br>키워드: 중국 대학생활 / 기숙사 통금 / 규율 있는 생활<textarea placeholder="예: 因为中国大学宿舍有门禁，所以学生的生活比较有规律。"></textarea></div>
+  <div class="problem"><strong>2. 단락 확장하기</strong><br>다음 문장 뒤에 3문장을 더 이어 써서 하나의 짧은 단락을 완성하세요.<br><br>中国大学生活比较有规律。<textarea placeholder="이 문장 뒤에 3문장을 더 쓰세요."></textarea></div>
+  <div class="problem"><strong>3. 특징 설명 + 예시 들기</strong><br>중국 대학생활의 특징 중 하나는 <strong>기숙사 생활이 비교적 규율적이라는 점</strong>입니다.<br>이 특징을 설명하고, 구체적인 예시를 하나 들어 3~4문장으로 쓰세요.<textarea placeholder="예: 中国大学生大多住在宿舍。"></textarea></div>
+  <div class="problem"><strong>4. 비교 담화 쓰기</strong><br><strong>기숙사 문화</strong>를 기준으로 한국 대학생활과 중국 대학생활을 비교하는 짧은 단락을 쓰세요.<br>조건: 한국 1문장 + 중국 1문장 + 비교/정리 1문장<textarea placeholder="예: 韩国大学生과 中国大学生을 비교해 쓰세요."></textarea></div>
+  <div class="problem"><strong>5. 결론 문장 쓰기</strong><br>다음 내용을 바탕으로 <strong>因此</strong>를 사용하여 결론 문장을 쓰세요.<br><br>내용: 한국 대학생활은 비교적 자유롭고, 중국 대학생활은 비교적 규율적이다.<textarea placeholder="因此，"></textarea></div>
+</div>
+`,
+
+balanced: `
+<div class="card">
+  <div class="result-title">균형 발전형 | 주제 1. 학교생활</div>
+  <div class="problem"><strong>1. 심화 의견 쓰기</strong><br>중국 대학생활의 장단점을 5문장 이상으로 쓰세요.<textarea></textarea></div>
+  <div class="problem"><strong>2. 문화 비교 토론 준비</strong><br>“중국 대학생활은 한국 대학생활보다 규율적이다”에 대한 찬반 의견을 정리하세요.<textarea></textarea></div>
+  <div class="problem"><strong>3. 담화 재구성</strong><br>학교생활 하루 일과를 듣기 지문처럼 구성해 보세요.<textarea></textarea></div>
+  <div class="problem"><strong>4. 표현 확장</strong><br>食堂 / 宿舍 / 图书馆 / 复习 를 모두 사용하여 단락을 쓰세요.<textarea></textarea></div>
+  <div class="problem"><strong>5. 자유 작문</strong><br>본인의 대학생활과 중국 대학생활을 비교하여 자유롭게 쓰세요.<textarea></textarea></div>
+</div>
+`
+  };
+
+  area.innerHTML = practices[type] || `<div class="card"><h3>안내</h3><p>해당 유형의 연습문제가 없습니다.</p></div>`;
+}
+
+async function getFeedback(){
+  const writingBox = document.getElementById("writingText");
+  const resultBox = document.getElementById("feedbackResult");
+
+  if(!writingBox || !resultBox){
+    alert("AI 피드백 입력창을 찾을 수 없습니다.");
+    return;
+  }
+
+  const writing = writingBox.value.trim();
+
+  if(!writing){
+    resultBox.innerHTML = "중국어 작문을 먼저 입력해 주세요.";
+    return;
+  }
+
+  resultBox.innerHTML = "AI 피드백을 생성하는 중입니다. 잠시만 기다려 주세요.";
+
+  try{
+    const response = await fetch("/api/feedback", {
       method: "POST",
       headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${process.env.OPENAI_API_KEY}`
+        "Content-Type": "application/json"
       },
-      body: JSON.stringify({
-        model: "gpt-4.1-mini",
-        input: `
-You are an expert Chinese language teacher.
-
-The following text was written by a Korean learner of Chinese.
-
-Please provide feedback in Korean.
-
-Analyze the writing based on the following criteria:
-
-1. Grammar errors
-2. Vocabulary usage
-3. Naturalness of expression
-4. Discourse organization
-5. Strengths of the writing
-6. Suggested revision
-
-Please use this output format:
-
-## 문법
-...
-
-## 어휘
-...
-
-## 표현의 자연스러움
-...
-
-## 담화 구성
-...
-
-## 잘한 점
-...
-
-## 수정 예시
-...
-
-Student writing:
-${writing}
-        `
-      })
+      body: JSON.stringify({ writing })
     });
 
-    const data = await response.json();
+    const rawText = await response.text();
+    let data = {};
 
-    if (!response.ok) {
-      return res.status(response.status).json({
-        error: "OpenAI API error",
-        details: data
-      });
+    try{
+      data = JSON.parse(rawText);
+    }catch(parseError){
+      resultBox.innerHTML = "서버 응답을 읽지 못했습니다.<br><br>" + rawText;
+      return;
+    }
+
+    if(!response.ok){
+      resultBox.innerHTML =
+        "AI 피드백 생성 중 오류가 발생했습니다.<br><br>" +
+        "상태 코드: " + response.status + "<br>" +
+        "오류 내용: " + (data.error || data.details || rawText);
+      return;
     }
 
     const feedback =
+      data.feedback ||
       data.output_text ||
-      "AI 피드백을 생성하지 못했습니다.";
+      data.message ||
+      rawText ||
+      "피드백을 불러오지 못했습니다.";
 
-    return res.status(200).json({ feedback });
+    resultBox.innerText = feedback;
 
-  } catch (error) {
-    return res.status(500).json({
-      error: "Server error",
-      details: error.message
-    });
+  }catch(error){
+    resultBox.innerHTML =
+      "서버 연결 오류가 발생했습니다.<br><br>" +
+      error.message;
   }
 }
+
+document.getElementById("showBtn").addEventListener("click", showPractice);
+</script>
+
+</body>
+</html>
