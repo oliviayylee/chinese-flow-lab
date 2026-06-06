@@ -24,8 +24,8 @@ textarea,input[type="text"]{width:100%;box-sizing:border-box;padding:14px;border
 textarea{height:130px;}
 label{display:block;margin:12px 0;}
 .result-title{font-size:34px;color:#5a3427;margin-bottom:20px;}
-.feedback-box{margin-top:22px;background:white;border-radius:20px;padding:24px;line-height:1.9;white-space:pre-wrap;border:1px solid #ead7c4;color:#444;}
-.feedback-title{font-size:22px;color:#5a3427;font-weight:800;margin-bottom:10px;}
+.feedback-box{margin-top:18px;background:white;border-radius:18px;padding:20px;line-height:1.9;white-space:pre-wrap;border:1px solid #ead7c4;color:#444;}
+.feedback-title{font-size:20px;color:#5a3427;font-weight:800;margin-bottom:8px;}
 @media(max-width:768px){.container{padding:36px 5%;}h2{font-size:32px;}.card{padding:26px;}}
 </style>
 </head>
@@ -103,10 +103,10 @@ dictogloss: `
 <div class="card">
   <div class="result-title">딕토글로스 보완형 | 주제 1. 학교생활</div>
   <div class="problem"><strong>1. 키워드 메모</strong><br>음성을 듣고 핵심어를 3개 적으세요.<audio controls><source src="audio/school_dictogloss_1.mp3" type="audio/mpeg"></audio><input type="text" placeholder="핵심어 3개"></div>
-  <div class="problem"><strong>2. 의미 재구성</strong><br>들은 내용을 한국어 또는 중국어로 다시 써보세요.<textarea></textarea></div>
+  <div class="problem"><strong>2. 의미 재구성</strong><br>들은 내용을 한국어 또는 중국어로 다시 써보세요.<textarea class="ai-textarea" placeholder="들은 내용을 다시 구성해 보세요."></textarea></div>
   <div class="problem"><strong>3. 문장 순서 배열</strong><br>다음 문장을 자연스러운 순서로 배열하세요.<br>A. 中午我去食堂吃饭。<br>B. 上午有两节中文课。<br>C. 下午我去图书馆复习。<br><input type="text" placeholder="예: B-A-C"></div>
   <div class="problem"><strong>4. 빠진 정보 채우기</strong><br>그는 오전에 중국어 수업을 듣고, 점심에는 (　　　)에 갔으며, 오후에는 (　　　)에서 복습했다.<input type="text"></div>
-  <div class="problem"><strong>5. 짧은 요약문 쓰기</strong><br>학교생활 하루 일과를 2문장으로 요약하세요.<textarea></textarea></div>
+  <div class="problem"><strong>5. 짧은 요약문 쓰기</strong><br>학교생활 하루 일과를 2문장으로 요약하세요.<textarea class="ai-textarea" placeholder="중국어 또는 한국어로 요약해 보세요."></textarea></div>
 </div>
 `,
 
@@ -124,61 +124,11 @@ dictation: `
 writing: `
 <div class="card">
   <div class="result-title">의견 표현 확장형 | 주제 1. 학교생활</div>
-
-  <div class="problem">
-    <strong>1. 의견 제시 + AI 피드백</strong><br>
-    중국 대학생활은 규율이 있는 편이라고 생각하는지 쓰세요.
-    <textarea id="writingText1" placeholder="我认为"></textarea>
-    <button class="btn" type="button" onclick="getFeedbackById('writingText1','feedbackResult1')">AI 피드백 받기</button>
-    <div id="feedbackResult1" class="feedback-box">
-      <div class="feedback-title">AI 피드백 결과</div>
-      작성 후 버튼을 누르면 피드백이 표시됩니다.
-    </div>
-  </div>
-
-  <div class="problem">
-    <strong>2. 이유 제시 + AI 피드백</strong><br>
-    因为…所以… 구조를 사용하여 이유를 쓰세요.
-    <textarea id="writingText2" placeholder="因为...所以..."></textarea>
-    <button class="btn" type="button" onclick="getFeedbackById('writingText2','feedbackResult2')">AI 피드백 받기</button>
-    <div id="feedbackResult2" class="feedback-box">
-      <div class="feedback-title">AI 피드백 결과</div>
-      작성 후 버튼을 누르면 피드백이 표시됩니다.
-    </div>
-  </div>
-
-  <div class="problem">
-    <strong>3. 비교 표현 + AI 피드백</strong><br>
-    한국 대학생활과 중국 대학생활의 차이를 한 가지 쓰세요.
-    <textarea id="writingText3" placeholder="韩国大学生活... 中国大学生活..."></textarea>
-    <button class="btn" type="button" onclick="getFeedbackById('writingText3','feedbackResult3')">AI 피드백 받기</button>
-    <div id="feedbackResult3" class="feedback-box">
-      <div class="feedback-title">AI 피드백 결과</div>
-      작성 후 버튼을 누르면 피드백이 표시됩니다.
-    </div>
-  </div>
-
-  <div class="problem">
-    <strong>4. 반대 의견 언급 + AI 피드백</strong><br>
-    “但是…”를 사용하여 반대 의견을 한 문장 쓰세요.
-    <textarea id="writingText4" placeholder="但是..."></textarea>
-    <button class="btn" type="button" onclick="getFeedbackById('writingText4','feedbackResult4')">AI 피드백 받기</button>
-    <div id="feedbackResult4" class="feedback-box">
-      <div class="feedback-title">AI 피드백 결과</div>
-      작성 후 버튼을 누르면 피드백이 표시됩니다.
-    </div>
-  </div>
-
-  <div class="problem">
-    <strong>5. 짧은 의견문 + AI 피드백</strong><br>
-    중국 대학생활에 대해 5문장 정도의 짧은 의견문을 쓰세요.
-    <textarea id="writingText5" placeholder="중국어로 5문장 정도 작성하세요."></textarea>
-    <button class="btn" type="button" onclick="getFeedbackById('writingText5','feedbackResult5')">AI 피드백 받기</button>
-    <div id="feedbackResult5" class="feedback-box">
-      <div class="feedback-title">AI 피드백 결과</div>
-      작성 후 버튼을 누르면 문법, 어휘, 표현, 담화 구성에 대한 피드백이 표시됩니다.
-    </div>
-  </div>
+  <div class="problem"><strong>1. 의견 제시</strong><br>중국 대학생활은 규율이 있는 편이라고 생각하는지 쓰세요.<textarea class="ai-textarea" placeholder="我认为..."></textarea></div>
+  <div class="problem"><strong>2. 이유 제시</strong><br>因为…所以… 구조를 사용하여 이유를 쓰세요.<textarea class="ai-textarea" placeholder="因为...所以..."></textarea></div>
+  <div class="problem"><strong>3. 비교 표현</strong><br>한국 대학생활과 중국 대학생활의 차이를 한 가지 쓰세요.<textarea class="ai-textarea" placeholder="韩国大学生活... 中国大学生活..."></textarea></div>
+  <div class="problem"><strong>4. 반대 의견 언급</strong><br>“但是…”를 사용하여 반대 의견을 한 문장 쓰세요.<textarea class="ai-textarea" placeholder="但是..."></textarea></div>
+  <div class="problem"><strong>5. 짧은 의견문</strong><br>중국 대학생활에 대해 5문장 정도의 짧은 의견문을 쓰세요.<textarea class="ai-textarea" placeholder="중국어로 5문장 정도 작성하세요."></textarea></div>
 </div>
 `,
 
@@ -187,48 +137,68 @@ meaning: `
   <div class="result-title">의미 재구성 보완형 | 주제 1. 학교생활</div>
   <div class="problem"><strong>1. 문장 순서 배열</strong><br>A. 下午我去图书馆学习。<br>B. 今天上午有两节课。<br>C. 下课以后我去食堂吃饭。<br><input type="text" placeholder="예: B-C-A"></div>
   <div class="problem"><strong>2. 핵심 의미 고르기</strong><br>“我下午去图书馆复习考试。”의 핵심 의미는?<label><input type="radio" name="m1"> ① 오후에 도서관에서 시험 공부를 한다.</label><label><input type="radio" name="m1"> ② 오후에 식당에서 밥을 먹는다.</label></div>
-  <div class="problem"><strong>3. 요약하기</strong><br>다음 단어를 사용해 하루 일과를 요약하세요: 上课 / 食堂 / 图书馆<textarea></textarea></div>
-  <div class="problem"><strong>4. 의미 연결</strong><br>다음 두 문장을 자연스럽게 연결하세요.<br>上午有两节课。下午去图书馆复习。<textarea></textarea></div>
-  <div class="problem"><strong>5. 다시 말하기</strong><br>“老师让我们分组讨论课堂内容。”를 쉬운 중국어로 바꾸어 써보세요.<textarea></textarea></div>
+  <div class="problem"><strong>3. 요약하기</strong><br>다음 단어를 사용해 하루 일과를 요약하세요: 上课 / 食堂 / 图书馆<textarea class="ai-textarea" placeholder="요약문을 작성하세요."></textarea></div>
+  <div class="problem"><strong>4. 의미 연결</strong><br>다음 두 문장을 자연스럽게 연결하세요.<br>上午有两节课。下午去图书馆复习。<textarea class="ai-textarea" placeholder="두 문장을 자연스럽게 연결해 보세요."></textarea></div>
+  <div class="problem"><strong>5. 다시 말하기</strong><br>“老师让我们分组讨论课堂内容。”를 쉬운 중국어로 바꾸어 써보세요.<textarea class="ai-textarea" placeholder="쉬운 중국어로 다시 써보세요."></textarea></div>
 </div>
 `,
 
 discourse: `
 <div class="card">
   <div class="result-title">담화 확장형 | 주제 1. 학교생활</div>
-  <div class="problem"><strong>1. 연결어 사용하기</strong><br>아래 한국어 키워드를 참고하여 因为 / 所以 / 但是 중 두 개 이상을 사용해 3문장으로 쓰세요.<br><br>키워드: 중국 대학생활 / 기숙사 통금 / 규율 있는 생활<textarea placeholder="예: 因为中国大学宿舍有门禁，所以学生的生活比较有规律。"></textarea></div>
-  <div class="problem"><strong>2. 단락 확장하기</strong><br>다음 문장 뒤에 3문장을 더 이어 써서 하나의 짧은 단락을 완성하세요.<br><br>中国大学生活比较有规律。<textarea placeholder="이 문장 뒤에 3문장을 더 쓰세요."></textarea></div>
-  <div class="problem"><strong>3. 특징 설명 + 예시 들기</strong><br>중국 대학생활의 특징 중 하나는 <strong>기숙사 생활이 비교적 규율적이라는 점</strong>입니다.<br>이 특징을 설명하고, 구체적인 예시를 하나 들어 3~4문장으로 쓰세요.<textarea placeholder="예: 中国大学生大多住在宿舍。"></textarea></div>
-  <div class="problem"><strong>4. 비교 담화 쓰기</strong><br><strong>기숙사 문화</strong>를 기준으로 한국 대학생활과 중국 대학생활을 비교하는 짧은 단락을 쓰세요.<br>조건: 한국 1문장 + 중국 1문장 + 비교/정리 1문장<textarea placeholder="예: 韩国大学生과 中国大学生을 비교해 쓰세요."></textarea></div>
-  <div class="problem"><strong>5. 결론 문장 쓰기</strong><br>다음 내용을 바탕으로 <strong>因此</strong>를 사용하여 결론 문장을 쓰세요.<br><br>내용: 한국 대학생활은 비교적 자유롭고, 중국 대학생활은 비교적 규율적이다.<textarea placeholder="因此，"></textarea></div>
+  <div class="problem"><strong>1. 연결어 사용하기</strong><br>아래 한국어 키워드를 참고하여 因为 / 所以 / 但是 중 두 개 이상을 사용해 3문장으로 쓰세요.<br><br>키워드: 중국 대학생활 / 기숙사 통금 / 규율 있는 생활<textarea class="ai-textarea" placeholder="예: 因为中国大学宿舍有门禁，所以学生的生活比较有规律。"></textarea></div>
+  <div class="problem"><strong>2. 단락 확장하기</strong><br>다음 문장 뒤에 3문장을 더 이어 써서 하나의 짧은 단락을 완성하세요.<br><br>中国大学生活比较有规律。<textarea class="ai-textarea" placeholder="이 문장 뒤에 3문장을 더 쓰세요."></textarea></div>
+  <div class="problem"><strong>3. 특징 설명 + 예시 들기</strong><br>중국 대학생활의 특징 중 하나는 <strong>기숙사 생활이 비교적 규율적이라는 점</strong>입니다.<br>이 특징을 설명하고, 구체적인 예시를 하나 들어 3~4문장으로 쓰세요.<textarea class="ai-textarea" placeholder="예: 中国大学生大多住在宿舍。"></textarea></div>
+  <div class="problem"><strong>4. 비교 담화 쓰기</strong><br><strong>기숙사 문화</strong>를 기준으로 한국 대학생활과 중국 대학생활을 비교하는 짧은 단락을 쓰세요.<br>조건: 한국 1문장 + 중국 1문장 + 비교/정리 1문장<textarea class="ai-textarea" placeholder="예: 韩国大学生과 中国大学生을 비교해 쓰세요."></textarea></div>
+  <div class="problem"><strong>5. 결론 문장 쓰기</strong><br>다음 내용을 바탕으로 <strong>因此</strong>를 사용하여 결론 문장을 쓰세요.<br><br>내용: 한국 대학생활은 비교적 자유롭고, 중국 대학생활은 비교적 규율적이다.<textarea class="ai-textarea" placeholder="因此，"></textarea></div>
 </div>
 `,
 
 balanced: `
 <div class="card">
   <div class="result-title">균형 발전형 | 주제 1. 학교생활</div>
-  <div class="problem"><strong>1. 심화 의견 쓰기</strong><br>중국 대학생활의 장단점을 5문장 이상으로 쓰세요.<textarea></textarea></div>
-  <div class="problem"><strong>2. 문화 비교 토론 준비</strong><br>“중국 대학생활은 한국 대학생활보다 규율적이다”에 대한 찬반 의견을 정리하세요.<textarea></textarea></div>
-  <div class="problem"><strong>3. 담화 재구성</strong><br>학교생활 하루 일과를 듣기 지문처럼 구성해 보세요.<textarea></textarea></div>
-  <div class="problem"><strong>4. 표현 확장</strong><br>食堂 / 宿舍 / 图书馆 / 复习 를 모두 사용하여 단락을 쓰세요.<textarea></textarea></div>
-  <div class="problem"><strong>5. 자유 작문</strong><br>본인의 대학생활과 중국 대학생활을 비교하여 자유롭게 쓰세요.<textarea></textarea></div>
+  <div class="problem"><strong>1. 심화 의견 쓰기</strong><br>중국 대학생활의 장단점을 5문장 이상으로 쓰세요.<textarea class="ai-textarea" placeholder="장단점을 작성하세요."></textarea></div>
+  <div class="problem"><strong>2. 문화 비교 토론 준비</strong><br>“중국 대학생활은 한국 대학생활보다 규율적이다”에 대한 찬반 의견을 정리하세요.<textarea class="ai-textarea" placeholder="찬성 또는 반대 의견을 정리하세요."></textarea></div>
+  <div class="problem"><strong>3. 담화 재구성</strong><br>학교생활 하루 일과를 듣기 지문처럼 구성해 보세요.<textarea class="ai-textarea" placeholder="듣기 지문처럼 구성해 보세요."></textarea></div>
+  <div class="problem"><strong>4. 표현 확장</strong><br>食堂 / 宿舍 / 图书馆 / 复习 를 모두 사용하여 단락을 쓰세요.<textarea class="ai-textarea" placeholder="제시어를 모두 사용하여 작성하세요."></textarea></div>
+  <div class="problem"><strong>5. 자유 작문</strong><br>본인의 대학생활과 중국 대학생활을 비교하여 자유롭게 쓰세요.<textarea class="ai-textarea" placeholder="자유롭게 비교 작문을 작성하세요."></textarea></div>
 </div>
 `
   };
 
   area.innerHTML = practices[type] || `<div class="card"><h3>안내</h3><p>해당 유형의 연습문제가 없습니다.</p></div>`;
+
+  attachAIFeedbackButtons();
 }
 
-async function getFeedbackById(textareaId, resultId){
-  const writingBox = document.getElementById(textareaId);
-  const resultBox = document.getElementById(resultId);
+function attachAIFeedbackButtons(){
+  const textareas = document.querySelectorAll("#practiceArea textarea.ai-textarea");
 
-  if(!writingBox || !resultBox){
-    alert("AI 피드백 입력창을 찾을 수 없습니다.");
-    return;
-  }
+  textareas.forEach((textarea, index) => {
+    const wrapper = document.createElement("div");
 
-  const writing = writingBox.value.trim();
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "btn";
+    button.innerText = "AI 피드백 받기";
+
+    const feedbackBox = document.createElement("div");
+    feedbackBox.className = "feedback-box";
+    feedbackBox.innerHTML = `<div class="feedback-title">AI 피드백 결과</div>작성 후 버튼을 누르면 피드백이 표시됩니다.`;
+
+    button.addEventListener("click", async () => {
+      await getFeedback(textarea, feedbackBox);
+    });
+
+    wrapper.appendChild(button);
+    wrapper.appendChild(feedbackBox);
+
+    textarea.insertAdjacentElement("afterend", wrapper);
+  });
+}
+
+async function getFeedback(textarea, resultBox){
+  const writing = textarea.value.trim();
 
   if(!writing){
     resultBox.innerText = "중국어 작문을 먼저 입력해 주세요.";
@@ -265,3 +235,4 @@ document.getElementById("showBtn").addEventListener("click", showPractice);
 
 </body>
 </html>
+ 
