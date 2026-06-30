@@ -100,14 +100,40 @@ nav a{
   margin:0 0 24px;
 }
 
-.course-card a{
+.button-group{
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+  margin-top:24px;
+}
+
+.primary-btn,
+.secondary-btn{
   display:inline-block;
-  background:#0b4dcc;
-  color:white;
   padding:13px 22px;
   border-radius:999px;
   font-weight:800;
   text-decoration:none;
+  transition:.25s;
+}
+
+.primary-btn{
+  background:#0b4dcc;
+  color:white;
+}
+
+.primary-btn:hover{
+  background:#073ca4;
+}
+
+.secondary-btn{
+  background:white;
+  color:#0b4dcc;
+  border:2px solid #0b4dcc;
+}
+
+.secondary-btn:hover{
+  background:#eef5ff;
 }
 
 .coming-soon{
@@ -182,7 +208,11 @@ footer{
         플립드러닝, 받아쓰기, 딕토글로스, AI 쓰기 활동을 통해
         중국어 듣기·쓰기 능력과 문해력을 함께 향상시키는 교과목입니다.
       </p>
-      <a href="lecture.html">강의실 입장 →</a>
+
+      <div class="button-group">
+        <a href="pretest.html" class="secondary-btn">📋 수업 사전진단</a>
+        <a href="lecture.html" class="primary-btn">🎓 강의실 입장</a>
+      </div>
     </section>
 
     <section class="course-card disabled">
