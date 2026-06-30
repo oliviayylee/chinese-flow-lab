@@ -3,68 +3,124 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>사전 진단 | Chinese Flow Lab</title>
+<title>수업 사전진단 | Chinese Flow Lab</title>
 
 <style>
 body{
   margin:0;
   font-family:"Pretendard","Noto Sans KR",sans-serif;
-  background:#f6f1ea;
-  color:#2f241d;
+  background:#f7f9fc;
+  color:#172033;
 }
 
 header{
-  background:#3c2b22;
-  color:white;
-  padding:24px 8%;
+  background:white;
+  padding:20px 7%;
   display:flex;
   justify-content:space-between;
   align-items:center;
+  box-shadow:0 2px 12px rgba(0,0,0,.05);
+  position:sticky;
+  top:0;
+  z-index:10;
 }
 
 header h1{
   margin:0;
-  font-size:28px;
+  font-size:24px;
+  color:#0b1f4d;
 }
 
 header a{
-  color:white;
+  color:#0b4dcc;
   text-decoration:none;
-  opacity:.85;
+  font-weight:800;
+}
+
+.hero{
+  padding:70px 8% 45px;
+  text-align:center;
+  background:linear-gradient(135deg,#0b4dcc,#2f7cf6);
+  color:white;
+}
+
+.hero h2{
+  font-size:48px;
+  margin:0 0 14px;
+}
+
+.hero p{
+  font-size:18px;
+  line-height:1.8;
+  color:#eaf1ff;
+  margin:0;
 }
 
 .container{
-  padding:50px 8%;
+  max-width:1050px;
+  margin:auto;
+  padding:48px 6% 80px;
 }
 
 .panel{
   background:white;
   border-radius:28px;
-  padding:36px;
-  box-shadow:0 10px 24px rgba(0,0,0,.08);
+  padding:38px;
+  border:1px solid #e1e9f5;
+  box-shadow:0 8px 24px rgba(15,35,80,.08);
 }
 
-h2{
-  font-size:38px;
-  color:#5a3427;
-  margin-top:0;
-}
-
-h3{
-  margin-top:40px;
-  color:#6f432a;
+.section-title{
+  margin-top:46px;
+  padding:16px 20px;
+  background:#eef5ff;
+  color:#0b4dcc;
+  border-left:6px solid #0b4dcc;
+  border-radius:16px;
+  font-size:24px;
 }
 
 .question{
-  background:#faf6f2;
-  border-radius:20px;
-  padding:22px;
+  background:#fbfdff;
+  border:1px solid #e1e9f5;
+  border-radius:22px;
+  padding:24px;
   margin:18px 0;
 }
 
 .question p{
-  font-weight:700;
+  font-weight:800;
   line-height:1.8;
+  color:#102a64;
+}
+
+.audio-row{
+  display:flex;
+  gap:12px;
+  align-items:center;
+  flex-wrap:wrap;
+  margin:14px 0 18px;
+}
+
+.play-btn{
+  background:#0b4dcc;
+  color:white;
+  border:none;
+  padding:11px 20px;
+  border-radius:999px;
+  font-weight:800;
+  cursor:pointer;
+}
+
+.play-btn:disabled{
+  background:#d5dce8;
+  color:#777;
+  cursor:not-allowed;
+}
+
+.play-count{
+  color:#4c5870;
+  font-weight:700;
 }
 
 label{
@@ -75,8 +131,8 @@ label{
 
 input[type="text"]{
   width:100%;
-  padding:12px;
-  border:1px solid #ddd;
+  padding:13px;
+  border:1px solid #d7e1f0;
   border-radius:12px;
   font-size:16px;
   margin-top:10px;
@@ -85,9 +141,9 @@ input[type="text"]{
 
 textarea{
   width:100%;
-  height:160px;
+  height:170px;
   padding:14px;
-  border:1px solid #ddd;
+  border:1px solid #d7e1f0;
   border-radius:12px;
   font-size:16px;
   line-height:1.8;
@@ -95,52 +151,65 @@ textarea{
   box-sizing:border-box;
 }
 
-button{
-  background:linear-gradient(135deg,#9d5a3d,#6f432a);
+.submit-btn{
+  background:#0b4dcc;
   color:white;
   border:none;
   padding:16px 34px;
   border-radius:999px;
   font-size:16px;
-  font-weight:700;
+  font-weight:800;
   cursor:pointer;
-  margin-top:20px;
+  margin-top:26px;
+}
+
+.submit-btn:hover{
+  background:#073ca4;
 }
 
 .result{
   margin-top:30px;
-  background:#fff7f1;
+  background:#eef5ff;
+  border-left:6px solid #0b4dcc;
   border-radius:20px;
   padding:24px;
   line-height:1.9;
-  color:#5a3427;
+  color:#102a64;
   font-weight:700;
 }
 
 .profile-btn{
   display:inline-block;
   margin-top:26px;
-  background:linear-gradient(135deg,#9d5a3d,#6f432a);
-  color:white;
+  background:white;
+  color:#0b4dcc;
+  border:2px solid #0b4dcc;
   text-decoration:none;
   padding:14px 28px;
   border-radius:999px;
-  font-weight:700;
+  font-weight:800;
 }
 
-audio{
-  width:100%;
-  margin:24px 0;
+footer{
+  text-align:center;
+  padding:34px;
+  color:#6b7486;
+  background:white;
+  border-top:1px solid #e1e9f5;
 }
 
 @media(max-width:768px){
-
-  .container{
-    padding:36px 5%;
+  header{
+    flex-direction:column;
+    gap:14px;
   }
 
-  h2{
-    font-size:32px;
+  .hero h2{
+    font-size:36px;
+  }
+
+  .container{
+    padding:34px 5% 70px;
   }
 
   .panel{
@@ -154,206 +223,197 @@ audio{
 
 <header>
   <h1>Chinese Flow Lab</h1>
-  <a href="classroom.html">강의실로 돌아가기</a>
+  <a href="courses.html">← 강의실 선택</a>
 </header>
 
+<section class="hero">
+  <h2>수업 사전진단</h2>
+  <p>
+    중급 중국어 듣기와 쓰기 수업을 시작하기 전에<br>
+    듣기·딕토글로스·받아쓰기·쓰기 능력을 확인합니다.
+  </p>
+</section>
+
 <div class="container">
+<div class="panel">
 
-  <div class="panel">
+<form id="pretestForm">
 
-    <h2>사전 진단</h2>
+<h3 class="section-title">기본 정보</h3>
 
-    <p>
-      본 평가는 중급 중국어 듣기와 쓰기 수업을 위한 사전 진단입니다.<br>
-      결과는 학습 프로필 및 맞춤형 학습 추천에 활용됩니다.
-    </p>
-
-    <audio controls>
-      <source src="audio/pretest.mp3" type="audio/mpeg">
-    </audio>
-
-    <form id="pretestForm">
-
-      <h3>기본 정보</h3>
-
-      <div class="question">
-        <p>학과</p>
-        <input type="text" id="department">
-      </div>
-
-      <div class="question">
-        <p>학번</p>
-        <input type="text" id="studentId">
-      </div>
-
-      <div class="question">
-        <p>이름</p>
-        <input type="text" id="studentName">
-      </div>
-
-      <h3>一、문장 듣기 이해</h3>
-
-      <div class="question">
-        <p>1. 他们可能在哪儿？</p>
-        <label><input type="radio" name="q1"> ① 家里</label>
-        <label><input type="radio" name="q1"> ② 车里</label>
-        <label><input type="radio" name="q1"> ③ 店里</label>
-      </div>
-
-      <div class="question">
-        <p>2. 现在男的觉得怎么样？</p>
-        <label><input type="radio" name="q2"> ① 累极了</label>
-        <label><input type="radio" name="q2"> ② 想睡觉</label>
-        <label><input type="radio" name="q2"> ③ 还可以</label>
-      </div>
-
-      <div class="question">
-        <p>3. 女的是什么意思？</p>
-        <label><input type="radio" name="q3"> ① 她很累</label>
-        <label><input type="radio" name="q3"> ② 她不知道玩什么</label>
-        <label><input type="radio" name="q3"> ③ 她玩得不多</label>
-      </div>
-
-      <div class="question">
-        <p>4. 昨晚怎么了？</p>
-        <label><input type="radio" name="q4"> ① 下雨了</label>
-        <label><input type="radio" name="q4"> ② 下雪了</label>
-        <label><input type="radio" name="q4"> ③ 刮风了</label>
-      </div>
-
-      <div class="question">
-        <p>5. 对话可能发生在什么地方？</p>
-        <label><input type="radio" name="q5"> ① 机场</label>
-        <label><input type="radio" name="q5"> ② 宾馆</label>
-        <label><input type="radio" name="q5"> ③ 学校</label>
-      </div>
-
-      <div class="question">
-        <p>6. 大卫现在在哪儿？</p>
-        <label><input type="radio" name="q6"> ① 在机场里</label>
-        <label><input type="radio" name="q6"> ② 在家里</label>
-        <label><input type="radio" name="q6"> ③ 在路上</label>
-      </div>
-
-      <div class="question">
-        <p>7. 女的在韩国玩几个地方？</p>
-        <label><input type="radio" name="q7"> ① 4个</label>
-        <label><input type="radio" name="q7"> ② 3个</label>
-        <label><input type="radio" name="q7"> ③ 2个</label>
-      </div>
-
-      <div class="question">
-        <p>8. 男的这次是第几次来上海？</p>
-        <label><input type="radio" name="q8"> ① 第一次</label>
-        <label><input type="radio" name="q8"> ② 第二次</label>
-        <label><input type="radio" name="q8"> ③ 第三次</label>
-      </div>
-
-      <div class="question">
-        <p>9. 他们原来想做什么？</p>
-        <label><input type="radio" name="q9"> ① 看电影</label>
-        <label><input type="radio" name="q9"> ② 爬山</label>
-        <label><input type="radio" name="q9"> ③ 吃饭</label>
-      </div>
-
-      <div class="question">
-        <p>10. 女的没去过哪儿？</p>
-        <label><input type="radio" name="q10"> ① 青岛</label>
-        <label><input type="radio" name="q10"> ② 天津</label>
-        <label><input type="radio" name="q10"> ③ 黄山</label>
-      </div>
-
-      <h3>二、딕토글로스</h3>
-
-      <div class="question">
-        <p>11. （　　）的（　　）很冷。</p>
-        <input type="text" id="q11">
-      </div>
-
-      <div class="question">
-        <p>12. 时间不早了，（　　）去（　　）比较好。</p>
-        <input type="text" id="q12">
-      </div>
-
-      <div class="question">
-        <p>13. 我虽然（　　）说得不太好，但常常去（　　），认识到不少中国朋友。</p>
-        <input type="text" id="q13">
-      </div>
-
-      <div class="question">
-        <p>14. 去（　　）得花一个多小时，他建议今天还是去（　　）比较好。</p>
-        <input type="text" id="q14">
-      </div>
-
-      <div class="question">
-        <p>15. 我（　　）花（　　）去海南岛玩一次。</p>
-        <input type="text" id="q15">
-      </div>
-
-      <h3>三、받아쓰기</h3>
-
-      <div class="question">
-        <p>16. 들은 문장을 그대로 쓰시오.</p>
-        <input type="text" id="q16">
-      </div>
-
-      <div class="question">
-        <p>17. 들은 문장을 그대로 쓰시오.</p>
-        <input type="text" id="q17">
-      </div>
-
-      <div class="question">
-        <p>18. 들은 문장을 그대로 쓰시오.</p>
-        <input type="text" id="q18">
-      </div>
-
-      <div class="question">
-        <p>19. 들은 문장을 그대로 쓰시오.</p>
-        <input type="text" id="q19">
-      </div>
-
-      <div class="question">
-        <p>20. 들은 문장을 그대로 쓰시오.</p>
-        <input type="text" id="q20">
-      </div>
-
-      <h3>四、의견제시형 글쓰기</h3>
-
-      <div class="question">
-        <p>21. 你觉得旅行跟团好还是自由行好？为什么？</p>
-
-        <textarea id="q21"></textarea>
-      </div>
-
-      <button type="button" onclick="checkPretest()">
-        제출하기
-      </button>
-
-    </form>
-
-    <div id="result" class="result" style="display:none;"></div>
-
-    <a href="profile.html" class="profile-btn">
-      학습 프로필 보기 →
-    </a>
-
-  </div>
-
+<div class="question">
+  <p>학과</p>
+  <input type="text" id="department">
 </div>
 
+<div class="question">
+  <p>학번</p>
+  <input type="text" id="studentId">
+</div>
+
+<div class="question">
+  <p>이름</p>
+  <input type="text" id="studentName">
+</div>
+
+<h3 class="section-title">一、문장 듣기 이해</h3>
+
+<div id="listening"></div>
+
+<h3 class="section-title">二、딕토글로스</h3>
+
+<div id="dictogloss"></div>
+
+<h3 class="section-title">三、받아쓰기</h3>
+
+<div id="dictation"></div>
+
+<h3 class="section-title">四、의견제시형 글쓰기</h3>
+
+<div class="question">
+  <p>21. 你觉得旅行跟团好还是自由行好？为什么？</p>
+  <textarea id="q21"></textarea>
+</div>
+
+<button type="button" class="submit-btn" onclick="checkPretest()">제출하기</button>
+
+</form>
+
+<div id="result" class="result" style="display:none;"></div>
+
+<a href="profile.html" class="profile-btn">학습 프로필 보기 →</a>
+
+</div>
+</div>
+
+<footer>
+  © 2026 Chinese Flow Lab
+</footer>
+
 <script>
+const listeningQuestions = [
+  ["他们可能在哪儿？", ["① 家里","② 车里","③ 店里"]],
+  ["现在男的觉得怎么样？", ["① 累极了","② 想睡觉","③ 还可以"]],
+  ["女的是什么意思？", ["① 她很累","② 她不知道玩什么","③ 她玩得不多"]],
+  ["昨晚怎么了？", ["① 下雨了","② 下雪了","③ 刮风了"]],
+  ["对话可能发生在什么地方？", ["① 机场","② 宾馆","③ 学校"]],
+  ["大卫现在在哪儿？", ["① 在机场里","② 在家里","③ 在路上"]],
+  ["女的在韩国玩几个地方？", ["① 4个","② 3个","③ 2个"]],
+  ["男的这次是第几次来上海？", ["① 第一次","② 第二次","③ 第三次"]],
+  ["他们原来想做什么？", ["① 看电影","② 爬山","③ 吃饭"]],
+  ["女的没去过哪儿？", ["① 青岛","② 天津","③ 黄山"]]
+];
+
+const dictoglossQuestions = [
+  "11. （　　）的（　　）很冷。",
+  "12. 时间不早了，（　　）去（　　）比较好。",
+  "13. 我虽然（　　）说得不太好，但常常去（　　），认识到不少中国朋友。",
+  "14. 去（　　）得花一个多小时，他建议今天还是去（　　）比较好。",
+  "15. 我（　　）花（　　）去海南岛玩一次。"
+];
+
+const dictationQuestions = [
+  "16. 들은 문장을 그대로 쓰시오.",
+  "17. 들은 문장을 그대로 쓰시오.",
+  "18. 들은 문장을 그대로 쓰시오.",
+  "19. 들은 문장을 그대로 쓰시오.",
+  "20. 들은 문장을 그대로 쓰시오."
+];
+
+function audioBlock(num){
+  const id = String(num).padStart(2,"0");
+  return `
+    <div class="audio-row">
+      <button type="button" class="play-btn" onclick="playLimited('audio${id}', 'count${id}', this)">
+        ▶ 음원 재생
+      </button>
+      <span class="play-count" id="count${id}">0 / 2회 재생</span>
+      <audio id="audio${id}" preload="none">
+        <source src="audio/pretest/q${id}.mp3" type="audio/mpeg">
+      </audio>
+    </div>
+  `;
+}
+
+function renderQuestions(){
+  const listeningDiv = document.getElementById("listening");
+
+  listeningQuestions.forEach((q, index) => {
+    const num = index + 1;
+    listeningDiv.innerHTML += `
+      <div class="question">
+        <p>${num}. ${q[0]}</p>
+        ${audioBlock(num)}
+        ${q[1].map((option, i) => `
+          <label>
+            <input type="radio" name="q${num}" value="${i}">
+            ${option}
+          </label>
+        `).join("")}
+      </div>
+    `;
+  });
+
+  const dictoglossDiv = document.getElementById("dictogloss");
+
+  dictoglossQuestions.forEach((q, index) => {
+    const num = index + 11;
+    dictoglossDiv.innerHTML += `
+      <div class="question">
+        <p>${q}</p>
+        ${audioBlock(num)}
+        <input type="text" id="q${num}">
+      </div>
+    `;
+  });
+
+  const dictationDiv = document.getElementById("dictation");
+
+  dictationQuestions.forEach((q, index) => {
+    const num = index + 16;
+    dictationDiv.innerHTML += `
+      <div class="question">
+        <p>${q}</p>
+        ${audioBlock(num)}
+        <input type="text" id="q${num}">
+      </div>
+    `;
+  });
+}
+
+renderQuestions();
+
+const playCounts = {};
+const maxPlay = 2;
+
+function playLimited(audioId, countId, button){
+  if(!playCounts[audioId]){
+    playCounts[audioId] = 0;
+  }
+
+  if(playCounts[audioId] >= maxPlay){
+    alert("음원은 최대 2회까지만 재생할 수 있습니다.");
+    return;
+  }
+
+  const audio = document.getElementById(audioId);
+  audio.currentTime = 0;
+  audio.play();
+
+  playCounts[audioId]++;
+
+  document.getElementById(countId).innerText =
+    playCounts[audioId] + " / 2회 재생";
+
+  if(playCounts[audioId] >= maxPlay){
+    button.disabled = true;
+    button.innerText = "재생 완료";
+  }
+}
 
 const choiceAnswers = {
-  q1:1,
-  q2:2,
-  q3:2,
-  q4:1,
-  q5:1,
-  q6:2,
-  q7:1,
-  q8:1,
-  q9:1,
-  q10:2
+  q1:1, q2:2, q3:2, q4:1, q5:1,
+  q6:2, q7:1, q8:1, q9:1, q10:2
 };
 
 const textAnswers = {
@@ -370,57 +430,39 @@ const textAnswers = {
 };
 
 function normalize(text){
-
   return text
-  .replaceAll(" ","")
-  .replaceAll("　","")
-  .replaceAll("。","")
-  .replaceAll("，","")
-  .replaceAll("？","")
-  .replaceAll("?","")
-  .replaceAll("東","东")
-  .replaceAll("漢","汉")
-  .replaceAll("語","语")
-  .replaceAll("説","说")
-  .replaceAll("長","长")
-  .replaceAll("塊","块")
-  .trim();
+    .replaceAll(" ","")
+    .replaceAll("　","")
+    .replaceAll("。","")
+    .replaceAll("，","")
+    .replaceAll("？","")
+    .replaceAll("?","")
+    .replaceAll("東","东")
+    .replaceAll("漢","汉")
+    .replaceAll("語","语")
+    .replaceAll("説","说")
+    .replaceAll("長","长")
+    .replaceAll("塊","块")
+    .trim();
 }
 
 function getChoiceScore(q){
-
-  const selected =
-  document.querySelector(`input[name="${q}"]:checked`);
-
+  const selected = document.querySelector(`input[name="${q}"]:checked`);
   if(!selected) return 0;
-
-  const options =
-  Array.from(document.querySelectorAll(`input[name="${q}"]`));
-
-  return options.indexOf(selected) === choiceAnswers[q]
-  ? 1 : 0;
+  return Number(selected.value) === choiceAnswers[q] ? 1 : 0;
 }
 
 function getTextScore(id){
-
-  const value =
-  normalize(document.getElementById(id).value);
-
-  const answers =
-  textAnswers[id].map(normalize);
+  const value = normalize(document.getElementById(id).value);
+  const answers = textAnswers[id].map(normalize);
 
   if(id >= "q11" && id <= "q15"){
-
     let score = 0;
-
     answers.forEach(ans => {
-
       if(value.includes(ans)){
         score += 0.5;
       }
-
     });
-
     return score;
   }
 
@@ -428,31 +470,18 @@ function getTextScore(id){
 }
 
 function checkWriting(){
+  const text = document.getElementById("q21").value.trim();
+  if(text.length === 0) return 0;
 
-  const text =
-  document.getElementById("q21").value.trim();
+  const count = text.split(/[。！？!?]/)
+    .filter(s => s.trim().length > 0).length;
 
-  if(text.length === 0){
-    return 0;
-  }
-
-  const count =
-  text.split(/[。！？!?]/)
-  .filter(s => s.trim().length > 0).length;
-
-  if(count >= 5){
-    return 5;
-  }
-
-  if(count >= 3){
-    return 3;
-  }
-
+  if(count >= 5) return 5;
+  if(count >= 3) return 3;
   return 1;
 }
 
 function checkPretest(){
-
   let listening = 0;
   let dictogloss = 0;
   let dictation = 0;
@@ -497,55 +526,17 @@ function checkPretest(){
   localStorage.setItem("weakest", weakest);
 
   document.getElementById("result").style.display = "block";
-
   document.getElementById("result").innerHTML = `
     <p>제출이 완료되었습니다.</p>
-
     <p>문장 듣기 이해: ${listening}/10</p>
-
     <p>딕토글로스: ${dictogloss}/5</p>
-
     <p>받아쓰기: ${dictation}/5</p>
-
     <p>의견제시형 글쓰기: ${writing}/5</p>
-
     <p>우선 보완 영역: ${weakest}</p>
-
-    <p>
-      아래의 <strong>학습 프로필 보기</strong>를 눌러
-      맞춤형 학습 추천을 확인하세요.
-    </p>
+    <p>아래의 <strong>학습 프로필 보기</strong>를 눌러 맞춤형 학습 추천을 확인하세요.</p>
   `;
 }
-
 </script>
 
 </body>
 </html>
-
-
- 
-
-
-   
-       
-    
-     
-  
-
- 
-
-  
-
-    
- 
-
-
-  
-
-
-
-
-
-
- 
