@@ -6,215 +6,35 @@
 <title>수업 사전진단 | Chinese Flow Lab</title>
 
 <style>
-body{
-  margin:0;
-  font-family:"Pretendard","Noto Sans KR",sans-serif;
-  background:#f7f9fc;
-  color:#172033;
-}
-
-header{
-  background:white;
-  padding:20px 7%;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  box-shadow:0 2px 12px rgba(0,0,0,.05);
-  position:sticky;
-  top:0;
-  z-index:10;
-}
-
-header h1{
-  margin:0;
-  font-size:24px;
-  color:#0b1f4d;
-}
-
-header a{
-  color:#0b4dcc;
-  text-decoration:none;
-  font-weight:800;
-}
-
-.hero{
-  padding:70px 8% 45px;
-  text-align:center;
-  background:linear-gradient(135deg,#0b4dcc,#2f7cf6);
-  color:white;
-}
-
-.hero h2{
-  font-size:48px;
-  margin:0 0 14px;
-}
-
-.hero p{
-  font-size:18px;
-  line-height:1.8;
-  color:#eaf1ff;
-  margin:0;
-}
-
-.container{
-  max-width:1050px;
-  margin:auto;
-  padding:48px 6% 80px;
-}
-
-.panel{
-  background:white;
-  border-radius:28px;
-  padding:38px;
-  border:1px solid #e1e9f5;
-  box-shadow:0 8px 24px rgba(15,35,80,.08);
-}
-
-.section-title{
-  margin-top:46px;
-  padding:16px 20px;
-  background:#eef5ff;
-  color:#0b4dcc;
-  border-left:6px solid #0b4dcc;
-  border-radius:16px;
-  font-size:24px;
-}
-
-.question{
-  background:#fbfdff;
-  border:1px solid #e1e9f5;
-  border-radius:22px;
-  padding:24px;
-  margin:18px 0;
-}
-
-.question p{
-  font-weight:800;
-  line-height:1.8;
-  color:#102a64;
-}
-
-.audio-row{
-  display:flex;
-  gap:12px;
-  align-items:center;
-  flex-wrap:wrap;
-  margin:14px 0 18px;
-}
-
-.play-btn{
-  background:#0b4dcc;
-  color:white;
-  border:none;
-  padding:11px 20px;
-  border-radius:999px;
-  font-weight:800;
-  cursor:pointer;
-}
-
-.play-btn:disabled{
-  background:#d5dce8;
-  color:#777;
-  cursor:not-allowed;
-}
-
-.play-count{
-  color:#4c5870;
-  font-weight:700;
-}
-
-label{
-  display:block;
-  margin:10px 0;
-  line-height:1.8;
-}
-
-input[type="text"]{
-  width:100%;
-  padding:13px;
-  border:1px solid #d7e1f0;
-  border-radius:12px;
-  font-size:16px;
-  margin-top:10px;
-  box-sizing:border-box;
-}
-
-textarea{
-  width:100%;
-  height:170px;
-  padding:14px;
-  border:1px solid #d7e1f0;
-  border-radius:12px;
-  font-size:16px;
-  line-height:1.8;
-  margin-top:10px;
-  box-sizing:border-box;
-}
-
-.submit-btn{
-  background:#0b4dcc;
-  color:white;
-  border:none;
-  padding:16px 34px;
-  border-radius:999px;
-  font-size:16px;
-  font-weight:800;
-  cursor:pointer;
-  margin-top:26px;
-}
-
-.submit-btn:hover{
-  background:#073ca4;
-}
-
-.result{
-  margin-top:30px;
-  background:#eef5ff;
-  border-left:6px solid #0b4dcc;
-  border-radius:20px;
-  padding:24px;
-  line-height:1.9;
-  color:#102a64;
-  font-weight:700;
-}
-
-.profile-btn{
-  display:inline-block;
-  margin-top:26px;
-  background:white;
-  color:#0b4dcc;
-  border:2px solid #0b4dcc;
-  text-decoration:none;
-  padding:14px 28px;
-  border-radius:999px;
-  font-weight:800;
-}
-
-footer{
-  text-align:center;
-  padding:34px;
-  color:#6b7486;
-  background:white;
-  border-top:1px solid #e1e9f5;
-}
-
+body{margin:0;font-family:"Pretendard","Noto Sans KR",sans-serif;background:#f7f9fc;color:#172033;}
+header{background:white;padding:20px 7%;display:flex;justify-content:space-between;align-items:center;box-shadow:0 2px 12px rgba(0,0,0,.05);position:sticky;top:0;z-index:10;}
+header h1{margin:0;font-size:24px;color:#0b1f4d;}
+header a{color:#0b4dcc;text-decoration:none;font-weight:800;}
+.hero{padding:70px 8% 45px;text-align:center;background:linear-gradient(135deg,#0b4dcc,#2f7cf6);color:white;}
+.hero h2{font-size:48px;margin:0 0 14px;}
+.hero p{font-size:18px;line-height:1.8;color:#eaf1ff;margin:0;}
+.container{max-width:1050px;margin:auto;padding:48px 6% 80px;}
+.panel{background:white;border-radius:28px;padding:38px;border:1px solid #e1e9f5;box-shadow:0 8px 24px rgba(15,35,80,.08);}
+.section-title{margin-top:46px;padding:16px 20px;background:#eef5ff;color:#0b4dcc;border-left:6px solid #0b4dcc;border-radius:16px;font-size:24px;}
+.question{background:#fbfdff;border:1px solid #e1e9f5;border-radius:22px;padding:24px;margin:18px 0;}
+.question p{font-weight:800;line-height:1.8;color:#102a64;}
+.audio-row{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin:14px 0 18px;}
+.play-btn{background:#0b4dcc;color:white;border:none;padding:11px 20px;border-radius:999px;font-weight:800;cursor:pointer;}
+.play-btn:disabled{background:#d5dce8;color:#777;cursor:not-allowed;}
+.play-count{color:#4c5870;font-weight:700;}
+label{display:block;margin:10px 0;line-height:1.8;}
+input[type="text"]{width:100%;padding:13px;border:1px solid #d7e1f0;border-radius:12px;font-size:16px;margin-top:10px;box-sizing:border-box;}
+textarea{width:100%;height:170px;padding:14px;border:1px solid #d7e1f0;border-radius:12px;font-size:16px;line-height:1.8;margin-top:10px;box-sizing:border-box;}
+.submit-btn{background:#0b4dcc;color:white;border:none;padding:16px 34px;border-radius:999px;font-size:16px;font-weight:800;cursor:pointer;margin-top:26px;}
+.submit-btn:hover{background:#073ca4;}
+.result{margin-top:30px;background:#eef5ff;border-left:6px solid #0b4dcc;border-radius:20px;padding:24px;line-height:1.9;color:#102a64;font-weight:700;}
+.profile-btn{display:inline-block;margin-top:26px;background:white;color:#0b4dcc;border:2px solid #0b4dcc;text-decoration:none;padding:14px 28px;border-radius:999px;font-weight:800;}
+footer{text-align:center;padding:34px;color:#6b7486;background:white;border-top:1px solid #e1e9f5;}
 @media(max-width:768px){
-  header{
-    flex-direction:column;
-    gap:14px;
-  }
-
-  .hero h2{
-    font-size:36px;
-  }
-
-  .container{
-    padding:34px 5% 70px;
-  }
-
-  .panel{
-    padding:24px;
-  }
+  header{flex-direction:column;gap:14px;}
+  .hero h2{font-size:36px;}
+  .container{padding:34px 5% 70px;}
+  .panel{padding:24px;}
 }
 </style>
 </head>
@@ -257,15 +77,12 @@ footer{
 </div>
 
 <h3 class="section-title">一、문장 듣기 이해</h3>
-
 <div id="listening"></div>
 
 <h3 class="section-title">二、딕토글로스</h3>
-
 <div id="dictogloss"></div>
 
 <h3 class="section-title">三、받아쓰기</h3>
-
 <div id="dictation"></div>
 
 <h3 class="section-title">四、의견제시형 글쓰기</h3>
@@ -322,14 +139,17 @@ const dictationQuestions = [
 
 function audioBlock(num){
   const id = String(num).padStart(2,"0");
+
   return `
     <div class="audio-row">
       <button type="button" class="play-btn" onclick="playLimited('audio${id}', 'count${id}', this)">
         ▶ 음원 재생
       </button>
+
       <span class="play-count" id="count${id}">0 / 2회 재생</span>
+
       <audio id="audio${id}" preload="none">
-        <source src="audio/pretest/q${id}.mp3" type="audio/mpeg">
+        <source src="audio/pretest/q${id}.mp4" type="audio/mp4">
       </audio>
     </div>
   `;
@@ -340,6 +160,7 @@ function renderQuestions(){
 
   listeningQuestions.forEach((q, index) => {
     const num = index + 1;
+
     listeningDiv.innerHTML += `
       <div class="question">
         <p>${num}. ${q[0]}</p>
@@ -358,6 +179,7 @@ function renderQuestions(){
 
   dictoglossQuestions.forEach((q, index) => {
     const num = index + 11;
+
     dictoglossDiv.innerHTML += `
       <div class="question">
         <p>${q}</p>
@@ -371,6 +193,7 @@ function renderQuestions(){
 
   dictationQuestions.forEach((q, index) => {
     const num = index + 16;
+
     dictationDiv.innerHTML += `
       <div class="question">
         <p>${q}</p>
@@ -397,8 +220,12 @@ function playLimited(audioId, countId, button){
   }
 
   const audio = document.getElementById(audioId);
+
   audio.currentTime = 0;
-  audio.play();
+
+  audio.play().catch(() => {
+    alert("음원이 재생되지 않습니다. 파일 경로나 확장자를 확인해 주세요.");
+  });
 
   playCounts[audioId]++;
 
@@ -471,6 +298,7 @@ function getTextScore(id){
 
 function checkWriting(){
   const text = document.getElementById("q21").value.trim();
+
   if(text.length === 0) return 0;
 
   const count = text.split(/[。！？!?]/)
@@ -526,6 +354,7 @@ function checkPretest(){
   localStorage.setItem("weakest", weakest);
 
   document.getElementById("result").style.display = "block";
+
   document.getElementById("result").innerHTML = `
     <p>제출이 완료되었습니다.</p>
     <p>문장 듣기 이해: ${listening}/10</p>
@@ -535,6 +364,11 @@ function checkPretest(){
     <p>우선 보완 영역: ${weakest}</p>
     <p>아래의 <strong>학습 프로필 보기</strong>를 눌러 맞춤형 학습 추천을 확인하세요.</p>
   `;
+
+  window.scrollTo({
+    top: document.getElementById("result").offsetTop - 100,
+    behavior: "smooth"
+  });
 }
 </script>
 
