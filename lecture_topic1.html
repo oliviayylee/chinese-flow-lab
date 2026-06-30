@@ -6,27 +6,219 @@
 <title>주제 1. 학교생활 | Chinese Flow Lab</title>
 
 <style>
-body{margin:0;font-family:"Pretendard","Noto Sans KR",sans-serif;background:#f6f1ea;color:#2f241d;}
-header{background:#3c2b22;color:white;padding:24px 8%;display:flex;justify-content:space-between;align-items:center;}
-header h1{margin:0;font-size:28px;}
-header a{color:white;text-decoration:none;opacity:.85;}
-.container{padding:60px 8%;}
-.video-card{background:white;border-radius:32px;padding:40px;box-shadow:0 10px 30px rgba(0,0,0,.08);}
-.badge{display:inline-block;background:#f2e4db;color:#8a4d33;padding:10px 18px;border-radius:999px;font-size:14px;font-weight:600;margin-bottom:18px;}
-.video-card h2{margin:0 0 16px;font-size:42px;color:#4a2d1f;}
-.desc{font-size:18px;line-height:1.8;color:#666;margin-bottom:36px;}
-.video-wrapper{position:relative;width:100%;padding-bottom:56.25%;border-radius:24px;overflow:hidden;background:black;}
-.video-wrapper iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:0;}
-.info-box{margin-top:30px;}
-.info-item{background:#faf6f2;border-radius:24px;padding:28px;}
-.info-item h4{margin:0 0 14px;color:#8a4d33;font-size:22px;}
-.info-item p{margin:0;line-height:1.9;color:#555;font-size:17px;}
-.quiz-box{margin-top:42px;background:#faf6f2;border-radius:28px;padding:34px;}
-.quiz-box h3{margin-top:0;font-size:30px;color:#5a3427;}
-.quiz-box p{color:#666;line-height:1.8;margin-bottom:28px;}
-.quiz-btn,.back-btn{display:inline-block;background:linear-gradient(135deg,#9d5a3d,#6f432a);color:white;text-decoration:none;padding:16px 32px;border-radius:999px;font-weight:700;box-shadow:0 6px 14px rgba(111,67,42,.25);}
-.back-btn{margin-top:40px;}
-@media(max-width:768px){.container{padding:34px 5%;}.video-card{padding:24px;}.video-card h2{font-size:30px;}.desc{font-size:16px;}.quiz-box{padding:24px;}}
+body{
+  margin:0;
+  font-family:"Pretendard","Noto Sans KR",sans-serif;
+  background:#f7f9fc;
+  color:#172033;
+}
+
+header{
+  background:white;
+  padding:20px 7%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  box-shadow:0 2px 12px rgba(0,0,0,.05);
+  position:sticky;
+  top:0;
+  z-index:10;
+}
+
+header h1{
+  margin:0;
+  font-size:24px;
+  color:#0b1f4d;
+}
+
+header a{
+  color:#0b4dcc;
+  text-decoration:none;
+  font-weight:700;
+}
+
+.hero{
+  padding:70px 8% 45px;
+  text-align:center;
+  background:linear-gradient(135deg,#0b4dcc,#2f7cf6);
+  color:white;
+}
+
+.hero h2{
+  font-size:48px;
+  margin:0 0 14px;
+}
+
+.hero p{
+  font-size:19px;
+  line-height:1.8;
+  color:#eaf1ff;
+  margin:0;
+}
+
+.container{
+  max-width:1050px;
+  margin:auto;
+  padding:48px 6% 80px;
+}
+
+.video-card{
+  background:white;
+  border-radius:28px;
+  padding:38px;
+  border:1px solid #e1e9f5;
+  box-shadow:0 8px 24px rgba(15,35,80,.08);
+}
+
+.badge{
+  display:inline-block;
+  background:#eef5ff;
+  color:#0b4dcc;
+  padding:10px 18px;
+  border-radius:999px;
+  font-size:14px;
+  font-weight:800;
+  margin-bottom:18px;
+}
+
+.video-card h3{
+  margin:0 0 16px;
+  font-size:36px;
+  color:#102a64;
+}
+
+.desc{
+  font-size:17px;
+  line-height:1.8;
+  color:#4c5870;
+  margin-bottom:34px;
+}
+
+.video-wrapper{
+  position:relative;
+  width:100%;
+  padding-bottom:56.25%;
+  border-radius:24px;
+  overflow:hidden;
+  background:black;
+}
+
+.video-wrapper iframe{
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  border:0;
+}
+
+.info-box{
+  margin-top:30px;
+}
+
+.info-item{
+  background:#eef5ff;
+  border-left:6px solid #0b4dcc;
+  border-radius:20px;
+  padding:28px;
+}
+
+.info-item h4{
+  margin:0 0 14px;
+  color:#0b4dcc;
+  font-size:22px;
+}
+
+.info-item p{
+  margin:0;
+  line-height:1.9;
+  color:#46546b;
+  font-size:17px;
+}
+
+.quiz-box{
+  margin-top:42px;
+  background:white;
+  border:1px solid #e1e9f5;
+  border-radius:24px;
+  padding:34px;
+  box-shadow:0 8px 24px rgba(15,35,80,.08);
+}
+
+.quiz-box h3{
+  margin-top:0;
+  font-size:30px;
+  color:#102a64;
+}
+
+.quiz-box p{
+  color:#4c5870;
+  line-height:1.8;
+  margin-bottom:28px;
+}
+
+.quiz-btn,
+.back-btn{
+  display:inline-block;
+  background:#0b4dcc;
+  color:white;
+  text-decoration:none;
+  padding:15px 30px;
+  border-radius:999px;
+  font-weight:800;
+}
+
+.quiz-btn:hover,
+.back-btn:hover{
+  background:#073ca4;
+}
+
+.back-btn{
+  margin-top:36px;
+}
+
+footer{
+  text-align:center;
+  padding:34px;
+  color:#6b7486;
+  background:white;
+  border-top:1px solid #e1e9f5;
+}
+
+@media(max-width:768px){
+  header{
+    flex-direction:column;
+    gap:14px;
+  }
+
+  .hero h2{
+    font-size:36px;
+  }
+
+  .hero p{
+    font-size:16px;
+  }
+
+  .container{
+    padding:34px 5% 70px;
+  }
+
+  .video-card{
+    padding:24px;
+  }
+
+  .video-card h3{
+    font-size:30px;
+  }
+
+  .desc{
+    font-size:16px;
+  }
+
+  .quiz-box{
+    padding:24px;
+  }
+}
 </style>
 </head>
 
@@ -34,19 +226,27 @@ header a{color:white;text-decoration:none;opacity:.85;}
 
 <header>
   <h1>Chinese Flow Lab</h1>
-  <a href="classroom.html">강의실로 돌아가기</a>
+  <a href="lecture.html">← 플립드러닝 목록</a>
 </header>
+
+<section class="hero">
+  <h2>주제 1. 학교생활</h2>
+  <p>
+    중국 대학생들의 학교생활과 관련된 표현을 학습합니다.<br>
+    영상을 시청한 후 핵심 표현과 학습 내용을 정리해 보세요.
+  </p>
+</section>
 
 <div class="container">
   <div class="video-card">
 
     <div class="badge">Flipped Learning</div>
 
-    <h2>주제 1. 학교생활</h2>
+    <h3>학교생활</h3>
 
     <p class="desc">
-      중국 대학생들의 학교생활과 관련된 표현을 학습합니다.<br>
-      영상을 시청한 후 핵심 표현과 학습 내용을 정리해 보세요.
+      중국 대학생들의 학교생활과 관련된 배경지식, 핵심 어휘,
+      어법 표현을 학습합니다.
     </p>
 
     <div class="video-wrapper">
@@ -71,24 +271,25 @@ header a{color:white;text-decoration:none;opacity:.85;}
     <div class="quiz-box">
       <h3>영상 학습 확인</h3>
       <p>
-        영상을 시청한 후<br>
-        핵심 내용을 확인해 보세요. <br>
+        영상을 시청한 후 핵심 내용을 확인해 보세요.<br>
         제출 결과는 자동 저장되며, 학습 프로필 분석에 활용됩니다.
       </p>
 
       <a href="https://docs.google.com/forms/d/e/1FAIpQLScB-B_hzjn8iuXVte9x8LzaxRQklo8RrxD2GGFrL8i20OnJcw/viewform?usp=publish-editor"
          target="_blank"
          class="quiz-btn">
-        확인하기 </a>
+        확인하기 →
+      </a>
     </div>
 
-    <a href="classroom.html" class="back-btn">← 강의실로 돌아가기</a>
+    <a href="lecture.html" class="back-btn">← 플립드러닝 목록으로 돌아가기</a>
 
   </div>
 </div>
 
+<footer>
+  © 2026 Chinese Flow Lab
+</footer>
+
 </body>
 </html>
-
- 
-      
