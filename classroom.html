@@ -3,102 +3,158 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>중급 중국어 듣기와 쓰기 | Chinese Flow Lab</title>
+<title>Learning Track | Chinese Flow Lab</title>
 
 <style>
 body{
   margin:0;
   font-family:"Pretendard","Noto Sans KR",sans-serif;
-  background:#f6f1ea;
-  color:#2f241d;
+  background:#f7f9fc;
+  color:#172033;
 }
 
 header{
-  background:#3c2b22;
-  color:white;
-  padding:24px 8%;
+  background:white;
+  padding:20px 7%;
   display:flex;
   justify-content:space-between;
   align-items:center;
+  box-shadow:0 2px 12px rgba(0,0,0,.05);
+  position:sticky;
+  top:0;
+  z-index:10;
 }
 
 header h1{
   margin:0;
-  font-size:28px;
+  font-size:24px;
+  color:#0b1f4d;
 }
 
-header a{
-  color:white;
+nav a{
+  margin-left:24px;
+  color:#0b4dcc;
   text-decoration:none;
-  opacity:.85;
+  font-weight:700;
+}
+
+.hero{
+  padding:80px 8% 50px;
+  text-align:center;
+  background:linear-gradient(135deg,#eef5ff,#ffffff);
+}
+
+.hero h2{
+  font-size:52px;
+  margin:0 0 16px;
+  color:#071a44;
+}
+
+.hero p{
+  font-size:20px;
+  line-height:1.8;
+  color:#4c5870;
+  margin:0;
 }
 
 .container{
-  padding:60px 8%;
+  max-width:1180px;
+  margin:auto;
+  padding:48px 6% 80px;
 }
 
-.title{
-  margin-bottom:36px;
+.main-card{
+  background:#0b4dcc;
+  color:white;
+  border-radius:30px;
+  padding:42px;
+  margin-bottom:28px;
+  box-shadow:0 12px 28px rgba(11,77,204,.22);
 }
 
-.title h2{
-  font-size:42px;
-  margin:0;
-  color:#4a2d1f;
+.main-card h3{
+  font-size:34px;
+  margin:0 0 12px;
 }
 
-.grid{
+.main-card p{
+  font-size:18px;
+  line-height:1.8;
+  margin:0 0 26px;
+  color:#eaf1ff;
+}
+
+.btn{
+  display:inline-block;
+  background:white;
+  color:#0b4dcc;
+  padding:14px 24px;
+  border-radius:999px;
+  text-decoration:none;
+  font-weight:800;
+}
+
+.card-grid{
   display:grid;
   grid-template-columns:repeat(2,1fr);
-  gap:32px;
+  gap:24px;
 }
 
 .card{
   background:white;
-  border-radius:32px;
-  padding:46px 40px;
-  box-shadow:0 10px 30px rgba(0,0,0,.08);
-  min-height:220px;
+  border-radius:26px;
+  padding:32px;
+  border:1px solid #e1e9f5;
+  box-shadow:0 8px 24px rgba(15,35,80,.08);
 }
 
-.icon{
-  font-size:46px;
-  margin-bottom:22px;
+.card .icon{
+  font-size:38px;
+  margin-bottom:14px;
 }
 
 .card h3{
-  font-size:30px;
-  margin:0 0 28px;
-  color:#5a3427;
+  font-size:26px;
+  margin:0 0 12px;
+  color:#102a64;
 }
 
-.card-btn{
-  display:inline-block;
-  background:linear-gradient(135deg,#9d5a3d,#6f432a);
-  color:white;
+.card p{
+  font-size:16.5px;
+  line-height:1.8;
+  color:#4c5870;
+  margin:0 0 22px;
+}
+
+.card a{
+  color:#0b4dcc;
+  font-weight:800;
   text-decoration:none;
-  padding:14px 28px;
-  border-radius:999px;
-  font-weight:700;
-  box-shadow:0 6px 14px rgba(111,67,42,.25);
 }
 
-@media(max-width:768px){
-  .container{
-    padding:36px 5%;
-  }
+.note{
+  margin-top:42px;
+  background:#fff8ef;
+  border:1px solid #f2d1a8;
+  border-radius:24px;
+  padding:28px;
+  color:#5a4b3f;
+  line-height:1.8;
+}
 
-  .title h2{
-    font-size:32px;
-  }
+footer{
+  text-align:center;
+  padding:34px;
+  color:#6b7486;
+  background:white;
+  border-top:1px solid #e1e9f5;
+}
 
-  .grid{
-    grid-template-columns:1fr;
-  }
-
-  .card{
-    padding:32px 28px;
-  }
+@media(max-width:820px){
+  .hero h2{font-size:38px;}
+  .card-grid{grid-template-columns:1fr;}
+  header{flex-direction:column;gap:14px;}
+  nav a{margin:0 10px;}
 }
 </style>
 </head>
@@ -107,45 +163,87 @@ header a{
 
 <header>
   <h1>Chinese Flow Lab</h1>
-  <a href="courses.html">과목 선택으로</a>
+  <nav>
+    <a href="about.html">About</a>
+    <a href="learning.html">Learning Track</a>
+    <a href="research.html">Research Track</a>
+  </nav>
 </header>
+
+<section class="hero">
+  <h2>Learning Track</h2>
+  <p>
+    Chinese Flow Lab의 학습공간입니다.<br>
+    강의실, 문해력 진단, 맞춤형 읽기, AI 쓰기, 학습 기록을 한곳에서 관리합니다.
+  </p>
+</section>
 
 <div class="container">
 
-  <div class="title">
-    <h2>중급 중국어 듣기와 쓰기</h2>
-  </div>
+  <section class="main-card">
+    <h3>🏫 강의실</h3>
+    <p>
+      수강 중인 과목으로 입장하여 주차별 학습자료, 플립드러닝 영상,
+      받아쓰기, 딕토글로스, 쓰기 활동을 확인합니다.
+    </p>
+    <a class="btn" href="classroom.html">강의실 입장 →</a>
+  </section>
 
-  <div class="grid">
+  <div class="card-grid">
 
-    <div class="card">
+    <section class="card">
       <div class="icon">📋</div>
-      <h3>사전 진단</h3>
-      <a href="pretest.html" class="card-btn">진단 시작하기</a>
-    </div>
+      <h3>문해력 진단</h3>
+      <p>
+        중국어 읽기와 쓰기 능력을 진단하고,
+        학습자의 현재 수준과 보완점을 확인합니다.
+      </p>
+      <a href="assessment.html">진단 시작 →</a>
+    </section>
 
-    <div class="card">
-      <div class="icon">📊</div>
-      <h3>학습 프로필</h3>
-      <a href="profile.html" class="card-btn">프로필 보기</a>
-    </div>
+    <section class="card">
+      <div class="icon">📖</div>
+      <h3>맞춤형 읽기</h3>
+      <p>
+        학습자의 수준과 관심사에 따라
+        뉴스, 에세이, 대화문, HSK 읽기 자료를 추천합니다.
+      </p>
+      <a href="reading.html">읽기 시작 →</a>
+    </section>
 
-    <div class="card">
-      <div class="icon">🎥</div>
-      <h3>플립드러닝 영상</h3>
-      <a href="lecture.html" class="card-btn">강의 보러가기</a>
-    </div>
-
-    <div class="card">
+    <section class="card">
       <div class="icon">✍️</div>
-      <h3>맞춤형 연습</h3>
-      <a href="practice.html" class="card-btn">연습 시작하기</a>
-    </div>
+      <h3>AI 쓰기 스튜디오</h3>
+      <p>
+        초안 작성, AI 피드백, 수정, 최종본 제출 과정을 기록하며
+        중국어 쓰기 능력을 발전시킵니다.
+      </p>
+      <a href="writing.html">쓰기 시작 →</a>
+    </section>
+
+    <section class="card">
+      <div class="icon">📊</div>
+      <h3>학습 대시보드</h3>
+      <p>
+        학습 기록, 읽기 추천 이력, 쓰기 수정 과정,
+        AI 피드백 기록을 확인합니다.
+      </p>
+      <a href="dashboard.html">대시보드 보기 →</a>
+    </section>
 
   </div>
+
+  <section class="note">
+    <strong>Learning Flow</strong><br>
+    강의실에서 수업을 듣고, 문해력 진단을 통해 수준을 확인한 뒤,
+    맞춤형 읽기와 AI 쓰기 스튜디오를 활용하여 읽기·쓰기 능력을 확장합니다.
+  </section>
 
 </div>
 
+<footer>
+  © 2026 Chinese Flow Lab
+</footer>
+
 </body>
 </html>
-
