@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Chinese Flow Lab | Research Track</title>
+
+<style>
+
+*{
+box-sizing:border-box;
+}
+
+body{
+margin:0;
+font-family:"Pretendard","Noto Sans KR",sans-serif;
+background:#f6f1ea;
+color:#2f241d;
+}
+
+.hero{
+background:linear-gradient(135deg,#6f432a,#b37b5a);
+padding:90px 10%;
+color:white;
+text-align:center;
+}
+
+.hero h1{
+font-size:54px;
+margin:0 0 16px;
+}
+
+.hero p{
+font-size:22px;
+opacity:.95;
+margin:0;
+}
+
+.container{
+max-width:1200px;
+margin:auto;
+padding:70px 8%;
+}
+
+.intro{
+text-align:center;
+margin-bottom:50px;
+}
+
+.intro h2{
+font-size:34px;
+color:#6f432a;
+margin-bottom:16px;
+}
+
+.intro p{
+font-size:18px;
+line-height:1.8;
+color:#66564b;
+max-width:760px;
+margin:auto;
+}
+
+.research-grid{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:30px;
+}
+
+.research-card{
+background:white;
+padding:42px;
+border-radius:28px;
+box-shadow:0 10px 25px rgba(0,0,0,.08);
+display:flex;
+flex-direction:column;
+min-height:370px;
+transition:.25s ease;
+}
+
+.research-card:hover{
+transform:translateY(-5px);
+box-shadow:0 16px 35px rgba(0,0,0,.12);
+}
+
+.track-label{
+font-size:15px;
+font-weight:700;
+letter-spacing:.08em;
+color:#b37b5a;
+margin-bottom:12px;
+}
+
+.research-card h2{
+font-size:32px;
+color:#6f432a;
+margin:0 0 18px;
+}
+
+.research-card p{
+font-size:18px;
+line-height:1.8;
+color:#59493f;
+}
+
+.features{
+margin:20px 0 10px;
+padding:0;
+list-style:none;
+}
+
+.features li{
+padding:7px 0;
+font-size:16px;
+color:#6b5b50;
+}
+
+.features li::before{
+content:"•";
+color:#b37b5a;
+font-weight:bold;
+margin-right:10px;
+}
+
+.btn{
+display:inline-block;
+align-self:flex-start;
+padding:17px 32px;
+border-radius:999px;
+text-decoration:none;
+font-weight:700;
+font-size:17px;
+background:#e98c73;
+color:white;
+margin-top:auto;
+}
+
+.btn:hover{
+opacity:.9;
+}
+
+footer{
+text-align:center;
+padding:45px;
+color:#777;
+}
+
+@media(max-width:800px){
+
+.hero{
+padding:65px 8%;
+}
+
+.hero h1{
+font-size:42px;
+}
+
+.hero p{
+font-size:19px;
+}
+
+.research-grid{
+grid-template-columns:1fr;
+}
+
+.container{
+padding:50px 6%;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<section class="hero">
+<h1>Research Track</h1>
+<p>중국어 학습 과정 데이터 기반 연구</p>
+</section>
+
+<main class="container">
+
+<section class="intro">
+<h2>Research Areas</h2>
+<p>
+Chinese Flow Lab의 Research Track은 중국어 학습 과정에서 생성되는
+데이터를 수집하고 분석하여 학습자의 언어 처리 과정과 AI 활용 양상을
+연구하기 위한 공간입니다.
+</p>
+</section>
+
+<section class="research-grid">
+
+<!-- Reading Research -->
+<div class="research-card">
+
+<div class="track-label">READING RESEARCH</div>
+
+<h2>중국어 읽기 과정 및 인지 연구</h2>
+
+<p>
+학습자의 읽기 수행 과정에서 생성되는 데이터를 수집하고,
+언어학적 복잡성과 연계하여 읽기 과정의 인지적 특성과
+학습자별 취약 영역을 분석합니다.
+</p>
+
+<ul class="features">
+<li>Self-Paced Reading 기반 읽기 실험</li>
+<li>문장별 읽기시간 및 반응시간 수집</li>
+<li>학습자 인지 프로파일 생성</li>
+<li>XAI 기반 읽기 어려움 원인 설명</li>
+<li>생성형 AI 기반 맞춤형 읽기 지원</li>
+</ul>
+
+<a href="reading-research.html" class="btn">
+Reading Research 시작하기
+</a>
+
+</div>
+
+
+<!-- Writing Research -->
+<div class="research-card">
+
+<div class="track-label">WRITING RESEARCH</div>
+
+<h2>AI 활용 중국어 글쓰기 과정 연구</h2>
+
+<p>
+생성형 AI를 활용한 중국어 글쓰기 과정에서 사용한 프롬프트,
+AI 생성 결과, 학습자의 초안과 수정 과정 및 최종 산출물을
+기록하고 분석합니다.
+</p>
+
+<ul class="features">
+<li>학습자 프롬프트 기록</li>
+<li>AI 생성 결과 수집</li>
+<li>초안 및 수정안 기록</li>
+<li>AI 피드백 활용 과정 분석</li>
+<li>최종 글쓰기 산출물 수집</li>
+</ul>
+
+<a href="research2.html" class="btn">
+Writing Research 시작하기
+</a>
+
+</div>
+
+</section>
+
+</main>
+
+<footer>
+Chinese Flow Lab © 2026
+</footer>
+
+</body>
+</html>
