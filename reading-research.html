@@ -101,34 +101,7 @@ body{
 
 
 /* =========================
-   START CARD
-========================= */
-
-.start-card{
-  background:white;
-  border:1px solid var(--border);
-  border-radius:28px;
-  padding:42px;
-  margin-bottom:42px;
-  box-shadow:0 12px 28px rgba(24,61,117,.08);
-}
-
-.start-card h2{
-  margin:0 0 14px;
-  color:var(--primary);
-  font-size:30px;
-}
-
-.start-card p{
-  font-size:18px;
-  line-height:1.8;
-  color:#4E5E72;
-  margin-bottom:24px;
-}
-
-
-/* =========================
-   GRID
+   FUNCTION GRID
 ========================= */
 
 .grid{
@@ -141,9 +114,13 @@ body{
   background:var(--card);
   border:1px solid var(--border);
   border-radius:24px;
-  padding:32px;
+  padding:34px;
   box-shadow:0 8px 22px rgba(24,61,117,.06);
   transition:.22s ease;
+
+  display:flex;
+  flex-direction:column;
+  min-height:320px;
 }
 
 .card:hover{
@@ -151,46 +128,70 @@ body{
   box-shadow:0 14px 30px rgba(24,61,117,.12);
 }
 
+
+/* =========================
+   CARD NUMBER
+========================= */
+
 .number{
   display:inline-flex;
   align-items:center;
   justify-content:center;
-  width:40px;
-  height:40px;
+
+  width:42px;
+  height:42px;
+
   border-radius:12px;
+
   background:var(--primary-light);
   color:var(--primary);
+
   font-weight:800;
-  margin-bottom:16px;
-}
-
-.card h3{
-  font-size:24px;
-  color:var(--primary);
-  margin:0 0 12px;
-}
-
-.card p{
   font-size:16px;
-  line-height:1.75;
-  color:var(--subtext);
-  margin:0 0 20px;
+
+  margin-bottom:18px;
 }
 
 
 /* =========================
-   BUTTONS
+   CARD CONTENT
+========================= */
+
+.card h3{
+  font-size:24px;
+  color:var(--primary);
+  margin:0 0 14px;
+}
+
+.card p{
+  font-size:16px;
+  line-height:1.8;
+  color:var(--subtext);
+  margin:0 0 24px;
+  flex-grow:1;
+}
+
+
+/* =========================
+   BUTTON
 ========================= */
 
 .btn{
   display:inline-block;
-  padding:16px 30px;
+
+  padding:14px 25px;
+
   border-radius:999px;
+
   text-decoration:none;
   font-weight:700;
-  font-size:17px;
+  font-size:16px;
+
   background:var(--primary);
   color:white;
+
+  width:fit-content;
+
   transition:.2s ease;
 }
 
@@ -199,33 +200,19 @@ body{
   transform:translateY(-1px);
 }
 
-.btn-secondary{
-  display:inline-block;
-  padding:14px 26px;
-  border-radius:999px;
-  text-decoration:none;
-  font-weight:700;
-  font-size:16px;
-  background:var(--primary-light);
-  color:var(--primary);
-  border:1px solid var(--border);
-  transition:.2s ease;
-}
-
-.btn-secondary:hover{
-  background:#DCEAFF;
-}
-
 
 /* =========================
-   DATA NOTE
+   NOTICE
 ========================= */
 
 .notice{
   margin-top:42px;
+
   background:#EEF5FF;
   border:1px solid #D4E4F8;
+
   border-radius:20px;
+
   padding:24px 28px;
 }
 
@@ -236,17 +223,18 @@ body{
 
 .notice p{
   margin:7px 0 0;
+
   line-height:1.7;
   color:#52657D;
 }
 
 
 /* =========================
-   BACK LINK
+   BACK
 ========================= */
 
 .back-wrap{
-  margin-top:36px;
+  margin-top:38px;
   text-align:center;
 }
 
@@ -268,7 +256,9 @@ body{
 
 footer{
   text-align:center;
+
   padding:42px;
+
   color:#7B8797;
   font-size:15px;
 }
@@ -300,12 +290,9 @@ footer{
     padding:50px 6%;
   }
 
-  .start-card{
-    padding:30px 24px;
-  }
-
   .card{
     padding:28px 24px;
+    min-height:auto;
   }
 
 }
@@ -317,9 +304,9 @@ footer{
 <body>
 
 
-<!-- =========================
+<!-- ==========================================
      HERO
-========================= -->
+========================================== -->
 
 <section class="hero">
 
@@ -344,19 +331,18 @@ footer{
 <main class="container">
 
 
-<!-- =========================
+<!-- ==========================================
      INTRO
-========================= -->
+========================================== -->
 
 <section class="intro">
 
   <h2>Reading Research</h2>
 
   <p>
-    본 연구 공간에서는 중국어 읽기 수행 과정에서 생성되는
-    읽기 시간과 이해도 등의 데이터를 수집하고,
-    언어학적 복잡성과 함께 분석하여 학습자의 인지적 부담과
-    취약 영역을 파악합니다.
+    중국어 읽기 과정에서 생성되는 수행 데이터와
+    읽기 자료의 언어학적 특성을 함께 분석하여
+    학습자의 영역별 인지적 부담과 취약성을 파악합니다.
     분석 결과는 학습자 인지 프로파일과 XAI 기반 원인 설명,
     생성형 AI 기반 개인맞춤형 읽기 지원에 활용됩니다.
   </p>
@@ -365,145 +351,123 @@ footer{
 
 
 
-<!-- =========================
-     START
-========================= -->
+<!-- ==========================================
+     FUNCTION CARDS
+========================================== -->
 
-<section class="start-card">
+<section class="grid">
 
-  <h2>읽기 수행 시작</h2>
+
+<!-- 01 읽기 수행 -->
+
+<article class="card">
+
+  <div class="number">
+    01
+  </div>
+
+  <h3>
+    읽기 수행 및 데이터 수집
+  </h3>
 
   <p>
     중국어 읽기 자료를 읽고 이해도 문항에 응답합니다.
-    읽기 과정에서 생성되는 수행 데이터는 자동으로 수집되며,
-    이후 인지적 부담과 언어학적 취약 영역을 분석하는 데 활용됩니다.
+    읽기시간, 문항 반응시간, 반복읽기, 이해도 등
+    읽기 수행 과정에서 생성되는 데이터를 수집합니다.
   </p>
 
   <a href="reading-test.html" class="btn">
     읽기 수행 시작하기
   </a>
 
-</section>
+</article>
 
 
 
-<!-- =========================
-     FUNCTION CARDS
-========================= -->
+<!-- 02 인지 프로파일 -->
 
-<section class="grid">
+<article class="card">
 
+  <div class="number">
+    02
+  </div>
 
-  <!-- 01 -->
+  <h3>
+    학습자 인지 프로파일
+  </h3>
 
-  <article class="card">
+  <p>
+    읽기 수행 데이터와 통사·어휘·연어·담화 영역의
+    언어학적 특성을 통합 분석하여
+    학습자의 영역별 인지적 부담과 취약 영역을 확인합니다.
+  </p>
 
-    <div class="number">
-      01
-    </div>
+  <a href="cognitive-profile.html" class="btn">
+    인지 프로파일 보기
+  </a>
 
-    <h3>
-      읽기 수행 및 데이터 수집
-    </h3>
-
-    <p>
-      중국어 읽기 자료를 읽고 이해도 문항에 응답합니다.
-      읽기시간, 이해도, 반응시간, 반복읽기 등
-      읽기 수행 과정에서 생성되는 데이터를 수집합니다.
-    </p>
-
-    <a href="reading-test.html" class="btn-secondary">
-      읽기 수행하기
-    </a>
-
-  </article>
+</article>
 
 
 
-  <!-- 02 -->
+<!-- 03 XAI -->
 
-  <article class="card">
+<article class="card">
 
-    <div class="number">
-      02
-    </div>
+  <div class="number">
+    03
+  </div>
 
-    <h3>
-      인지 프로파일
-    </h3>
+  <h3>
+    XAI 기반 원인 설명
+  </h3>
 
-    <p>
-      읽기 수행 데이터와 통사·어휘·연어·담화 영역의
-      언어학적 특성을 종합하여 학습자의 영역별 인지적 부담과
-      취약 영역을 확인합니다.
-    </p>
+  <p>
+    학습자의 인지 프로파일을 바탕으로
+    어떤 언어학적 요소에서 높은 인지적 부담이 나타났는지를
+    분석하고 그 원인을 이해할 수 있도록 제시합니다.
+  </p>
 
-    <a href="cognitive-profile.html" class="btn-secondary">
-      인지 프로파일 보기
-    </a>
+  <a href="xai-report.html" class="btn">
+    XAI 분석 결과 보기
+  </a>
 
-  </article>
-
-
-
-  <!-- 03 -->
-
-  <article class="card">
-
-    <div class="number">
-      03
-    </div>
-
-    <h3>
-      XAI 원인 분석
-    </h3>
-
-    <p>
-      학습자의 읽기 이해 저하와 높은 인지적 부담이
-      어떤 언어학적 요인과 관련되는지를 설명하고,
-      취약 영역을 시각적으로 확인합니다.
-    </p>
-
-    <a href="xai-report.html" class="btn-secondary">
-      XAI 분석 결과 보기
-    </a>
-
-  </article>
+</article>
 
 
 
-  <!-- 04 -->
+<!-- 04 생성형 AI -->
 
-  <article class="card">
+<article class="card">
 
-    <div class="number">
-      04
-    </div>
+  <div class="number">
+    04
+  </div>
 
-    <h3>
-      AI 맞춤형 읽기 지원
-    </h3>
+  <h3>
+    생성형 AI 기반 맞춤형 읽기 지원
+  </h3>
 
-    <p>
-      학습자 인지 프로파일과 XAI 분석 결과를 바탕으로
-      개인별 읽기 자료와 문법·어휘 설명,
-      이해도 문제 및 맞춤형 학습 지원을 제공합니다.
-    </p>
+  <p>
+    학습자 인지 프로파일과 XAI 분석 결과를 바탕으로
+    학습자의 수준과 취약 영역에 적합한 읽기 자료,
+    문법·어휘 설명 및 맞춤형 학습 지원을 제공합니다.
+  </p>
 
-    <a href="ai-reading.html" class="btn-secondary">
-      AI 읽기 지원 시작하기
-    </a>
+  <a href="ai-reading.html" class="btn">
+    AI 읽기 지원 시작하기
+  </a>
 
-  </article>
+</article>
 
 
 </section>
 
 
 
-<!-- =========================
-     NOTICE
-========================= -->
+<!-- ==========================================
+     DATA NOTICE
+========================================== -->
 
 <section class="notice">
 
@@ -512,14 +476,19 @@ footer{
   </strong>
 
   <p>
-    읽기 수행 과정에서 생성되는 데이터는 학습자의 읽기 특성과
-    인지적 부담을 분석하고 인지 프로파일을 갱신하기 위한
+    읽기 수행 과정에서 축적되는 데이터는
+    학습자의 인지적 특성과 영역별 취약성을 분석하고,
+    학습자 인지 프로파일을 지속적으로 갱신하기 위한
     연구 자료로 활용됩니다.
   </p>
 
 </section>
 
 
+
+<!-- ==========================================
+     BACK
+========================================== -->
 
 <div class="back-wrap">
 
@@ -541,3 +510,4 @@ footer{
 
 </body>
 </html>
+  
