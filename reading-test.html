@@ -1,3 +1,276 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Chinese Flow Lab - Reading Test</title>
+
+  <style>
+    body {
+      font-family: Arial, "Noto Sans KR", "Noto Sans SC", sans-serif;
+      margin: 0;
+      background: #ffffff;
+      color: #222;
+    }
+
+    .container {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 60px 24px;
+    }
+
+    h1 {
+      font-size: 28px;
+      margin-bottom: 20px;
+    }
+
+    h2 {
+      font-size: 22px;
+      margin-bottom: 20px;
+    }
+
+    p {
+      line-height: 1.7;
+    }
+
+    .center {
+      text-align: center;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    button {
+      padding: 12px 24px;
+      font-size: 16px;
+      border: 1px solid #333;
+      border-radius: 6px;
+      background: white;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+
+    button:hover {
+      background: #f3f3f3;
+    }
+
+    button:disabled {
+      opacity: 0.5;
+      cursor: default;
+    }
+
+    /* 진행 상태 */
+    .progress {
+      font-size: 14px;
+      color: #777;
+      margin-bottom: 30px;
+    }
+
+    /* 문장 화면 */
+    .sentence-area {
+      min-height: 260px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .sentence {
+      font-size: 30px;
+      line-height: 1.7;
+      text-align: center;
+      word-break: keep-all;
+    }
+
+    /* 질문 화면 */
+    .question-box {
+      margin-top: 30px;
+    }
+
+    .question {
+      font-size: 22px;
+      margin-bottom: 25px;
+    }
+
+    .options {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .option {
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      padding: 14px 16px;
+      cursor: pointer;
+      font-size: 18px;
+    }
+
+    .option:hover {
+      background: #f5f5f5;
+    }
+
+    .option.selected {
+      border: 2px solid #333;
+      background: #f5f5f5;
+    }
+
+    .option.correct {
+      background: #e7f6e7;
+    }
+
+    .option.incorrect {
+      background: #fde8e8;
+    }
+
+    .feedback {
+      margin-top: 20px;
+      font-size: 16px;
+      font-weight: bold;
+    }
+
+    .instruction {
+      background: #f7f7f7;
+      padding: 20px;
+      border-radius: 8px;
+      margin: 25px 0;
+      text-align: left;
+    }
+
+    .instruction p {
+      margin: 8px 0;
+    }
+
+    .result-box {
+      margin-top: 30px;
+      padding: 20px;
+      background: #f7f7f7;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <!-- ============================== -->
+  <!-- 시작 화면 -->
+  <!-- ============================== -->
+
+  <div id="startScreen">
+
+    <h1>중국어 읽기 검사</h1>
+
+    <div class="instruction">
+      <p>화면에 중국어 문장이 한 문장씩 제시됩니다.</p>
+      <p>문장을 읽은 뒤 <b>다음</b> 버튼을 눌러주세요.</p>
+      <p>세 문장을 모두 읽으면 내용 이해 문제가 제시됩니다.</p>
+      <p>먼저 연습 문항을 진행한 뒤 본 검사가 시작됩니다.</p>
+    </div>
+
+    <button onclick="startExperiment()">
+      연습 시작
+    </button>
+
+  </div>
+
+
+  <!-- ============================== -->
+  <!-- 단계 안내 화면 -->
+  <!-- ============================== -->
+
+  <div id="phaseScreen" class="hidden center">
+
+    <h2 id="phaseTitle"></h2>
+
+    <p id="phaseMessage"></p>
+
+    <button onclick="continuePhase()">
+      시작
+    </button>
+
+  </div>
+
+
+  <!-- ============================== -->
+  <!-- 문장 읽기 화면 -->
+  <!-- ============================== -->
+
+  <div id="readingScreen" class="hidden">
+
+    <div class="progress" id="progressText"></div>
+
+    <div class="sentence-area">
+
+      <div class="sentence" id="sentenceText"></div>
+
+    </div>
+
+    <div class="center">
+
+      <button id="nextSentenceButton"
+              onclick="nextSentence()">
+        다음
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <!-- ============================== -->
+  <!-- 이해도 문제 화면 -->
+  <!-- ============================== -->
+
+  <div id="questionScreen" class="hidden">
+
+    <div class="progress" id="questionProgress"></div>
+
+    <div class="question-box">
+
+      <div class="question" id="questionText"></div>
+
+      <div class="options" id="optionsArea"></div>
+
+      <div class="feedback" id="feedbackText"></div>
+
+      <button
+        id="nextQuestionButton"
+        onclick="nextQuestion()"
+        disabled>
+        다음
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <!-- ============================== -->
+  <!-- 종료 화면 -->
+  <!-- ============================== -->
+
+  <div id="finishScreen" class="hidden center">
+
+    <h1>검사가 완료되었습니다.</h1>
+
+    <p>
+      참여해 주셔서 감사합니다.
+    </p>
+
+    <div class="result-box" id="resultBox"></div>
+
+  </div>
+
+</div>
+
+
+
+<script>
+
+
 // ========================================
 // 연습 문항
 // ========================================
@@ -6,63 +279,115 @@ const practiceItems = [
 
   {
     id: "P01",
+
     domain: "practice",
+
     feature: "relative_clause",
+
     topic: "daily",
+
     targetSentence: 2,
 
     sentences: [
+
       "小林昨天去了书店。",
+
       "妈妈买的那本书很有意思。",
+
       "小林晚上开始看这本书。"
+
     ],
 
     questions: [
+
       {
         question: "谁买了那本书？",
-        options: ["妈妈", "小林", "老师", "朋友"],
+
+        options: [
+          "妈妈",
+          "小林",
+          "老师",
+          "朋友"
+        ],
+
         answer: 0
       },
+
       {
         question: "什么很有意思？",
-        options: ["书店", "那本书", "晚上", "小林"],
+
+        options: [
+          "书店",
+          "那本书",
+          "晚上",
+          "小林"
+        ],
+
         answer: 1
       }
+
     ],
 
     feedback: true
   },
 
+
   {
     id: "P02",
+
     domain: "practice",
+
     feature: "relative_clause",
+
     topic: "school",
+
     targetSentence: 2,
 
     sentences: [
+
       "李华今天来学校上课。",
+
       "我昨天见到的那个学生就是李华。",
+
       "下课以后我们一起去了图书馆。"
+
     ],
 
     questions: [
+
       {
         question: "我昨天见到的人是谁？",
-        options: ["李华", "老师", "王明", "朋友"],
+
+        options: [
+          "李华",
+          "老师",
+          "王明",
+          "朋友"
+        ],
+
         answer: 0
       },
+
       {
         question: "谁见到了李华？",
-        options: ["老师", "我", "王明", "朋友"],
+
+        options: [
+          "老师",
+          "我",
+          "王明",
+          "朋友"
+        ],
+
         answer: 1
       }
+
     ],
 
     feedback: true
   }
 
 ];
+
 
 
 // ========================================
@@ -73,28 +398,53 @@ const readingItems = [
 
   {
     id: "R01",
+
     domain: "syntax",
+
     feature: "relative_clause",
+
     topic: "school",
+
     targetSentence: 2,
 
     sentences: [
+
       "王明今年开始在我们学校学习中文。",
+
       "老师昨天介绍的那位新同学就是王明。",
+
       "现在他已经认识了不少班里的同学。"
+
     ],
 
     questions: [
+
       {
         question: "老师昨天介绍的人是谁？",
-        options: ["王明", "老师", "李华", "同学"],
+
+        options: [
+          "王明",
+          "老师",
+          "李华",
+          "同学"
+        ],
+
         answer: 0
       },
+
       {
         question: "谁介绍了新同学？",
-        options: ["王明", "老师", "李华", "同学"],
+
+        options: [
+          "王明",
+          "老师",
+          "李华",
+          "同学"
+        ],
+
         answer: 1
       }
+
     ],
 
     feedback: false
@@ -103,11 +453,758 @@ const readingItems = [
 ];
 
 
+
 // ========================================
-// 전체 검사 순서
+// 전체 검사 데이터
 // ========================================
 
 const experimentData = {
+
   practice: practiceItems,
+
   test: readingItems
+
 };
+
+
+
+// ========================================
+// 실험 변수
+// ========================================
+
+let phase = "practice";
+
+let currentItemIndex = 0;
+
+let currentSentenceIndex = 0;
+
+let currentQuestionIndex = 0;
+
+let selectedAnswer = null;
+
+let sentenceStartTime = null;
+
+let questionStartTime = null;
+
+let results = [];
+
+
+
+// ========================================
+// 화면 요소
+// ========================================
+
+const startScreen =
+  document.getElementById("startScreen");
+
+const phaseScreen =
+  document.getElementById("phaseScreen");
+
+const readingScreen =
+  document.getElementById("readingScreen");
+
+const questionScreen =
+  document.getElementById("questionScreen");
+
+const finishScreen =
+  document.getElementById("finishScreen");
+
+
+
+// ========================================
+// 모든 화면 숨기기
+// ========================================
+
+function hideAllScreens() {
+
+  startScreen.classList.add("hidden");
+
+  phaseScreen.classList.add("hidden");
+
+  readingScreen.classList.add("hidden");
+
+  questionScreen.classList.add("hidden");
+
+  finishScreen.classList.add("hidden");
+
+}
+
+
+
+// ========================================
+// 실험 시작
+// ========================================
+
+function startExperiment() {
+
+  phase = "practice";
+
+  currentItemIndex = 0;
+
+  showPhaseScreen();
+
+}
+
+
+
+// ========================================
+// 단계 안내
+// ========================================
+
+function showPhaseScreen() {
+
+  hideAllScreens();
+
+  phaseScreen.classList.remove("hidden");
+
+  if (phase === "practice") {
+
+    document.getElementById("phaseTitle").textContent =
+      "연습 문항";
+
+    document.getElementById("phaseMessage").textContent =
+      "연습 문항입니다. 문장을 한 문장씩 읽고 문제에 답해주세요.";
+
+  }
+
+  else {
+
+    document.getElementById("phaseTitle").textContent =
+      "본 검사";
+
+    document.getElementById("phaseMessage").textContent =
+      "이제 본 검사를 시작합니다.";
+
+  }
+
+}
+
+
+
+// ========================================
+// 단계 시작
+// ========================================
+
+function continuePhase() {
+
+  currentItemIndex = 0;
+
+  startItem();
+
+}
+
+
+
+// ========================================
+// 현재 문항 가져오기
+// ========================================
+
+function getCurrentItems() {
+
+  if (phase === "practice") {
+
+    return experimentData.practice;
+
+  }
+
+  return experimentData.test;
+
+}
+
+
+
+// ========================================
+// 한 문항 시작
+// ========================================
+
+function startItem() {
+
+  currentSentenceIndex = 0;
+
+  currentQuestionIndex = 0;
+
+  selectedAnswer = null;
+
+  showSentence();
+
+}
+
+
+
+// ========================================
+// 문장 표시
+// ========================================
+
+function showSentence() {
+
+  hideAllScreens();
+
+  readingScreen.classList.remove("hidden");
+
+  const items = getCurrentItems();
+
+  const item = items[currentItemIndex];
+
+  const sentence =
+    item.sentences[currentSentenceIndex];
+
+  document.getElementById("sentenceText").textContent =
+    sentence;
+
+
+  let phaseName =
+    phase === "practice"
+      ? "연습"
+      : "본 검사";
+
+
+  document.getElementById("progressText").textContent =
+
+    phaseName +
+
+    " " +
+
+    (currentItemIndex + 1) +
+
+    " / " +
+
+    items.length +
+
+    "   ·   문장 " +
+
+    (currentSentenceIndex + 1) +
+
+    " / 3";
+
+
+  // 문장 제시 시작 시간
+
+  sentenceStartTime = performance.now();
+
+}
+
+
+
+// ========================================
+// 다음 문장
+// ========================================
+
+function nextSentence() {
+
+  const items = getCurrentItems();
+
+  const item = items[currentItemIndex];
+
+
+  const sentenceEndTime =
+    performance.now();
+
+
+  const readingTime =
+    Math.round(
+      sentenceEndTime -
+      sentenceStartTime
+    );
+
+
+  // 읽기시간 기록
+
+  results.push({
+
+    phase: phase,
+
+    itemId: item.id,
+
+    domain: item.domain,
+
+    feature: item.feature,
+
+    targetSentence:
+      item.targetSentence,
+
+    type: "sentence",
+
+    sentenceNumber:
+      currentSentenceIndex + 1,
+
+    sentence:
+      item.sentences[currentSentenceIndex],
+
+    readingTimeMs:
+      readingTime
+
+  });
+
+
+  currentSentenceIndex++;
+
+
+  // 다음 문장이 있으면 계속
+
+  if (
+    currentSentenceIndex <
+    item.sentences.length
+  ) {
+
+    showSentence();
+
+  }
+
+  // 세 문장 종료
+  else {
+
+    currentQuestionIndex = 0;
+
+    showQuestion();
+
+  }
+
+}
+
+
+
+// ========================================
+// 이해도 질문 표시
+// ========================================
+
+function showQuestion() {
+
+  hideAllScreens();
+
+  questionScreen.classList.remove("hidden");
+
+
+  const items = getCurrentItems();
+
+  const item =
+    items[currentItemIndex];
+
+  const question =
+    item.questions[currentQuestionIndex];
+
+
+  selectedAnswer = null;
+
+
+  document.getElementById(
+    "questionProgress"
+  ).textContent =
+
+    "이해도 문제 " +
+
+    (currentQuestionIndex + 1) +
+
+    " / " +
+
+    item.questions.length;
+
+
+  document.getElementById(
+    "questionText"
+  ).textContent =
+    question.question;
+
+
+  const optionsArea =
+    document.getElementById(
+      "optionsArea"
+    );
+
+
+  optionsArea.innerHTML = "";
+
+
+  question.options.forEach(
+
+    function(option, index) {
+
+      const div =
+        document.createElement("div");
+
+
+      div.className =
+        "option";
+
+
+      div.textContent =
+        (index + 1) +
+        ". " +
+        option;
+
+
+      div.onclick =
+        function() {
+
+          selectOption(
+            index,
+            div
+          );
+
+        };
+
+
+      optionsArea.appendChild(div);
+
+    }
+
+  );
+
+
+  document.getElementById(
+    "feedbackText"
+  ).textContent = "";
+
+
+  document.getElementById(
+    "nextQuestionButton"
+  ).disabled = true;
+
+
+  questionStartTime =
+    performance.now();
+
+}
+
+
+
+// ========================================
+// 선택지 선택
+// ========================================
+
+function selectOption(
+  index,
+  element
+) {
+
+  if (
+    selectedAnswer !== null
+  ) {
+
+    return;
+
+  }
+
+
+  selectedAnswer =
+    index;
+
+
+  const items =
+    getCurrentItems();
+
+
+  const item =
+    items[currentItemIndex];
+
+
+  const question =
+    item.questions[
+      currentQuestionIndex
+    ];
+
+
+  const optionElements =
+    document.querySelectorAll(
+      ".option"
+    );
+
+
+  optionElements.forEach(
+    function(el) {
+
+      el.classList.remove(
+        "selected"
+      );
+
+    }
+  );
+
+
+  element.classList.add(
+    "selected"
+  );
+
+
+  // 연습 문항만 즉시 피드백
+  if (
+    item.feedback === true
+  ) {
+
+    if (
+      index ===
+      question.answer
+    ) {
+
+      element.classList.add(
+        "correct"
+      );
+
+      document.getElementById(
+        "feedbackText"
+      ).textContent =
+        "정답입니다.";
+
+    }
+
+    else {
+
+      element.classList.add(
+        "incorrect"
+      );
+
+
+      optionElements[
+        question.answer
+      ].classList.add(
+        "correct"
+      );
+
+
+      document.getElementById(
+        "feedbackText"
+      ).textContent =
+        "정답을 확인해주세요.";
+
+    }
+
+  }
+
+
+  document.getElementById(
+    "nextQuestionButton"
+  ).disabled = false;
+
+}
+
+
+
+// ========================================
+// 다음 문제
+// ========================================
+
+function nextQuestion() {
+
+  if (
+    selectedAnswer === null
+  ) {
+
+    return;
+
+  }
+
+
+  const items =
+    getCurrentItems();
+
+
+  const item =
+    items[currentItemIndex];
+
+
+  const question =
+    item.questions[
+      currentQuestionIndex
+    ];
+
+
+  const questionEndTime =
+    performance.now();
+
+
+  const responseTime =
+    Math.round(
+      questionEndTime -
+      questionStartTime
+    );
+
+
+  const correct =
+    selectedAnswer ===
+    question.answer;
+
+
+  // 응답 기록
+
+  results.push({
+
+    phase: phase,
+
+    itemId:
+      item.id,
+
+    domain:
+      item.domain,
+
+    feature:
+      item.feature,
+
+    type:
+      "question",
+
+    questionNumber:
+      currentQuestionIndex + 1,
+
+    question:
+      question.question,
+
+    selectedAnswer:
+      selectedAnswer,
+
+    selectedText:
+      question.options[
+        selectedAnswer
+      ],
+
+    correctAnswer:
+      question.answer,
+
+    correctText:
+      question.options[
+        question.answer
+      ],
+
+    correct:
+      correct,
+
+    responseTimeMs:
+      responseTime
+
+  });
+
+
+  currentQuestionIndex++;
+
+
+  // 같은 지문의 다음 질문
+
+  if (
+    currentQuestionIndex <
+    item.questions.length
+  ) {
+
+    showQuestion();
+
+    return;
+
+  }
+
+
+  // 다음 지문
+
+  currentItemIndex++;
+
+
+  if (
+    currentItemIndex <
+    items.length
+  ) {
+
+    startItem();
+
+    return;
+
+  }
+
+
+  // 연습 종료 → 본 검사
+
+  if (
+    phase === "practice"
+  ) {
+
+    phase = "test";
+
+    currentItemIndex = 0;
+
+    showPhaseScreen();
+
+  }
+
+  // 전체 검사 종료
+
+  else {
+
+    finishExperiment();
+
+  }
+
+}
+
+
+
+// ========================================
+// 실험 종료
+// ========================================
+
+function finishExperiment() {
+
+  hideAllScreens();
+
+  finishScreen.classList.remove(
+    "hidden"
+  );
+
+
+  const testQuestions =
+    results.filter(
+      r =>
+        r.phase === "test" &&
+        r.type === "question"
+    );
+
+
+  const correctCount =
+    testQuestions.filter(
+      r => r.correct
+    ).length;
+
+
+  document.getElementById(
+    "resultBox"
+  ).innerHTML =
+
+    "본 검사 응답이 저장되었습니다.<br><br>" +
+
+    "문항 수: " +
+    testQuestions.length;
+
+
+  // 개발 확인용
+  console.log(
+    "Experiment Results:",
+    results
+  );
+
+}
+
+
+
+// ========================================
+// 스페이스바로 다음 문장 이동
+// ========================================
+
+document.addEventListener(
+  "keydown",
+  function(event) {
+
+    if (
+      event.code === "Space" &&
+      !readingScreen.classList.contains(
+        "hidden"
+      )
+    ) {
+
+      event.preventDefault();
+
+      nextSentence();
+
+    }
+
+  }
+);
+
+
+</script>
+
+</body>
+</html>
