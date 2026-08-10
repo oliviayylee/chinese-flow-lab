@@ -12,12 +12,11 @@
 :root{
   --navy:#071a44;
   --blue:#0b4dcc;
-  --blue2:#2f6fe4;
-  --light:#eef5ff;
   --text:#172033;
   --sub:#536178;
   --bg:#f7f9fc;
   --line:#dce6f3;
+  --light:#eef5ff;
 }
 
 *{
@@ -32,15 +31,14 @@ body{
     "Noto Sans SC",
     Arial,
     sans-serif;
-
   background:var(--bg);
   color:var(--text);
 }
 
 
-/* =========================================
+/* ========================================
    HEADER
-========================================= */
+======================================== */
 
 header{
   position:sticky;
@@ -70,12 +68,12 @@ header a{
 }
 
 
-/* =========================================
+/* ========================================
    HERO
-========================================= */
+======================================== */
 
 .hero{
-  min-height:58vh;
+  min-height:56vh;
 
   display:flex;
   align-items:center;
@@ -95,7 +93,7 @@ header a{
 }
 
 .hero-content{
-  max-width:850px;
+  max-width:900px;
 }
 
 .eyebrow{
@@ -123,8 +121,6 @@ header a{
 }
 
 .hero-slogan{
-  margin-bottom:20px;
-
   font-size:27px;
   line-height:1.5;
 
@@ -137,17 +133,16 @@ header a{
   flex-wrap:wrap;
   gap:10px;
 
-  margin-top:26px;
+  margin-top:25px;
 }
 
 .hero-keywords span{
   padding:9px 14px;
 
-  background:#fff;
-
   border:1px solid #cfdcf0;
   border-radius:999px;
 
+  background:#fff;
   color:#24457c;
 
   font-size:14px;
@@ -155,9 +150,9 @@ header a{
 }
 
 
-/* =========================================
+/* ========================================
    COMMON
-========================================= */
+======================================== */
 
 .container{
   max-width:1200px;
@@ -192,27 +187,24 @@ header a{
 .section-sub{
   margin:0 auto 30px;
 
-  max-width:760px;
-
   text-align:center;
 
   color:var(--sub);
 
   font-size:16px;
-  line-height:1.7;
 }
 
 
-/* =========================================
-   BIG QUESTION
-========================================= */
+/* ========================================
+   RESEARCH QUESTION
+======================================== */
 
 .question-box{
   padding:30px 34px;
 
   text-align:center;
 
-  color:white;
+  color:#fff;
   background:var(--navy);
 
   border-radius:22px;
@@ -241,12 +233,13 @@ header a{
 }
 
 
-/* =========================================
+/* ========================================
    READING / WRITING
-========================================= */
+======================================== */
 
 .research-grid{
   display:grid;
+
   grid-template-columns:1fr 1fr;
 
   gap:24px;
@@ -286,7 +279,7 @@ header a{
   color:var(--navy);
 }
 
-.research-card .eng{
+.eng{
   margin-bottom:20px;
 
   color:var(--blue);
@@ -331,15 +324,14 @@ header a{
 }
 
 
-/* =========================================
-   CORE TECHNOLOGY
-========================================= */
+/* ========================================
+   CORE APPROACH
+======================================== */
 
 .core-grid{
   display:grid;
 
-  grid-template-columns:
-    repeat(4,1fr);
+  grid-template-columns:repeat(4,1fr);
 
   gap:16px;
 }
@@ -356,9 +348,9 @@ header a{
 }
 
 .core-icon{
-  font-size:28px;
-
   margin-bottom:12px;
+
+  font-size:28px;
 }
 
 .core-card h4{
@@ -379,15 +371,14 @@ header a{
 }
 
 
-/* =========================================
-   FLOW
-========================================= */
+/* ========================================
+   RESEARCH FLOW
+======================================== */
 
 .flow{
   display:grid;
 
-  grid-template-columns:
-    repeat(6,1fr);
+  grid-template-columns:repeat(6,1fr);
 
   gap:12px;
 }
@@ -415,7 +406,7 @@ header a{
 
   background:var(--blue);
 
-  color:white;
+  color:#fff;
 
   border-radius:50%;
 
@@ -437,15 +428,14 @@ header a{
 }
 
 
-/* =========================================
-   TRACK
-========================================= */
+/* ========================================
+   LEARNING / RESEARCH
+======================================== */
 
 .track-grid{
   display:grid;
 
-  grid-template-columns:
-    1fr 1fr;
+  grid-template-columns:1fr 1fr;
 
   gap:24px;
 }
@@ -489,15 +479,14 @@ header a{
 }
 
 
-/* =========================================
-   ACADEMIC
-========================================= */
+/* ========================================
+   ACADEMIC BACKGROUND
+======================================== */
 
 .background{
   display:grid;
 
-  grid-template-columns:
-    1fr 1fr;
+  grid-template-columns:1fr 1fr;
 
   gap:24px;
 }
@@ -520,12 +509,12 @@ header a{
 }
 
 .bg-card p{
-  margin:0 0 20px;
+  margin:0 0 22px;
 
   color:#3f4b61;
 
   font-size:15px;
-  line-height:1.75;
+  line-height:1.8;
 }
 
 .bg-card ul{
@@ -543,20 +532,51 @@ header a{
 }
 
 
-/* =========================================
-   PHOTOS
-========================================= */
+/* ========================================
+   PHOTO GALLERY
+======================================== */
+
+/* 가장 큰 대표사진 */
+
+.feature-photo{
+  margin-bottom:22px;
+
+  overflow:hidden;
+
+  border-radius:24px;
+
+  background:#fff;
+
+  box-shadow:
+    0 9px 24px
+    rgba(0,0,0,.10);
+}
+
+.feature-photo img{
+  display:block;
+
+  width:100%;
+  height:580px;
+
+  object-fit:cover;
+
+  object-position:center;
+}
+
+
+/* 아래 갤러리 */
 
 .photo-grid{
   display:grid;
 
-  grid-template-columns:
-    repeat(2,1fr);
+  grid-template-columns:repeat(2,1fr);
 
   gap:20px;
 }
 
 .photo-item{
+  height:320px;
+
   overflow:hidden;
 
   border-radius:22px;
@@ -565,40 +585,37 @@ header a{
 
   box-shadow:
     0 8px 20px
-    rgba(0,0,0,.10);
+    rgba(0,0,0,.09);
 }
 
 .photo-item img{
   display:block;
 
   width:100%;
-  height:310px;
+  height:100%;
 
   object-fit:cover;
-}
-
-.photo-item.wide{
-  grid-column:span 2;
-}
-
-.photo-item.wide img{
-  height:430px;
-}
-
-.caption{
-  padding:12px 15px;
-
-  color:#55627a;
-
-  font-size:13px;
-
-  background:#fff;
+  object-position:center;
 }
 
 
-/* =========================================
+/* 홍콩 두 번째 사진:
+   오른쪽 발표 화면 중심으로 확대 */
+
+.photo-item.screen-only img{
+  width:150%;
+
+  max-width:none;
+
+  object-fit:cover;
+
+  object-position:100% 20%;
+}
+
+
+/* ========================================
    FOOTER
-========================================= */
+======================================== */
 
 footer{
   padding:34px;
@@ -613,24 +630,26 @@ footer{
 }
 
 
-/* =========================================
-   RESPONSIVE
-========================================= */
+/* ========================================
+   TABLET
+======================================== */
 
 @media(max-width:1050px){
 
   .core-grid{
-    grid-template-columns:
-      repeat(2,1fr);
+    grid-template-columns:repeat(2,1fr);
   }
 
   .flow{
-    grid-template-columns:
-      repeat(3,1fr);
+    grid-template-columns:repeat(3,1fr);
   }
 
 }
 
+
+/* ========================================
+   SMALL TABLET
+======================================== */
 
 @media(max-width:850px){
 
@@ -643,6 +662,10 @@ footer{
 }
 
 
+/* ========================================
+   MOBILE
+======================================== */
+
 @media(max-width:720px){
 
   header{
@@ -654,7 +677,8 @@ footer{
   }
 
   .hero{
-    min-height:52vh;
+    min-height:50vh;
+
     padding:55px 6%;
   }
 
@@ -671,7 +695,7 @@ footer{
   }
 
   .section{
-    padding:26px;
+    padding:25px;
   }
 
   .section h3{
@@ -684,12 +708,11 @@ footer{
     grid-template-columns:1fr;
   }
 
-  .photo-item.wide{
-    grid-column:span 1;
+  .feature-photo img{
+    height:310px;
   }
 
-  .photo-item img,
-  .photo-item.wide img{
+  .photo-item{
     height:250px;
   }
 
@@ -700,17 +723,18 @@ footer{
 </head>
 
 
-
 <body>
 
 
-<!-- =========================================
+<!-- ========================================
      HEADER
-========================================= -->
+======================================== -->
 
 <header>
 
-  <h1>Chinese Flow Lab</h1>
+  <h1>
+    Chinese Flow Lab
+  </h1>
 
   <a href="index.html">
     홈으로
@@ -720,9 +744,9 @@ footer{
 
 
 
-<!-- =========================================
+<!-- ========================================
      HERO
-========================================= -->
+======================================== -->
 
 <section class="hero">
 
@@ -763,9 +787,9 @@ footer{
 <div class="container">
 
 
-<!-- =========================================
-     BIG QUESTION
-========================================= -->
+<!-- ========================================
+     RESEARCH QUESTION
+======================================== -->
 
 <section class="section">
 
@@ -776,7 +800,7 @@ footer{
     </small>
 
     <p>
-      학습자는 중국어를 어떻게 읽고 쓰며,
+      학습자는 중국어를 어떻게 읽고 쓰며,<br>
       그 과정의 어려움을 어떻게 설명하고 지원할 수 있는가?
     </p>
 
@@ -786,9 +810,9 @@ footer{
 
 
 
-<!-- =========================================
-     READING + WRITING
-========================================= -->
+<!-- ========================================
+     RESEARCH AREAS
+======================================== -->
 
 <section class="section">
 
@@ -797,7 +821,7 @@ footer{
   </h3>
 
   <p class="section-sub">
-    Chinese Flow Lab의 핵심 연구 영역
+    Chinese Flow Lab의 두 핵심 연구 영역
   </p>
 
 
@@ -867,7 +891,7 @@ footer{
       <ul class="point-list">
 
         <li>
-          초안 · 피드백 · 수정 · 최종본
+          초안 · AI 피드백 · 수정 · 최종본
         </li>
 
         <li>
@@ -890,15 +914,16 @@ footer{
 
     </div>
 
+
   </div>
 
 </section>
 
 
 
-<!-- =========================================
+<!-- ========================================
      CORE APPROACH
-========================================= -->
+======================================== -->
 
 <section class="section">
 
@@ -907,7 +932,7 @@ footer{
   </h3>
 
   <p class="section-sub">
-    학습 과정 데이터를 이해하고 설명하며 지원합니다.
+    학습 과정 데이터를 분석하고 설명하여 맞춤형 지원으로 연결합니다.
   </p>
 
 
@@ -925,7 +950,7 @@ footer{
       </h4>
 
       <p>
-        읽기·쓰기 과정 데이터 분석
+        읽기 · 쓰기 과정 데이터 분석
       </p>
 
     </div>
@@ -991,9 +1016,9 @@ footer{
 
 
 
-<!-- =========================================
-     FLOW
-========================================= -->
+<!-- ========================================
+     RESEARCH FLOW
+======================================== -->
 
 <section class="section">
 
@@ -1002,7 +1027,7 @@ footer{
   </h3>
 
   <p class="section-sub">
-    수행 데이터를 학습자 맞춤 지원으로 연결합니다.
+    수행 데이터를 학습자 맞춤 지원으로 연결
   </p>
 
 
@@ -1122,19 +1147,15 @@ footer{
 
 
 
-<!-- =========================================
-     LEARNING / RESEARCH TRACK
-========================================= -->
+<!-- ========================================
+     LEARNING / RESEARCH
+======================================== -->
 
 <section class="section">
 
   <h3>
     Chinese Flow Lab
   </h3>
-
-  <p class="section-sub">
-    연구와 학습을 하나의 플랫폼에서 연결합니다.
-  </p>
 
 
   <div class="track-grid">
@@ -1197,9 +1218,9 @@ footer{
 
 
 
-<!-- =========================================
+<!-- ========================================
      ACADEMIC BACKGROUND
-========================================= -->
+======================================== -->
 
 <section class="section">
 
@@ -1229,8 +1250,11 @@ footer{
       </h4>
 
       <p>
-        Processing of Chinese Subject/Object
-        Relative Clauses in Korean Learners of Chinese
+        <strong>
+          A Study on Cognitive Characteristics and Affecting Factors
+          of Processing of Chinese Subject/Object Relative Clauses:
+          Focusing on Korean Learners of Chinese
+        </strong>
       </p>
 
     </div>
@@ -1288,9 +1312,9 @@ footer{
 
 
 
-<!-- =========================================
-     PHOTOS
-========================================= -->
+<!-- ========================================
+     RESEARCH & ACADEMIC ACTIVITIES
+======================================== -->
 
 <section class="section">
 
@@ -1298,43 +1322,48 @@ footer{
     Research & Academic Activities
   </h3>
 
-  <p class="section-sub">
-    Research · Teaching · Conference · Experiment
-  </p>
 
+  <!-- 대표사진:
+       about-teaching을 가장 크게 -->
+
+  <div class="feature-photo">
+
+    <img
+      src="image/about-teaching.jpg"
+      alt="Teaching and academic activities"
+    >
+
+  </div>
+
+
+
+  <!-- 나머지 사진 -->
 
   <div class="photo-grid">
 
 
-    <!-- 새 CityU 사진 1 -->
+    <!-- 홍콩 학회 1 -->
 
-    <div class="photo-item wide">
+    <div class="photo-item">
 
       <img
         src="image/20260628_110154.jpg"
         alt="Conference presentation at City University of Hong Kong"
       >
 
-      <div class="caption">
-        Academic Conference Presentation · City University of Hong Kong
-      </div>
-
     </div>
 
 
 
-    <!-- 새 CityU 사진 2 -->
+    <!-- 홍콩 학회 2:
+         발표 화면 중심 crop -->
 
-    <div class="photo-item">
+    <div class="photo-item screen-only">
 
       <img
         src="image/20260628_110509.jpg"
-        alt="Conference presentation"
+        alt="Conference presentation at City University of Hong Kong"
       >
-
-      <div class="caption">
-        Chinese Text Difficulty Research
-      </div>
 
     </div>
 
@@ -1344,12 +1373,8 @@ footer{
 
       <img
         src="image/about-eye.jpg"
-        alt="Eye-tracking research"
+        alt="Reading processing research"
       >
-
-      <div class="caption">
-        Reading Processing Research
-      </div>
 
     </div>
 
@@ -1359,12 +1384,8 @@ footer{
 
       <img
         src="image/about-experiment.jpg"
-        alt="Research experiment"
+        alt="Experimental research"
       >
-
-      <div class="caption">
-        Experimental Research
-      </div>
 
     </div>
 
@@ -1377,25 +1398,6 @@ footer{
         alt="AI-based research"
       >
 
-      <div class="caption">
-        AI-based Learning Research
-      </div>
-
-    </div>
-
-
-
-    <div class="photo-item">
-
-      <img
-        src="image/about-teaching.jpg"
-        alt="Teaching"
-      >
-
-      <div class="caption">
-        Teaching & Learning
-      </div>
-
     </div>
 
 
@@ -1404,12 +1406,8 @@ footer{
 
       <img
         src="image/about-writing.jpg"
-        alt="Academic writing"
+        alt="Writing research"
       >
-
-      <div class="caption">
-        Writing & Research
-      </div>
 
     </div>
 
@@ -1419,12 +1417,8 @@ footer{
 
       <img
         src="image/about-sla.jpg"
-        alt="Second language acquisition symposium"
+        alt="Second language acquisition research"
       >
-
-      <div class="caption">
-        Second Language Acquisition
-      </div>
 
     </div>
 
@@ -1434,12 +1428,8 @@ footer{
 
       <img
         src="image/about-aca.jpg"
-        alt="Academic conference"
+        alt="Academic activities"
       >
-
-      <div class="caption">
-        Academic Activities
-      </div>
 
     </div>
 
@@ -1453,16 +1443,15 @@ footer{
 
 
 
+<!-- ========================================
+     FOOTER
+======================================== -->
+
 <footer>
-
   © 2026 Chinese Flow Lab
-
 </footer>
 
 
 </body>
 
 </html>
-
-
-       
