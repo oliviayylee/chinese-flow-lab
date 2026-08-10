@@ -1,45 +1,66 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>About Chinese Flow Lab</title>
 
 <style>
+
 :root{
   --navy:#071a44;
   --blue:#0b4dcc;
-  --green:#178653;
+  --blue2:#2f6fe4;
+  --light:#eef5ff;
   --text:#172033;
-  --sub:#4c5870;
+  --sub:#536178;
   --bg:#f7f9fc;
+  --line:#dce6f3;
 }
 
-*{box-sizing:border-box;}
+*{
+  box-sizing:border-box;
+}
 
 body{
   margin:0;
-  font-family:"Pretendard","Noto Sans KR",sans-serif;
+  font-family:
+    "Pretendard",
+    "Noto Sans KR",
+    "Noto Sans SC",
+    Arial,
+    sans-serif;
+
   background:var(--bg);
   color:var(--text);
 }
+
+
+/* =========================================
+   HEADER
+========================================= */
 
 header{
   position:sticky;
   top:0;
   z-index:10;
+
   display:flex;
   justify-content:space-between;
   align-items:center;
-  padding:20px 7%;
+
+  padding:18px 7%;
+
   background:#fff;
-  box-shadow:0 2px 12px rgba(0,0,0,.05);
+  border-bottom:1px solid #e6edf7;
 }
 
 header h1{
   margin:0;
-  font-size:24px;
-  color:#0b1f4d;
+  font-size:23px;
+  color:var(--navy);
 }
 
 header a{
@@ -48,882 +69,1397 @@ header a{
   font-weight:700;
 }
 
+
+/* =========================================
+   HERO
+========================================= */
+
 .hero{
-  min-height:60vh;
+  min-height:58vh;
+
   display:flex;
   align-items:center;
-  padding:75px 8%;
+
+  padding:80px 8%;
+
   background:
-    linear-gradient(90deg,rgba(255,255,255,.96),rgba(255,255,255,.76)),
+    linear-gradient(
+      90deg,
+      rgba(255,255,255,.97),
+      rgba(255,255,255,.78)
+    ),
     url("image/about-cafe.jpg");
+
   background-size:cover;
   background-position:center;
 }
 
 .hero-content{
-  max-width:820px;
+  max-width:850px;
 }
 
 .eyebrow{
   display:inline-block;
-  margin-bottom:16px;
+
   padding:8px 14px;
+  margin-bottom:18px;
+
   border-radius:999px;
+
   background:#eaf1ff;
   color:var(--blue);
+
   font-size:14px;
   font-weight:800;
 }
 
 .hero h2{
   margin:0 0 18px;
+
   font-size:58px;
-  line-height:1.15;
+  line-height:1.12;
+
   color:var(--navy);
 }
 
-.hero .slogan{
-  margin-bottom:18px;
+.hero-slogan{
+  margin-bottom:20px;
+
   font-size:27px;
   line-height:1.5;
+
   color:var(--blue);
   font-weight:800;
 }
 
-.hero p{
-  margin:0;
-  max-width:780px;
-  font-size:18px;
-  line-height:1.85;
-  color:#39465f;
+.hero-keywords{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+
+  margin-top:26px;
 }
 
-.hero strong{
-  color:var(--navy);
+.hero-keywords span{
+  padding:9px 14px;
+
+  background:#fff;
+
+  border:1px solid #cfdcf0;
+  border-radius:999px;
+
+  color:#24457c;
+
+  font-size:14px;
+  font-weight:800;
 }
+
+
+/* =========================================
+   COMMON
+========================================= */
 
 .container{
   max-width:1200px;
   margin:auto;
-  padding:46px 6% 70px;
+
+  padding:48px 6% 75px;
 }
 
 .section{
-  margin-bottom:30px;
-  padding:38px;
+  margin-bottom:32px;
+  padding:40px;
+
   background:#fff;
+
   border:1px solid #e1e9f5;
   border-radius:26px;
-  box-shadow:0 8px 24px rgba(15,35,80,.08);
+
+  box-shadow:
+    0 8px 24px
+    rgba(15,35,80,.07);
 }
 
 .section h3{
-  margin:0 0 22px;
+  margin:0 0 10px;
+
   text-align:center;
+
   font-size:30px;
   color:var(--blue);
 }
 
-.section-lead{
-  max-width:880px;
-  margin:0 auto 28px;
+.section-sub{
+  margin:0 auto 30px;
+
+  max-width:760px;
+
   text-align:center;
-  font-size:17px;
-  line-height:1.85;
+
   color:var(--sub);
+
+  font-size:16px;
+  line-height:1.7;
 }
 
-.quote-box{
-  max-width:900px;
-  margin:0 auto 24px;
-  padding:26px 30px;
+
+/* =========================================
+   BIG QUESTION
+========================================= */
+
+.question-box{
+  padding:30px 34px;
+
   text-align:center;
-  background:linear-gradient(135deg,#f4f8ff,#fbfdff);
-  border:1px solid #d9e5f5;
-  border-left:6px solid var(--blue);
+
+  color:white;
+  background:var(--navy);
+
   border-radius:22px;
 }
 
-.quote-box p{
+.question-box small{
+  display:block;
+
+  margin-bottom:12px;
+
+  color:#9fc4ff;
+
+  font-size:13px;
+  font-weight:900;
+
+  letter-spacing:1.2px;
+}
+
+.question-box p{
   margin:0;
-  font-size:22px;
+
+  font-size:21px;
   line-height:1.7;
-  color:#18366f;
+
   font-weight:800;
 }
 
-.philosophy-grid{
+
+/* =========================================
+   READING / WRITING
+========================================= */
+
+.research-grid{
   display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:18px;
+  grid-template-columns:1fr 1fr;
+
+  gap:24px;
 }
 
-.philosophy-card{
-  padding:24px;
-  text-align:center;
+.research-card{
+  padding:30px;
+
+  border:1px solid var(--line);
+  border-radius:24px;
+
   background:#fbfdff;
-  border:1px solid #dce7f5;
-  border-radius:20px;
 }
 
-.symbol{
-  width:52px;
-  height:52px;
-  margin:0 auto 14px;
+.research-icon{
+  width:58px;
+  height:58px;
+
   display:flex;
   align-items:center;
   justify-content:center;
-  background:#eef5ff;
-  border-radius:16px;
-  font-size:25px;
+
+  margin-bottom:18px;
+
+  border-radius:18px;
+
+  background:var(--light);
+
+  font-size:29px;
 }
 
-.philosophy-card h4{
-  margin:0 0 10px;
-  font-size:19px;
-  color:#102a64;
+.research-card h4{
+  margin:0 0 4px;
+
+  font-size:26px;
+
+  color:var(--navy);
 }
 
-.philosophy-card p{
-  margin:0;
-  font-size:14.5px;
-  line-height:1.7;
-  color:#4b5870;
-}
+.research-card .eng{
+  margin-bottom:20px;
 
-.big-question{
-  margin-top:24px;
-  padding:28px 32px;
-  text-align:center;
-  color:#fff;
-  background:#0b1f4d;
-  border-radius:22px;
-}
+  color:var(--blue);
 
-.big-question small{
-  display:block;
-  margin-bottom:10px;
-  color:#aecdff;
-  font-weight:800;
-  letter-spacing:.7px;
-}
-
-.big-question p{
-  margin:0;
-  font-size:19px;
-  line-height:1.75;
-  font-weight:700;
-}
-
-.framework{
-  display:grid;
-  grid-template-columns:repeat(5,1fr);
-  gap:14px;
-}
-
-.framework-card{
-  text-align:center;
-  padding:24px 15px;
-  background:#fbfdff;
-  border:1px solid #d9e5f5;
-  border-radius:22px;
-}
-
-.num{
-  display:inline-flex;
-  width:34px;
-  height:34px;
-  align-items:center;
-  justify-content:center;
-  margin-bottom:11px;
-  background:var(--blue);
-  color:#fff;
-  border-radius:50%;
-  font-weight:800;
-}
-
-.framework-card h4,
-.flow-card h4{
-  margin:5px 0 7px;
-  font-size:18px;
-  color:#102a64;
-}
-
-.framework-card small,
-.flow-card small{
-  color:#5c6f91;
-  font-weight:700;
-}
-
-.framework-card p,
-.flow-card p{
-  margin:12px 0 0;
   font-size:14px;
-  line-height:1.65;
-  color:#4d5b72;
+  font-weight:800;
 }
 
-.flow-steps{
-  display:grid;
-  grid-template-columns:repeat(6,1fr);
-  gap:14px;
+.point-list{
+  list-style:none;
+
+  padding:0;
+  margin:0;
 }
 
-.flow-card{
-  padding:22px 14px;
-  text-align:center;
-  background:#fbfdff;
-  border:1px solid #d9e5f5;
-  border-radius:22px;
+.point-list li{
+  position:relative;
+
+  padding:10px 0 10px 22px;
+
+  border-bottom:1px solid #e8eef7;
+
+  font-size:16px;
+
+  color:#40506a;
 }
 
-.two-col{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:28px;
+.point-list li:last-child{
+  border-bottom:none;
 }
 
-.track{
-  overflow:hidden;
-  background:#fbfdff;
-  border:1px solid #d9e5f5;
-  border-radius:24px;
-}
+.point-list li::before{
+  content:"•";
 
-.track-title{
-  padding:17px 24px;
-  text-align:center;
-  color:#fff;
-  font-size:22px;
+  position:absolute;
+  left:2px;
+
+  color:var(--blue);
+
+  font-size:20px;
   font-weight:900;
 }
 
-.learning .track-title{background:var(--blue);}
-.research .track-title{background:var(--green);}
 
-.track-intro{
-  padding:20px 26px 4px;
-  text-align:center;
-  font-size:15px;
-  line-height:1.7;
-  color:#536178;
-}
+/* =========================================
+   CORE TECHNOLOGY
+========================================= */
 
-.track-content{
-  padding:8px 26px 26px;
-}
-
-.item{
+.core-grid{
   display:grid;
-  grid-template-columns:54px 1fr;
-  gap:18px;
-  padding:18px 0;
-  border-bottom:1px solid #e6edf7;
-}
 
-.item:last-child{border-bottom:none;}
+  grid-template-columns:
+    repeat(4,1fr);
 
-.icon{
-  width:54px;
-  height:54px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  background:#eef5ff;
-  border-radius:18px;
-  font-size:27px;
-}
-
-.research .icon{background:#edf9f2;}
-
-.item h4{
-  margin:0 0 8px;
-  font-size:20px;
-  color:#102a64;
-}
-
-.research .item h4{color:#137345;}
-
-.item p{
-  margin:0;
-  font-size:15.5px;
-  line-height:1.75;
-  color:#46546b;
-}
-
-.writing-box{
-  margin-top:16px;
-  padding:16px;
-  background:#f5f7ff;
-  border:1px solid #d9e1ff;
-  border-radius:18px;
-}
-
-.writing-box strong{
-  display:block;
-  margin-bottom:10px;
-  color:#3926a0;
-}
-
-.chips{
-  display:flex;
-  gap:8px;
-  flex-wrap:wrap;
-}
-
-.chips span{
-  padding:8px 12px;
-  background:#fff;
-  border:1px solid #d6def5;
-  border-radius:999px;
-  font-size:13px;
-  color:#263766;
-  font-weight:700;
-}
-
-.values{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
   gap:16px;
 }
 
-.value{
-  padding:22px;
+.core-card{
+  padding:26px 18px;
+
   text-align:center;
-  background:#fff8ef;
-  border:1px solid #f2d1a8;
-  border-radius:20px;
+
+  background:#fbfdff;
+
+  border:1px solid var(--line);
+  border-radius:22px;
 }
 
-.value h4{
-  margin:0 0 10px;
-  color:#c86400;
+.core-icon{
+  font-size:28px;
+
+  margin-bottom:12px;
+}
+
+.core-card h4{
+  margin:0 0 8px;
+
+  color:#102a64;
+
   font-size:18px;
 }
 
-.value p{
+.core-card p{
   margin:0;
+
+  color:#536178;
+
   font-size:14px;
-  line-height:1.7;
-  color:#5a4b3f;
+  line-height:1.6;
 }
+
+
+/* =========================================
+   FLOW
+========================================= */
+
+.flow{
+  display:grid;
+
+  grid-template-columns:
+    repeat(6,1fr);
+
+  gap:12px;
+}
+
+.flow-card{
+  padding:23px 12px;
+
+  text-align:center;
+
+  background:#fbfdff;
+
+  border:1px solid var(--line);
+  border-radius:20px;
+}
+
+.flow-num{
+  width:32px;
+  height:32px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  margin:0 auto 12px;
+
+  background:var(--blue);
+
+  color:white;
+
+  border-radius:50%;
+
+  font-weight:900;
+}
+
+.flow-card h4{
+  margin:0 0 5px;
+
+  color:var(--navy);
+
+  font-size:16px;
+}
+
+.flow-card small{
+  color:#65758d;
+
+  font-size:12px;
+}
+
+
+/* =========================================
+   TRACK
+========================================= */
+
+.track-grid{
+  display:grid;
+
+  grid-template-columns:
+    1fr 1fr;
+
+  gap:24px;
+}
+
+.track-card{
+  padding:28px;
+
+  background:#fbfdff;
+
+  border:1px solid var(--line);
+  border-radius:24px;
+}
+
+.track-card h4{
+  margin:0 0 18px;
+
+  font-size:22px;
+
+  color:var(--blue);
+}
+
+.track-tags{
+  display:flex;
+  flex-wrap:wrap;
+
+  gap:9px;
+}
+
+.track-tags span{
+  padding:9px 13px;
+
+  background:#fff;
+
+  border:1px solid #d7e3f5;
+  border-radius:999px;
+
+  font-size:13px;
+  font-weight:700;
+
+  color:#2e4770;
+}
+
+
+/* =========================================
+   ACADEMIC
+========================================= */
 
 .background{
   display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:28px;
+
+  grid-template-columns:
+    1fr 1fr;
+
+  gap:24px;
 }
 
 .bg-card{
-  padding:26px;
+  padding:28px;
+
   background:#fbfdff;
-  border:1px solid #d9e5f5;
+
+  border:1px solid var(--line);
   border-radius:22px;
 }
 
 .bg-card h4{
-  margin:0 0 14px;
-  font-size:22px;
+  margin:0 0 12px;
+
   color:var(--blue);
+
+  font-size:21px;
 }
 
-.bg-card p,
-.bg-card li{
-  font-size:16px;
-  line-height:1.8;
+.bg-card p{
+  margin:0 0 20px;
+
   color:#3f4b61;
+
+  font-size:15px;
+  line-height:1.75;
 }
 
 .bg-card ul{
   margin:0;
+
   padding-left:20px;
 }
 
-.vision{
-  text-align:center;
-  color:#fff;
-  background:linear-gradient(135deg,#071a44,#0b4dcc);
-  border:none;
+.bg-card li{
+  margin:8px 0;
+
+  color:#3f4b61;
+
+  font-size:15px;
 }
 
-.vision h3{color:#fff;}
 
-.vision p{
-  max-width:880px;
-  margin:0 auto;
-  font-size:18px;
-  line-height:1.9;
-  color:#eef4ff;
-}
+/* =========================================
+   PHOTOS
+========================================= */
 
 .photo-grid{
   display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:22px;
+
+  grid-template-columns:
+    repeat(2,1fr);
+
+  gap:20px;
 }
 
-.photo-grid img{
-  width:100%;
-  height:300px;
-  object-fit:cover;
+.photo-item{
+  overflow:hidden;
+
   border-radius:22px;
-  box-shadow:0 8px 20px rgba(0,0,0,.11);
+
+  background:#fff;
+
+  box-shadow:
+    0 8px 20px
+    rgba(0,0,0,.10);
 }
 
-.photo-grid img.wide{
-  grid-column:span 2;
-  height:410px;
+.photo-item img{
+  display:block;
+
+  width:100%;
+  height:310px;
+
+  object-fit:cover;
 }
+
+.photo-item.wide{
+  grid-column:span 2;
+}
+
+.photo-item.wide img{
+  height:430px;
+}
+
+.caption{
+  padding:12px 15px;
+
+  color:#55627a;
+
+  font-size:13px;
+
+  background:#fff;
+}
+
+
+/* =========================================
+   FOOTER
+========================================= */
 
 footer{
   padding:34px;
+
   text-align:center;
+
   color:#6b7486;
+
   background:#fff;
+
   border-top:1px solid #e1e9f5;
 }
 
-@media(max-width:1100px){
-  .framework{grid-template-columns:repeat(2,1fr);}
-  .flow-steps{grid-template-columns:repeat(2,1fr);}
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media(max-width:1050px){
+
+  .core-grid{
+    grid-template-columns:
+      repeat(2,1fr);
+  }
+
+  .flow{
+    grid-template-columns:
+      repeat(3,1fr);
+  }
+
 }
 
-@media(max-width:1000px){
-  .two-col,
-  .background{grid-template-columns:1fr;}
 
-  .values{grid-template-columns:repeat(2,1fr);}
-  .philosophy-grid{grid-template-columns:1fr;}
+@media(max-width:850px){
+
+  .research-grid,
+  .track-grid,
+  .background{
+    grid-template-columns:1fr;
+  }
+
 }
+
 
 @media(max-width:720px){
-  header{padding:16px 6%;}
-  header h1{font-size:20px;}
+
+  header{
+    padding:15px 6%;
+  }
+
+  header h1{
+    font-size:20px;
+  }
 
   .hero{
     min-height:52vh;
-    padding:52px 6%;
+    padding:55px 6%;
   }
 
-  .hero h2{font-size:39px;}
-  .hero .slogan{font-size:20px;}
-  .hero p{font-size:16px;}
+  .hero h2{
+    font-size:39px;
+  }
 
-  .container{padding:34px 5% 56px;}
+  .hero-slogan{
+    font-size:20px;
+  }
+
+  .container{
+    padding:35px 5% 55px;
+  }
 
   .section{
-    padding:25px;
-    border-radius:22px;
+    padding:26px;
   }
 
-  .section h3{font-size:25px;}
+  .section h3{
+    font-size:25px;
+  }
 
-  .quote-box p,
-  .big-question p{font-size:17px;}
-
-  .framework,
-  .flow-steps,
-  .values,
+  .core-grid,
+  .flow,
   .photo-grid{
     grid-template-columns:1fr;
   }
 
-  .photo-grid img,
-  .photo-grid img.wide{
+  .photo-item.wide{
     grid-column:span 1;
-    height:230px;
   }
+
+  .photo-item img,
+  .photo-item.wide img{
+    height:250px;
+  }
+
 }
+
 </style>
+
 </head>
+
+
 
 <body>
 
+
+<!-- =========================================
+     HEADER
+========================================= -->
+
 <header>
+
   <h1>Chinese Flow Lab</h1>
-  <a href="index.html">홈으로</a>
+
+  <a href="index.html">
+    홈으로
+  </a>
+
 </header>
 
+
+
+<!-- =========================================
+     HERO
+========================================= -->
+
 <section class="hero">
+
   <div class="hero-content">
-    <div class="eyebrow">Human-Centered Chinese Learning & Research</div>
 
-    <h2>About Chinese Flow Lab</h2>
+    <div class="eyebrow">
+      Human-Centered Chinese Learning & Research
+    </div>
 
-    <div class="slogan">
+    <h2>
+      About Chinese Flow Lab
+    </h2>
+
+    <div class="hero-slogan">
       학습자에 대한 이해에서 시작하는 중국어 학습
     </div>
 
-    <p>
-      Chinese Flow Lab은
-      <strong>학습자가 중국어를 어떻게 이해하고 처리하는가</strong>라는
-      질문에서 출발하는 연구 및 학습 플랫폼입니다.
-      중국어 인지처리에 영향을 미치는 언어학적 요인을 연구하고,
-      그 결과를 문해력 진단, 맞춤형 읽기와 AI 기반 쓰기 지원으로 연결합니다.
-    </p>
+    <div class="hero-keywords">
+
+      <span>READING</span>
+
+      <span>WRITING</span>
+
+      <span>LEARNING ANALYTICS</span>
+
+      <span>XAI</span>
+
+      <span>GENERATIVE AI</span>
+
+    </div>
+
   </div>
+
 </section>
+
+
 
 <div class="container">
 
-  <section class="section">
-    <h3>Research Philosophy</h3>
 
-    <div class="quote-box">
-      <p>
-        학습은 학습자에 대한 이해에서 시작합니다.
-      </p>
-    </div>
+<!-- =========================================
+     BIG QUESTION
+========================================= -->
 
-    <p class="section-lead">
-      생성형 AI 시대의 언어학습에서는 지식을 기억하는 능력뿐 아니라
-      정보를 이해하고 판단하며 자신의 생각을 구성하는 능력이 중요합니다.
-      Chinese Flow Lab은 결과보다 사고 과정에 주목하고,
-      이해력과 문해력을 중심으로 중국어 학습을 설계합니다.
-    </p>
+<section class="section">
 
-    <div class="philosophy-grid">
+  <div class="question-box">
 
-      <div class="philosophy-card">
-        <div class="symbol">🧠</div>
-        <h4>Human-Centered</h4>
-        <p>학습자의 인지처리와 학습 경험을 중심에 둡니다.</p>
-      </div>
-
-      <div class="philosophy-card">
-        <div class="symbol">🔍</div>
-        <h4>Evidence-Based</h4>
-        <p>언어학과 인지과학의 실증 연구를 학습 설계에 반영합니다.</p>
-      </div>
-
-      <div class="philosophy-card">
-        <div class="symbol">🌱</div>
-        <h4>Research to Practice</h4>
-        <p>연구 결과를 실제 읽기와 쓰기 활동으로 연결합니다.</p>
-      </div>
-
-    </div>
-
-    <div class="big-question">
-      <small>BIG QUESTION</small>
-      <p>
-        중국어의 인지적 처리 난이도는 어떠한 언어학적 요인에 의해 결정되며,
-        이를 기반으로 학습자 맞춤형 중국어 학습을 구현할 수 있는가?
-      </p>
-    </div>
-  </section>
-
-  <section class="section">
-    <h3>Research Framework</h3>
-
-    <p class="section-lead">
-      언어학적 요인의 분석에서 출발하여
-      인지처리, 문해력 진단, AI 기반 맞춤형 학습으로 확장합니다.
-    </p>
-
-    <div class="framework">
-
-      <div class="framework-card">
-        <div class="num">1</div>
-        <h4>언어학적 요인</h4>
-        <small>Lexical · Syntactic · Discourse</small>
-        <p>어휘, 연어, 문법, 정보 밀도와 담화 응집성을 분석합니다.</p>
-      </div>
-
-      <div class="framework-card">
-        <div class="num">2</div>
-        <h4>인지처리 메커니즘</h4>
-        <small>Cognitive Processing</small>
-        <p>언어적 요인이 처리 속도와 이해에 미치는 영향을 규명합니다.</p>
-      </div>
-
-      <div class="framework-card">
-        <div class="num">3</div>
-        <h4>인지적 난이도</h4>
-        <small>Cognitive Difficulty</small>
-        <p>문장과 텍스트의 실제 처리 난이도를 예측합니다.</p>
-      </div>
-
-      <div class="framework-card">
-        <div class="num">4</div>
-        <h4>문해력 진단</h4>
-        <small>Literacy Assessment</small>
-        <p>학습자의 이해 수준과 필요한 지원 유형을 진단합니다.</p>
-      </div>
-
-      <div class="framework-card">
-        <div class="num">5</div>
-        <h4>맞춤형 학습</h4>
-        <small>Adaptive Learning</small>
-        <p>진단 결과에 따라 읽기 자료와 AI 피드백을 제공합니다.</p>
-      </div>
-
-    </div>
-  </section>
-
-  <section class="section">
-    <h3>Chinese Flow Lab 학습 흐름</h3>
-
-    <div class="flow-steps">
-
-      <div class="flow-card">
-        <div class="num">1</div>
-        <h4>문해력 진단</h4>
-        <small>Literacy Assessment</small>
-        <p>읽기·쓰기 능력과 보완점을 진단합니다.</p>
-      </div>
-
-      <div class="flow-card">
-        <div class="num">2</div>
-        <h4>맞춤형 읽기</h4>
-        <small>Personalized Reading</small>
-        <p>수준과 관심사에 맞는 텍스트를 추천합니다.</p>
-      </div>
-
-      <div class="flow-card">
-        <div class="num">3</div>
-        <h4>배경지식 학습</h4>
-        <small>Flipped Learning</small>
-        <p>어휘, 문법, 문화와 주제 지식을 학습합니다.</p>
-      </div>
-
-      <div class="flow-card">
-        <div class="num">4</div>
-        <h4>AI 쓰기</h4>
-        <small>AI Writing Studio</small>
-        <p>초안, 피드백, 수정, 최종본 작성을 지원합니다.</p>
-      </div>
-
-      <div class="flow-card">
-        <div class="num">5</div>
-        <h4>학습 분석</h4>
-        <small>Learning Analytics</small>
-        <p>읽기·쓰기 기록과 성장 과정을 확인합니다.</p>
-      </div>
-
-      <div class="flow-card">
-        <div class="num">6</div>
-        <h4>연구 연결</h4>
-        <small>Research Connection</small>
-        <p>학습 데이터를 중국어교육 연구로 연결합니다.</p>
-      </div>
-
-    </div>
-  </section>
-
-  <section class="two-col">
-
-    <div class="track learning">
-      <div class="track-title">LEARNING TRACK 학습 영역</div>
-
-      <div class="track-intro">
-        연구 결과를 실제 중국어 학습 경험으로 연결합니다.
-      </div>
-
-      <div class="track-content">
-
-        <div class="item">
-          <div class="icon">📋</div>
-          <div>
-            <h4>문해력 진단</h4>
-            <p>현재의 읽기·쓰기 수준과 학습자의 강점 및 보완점을 파악합니다.</p>
-          </div>
-        </div>
-
-        <div class="item">
-          <div class="icon">📖</div>
-          <div>
-            <h4>맞춤형 읽기</h4>
-            <p>수준, 주제, 어휘 피복률과 인지적 난이도를 고려하여 텍스트를 추천합니다.</p>
-          </div>
-        </div>
-
-        <div class="item">
-          <div class="icon">▶️</div>
-          <div>
-            <h4>배경지식 학습</h4>
-            <p>플립드러닝 영상으로 어휘, 문법, 문화와 주제 지식을 학습합니다.</p>
-          </div>
-        </div>
-
-        <div class="item">
-          <div class="icon">✍️</div>
-          <div>
-            <h4>AI 쓰기 스튜디오</h4>
-            <p>초안 작성부터 AI 피드백, 수정, 최종본 완성까지의 과정을 지원합니다.</p>
-
-            <div class="writing-box">
-              <strong>쓰기 영역</strong>
-              <div class="chips">
-                <span>받아쓰기</span>
-                <span>딕토글로스</span>
-                <span>자유 글쓰기</span>
-                <span>수정</span>
-                <span>최종본</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="item">
-          <div class="icon">📊</div>
-          <div>
-            <h4>학습 분석</h4>
-            <p>읽기와 쓰기 기록, 성장 추이, AI 활용 과정을 확인합니다.</p>
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-    <div>
-
-      <div class="track research">
-        <div class="track-title">RESEARCH TRACK 연구 영역</div>
-
-        <div class="track-intro">
-          중국어 인지처리 연구를 문해력과 맞춤형 학습으로 확장합니다.
-        </div>
-
-        <div class="track-content">
-
-          <div class="item">
-            <div class="icon">🧠</div>
-            <div>
-              <h4>Chinese Cognitive Processing</h4>
-              <p>어휘, 문법, 담화 수준에서 중국어 처리 메커니즘을 연구합니다.</p>
-            </div>
-          </div>
-
-          <div class="item">
-            <div class="icon">📐</div>
-            <div>
-              <h4>Cognitive Difficulty Modeling</h4>
-              <p>언어학적 요인을 통합하여 문장과 텍스트의 인지적 난이도를 예측합니다.</p>
-            </div>
-          </div>
-
-          <div class="item">
-            <div class="icon">📚</div>
-            <div>
-              <h4>Literacy & Adaptive Reading</h4>
-              <p>문해력 진단과 학습자 수준에 맞는 읽기 추천 체계를 개발합니다.</p>
-            </div>
-          </div>
-
-          <div class="item">
-            <div class="icon">✍️</div>
-            <div>
-              <h4>AI-mediated Writing</h4>
-              <p>AI 피드백과 수정 과정에서 나타나는 학습자의 사고와 문해력을 연구합니다.</p>
-            </div>
-          </div>
-
-        </div>
-      </div>
-
-      <div class="section" style="margin-top:28px;">
-
-        <div class="values">
-
-    </div>
-  </section>
-
-  <section class="section">
-    <h3>Academic Background</h3>
-
-    <div class="background">
-
-      <div class="bg-card">
-        <h4>Ph.D.</h4>
-        <p>
-          Linguistics and Applied Linguistics(Chinese as a Second Language Acquisition)<br>
-          Peking University
-        </p>
-
-        <h4>Dissertation</h4>
-        <p>
-          A Study on Cognitive Characteristics and Affecting Factors
-          of Processing of Chinese Subject/Object Relative Clauses:
-          Focusing on Korean Learners of Chinese
-        </p>
-      </div>
-
-      <div class="bg-card">
-        <h4>Research Interests</h4>
-        <ul>
-          <li>Chinese Cognitive Processing</li>
-          <li>Cognitive Difficulty Modeling</li>
-          <li>Chinese Literacy</li>
-          <li>Corpus-Based Chinese Research</li>
-          <li>AI-mediated Language Learning</li>
-          <li>Personalized Chinese Learning</li>
-        </ul>
-      </div>
-
-    </div>
-  </section>
-
-  <section class="section vision">
-    <h3>Our Vision</h3>
+    <small>
+      RESEARCH QUESTION
+    </small>
 
     <p>
-      <strong>학습은 학습자에 대한 이해에서 시작합니다.</strong><br><br>
-
-      Chinese Flow Lab은 학습자의 중국어 인지처리와 사고 과정을 연구하고,
-      이를 바탕으로 문해력 진단, 맞춤형 읽기와
-      AI 기반 읽기·쓰기 지원이 연결되는
-      인간 중심의 중국어 학습 환경을 구축하고자 합니다.
+      학습자는 중국어를 어떻게 읽고 쓰며,
+      그 과정의 어려움을 어떻게 설명하고 지원할 수 있는가?
     </p>
-  </section>
 
-  <section class="section">
-    <h3>Research & Academic Activities</h3>
+  </div>
 
-    <div class="photo-grid">
+</section>
 
-      <img class="wide"
-           src="image/about-teaching.jpg"
-           alt="Academic writing and manuscript revision">
 
-      <img src="image/about-writing.jpg"
-           alt="Classroom teaching">
 
-      <img src="image/about-conference2.jpg"
-           alt="Academic conference presentation">
+<!-- =========================================
+     READING + WRITING
+========================================= -->
 
-      <img src="image/about-cafe.jpg"
-           alt="Cafe-based learning and research">
+<section class="section">
 
-      <img src="image/about-aiwork.jpg"
-           alt="AI-based learning and research development">
+  <h3>
+    Research Areas
+  </h3>
 
-      <img src="image/about-eye.jpg"
-           alt="Eye-tracking research">
+  <p class="section-sub">
+    Chinese Flow Lab의 핵심 연구 영역
+  </p>
 
-      <img src="image/about-experiment.jpg"
-           alt="Research experiment">
 
-      <img src="image/about-laptop.jpg"
-           alt="Online teaching and learning">
+  <div class="research-grid">
 
-      <img src="image/about-home.jpg"
-           alt="Research work scene">
 
-      <img src="image/about-sla.jpg"
-           alt="Second language acquisition symposium">
+    <!-- READING -->
 
-      <img src="image/about-aca.jpg"
-           alt="Academic conference">
+    <div class="research-card">
+
+      <div class="research-icon">
+        📖
+      </div>
+
+      <h4>
+        READING
+      </h4>
+
+      <div class="eng">
+        Chinese Reading Processing
+      </div>
+
+      <ul class="point-list">
+
+        <li>
+          읽기시간 · 이해도 · 오류 패턴
+        </li>
+
+        <li>
+          어휘 · 연어 · 통사 · 담화
+        </li>
+
+        <li>
+          인지적 난이도 분석
+        </li>
+
+        <li>
+          학습자 인지 프로파일링
+        </li>
+
+        <li>
+          개인맞춤형 읽기 지원
+        </li>
+
+      </ul>
 
     </div>
-  </section>
+
+
+
+    <!-- WRITING -->
+
+    <div class="research-card">
+
+      <div class="research-icon">
+        ✍️
+      </div>
+
+      <h4>
+        WRITING
+      </h4>
+
+      <div class="eng">
+        AI-mediated Chinese Writing
+      </div>
+
+      <ul class="point-list">
+
+        <li>
+          초안 · 피드백 · 수정 · 최종본
+        </li>
+
+        <li>
+          프롬프트 활용 과정
+        </li>
+
+        <li>
+          쓰기 과정 데이터
+        </li>
+
+        <li>
+          학습자 쓰기 프로파일링
+        </li>
+
+        <li>
+          AI 기반 맞춤형 쓰기 지원
+        </li>
+
+      </ul>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- =========================================
+     CORE APPROACH
+========================================= -->
+
+<section class="section">
+
+  <h3>
+    Core Approach
+  </h3>
+
+  <p class="section-sub">
+    학습 과정 데이터를 이해하고 설명하며 지원합니다.
+  </p>
+
+
+  <div class="core-grid">
+
+
+    <div class="core-card">
+
+      <div class="core-icon">
+        📊
+      </div>
+
+      <h4>
+        Learning Analytics
+      </h4>
+
+      <p>
+        읽기·쓰기 과정 데이터 분석
+      </p>
+
+    </div>
+
+
+
+    <div class="core-card">
+
+      <div class="core-icon">
+        🧠
+      </div>
+
+      <h4>
+        Learner Profiling
+      </h4>
+
+      <p>
+        강점 · 취약점 · 처리 특성
+      </p>
+
+    </div>
+
+
+
+    <div class="core-card">
+
+      <div class="core-icon">
+        🔍
+      </div>
+
+      <h4>
+        XAI
+      </h4>
+
+      <p>
+        어려움과 추천의 이유 설명
+      </p>
+
+    </div>
+
+
+
+    <div class="core-card">
+
+      <div class="core-icon">
+        🤖
+      </div>
+
+      <h4>
+        Generative AI
+      </h4>
+
+      <p>
+        맞춤형 설명 · 피드백 · 지원
+      </p>
+
+    </div>
+
+
+  </div>
+
+</section>
+
+
+
+<!-- =========================================
+     FLOW
+========================================= -->
+
+<section class="section">
+
+  <h3>
+    Research Flow
+  </h3>
+
+  <p class="section-sub">
+    수행 데이터를 학습자 맞춤 지원으로 연결합니다.
+  </p>
+
+
+  <div class="flow">
+
+
+    <div class="flow-card">
+
+      <div class="flow-num">
+        1
+      </div>
+
+      <h4>
+        PERFORM
+      </h4>
+
+      <small>
+        읽기 · 쓰기 수행
+      </small>
+
+    </div>
+
+
+
+    <div class="flow-card">
+
+      <div class="flow-num">
+        2
+      </div>
+
+      <h4>
+        ANALYZE
+      </h4>
+
+      <small>
+        과정 데이터 분석
+      </small>
+
+    </div>
+
+
+
+    <div class="flow-card">
+
+      <div class="flow-num">
+        3
+      </div>
+
+      <h4>
+        PROFILE
+      </h4>
+
+      <small>
+        학습자 프로파일
+      </small>
+
+    </div>
+
+
+
+    <div class="flow-card">
+
+      <div class="flow-num">
+        4
+      </div>
+
+      <h4>
+        EXPLAIN
+      </h4>
+
+      <small>
+        XAI 설명
+      </small>
+
+    </div>
+
+
+
+    <div class="flow-card">
+
+      <div class="flow-num">
+        5
+      </div>
+
+      <h4>
+        SUPPORT
+      </h4>
+
+      <small>
+        AI 맞춤 지원
+      </small>
+
+    </div>
+
+
+
+    <div class="flow-card">
+
+      <div class="flow-num">
+        6
+      </div>
+
+      <h4>
+        UPDATE
+      </h4>
+
+      <small>
+        프로파일 갱신
+      </small>
+
+    </div>
+
+
+  </div>
+
+</section>
+
+
+
+<!-- =========================================
+     LEARNING / RESEARCH TRACK
+========================================= -->
+
+<section class="section">
+
+  <h3>
+    Chinese Flow Lab
+  </h3>
+
+  <p class="section-sub">
+    연구와 학습을 하나의 플랫폼에서 연결합니다.
+  </p>
+
+
+  <div class="track-grid">
+
+
+    <div class="track-card">
+
+      <h4>
+        LEARNING
+      </h4>
+
+      <div class="track-tags">
+
+        <span>읽기 진단</span>
+
+        <span>맞춤형 읽기</span>
+
+        <span>AI Writing</span>
+
+        <span>AI Feedback</span>
+
+        <span>학습 분석</span>
+
+      </div>
+
+    </div>
+
+
+
+    <div class="track-card">
+
+      <h4>
+        RESEARCH
+      </h4>
+
+      <div class="track-tags">
+
+        <span>Cognitive Processing</span>
+
+        <span>Reading Difficulty</span>
+
+        <span>Chinese Literacy</span>
+
+        <span>Corpus & NLP</span>
+
+        <span>Learning Analytics</span>
+
+        <span>XAI</span>
+
+        <span>AI-mediated Learning</span>
+
+      </div>
+
+    </div>
+
+
+  </div>
+
+</section>
+
+
+
+<!-- =========================================
+     ACADEMIC BACKGROUND
+========================================= -->
+
+<section class="section">
+
+  <h3>
+    Academic Background
+  </h3>
+
+
+  <div class="background">
+
+
+    <div class="bg-card">
+
+      <h4>
+        Ph.D.
+      </h4>
+
+      <p>
+        Linguistics and Applied Linguistics<br>
+        Chinese as a Second Language Acquisition<br>
+        Peking University
+      </p>
+
+
+      <h4>
+        Dissertation
+      </h4>
+
+      <p>
+        Processing of Chinese Subject/Object
+        Relative Clauses in Korean Learners of Chinese
+      </p>
+
+    </div>
+
+
+
+    <div class="bg-card">
+
+      <h4>
+        Research Interests
+      </h4>
+
+      <ul>
+
+        <li>
+          Chinese Reading Processing
+        </li>
+
+        <li>
+          AI-mediated Chinese Writing
+        </li>
+
+        <li>
+          Cognitive Difficulty Modeling
+        </li>
+
+        <li>
+          Chinese Literacy
+        </li>
+
+        <li>
+          Corpus & NLP
+        </li>
+
+        <li>
+          Learning Analytics
+        </li>
+
+        <li>
+          Explainable AI
+        </li>
+
+        <li>
+          Personalized Language Learning
+        </li>
+
+      </ul>
+
+    </div>
+
+
+  </div>
+
+</section>
+
+
+
+<!-- =========================================
+     PHOTOS
+========================================= -->
+
+<section class="section">
+
+  <h3>
+    Research & Academic Activities
+  </h3>
+
+  <p class="section-sub">
+    Research · Teaching · Conference · Experiment
+  </p>
+
+
+  <div class="photo-grid">
+
+
+    <!-- 새 CityU 사진 1 -->
+
+    <div class="photo-item wide">
+
+      <img
+        src="image/20260628_110154.jpg"
+        alt="Conference presentation at City University of Hong Kong"
+      >
+
+      <div class="caption">
+        Academic Conference Presentation · City University of Hong Kong
+      </div>
+
+    </div>
+
+
+
+    <!-- 새 CityU 사진 2 -->
+
+    <div class="photo-item">
+
+      <img
+        src="image/20260628_110509.jpg"
+        alt="Conference presentation"
+      >
+
+      <div class="caption">
+        Chinese Text Difficulty Research
+      </div>
+
+    </div>
+
+
+
+    <div class="photo-item">
+
+      <img
+        src="image/about-eye.jpg"
+        alt="Eye-tracking research"
+      >
+
+      <div class="caption">
+        Reading Processing Research
+      </div>
+
+    </div>
+
+
+
+    <div class="photo-item">
+
+      <img
+        src="image/about-experiment.jpg"
+        alt="Research experiment"
+      >
+
+      <div class="caption">
+        Experimental Research
+      </div>
+
+    </div>
+
+
+
+    <div class="photo-item">
+
+      <img
+        src="image/about-aiwork.jpg"
+        alt="AI-based research"
+      >
+
+      <div class="caption">
+        AI-based Learning Research
+      </div>
+
+    </div>
+
+
+
+    <div class="photo-item">
+
+      <img
+        src="image/about-teaching.jpg"
+        alt="Teaching"
+      >
+
+      <div class="caption">
+        Teaching & Learning
+      </div>
+
+    </div>
+
+
+
+    <div class="photo-item">
+
+      <img
+        src="image/about-writing.jpg"
+        alt="Academic writing"
+      >
+
+      <div class="caption">
+        Writing & Research
+      </div>
+
+    </div>
+
+
+
+    <div class="photo-item">
+
+      <img
+        src="image/about-sla.jpg"
+        alt="Second language acquisition symposium"
+      >
+
+      <div class="caption">
+        Second Language Acquisition
+      </div>
+
+    </div>
+
+
+
+    <div class="photo-item">
+
+      <img
+        src="image/about-aca.jpg"
+        alt="Academic conference"
+      >
+
+      <div class="caption">
+        Academic Activities
+      </div>
+
+    </div>
+
+
+  </div>
+
+</section>
+
 
 </div>
 
+
+
 <footer>
+
   © 2026 Chinese Flow Lab
+
 </footer>
 
+
 </body>
+
 </html>
