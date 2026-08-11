@@ -5,129 +5,100 @@
 
 <meta charset="UTF-8">
 
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Chinese Flow Lab - Reading Test</title>
+
 
 <style>
 
 body {
+  margin: 0;
+  background: #ffffff;
+  color: #222;
 
   font-family:
     Arial,
+    "Pretendard",
     "Noto Sans KR",
     "Noto Sans SC",
     sans-serif;
-
-  margin: 0;
-
-  background: #ffffff;
-
-  color: #222;
-
 }
 
 
 .container {
-
   max-width: 760px;
-
   margin: 0 auto;
-
   padding: 60px 24px;
-
 }
 
 
 .hidden {
-
   display: none;
-
 }
 
 
 .center {
-
   text-align: center;
-
 }
 
 
 h1 {
-
   font-size: 28px;
-
   margin-bottom: 25px;
-
 }
 
 
 h2 {
-
   font-size: 22px;
-
 }
 
 
 .instruction {
+  margin: 25px 0;
+  padding: 22px;
 
   background: #f7f7f7;
-
-  padding: 22px;
 
   border-radius: 8px;
 
   line-height: 1.8;
-
-  margin: 25px 0;
-
 }
 
 
 button {
+  margin-top: 20px;
 
   padding: 12px 28px;
 
   font-size: 16px;
 
   border: 1px solid #333;
-
   border-radius: 6px;
 
   background: white;
 
   cursor: pointer;
-
-  margin-top: 20px;
-
 }
 
 
 button:hover {
-
   background: #f3f3f3;
-
 }
 
 
 button:disabled {
-
-  opacity: 0.5;
-
+  opacity: 0.45;
   cursor: default;
-
 }
 
 
 .progress {
-
-  font-size: 14px;
+  margin-bottom: 30px;
 
   color: #777;
 
-  margin-bottom: 30px;
-
+  font-size: 14px;
 }
 
 
@@ -138,9 +109,7 @@ button:disabled {
   display: flex;
 
   align-items: center;
-
   justify-content: center;
-
 }
 
 
@@ -151,20 +120,17 @@ button:disabled {
   line-height: 1.8;
 
   text-align: center;
-
 }
 
 
 .question {
 
+  margin-top: 45px;
+  margin-bottom: 30px;
+
   font-size: 23px;
 
   line-height: 1.6;
-
-  margin-top: 50px;
-
-  margin-bottom: 30px;
-
 }
 
 
@@ -175,50 +141,43 @@ button:disabled {
   flex-direction: column;
 
   gap: 12px;
-
 }
 
 
 .option {
 
+  padding: 15px 18px;
+
   border: 1px solid #ccc;
-
   border-radius: 6px;
-
-  padding: 15px;
 
   font-size: 18px;
 
   cursor: pointer;
-
 }
 
 
 .option:hover {
 
   background: #f5f5f5;
-
 }
 
 
 .option.selected {
 
   border: 2px solid #333;
-
 }
 
 
 .option.correct {
 
   background: #e7f6e7;
-
 }
 
 
 .option.incorrect {
 
   background: #fde8e8;
-
 }
 
 
@@ -227,23 +186,33 @@ button:disabled {
   margin-top: 20px;
 
   font-weight: bold;
-
 }
 
 
 .result-box {
 
-  background: #f7f7f7;
+  margin-top: 30px;
 
-  padding: 20px;
+  padding: 22px;
+
+  background: #f7f7f7;
 
   border-radius: 8px;
 
-  margin-top: 30px;
-
   line-height: 1.8;
-
 }
+
+
+.small-note {
+
+  margin-top: 18px;
+
+  color: #777;
+
+  font-size: 13px;
+  line-height: 1.6;
+}
+
 
 </style>
 
@@ -257,10 +226,9 @@ button:disabled {
 <div class="container">
 
 
-<!-- ======================================== -->
-<!-- 시작 화면 -->
-<!-- ======================================== -->
-
+<!-- ==================================================
+     시작 화면
+================================================== -->
 
 <div id="startScreen">
 
@@ -281,7 +249,7 @@ button:disabled {
 </p>
 
 <p>
-문장을 다 읽으면
+문장을 모두 읽으면
 <b>다음</b> 버튼을 눌러주세요.
 </p>
 
@@ -299,9 +267,7 @@ button:disabled {
 
 
 <button onclick="startPractice()">
-
 연습 시작
-
 </button>
 
 
@@ -309,10 +275,9 @@ button:disabled {
 
 
 
-<!-- ======================================== -->
-<!-- 본 검사 안내 화면 -->
-<!-- ======================================== -->
-
+<!-- ==================================================
+     본 검사 안내
+================================================== -->
 
 <div
 id="testIntroScreen"
@@ -330,16 +295,13 @@ class="hidden center">
 
 
 <p>
-앞과 같은 방법으로
-중국어 문장을 읽고
+앞과 같은 방법으로 문장을 읽고
 한국어 문제에 답해주세요.
 </p>
 
 
 <button onclick="startTest()">
-
 본 검사 시작
-
 </button>
 
 
@@ -347,10 +309,9 @@ class="hidden center">
 
 
 
-<!-- ======================================== -->
-<!-- 문장 읽기 화면 -->
-<!-- ======================================== -->
-
+<!-- ==================================================
+     문장 제시
+================================================== -->
 
 <div
 id="readingScreen"
@@ -387,17 +348,21 @@ onclick="finishReading()">
 </button>
 
 
+<div class="small-note">
+스페이스바를 눌러도 다음 단계로 이동할 수 있습니다.
 </div>
 
 
 </div>
 
 
+</div>
 
-<!-- ======================================== -->
-<!-- 이해도 문제 화면 -->
-<!-- ======================================== -->
 
+
+<!-- ==================================================
+     이해도 문제
+================================================== -->
 
 <div
 id="questionScreen"
@@ -407,9 +372,7 @@ class="hidden">
 <div
 id="questionProgress"
 class="progress">
-
 내용 이해
-
 </div>
 
 
@@ -445,10 +408,9 @@ disabled>
 
 
 
-<!-- ======================================== -->
-<!-- 종료 화면 -->
-<!-- ======================================== -->
-
+<!-- ==================================================
+     종료
+================================================== -->
 
 <div
 id="finishScreen"
@@ -482,45 +444,43 @@ class="result-box">
 
 
 // ==================================================
-// 연습 문항
-//
-// 중국어 문장
-// → 한국어 질문
-// → 한국어 선택지
+// PRACTICE
+// PRA = Practice
 // ==================================================
-
 
 const practiceItems = [
 
 
 {
-
-  id: "P01",
+  id: "PRA01",
 
   type: "practice",
 
+  domain: "practice",
+
   feature: "simple_sentence",
 
+  featureCode: "NOR",
+
+  charLength: 15,
 
   sentence:
-
-  "小林今天下午去学校图书馆看书。",
-
+    "小林今天下午去学校图书馆里看书。",
 
   question: {
 
     text:
-    "샤오린은 오늘 오후 어디에 갔습니까?",
+      "샤오린은 오늘 오후 무엇을 하러 갔습니까?",
 
     options: [
 
-      "도서관",
+      "책을 읽으러",
 
-      "병원",
+      "운동하러",
 
-      "상점",
+      "식사하러",
 
-      "식당"
+      "쇼핑하러"
 
     ],
 
@@ -533,23 +493,25 @@ const practiceItems = [
 
 
 {
-
-  id: "P02",
+  id: "PRA02",
 
   type: "practice",
 
+  domain: "practice",
+
   feature: "simple_sentence",
 
+  featureCode: "NOR",
+
+  charLength: 15,
 
   sentence:
-
-  "李华昨天和朋友一起吃了晚饭。",
-
+    "李华昨天晚上和朋友一起吃了晚饭。",
 
   question: {
 
     text:
-    "리화는 어제 누구와 함께 저녁을 먹었습니까?",
+      "리화는 어제 저녁을 누구와 먹었습니까?",
 
     options: [
 
@@ -557,9 +519,9 @@ const practiceItems = [
 
       "친구",
 
-      "어머니",
+      "동생",
 
-      "동생"
+      "혼자"
 
     ],
 
@@ -577,375 +539,49 @@ const practiceItems = [
 // ==================================================
 // 본 검사
 //
-// Target 3
-// Control 3
-// Filler 2
+// SYN = Syntax
+// LEX = Vocabulary
+// COL = Collocation
+// DIS = Discourse
+// BF  = Baseline / Filler
 //
-// 참가자 화면에는 유형이 표시되지 않음
+// 참가자에게는 영역 정보가 표시되지 않음
 // ==================================================
-
 
 const testItems = [
 
 
 
 // ==================================================
-// TARGET 1
-// 관계절
+// BF01
 // ==================================================
-
 
 {
+  id: "BF01",
 
-  id: "T01",
-
-  type: "target",
-
-  domain: "syntax",
-
-  feature: "relative_clause",
-
-
-  sentence:
-
-  "老师昨天介绍的那位新同学叫王明。",
-
-
-  question: {
-
-    text:
-    "선생님이 어제 소개한 사람은 누구입니까?",
-
-    options: [
-
-      "왕밍",
-
-      "선생님",
-
-      "리화",
-
-      "친구"
-
-    ],
-
-    answer: 0
-
-  }
-
-},
-
-
-
-// ==================================================
-// CONTROL 1
-// 일반문
-// ==================================================
-
-
-{
-
-  id: "C01",
-
-  type: "control",
+  type: "baseline_filler",
 
   domain: "baseline",
 
   feature: "simple_sentence",
 
+  featureCode: "BF",
+
+  charLength: 16,
 
   sentence:
-
-  "李华每天早上在学校学习中文。",
-
+    "李华每天早上都在学校认真学习中文。",
 
   question: {
 
     text:
-    "리화는 매일 아침 어디에서 중국어를 공부합니까?",
+      "리화는 학교에서 무엇을 공부합니까?",
 
     options: [
-
-      "학교",
-
-      "병원",
-
-      "상점",
-
-      "기차역"
-
-    ],
-
-    answer: 0
-
-  }
-
-},
-
-
-
-// ==================================================
-// FILLER 1
-// ==================================================
-
-
-{
-
-  id: "F01",
-
-  type: "filler",
-
-  domain: "general",
-
-  feature: "simple_sentence",
-
-
-  sentence:
-
-  "今天下午学校里有一场篮球比赛。",
-
-
-  question: {
-
-    text:
-    "오늘 오후 학교에서 어떤 경기가 열립니까?",
-
-    options: [
-
-      "농구 경기",
-
-      "축구 경기",
-
-      "수영 경기",
-
-      "달리기 경기"
-
-    ],
-
-    answer: 0
-
-  }
-
-},
-
-
-
-// ==================================================
-// TARGET 2
-// 把字句
-// ==================================================
-
-
-{
-
-  id: "T02",
-
-  type: "target",
-
-  domain: "syntax",
-
-  feature: "ba_sentence",
-
-
-  sentence:
-
-  "小王把老师给他的书放在桌子上了。",
-
-
-  question: {
-
-    text:
-    "샤오왕은 책을 어디에 놓았습니까?",
-
-    options: [
-
-      "책상 위",
-
-      "가방 안",
-
-      "교실 안",
-
-      "의자 아래"
-
-    ],
-
-    answer: 0
-
-  }
-
-},
-
-
-
-// ==================================================
-// CONTROL 2
-// ==================================================
-
-
-{
-
-  id: "C02",
-
-  type: "control",
-
-  domain: "baseline",
-
-  feature: "simple_sentence",
-
-
-  sentence:
-
-  "妈妈昨天晚上在家做了晚饭。",
-
-
-  question: {
-
-    text:
-    "어머니는 어제 저녁 어디에서 저녁 식사를 준비했습니까?",
-
-    options: [
-
-      "학교",
-
-      "식당",
-
-      "집",
-
-      "회사"
-
-    ],
-
-    answer: 2
-
-  }
-
-},
-
-
-
-// ==================================================
-// TARGET 3
-// 被字句
-// ==================================================
-
-
-{
-
-  id: "T03",
-
-  type: "target",
-
-  domain: "syntax",
-
-  feature: "bei_sentence",
-
-
-  sentence:
-
-  "小李的自行车昨天被弟弟骑走了。",
-
-
-  question: {
-
-    text:
-    "샤오리의 자전거를 타고 간 사람은 누구입니까?",
-
-    options: [
-
-      "샤오리",
-
-      "남동생",
-
-      "선생님",
-
-      "친구"
-
-    ],
-
-    answer: 1
-
-  }
-
-},
-
-
-
-// ==================================================
-// FILLER 2
-// ==================================================
-
-
-{
-
-  id: "F02",
-
-  type: "filler",
-
-  domain: "general",
-
-  feature: "simple_sentence",
-
-
-  sentence:
-
-  "妹妹周末常常跟妈妈一起去公园。",
-
-
-  question: {
-
-    text:
-    "여동생은 주말에 자주 어디에 갑니까?",
-
-    options: [
-
-      "학교",
-
-      "병원",
-
-      "공원",
-
-      "공항"
-
-    ],
-
-    answer: 2
-
-  }
-
-},
-
-
-
-// ==================================================
-// CONTROL 3
-// ==================================================
-
-
-{
-
-  id: "C03",
-
-  type: "control",
-
-  domain: "baseline",
-
-  feature: "simple_sentence",
-
-
-  sentence:
-
-  "王老师今天上午给学生上中文课。",
-
-
-  question: {
-
-    text:
-    "왕 선생님은 오늘 오전 학생들에게 무슨 수업을 합니까?",
-
-    options: [
-
-      "영어",
 
       "중국어",
+
+      "영어",
 
       "수학",
 
@@ -953,7 +589,1330 @@ const testItems = [
 
     ],
 
+    answer: 0
+
+  }
+
+},
+
+
+
+// ==================================================
+// SYN01
+// Relative Clause
+// ==================================================
+
+{
+  id: "SYN01",
+
+  type: "target",
+
+  domain: "syntax",
+
+  feature: "relative_clause",
+
+  featureCode: "RC",
+
+  charLength: 15,
+
+  sentence:
+    "老师昨天介绍的那位新同学叫王明。",
+
+  question: {
+
+    text:
+      "선생님이 어제 소개한 새 학생은 누구입니까?",
+
+    options: [
+
+      "리화",
+
+      "선생님",
+
+      "왕밍",
+
+      "친구"
+
+    ],
+
+    answer: 2
+
+  }
+
+},
+
+
+
+// ==================================================
+// LEX01
+// Low-frequency vocabulary
+// ==================================================
+
+{
+  id: "LEX01",
+
+  type: "target",
+
+  domain: "vocabulary",
+
+  feature: "low_frequency",
+
+  featureCode: "LF",
+
+  charLength: 16,
+
+  sentence:
+    "这个地区最近采取了严格的防范措施。",
+
+  question: {
+
+    text:
+      "이 지역에서 최근 취한 것은 무엇입니까?",
+
+    options: [
+
+      "엄격한 예방 조치",
+
+      "여행 계획",
+
+      "교육 과정",
+
+      "운동 계획"
+
+    ],
+
+    answer: 0
+
+  }
+
+},
+
+
+
+// ==================================================
+// BF02
+// ==================================================
+
+{
+  id: "BF02",
+
+  type: "baseline_filler",
+
+  domain: "baseline",
+
+  feature: "simple_sentence",
+
+  featureCode: "BF",
+
+  charLength: 15,
+
+  sentence:
+    "妈妈昨天晚上在家给我们做了晚饭。",
+
+  question: {
+
+    text:
+      "어머니는 어제 저녁 어디에서 식사를 준비했습니까?",
+
+    options: [
+
+      "식당",
+
+      "집",
+
+      "학교",
+
+      "회사"
+
+    ],
+
     answer: 1
+
+  }
+
+},
+
+
+
+// ==================================================
+// COL01
+// ==================================================
+
+{
+  id: "COL01",
+
+  type: "target",
+
+  domain: "collocation",
+
+  feature: "collocation_candidate",
+
+  featureCode: "COL",
+
+  charLength: 16,
+
+  sentence:
+    "学校决定采取有效措施解决这个问题。",
+
+  question: {
+
+    text:
+      "학교는 이 문제를 해결하기 위해 무엇을 하기로 했습니까?",
+
+    options: [
+
+      "효과적인 조치를 취한다",
+
+      "수업을 취소한다",
+
+      "학생을 모집한다",
+
+      "시험을 연기한다"
+
+    ],
+
+    answer: 0
+
+  }
+
+},
+
+
+
+// ==================================================
+// SYN02
+// Relative Clause
+// ==================================================
+
+{
+  id: "SYN02",
+
+  type: "target",
+
+  domain: "syntax",
+
+  feature: "relative_clause",
+
+  featureCode: "RC",
+
+  charLength: 17,
+
+  sentence:
+    "我昨天在图书馆看到的那个学生是李华。",
+
+  question: {
+
+    text:
+      "내가 어제 도서관에서 본 학생은 누구입니까?",
+
+    options: [
+
+      "왕밍",
+
+      "선생님",
+
+      "친구",
+
+      "리화"
+
+    ],
+
+    answer: 3
+
+  }
+
+},
+
+
+
+// ==================================================
+// DIS01
+// Contrast Relation
+// ==================================================
+
+{
+  id: "DIS01",
+
+  type: "target",
+
+  domain: "discourse",
+
+  feature: "contrast_relation",
+
+  featureCode: "CONTRAST",
+
+  charLength: 17,
+
+  sentence:
+    "虽然今天一直下雨但是学生们按时到校。",
+
+  question: {
+
+    text:
+      "비가 계속 왔지만 학생들은 어떻게 했습니까?",
+
+    options: [
+
+      "제시간에 학교에 왔다",
+
+      "학교에 오지 않았다",
+
+      "집으로 돌아갔다",
+
+      "매우 늦게 왔다"
+
+    ],
+
+    answer: 0
+
+  }
+
+},
+
+
+
+// ==================================================
+// BF03
+// ==================================================
+
+{
+  id: "BF03",
+
+  type: "baseline_filler",
+
+  domain: "baseline",
+
+  feature: "simple_sentence",
+
+  featureCode: "BF",
+
+  charLength: 16,
+
+  sentence:
+    "爸爸每天早上七点从家里出门去上班。",
+
+  question: {
+
+    text:
+      "아버지는 매일 아침 몇 시에 집을 나섭니까?",
+
+    options: [
+
+      "6시",
+
+      "8시",
+
+      "7시",
+
+      "9시"
+
+    ],
+
+    answer: 2
+
+  }
+
+},
+
+
+
+// ==================================================
+// SYN03
+// BA Construction
+// ==================================================
+
+{
+  id: "SYN03",
+
+  type: "target",
+
+  domain: "syntax",
+
+  feature: "ba_sentence",
+
+  featureCode: "BA",
+
+  charLength: 16,
+
+  sentence:
+    "小王把老师送给他的中文书放在桌上。",
+
+  question: {
+
+    text:
+      "샤오왕은 선생님이 준 중국어 책을 어디에 놓았습니까?",
+
+    options: [
+
+      "책상 위",
+
+      "가방 안",
+
+      "서랍 안",
+
+      "의자 위"
+
+    ],
+
+    answer: 0
+
+  }
+
+},
+
+
+
+// ==================================================
+// LEX02
+// Low-frequency vocabulary
+// ==================================================
+
+{
+  id: "LEX02",
+
+  type: "target",
+
+  domain: "vocabulary",
+
+  feature: "low_frequency",
+
+  featureCode: "LF",
+
+  charLength: 15,
+
+  sentence:
+    "公司决定暂缓原来的海外投资计划。",
+
+  question: {
+
+    text:
+      "회사는 기존 해외 투자 계획을 어떻게 하기로 했습니까?",
+
+    options: [
+
+      "확대한다",
+
+      "잠시 미룬다",
+
+      "즉시 시작한다",
+
+      "다른 회사에 넘긴다"
+
+    ],
+
+    answer: 1
+
+  }
+
+},
+
+
+
+// ==================================================
+// BF04
+// ==================================================
+
+{
+  id: "BF04",
+
+  type: "baseline_filler",
+
+  domain: "baseline",
+
+  feature: "simple_sentence",
+
+  featureCode: "BF",
+
+  charLength: 17,
+
+  sentence:
+    "弟弟每天晚上喜欢在自己的房间听音乐。",
+
+  question: {
+
+    text:
+      "남동생은 저녁에 방에서 무엇을 하는 것을 좋아합니까?",
+
+    options: [
+
+      "책 읽기",
+
+      "운동",
+
+      "요리",
+
+      "음악 듣기"
+
+    ],
+
+    answer: 3
+
+  }
+
+},
+
+
+
+// ==================================================
+// SYN04
+// BA Construction
+// ==================================================
+
+{
+  id: "SYN04",
+
+  type: "target",
+
+  domain: "syntax",
+
+  feature: "ba_sentence",
+
+  featureCode: "BA",
+
+  charLength: 16,
+
+  sentence:
+    "妈妈把今天刚买的水果放进冰箱里了。",
+
+  question: {
+
+    text:
+      "어머니는 오늘 산 과일을 어디에 넣었습니까?",
+
+    options: [
+
+      "식탁 위",
+
+      "냉장고 안",
+
+      "가방 안",
+
+      "자동차 안"
+
+    ],
+
+    answer: 1
+
+  }
+
+},
+
+
+
+// ==================================================
+// COL02
+// ==================================================
+
+{
+  id: "COL02",
+
+  type: "target",
+
+  domain: "collocation",
+
+  feature: "collocation_candidate",
+
+  featureCode: "COL",
+
+  charLength: 16,
+
+  sentence:
+    "这次活动受到了很多学生的广泛关注。",
+
+  question: {
+
+    text:
+      "이번 활동은 학생들에게 어떤 반응을 얻었습니까?",
+
+    options: [
+
+      "강한 반대",
+
+      "폭넓은 관심",
+
+      "거의 무관심",
+
+      "많은 비판"
+
+    ],
+
+    answer: 1
+
+  }
+
+},
+
+
+
+// ==================================================
+// SYN05
+// BEI Construction
+// ==================================================
+
+{
+  id: "SYN05",
+
+  type: "target",
+
+  domain: "syntax",
+
+  feature: "bei_sentence",
+
+  featureCode: "BEI",
+
+  charLength: 16,
+
+  sentence:
+    "小李的自行车昨天被他的弟弟骑走了。",
+
+  question: {
+
+    text:
+      "샤오리의 자전거를 타고 간 사람은 누구입니까?",
+
+    options: [
+
+      "샤오리",
+
+      "친구",
+
+      "남동생",
+
+      "선생님"
+
+    ],
+
+    answer: 2
+
+  }
+
+},
+
+
+
+// ==================================================
+// DIS02
+// Causal Relation
+// ==================================================
+
+{
+  id: "DIS02",
+
+  type: "target",
+
+  domain: "discourse",
+
+  feature: "causal_relation",
+
+  featureCode: "CAUSE",
+
+  charLength: 16,
+
+  sentence:
+    "因为今天身体不舒服小李没有来上课。",
+
+  question: {
+
+    text:
+      "샤오리가 오늘 수업에 오지 않은 이유는 무엇입니까?",
+
+    options: [
+
+      "여행을 가서",
+
+      "몸이 좋지 않아서",
+
+      "시험이 끝나서",
+
+      "친구를 만나서"
+
+    ],
+
+    answer: 1
+
+  }
+
+},
+
+
+
+// ==================================================
+// BF05
+// ==================================================
+
+{
+  id: "BF05",
+
+  type: "baseline_filler",
+
+  domain: "baseline",
+
+  feature: "simple_sentence",
+
+  featureCode: "BF",
+
+  charLength: 17,
+
+  sentence:
+    "小林星期天和家人一起去了附近动物园。",
+
+  question: {
+
+    text:
+      "샤오린은 일요일에 가족과 어디에 갔습니까?",
+
+    options: [
+
+      "동물원",
+
+      "학교",
+
+      "도서관",
+
+      "병원"
+
+    ],
+
+    answer: 0
+
+  }
+
+},
+
+
+
+// ==================================================
+// SYN06
+// BEI Construction
+// ==================================================
+
+{
+  id: "SYN06",
+
+  type: "target",
+
+  domain: "syntax",
+
+  feature: "bei_sentence",
+
+  featureCode: "BEI",
+
+  charLength: 15,
+
+  sentence:
+    "教室的门今天早上被王老师打开了。",
+
+  question: {
+
+    text:
+      "오늘 아침 교실 문을 연 사람은 누구입니까?",
+
+    options: [
+
+      "학생",
+
+      "리화",
+
+      "친구",
+
+      "왕 선생님"
+
+    ],
+
+    answer: 3
+
+  }
+
+},
+
+
+
+// ==================================================
+// LEX03
+// Semantic Transparency
+// ==================================================
+
+{
+  id: "LEX03",
+
+  type: "target",
+
+  domain: "vocabulary",
+
+  feature: "semantic_transparency",
+
+  featureCode: "ST",
+
+  charLength: 15,
+
+  sentence:
+    "这件麻烦的事情现在终于有了眉目。",
+
+  question: {
+
+    text:
+      "이 일은 현재 어떤 상태입니까?",
+
+    options: [
+
+      "완전히 실패했다",
+
+      "처음 시작되었다",
+
+      "실마리가 생겼다",
+
+      "중단되었다"
+
+    ],
+
+    answer: 2
+
+  }
+
+},
+
+
+
+// ==================================================
+// BF06
+// ==================================================
+
+{
+  id: "BF06",
+
+  type: "baseline_filler",
+
+  domain: "baseline",
+
+  feature: "simple_sentence",
+
+  featureCode: "BF",
+
+  charLength: 17,
+
+  sentence:
+    "王明昨天下午在商店买了一双新的鞋子。",
+
+  question: {
+
+    text:
+      "왕밍은 어제 상점에서 무엇을 샀습니까?",
+
+    options: [
+
+      "책",
+
+      "신발",
+
+      "가방",
+
+      "모자"
+
+    ],
+
+    answer: 1
+
+  }
+
+},
+
+
+
+// ==================================================
+// SYN07
+// Serial Verb Construction
+// ==================================================
+
+{
+  id: "SYN07",
+
+  type: "target",
+
+  domain: "syntax",
+
+  feature: "serial_verb",
+
+  featureCode: "SVC",
+
+  charLength: 17,
+
+  sentence:
+    "王明今天下课以后去图书馆借了一本书。",
+
+  question: {
+
+    text:
+      "왕밍은 수업 후 도서관에 가서 무엇을 했습니까?",
+
+    options: [
+
+      "책을 빌렸다",
+
+      "공부했다",
+
+      "친구를 만났다",
+
+      "밥을 먹었다"
+
+    ],
+
+    answer: 0
+
+  }
+
+},
+
+
+
+// ==================================================
+// COL03
+// ==================================================
+
+{
+  id: "COL03",
+
+  type: "target",
+
+  domain: "collocation",
+
+  feature: "collocation_candidate",
+
+  featureCode: "COL",
+
+  charLength: 17,
+
+  sentence:
+    "他对这个新的学习方法产生了一些兴趣。",
+
+  question: {
+
+    text:
+      "그는 새로운 학습 방법에 대해 무엇을 느꼈습니까?",
+
+    options: [
+
+      "불만",
+
+      "두려움",
+
+      "관심",
+
+      "후회"
+
+    ],
+
+    answer: 2
+
+  }
+
+},
+
+
+
+// ==================================================
+// SYN08
+// Serial Verb Construction
+// ==================================================
+
+{
+  id: "SYN08",
+
+  type: "target",
+
+  domain: "syntax",
+
+  feature: "serial_verb",
+
+  featureCode: "SVC",
+
+  charLength: 17,
+
+  sentence:
+    "小张昨天下班以后去超市买了一些水果。",
+
+  question: {
+
+    text:
+      "샤오장은 퇴근 후 슈퍼마켓에서 무엇을 했습니까?",
+
+    options: [
+
+      "책을 샀다",
+
+      "과일을 샀다",
+
+      "친구를 만났다",
+
+      "식사했다"
+
+    ],
+
+    answer: 1
+
+  }
+
+},
+
+
+
+// ==================================================
+// DIS03
+// Information Integration
+// ==================================================
+
+{
+  id: "DIS03",
+
+  type: "target",
+
+  domain: "discourse",
+
+  feature: "information_integration",
+
+  featureCode: "INFO_INT",
+
+  charLength: 17,
+
+  sentence:
+    "学校昨天公布了下学期课程和考试安排。",
+
+  question: {
+
+    text:
+      "학교가 어제 발표한 두 가지 내용은 무엇입니까?",
+
+    options: [
+
+      "학생 수와 교사 수",
+
+      "수업과 방학",
+
+      "수업과 시험 일정",
+
+      "식사와 기숙사"
+
+    ],
+
+    answer: 2
+
+  }
+
+},
+
+
+
+// ==================================================
+// BF07
+// ==================================================
+
+{
+  id: "BF07",
+
+  type: "baseline_filler",
+
+  domain: "baseline",
+
+  feature: "simple_sentence",
+
+  featureCode: "BF",
+
+  charLength: 17,
+
+  sentence:
+    "姐姐今天穿了一件自己新买的白色衣服。",
+
+  question: {
+
+    text:
+      "언니가 오늘 입은 옷은 무슨 색입니까?",
+
+    options: [
+
+      "검은색",
+
+      "빨간색",
+
+      "흰색",
+
+      "파란색"
+
+    ],
+
+    answer: 2
+
+  }
+
+},
+
+
+
+// ==================================================
+// SYN09
+// Pivotal Construction
+// ==================================================
+
+{
+  id: "SYN09",
+
+  type: "target",
+
+  domain: "syntax",
+
+  feature: "pivotal",
+
+  featureCode: "PIV",
+
+  charLength: 16,
+
+  sentence:
+    "老师让小张今天下午来办公室找自己。",
+
+  question: {
+
+    text:
+      "선생님은 누구에게 오후에 사무실로 오라고 했습니까?",
+
+    options: [
+
+      "왕밍",
+
+      "리화",
+
+      "샤오장",
+
+      "친구"
+
+    ],
+
+    answer: 2
+
+  }
+
+},
+
+
+
+// ==================================================
+// LEX04
+// Semantic Transparency
+// ==================================================
+
+{
+  id: "LEX04",
+
+  type: "target",
+
+  domain: "vocabulary",
+
+  feature: "semantic_transparency",
+
+  featureCode: "ST",
+
+  charLength: 16,
+
+  sentence:
+    "听到这个消息以后他心里很不是滋味。",
+
+  question: {
+
+    text:
+      "그는 이 소식을 듣고 어떻게 느꼈습니까?",
+
+    options: [
+
+      "매우 기뻤다",
+
+      "아무렇지 않았다",
+
+      "졸렸다",
+
+      "마음이 불편했다"
+
+    ],
+
+    answer: 3
+
+  }
+
+},
+
+
+
+// ==================================================
+// COL04
+// ==================================================
+
+{
+  id: "COL04",
+
+  type: "target",
+
+  domain: "collocation",
+
+  feature: "collocation_candidate",
+
+  featureCode: "COL",
+
+  charLength: 16,
+
+  sentence:
+    "老师对学生的回答进行了简单的评价。",
+
+  question: {
+
+    text:
+      "선생님은 학생의 답변에 대해 무엇을 했습니까?",
+
+    options: [
+
+      "다시 질문했다",
+
+      "답변을 삭제했다",
+
+      "아무 말도 하지 않았다",
+
+      "간단히 평가했다"
+
+    ],
+
+    answer: 3
+
+  }
+
+},
+
+
+
+// ==================================================
+// SYN10
+// Pivotal Construction
+// ==================================================
+
+{
+  id: "SYN10",
+
+  type: "target",
+
+  domain: "syntax",
+
+  feature: "pivotal",
+
+  featureCode: "PIV",
+
+  charLength: 16,
+
+  sentence:
+    "妈妈叫弟弟今天晚上早点回家吃晚饭。",
+
+  question: {
+
+    text:
+      "어머니는 누구에게 오늘 일찍 집에 오라고 했습니까?",
+
+    options: [
+
+      "아버지",
+
+      "언니",
+
+      "친구",
+
+      "남동생"
+
+    ],
+
+    answer: 3
+
+  }
+
+},
+
+
+
+// ==================================================
+// DIS04
+// Information Density
+// ==================================================
+
+{
+  id: "DIS04",
+
+  type: "target",
+
+  domain: "discourse",
+
+  feature: "information_density",
+
+  featureCode: "INFO_DEN",
+
+  charLength: 18,
+
+  sentence:
+    "会议讨论了学生人数课程内容和教学方法。",
+
+  question: {
+
+    text:
+      "회의에서 논의하지 않은 것은 무엇입니까?",
+
+    options: [
+
+      "학생 수",
+
+      "수업 내용",
+
+      "교수 방법",
+
+      "기숙사 비용"
+
+    ],
+
+    answer: 3
+
+  }
+
+},
+
+
+
+// ==================================================
+// BF08
+// ==================================================
+
+{
+  id: "BF08",
+
+  type: "baseline_filler",
+
+  domain: "baseline",
+
+  feature: "simple_sentence",
+
+  featureCode: "BF",
+
+  charLength: 17,
+
+  sentence:
+    "我们星期六下午一起去电影院看了电影。",
+
+  question: {
+
+    text:
+      "우리는 토요일 오후 어디에서 영화를 봤습니까?",
+
+    options: [
+
+      "학교",
+
+      "집",
+
+      "도서관",
+
+      "영화관"
+
+    ],
+
+    answer: 3
 
   }
 
@@ -965,30 +1924,22 @@ const testItems = [
 
 
 // ==================================================
-// 실험 상태 변수
+// 실험 상태
 // ==================================================
-
 
 let phase = "practice";
 
-
 let currentIndex = 0;
-
 
 let selectedAnswer = null;
 
-
 let sentenceStartTime = null;
-
 
 let questionStartTime = null;
 
-
 let currentReadingTime = null;
 
-
 let currentResponseTime = null;
-
 
 let results = [];
 
@@ -998,99 +1949,56 @@ let results = [];
 // 화면 요소
 // ==================================================
 
-
 const startScreen =
-
-document.getElementById(
-  "startScreen"
-);
-
+  document.getElementById("startScreen");
 
 const testIntroScreen =
-
-document.getElementById(
-  "testIntroScreen"
-);
-
+  document.getElementById("testIntroScreen");
 
 const readingScreen =
-
-document.getElementById(
-  "readingScreen"
-);
-
+  document.getElementById("readingScreen");
 
 const questionScreen =
-
-document.getElementById(
-  "questionScreen"
-);
-
+  document.getElementById("questionScreen");
 
 const finishScreen =
-
-document.getElementById(
-  "finishScreen"
-);
+  document.getElementById("finishScreen");
 
 
 
 // ==================================================
-// 모든 화면 숨기기
+// 화면 숨기기
 // ==================================================
-
 
 function hideAll() {
 
+  startScreen.classList.add("hidden");
 
-  startScreen.classList.add(
-    "hidden"
-  );
+  testIntroScreen.classList.add("hidden");
 
+  readingScreen.classList.add("hidden");
 
-  testIntroScreen.classList.add(
-    "hidden"
-  );
+  questionScreen.classList.add("hidden");
 
-
-  readingScreen.classList.add(
-    "hidden"
-  );
-
-
-  questionScreen.classList.add(
-    "hidden"
-  );
-
-
-  finishScreen.classList.add(
-    "hidden"
-  );
-
+  finishScreen.classList.add("hidden");
 
 }
 
 
 
 // ==================================================
-// 현재 문항 배열
+// 현재 item 배열
 // ==================================================
-
 
 function getCurrentItems() {
 
-
-  if (
-    phase === "practice"
-  ) {
+  if (phase === "practice") {
 
     return practiceItems;
 
   }
 
-
   return testItems;
-
 
 }
 
@@ -1100,20 +2008,15 @@ function getCurrentItems() {
 // 연습 시작
 // ==================================================
 
-
 function startPractice() {
 
+  phase = "practice";
 
-  phase =
-    "practice";
+  currentIndex = 0;
 
-
-  currentIndex =
-    0;
-
+  results = [];
 
   showSentence();
-
 
 }
 
@@ -1123,39 +2026,27 @@ function startPractice() {
 // 본 검사 시작
 // ==================================================
 
-
 function startTest() {
 
+  phase = "test";
 
-  phase =
-    "test";
-
-
-  currentIndex =
-    0;
-
+  currentIndex = 0;
 
   showSentence();
-
 
 }
 
 
 
 // ==================================================
-// 중국어 문장 표시
+// 문장 제시
 // ==================================================
-
 
 function showSentence() {
 
-
   hideAll();
 
-
-  readingScreen.classList.remove(
-    "hidden"
-  );
+  readingScreen.classList.remove("hidden");
 
 
   const items =
@@ -1173,13 +2064,7 @@ function showSentence() {
 
 
 
-  // 진행 상황
-
-
-  if (
-    phase === "practice"
-  ) {
-
+  if (phase === "practice") {
 
     document.getElementById(
       "progressText"
@@ -1193,12 +2078,9 @@ function showSentence() {
 
       items.length;
 
-
   }
 
-
   else {
-
 
     document.getElementById(
       "progressText"
@@ -1212,12 +2094,7 @@ function showSentence() {
 
       items.length;
 
-
   }
-
-
-
-  // 선택 초기화
 
 
   selectedAnswer =
@@ -1228,36 +2105,34 @@ function showSentence() {
     null;
 
 
+  currentResponseTime =
+    null;
 
-  // 화면에 실제 문장이 표시된 뒤
-  // 읽기시간 측정 시작
+
+  sentenceStartTime =
+    null;
 
 
   requestAnimationFrame(
 
     function() {
 
-
       sentenceStartTime =
         performance.now();
-
 
     }
 
   );
-
 
 }
 
 
 
 // ==================================================
-// 읽기 종료
+// 문장 읽기 완료
 // ==================================================
 
-
 function finishReading() {
-
 
   if (
     sentenceStartTime === null
@@ -1268,42 +2143,34 @@ function finishReading() {
   }
 
 
-  const sentenceEndTime =
+  const endTime =
     performance.now();
 
 
   currentReadingTime =
     Math.round(
-
-      sentenceEndTime -
-
+      endTime -
       sentenceStartTime
-
     );
 
 
-  // 중요:
-  // 문장을 완전히 없앤 후
-  // 한국어 질문 표시
+  sentenceStartTime =
+    null;
 
 
   showQuestion();
-
 
 }
 
 
 
 // ==================================================
-// 한국어 이해도 문제 표시
+// 이해도 문제
 // ==================================================
-
 
 function showQuestion() {
 
-
   hideAll();
-
 
   questionScreen.classList.remove(
     "hidden"
@@ -1322,10 +2189,8 @@ function showQuestion() {
     item.question;
 
 
-
   selectedAnswer =
     null;
-
 
 
   document.getElementById(
@@ -1334,10 +2199,9 @@ function showQuestion() {
 
     phase === "practice"
 
-    ? "연습 문제"
+      ? "연습 문제"
 
-    : "내용 이해";
-
+      : "내용 이해";
 
 
   document.getElementById(
@@ -1346,9 +2210,7 @@ function showQuestion() {
     question.text;
 
 
-
   const optionsArea =
-
     document.getElementById(
       "optionsArea"
     );
@@ -1358,7 +2220,6 @@ function showQuestion() {
     "";
 
 
-
   question.options.forEach(
 
     function(
@@ -1366,9 +2227,7 @@ function showQuestion() {
       index
     ) {
 
-
       const div =
-
         document.createElement(
           "div"
         );
@@ -1379,28 +2238,18 @@ function showQuestion() {
 
 
       div.textContent =
-
         (index + 1) +
-
         ". " +
-
         option;
 
 
-
       div.onclick =
-
         function() {
 
-
           selectOption(
-
             index,
-
             div
-
           );
-
 
         };
 
@@ -1409,11 +2258,9 @@ function showQuestion() {
         div
       );
 
-
     }
 
   );
-
 
 
   document.getElementById(
@@ -1422,49 +2269,39 @@ function showQuestion() {
     "";
 
 
-
   document.getElementById(
     "questionNextButton"
   ).disabled =
     true;
 
 
-
-  // 질문이 화면에 표시된 후
-  // 반응시간 측정 시작
+  questionStartTime =
+    null;
 
 
   requestAnimationFrame(
 
     function() {
 
-
       questionStartTime =
         performance.now();
-
 
     }
 
   );
-
 
 }
 
 
 
 // ==================================================
-// 선택지 선택
+// 선택지 클릭
 // ==================================================
-
 
 function selectOption(
   index,
   element
 ) {
-
-
-  // 중복 클릭 방지
-
 
   if (
     selectedAnswer !== null
@@ -1475,13 +2312,17 @@ function selectOption(
   }
 
 
+  if (
+    questionStartTime === null
+  ) {
+
+    return;
+
+  }
+
 
   selectedAnswer =
     index;
-
-
-
-  // 실제 선택 순간의 반응시간 저장
 
 
   currentResponseTime =
@@ -1492,7 +2333,6 @@ function selectOption(
       questionStartTime
 
     );
-
 
 
   const items =
@@ -1507,13 +2347,10 @@ function selectOption(
     item.question;
 
 
-
   const optionElements =
-
     document.querySelectorAll(
       ".option"
     );
-
 
 
   element.classList.add(
@@ -1522,10 +2359,9 @@ function selectOption(
 
 
 
-  // --------------------------------
-  // 연습에서만 정답 피드백
-  // --------------------------------
-
+  // ------------------------------------------
+  // 연습문항에서만 피드백
+  // ------------------------------------------
 
   if (
     phase === "practice"
@@ -1533,8 +2369,7 @@ function selectOption(
 
 
     if (
-      index ===
-      question.answer
+      index === question.answer
     ) {
 
 
@@ -1551,7 +2386,6 @@ function selectOption(
 
 
     }
-
 
     else {
 
@@ -1577,9 +2411,7 @@ function selectOption(
 
     }
 
-
   }
-
 
 
   document.getElementById(
@@ -1587,18 +2419,15 @@ function selectOption(
   ).disabled =
     false;
 
-
 }
 
 
 
 // ==================================================
-// 다음 문항
+// 결과 저장 후 다음 문항
 // ==================================================
 
-
 function nextItem() {
-
 
   if (
     selectedAnswer === null
@@ -1607,7 +2436,6 @@ function nextItem() {
     return;
 
   }
-
 
 
   const items =
@@ -1622,19 +2450,16 @@ function nextItem() {
     item.question;
 
 
-
   const correct =
 
     selectedAnswer ===
-
     question.answer;
 
 
 
-  // --------------------------------
-  // trial 전체 결과 저장
-  // --------------------------------
-
+  // ==================================================
+  // trial 데이터 저장
+  // ==================================================
 
   results.push({
 
@@ -1652,11 +2477,19 @@ function nextItem() {
 
 
     domain:
-      item.domain || "practice",
+      item.domain,
 
 
     feature:
       item.feature,
+
+
+    featureCode:
+      item.featureCode || "",
+
+
+    charLength:
+      item.charLength,
 
 
     sentence:
@@ -1707,31 +2540,26 @@ function nextItem() {
 
 
 
-  // --------------------------------
-  // 다음 문항 존재
-  // --------------------------------
-
+  // ==================================================
+  // 다음 문항
+  // ==================================================
 
   if (
     currentIndex <
     items.length
   ) {
 
-
     showSentence();
 
-
     return;
-
 
   }
 
 
 
-  // --------------------------------
+  // ==================================================
   // 연습 종료
-  // --------------------------------
-
+  // ==================================================
 
   if (
     phase === "practice"
@@ -1748,18 +2576,15 @@ function nextItem() {
 
     return;
 
-
   }
 
 
 
-  // --------------------------------
+  // ==================================================
   // 전체 검사 종료
-  // --------------------------------
-
+  // ==================================================
 
   finishExperiment();
-
 
 }
 
@@ -1769,9 +2594,7 @@ function nextItem() {
 // 검사 종료
 // ==================================================
 
-
 function finishExperiment() {
-
 
   hideAll();
 
@@ -1781,15 +2604,14 @@ function finishExperiment() {
   );
 
 
-
   const testResults =
 
     results.filter(
 
-      function(result) {
+      function(row) {
 
         return (
-          result.phase === "test"
+          row.phase === "test"
         );
 
       }
@@ -1797,36 +2619,34 @@ function finishExperiment() {
     );
 
 
-
   const correctCount =
 
     testResults.filter(
 
-      function(result) {
+      function(row) {
 
-        return result.correct;
+        return row.correct;
 
       }
 
     ).length;
 
 
-
   const accuracy =
 
     testResults.length > 0
 
-    ? Math.round(
+      ? Math.round(
 
-        correctCount /
+          correctCount /
 
-        testResults.length *
+          testResults.length *
 
-        100
+          100
 
-      )
+        )
 
-    : 0;
+      : 0;
 
 
 
@@ -1834,18 +2654,27 @@ function finishExperiment() {
     "resultBox"
   ).innerHTML =
 
-    "모든 문항이 완료되었습니다." +
+    "본 검사가 완료되었습니다." +
 
     "<br><br>" +
 
-    "응답이 정상적으로 기록되었습니다.";
+    "총 응답 문항: " +
+
+    testResults.length +
+
+    "<br>" +
+
+    "응답 데이터가 기록되었습니다.";
 
 
 
-  // 개발 및 파일럿 확인용
+  // ==================================================
+  // 개발자 확인용
+  // 브라우저 개발자도구 Console에서 확인 가능
+  // ==================================================
 
   console.log(
-    "전체 실험 데이터:",
+    "전체 실험 데이터",
     results
   );
 
@@ -1855,16 +2684,18 @@ function finishExperiment() {
   );
 
 
+  console.log(
+    "본 검사 정확도:",
+    accuracy + "%"
+  );
+
 }
 
 
 
 // ==================================================
-// 스페이스바
-//
-// 문장 화면에서만 작동
+// 스페이스바로 문장 읽기 완료
 // ==================================================
-
 
 document.addEventListener(
 
@@ -1892,7 +2723,6 @@ document.addEventListener(
 
     }
 
-
   }
 
 );
@@ -1905,3 +2735,6 @@ document.addEventListener(
 
 </html>
 
+ 
+
+     
