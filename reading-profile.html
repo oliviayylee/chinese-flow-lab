@@ -22,9 +22,9 @@
 
   --border:#D9E4F2;
 
-  --low:#3D7A62;
-  --medium:#B18432;
-  --high:#A54D4D;
+  --low:#32735C;
+  --medium:#A87924;
+  --high:#A44949;
 }
 
 *{
@@ -39,9 +39,9 @@ body{
 }
 
 
-/* =========================
+/* =========================================
    HERO
-========================= */
+========================================= */
 
 .hero{
   background:linear-gradient(
@@ -56,7 +56,7 @@ body{
   padding:70px 8%;
 }
 
-.hero .label{
+.hero-label{
   font-size:14px;
   font-weight:700;
   letter-spacing:.12em;
@@ -70,17 +70,18 @@ body{
 }
 
 .hero p{
-  margin:0 auto;
-  max-width:780px;
+  max-width:800px;
+  margin:auto;
+
   font-size:18px;
   line-height:1.8;
   opacity:.94;
 }
 
 
-/* =========================
+/* =========================================
    MAIN
-========================= */
+========================================= */
 
 .container{
   max-width:1120px;
@@ -89,7 +90,7 @@ body{
 }
 
 .section{
-  margin-bottom:42px;
+  margin-bottom:46px;
 }
 
 .section-title{
@@ -98,10 +99,17 @@ body{
   margin:0 0 20px;
 }
 
+.section-desc{
+  color:var(--subtext);
+  font-size:15px;
+  line-height:1.8;
+  margin:-8px 0 20px;
+}
 
-/* =========================
+
+/* =========================================
    SUMMARY
-========================= */
+========================================= */
 
 .summary-grid{
   display:grid;
@@ -111,11 +119,17 @@ body{
 
 .summary-card{
   background:white;
+
   border:1px solid var(--border);
   border-radius:22px;
-  padding:26px 20px;
+
+  padding:27px 20px;
+
   text-align:center;
-  box-shadow:0 8px 22px rgba(24,61,117,.06);
+
+  box-shadow:
+    0 8px 22px
+    rgba(24,61,117,.06);
 }
 
 .summary-label{
@@ -131,30 +145,37 @@ body{
 }
 
 
-/* =========================
-   PROFILE
-========================= */
+/* =========================================
+   DOMAIN PROFILE
+========================================= */
 
 .profile-card{
   background:white;
+
   border:1px solid var(--border);
   border-radius:26px;
+
   padding:34px;
-  box-shadow:0 8px 22px rgba(24,61,117,.06);
+
+  box-shadow:
+    0 8px 22px
+    rgba(24,61,117,.06);
 }
 
 .domain-row{
-  margin-bottom:30px;
+  margin-bottom:32px;
 }
 
 .domain-row:last-child{
   margin-bottom:0;
 }
 
-.domain-head{
+.domain-header{
   display:flex;
   justify-content:space-between;
   align-items:center;
+  gap:15px;
+
   margin-bottom:10px;
 }
 
@@ -163,84 +184,96 @@ body{
   font-weight:750;
 }
 
-.domain-status{
+.status{
+  padding:6px 13px;
+  border-radius:999px;
+
   font-size:14px;
   font-weight:750;
-  padding:6px 12px;
-  border-radius:999px;
 }
 
 .status-low{
-  color:var(--low);
   background:#EDF7F2;
+  color:var(--low);
 }
 
 .status-medium{
-  color:var(--medium);
   background:#FFF7E6;
+  color:var(--medium);
 }
 
 .status-high{
-  color:var(--high);
   background:#FCEEEE;
+  color:var(--high);
 }
 
-.bar-bg{
+.bar-background{
   width:100%;
   height:12px;
+
+  background:#E7EDF6;
+
   border-radius:999px;
-  background:#E8EEF6;
   overflow:hidden;
 }
 
 .bar{
   height:100%;
-  border-radius:999px;
+
   background:linear-gradient(
     90deg,
-    #8FB4E5,
+    #91B6E4,
     var(--primary)
   );
-  transition:.5s;
+
+  border-radius:999px;
 }
 
-.domain-detail{
+.domain-data{
   margin-top:10px;
+
   color:var(--subtext);
+
   font-size:14px;
   line-height:1.7;
 }
 
 
-/* =========================
+/* =========================================
    XAI
-========================= */
+========================================= */
 
 .xai-card{
   background:#EEF5FF;
+
   border:1px solid #D5E5F8;
   border-radius:26px;
+
   padding:32px;
 }
 
 .xai-title{
   color:var(--primary);
-  font-weight:800;
+
   font-size:21px;
+  font-weight:800;
+
   margin-bottom:15px;
 }
 
 .xai-card p{
-  color:#465A73;
-  font-size:16px;
-  line-height:1.9;
   margin:0;
+
+  color:#465A73;
+
+  font-size:16px;
+  line-height:1.95;
 }
 
 
-/* =========================
-   DETAIL
-========================= */
+/* =========================================
+   DOMAIN DETAIL CARDS
+========================================= */
 
 .detail-grid{
   display:grid;
@@ -250,33 +283,41 @@ body{
 
 .detail-card{
   background:white;
+
   border:1px solid var(--border);
-  border-radius:20px;
-  padding:24px;
+  border-radius:21px;
+
+  padding:25px;
 }
 
 .detail-card h3{
+  margin:0 0 14px;
+
   color:var(--primary);
-  margin:0 0 13px;
-  font-size:19px;
+
+  font-size:20px;
 }
 
 .detail-card p{
   margin:0;
+
   color:var(--subtext);
-  line-height:1.8;
+
   font-size:15px;
+  line-height:1.85;
 }
 
 
-/* =========================
-   TABLE
-========================= */
+/* =========================================
+   FEATURE TABLE
+========================================= */
 
 .table-card{
   background:white;
+
   border:1px solid var(--border);
   border-radius:24px;
+
   overflow:hidden;
 }
 
@@ -287,9 +328,12 @@ body{
 
 .result-table th,
 .result-table td{
-  padding:14px 15px;
+  padding:15px 16px;
+
   border-bottom:1px solid var(--border);
+
   text-align:left;
+
   font-size:14px;
 }
 
@@ -299,7 +343,7 @@ body{
 }
 
 .result-table td{
-  color:#536479;
+  color:#526378;
 }
 
 .result-table tr:last-child td{
@@ -307,44 +351,55 @@ body{
 }
 
 
-/* =========================
-   INFO
-========================= */
+/* =========================================
+   NOTICE
+========================================= */
 
 .info-box{
-  background:#FAFCFF;
+  padding:23px 26px;
+
   border:1px solid var(--border);
   border-radius:20px;
-  padding:22px 25px;
-  color:#5B6B7F;
+
+  background:#FAFCFF;
+
+  color:#5B6C80;
+
   font-size:14px;
-  line-height:1.8;
+  line-height:1.85;
 }
 
 
-/* =========================
-   ACTION
-========================= */
+/* =========================================
+   BUTTONS
+========================================= */
 
 .actions{
-  margin-top:42px;
   display:flex;
-  gap:15px;
   justify-content:center;
+  gap:15px;
   flex-wrap:wrap;
+
+  margin-top:42px;
 }
 
 .btn{
   display:inline-block;
+
   padding:16px 28px;
+
   border-radius:999px;
   border:none;
-  text-decoration:none;
-  font-size:16px;
-  font-weight:750;
-  cursor:pointer;
+
   background:var(--primary);
   color:white;
+
+  text-decoration:none;
+
+  font-size:16px;
+  font-weight:750;
+
+  cursor:pointer;
 }
 
 .btn:hover{
@@ -354,6 +409,7 @@ body{
 .btn-light{
   background:var(--primary-light);
   color:var(--primary);
+
   border:1px solid var(--border);
 }
 
@@ -362,15 +418,18 @@ body{
 }
 
 
-/* =========================
+/* =========================================
    EMPTY
-========================= */
+========================================= */
 
 .empty{
   background:white;
+
   border:1px solid var(--border);
   border-radius:25px;
+
   padding:45px;
+
   text-align:center;
 }
 
@@ -379,20 +438,22 @@ body{
 }
 
 
-/* =========================
+/* =========================================
    FOOTER
-========================= */
+========================================= */
 
 footer{
   text-align:center;
+
   padding:40px;
+
   color:#7C8999;
 }
 
 
-/* =========================
+/* =========================================
    MOBILE
-========================= */
+========================================= */
 
 @media(max-width:900px){
 
@@ -408,10 +469,6 @@ footer{
 
 @media(max-width:600px){
 
-  .summary-grid{
-    grid-template-columns:1fr;
-  }
-
   .hero h1{
     font-size:34px;
   }
@@ -420,8 +477,12 @@ footer{
     padding:40px 6%;
   }
 
+  .summary-grid{
+    grid-template-columns:1fr;
+  }
+
   .profile-card{
-    padding:26px 20px;
+    padding:25px 20px;
   }
 
   .table-card{
@@ -441,13 +502,13 @@ footer{
 <body>
 
 
-<!-- =========================
+<!-- =========================================
      HERO
-========================= -->
+========================================= -->
 
 <section class="hero">
 
-  <div class="label">
+  <div class="hero-label">
     LEARNER COGNITIVE PROFILE
   </div>
 
@@ -456,8 +517,9 @@ footer{
   </h1>
 
   <p>
-    문장별 읽기시간과 이해도 결과를 함께 분석하여
-    통사·어휘·연어·담화 영역의 상대적인 읽기 처리 특성을 확인합니다.
+    실전 읽기 30문항에서 수집된 읽기시간,
+    이해도 및 문항 반응시간을 바탕으로
+    통사·어휘·연어·담화 영역의 상대적인 읽기 처리 특성을 분석합니다.
   </p>
 
 </section>
@@ -467,9 +529,9 @@ footer{
 <main class="container">
 
 
-<!-- =========================
+<!-- =========================================
      EMPTY
-========================= -->
+========================================= -->
 
 <section
   id="emptyScreen"
@@ -496,16 +558,16 @@ footer{
 
 
 
-<!-- =========================
-     RESULTS
-========================= -->
+<!-- =========================================
+     RESULT SCREEN
+========================================= -->
 
 <div id="resultScreen">
 
 
-<!-- =========================
+<!-- =========================================
      SUMMARY
-========================= -->
+========================================= -->
 
 <section class="section">
 
@@ -519,7 +581,7 @@ footer{
     <div class="summary-card">
 
       <div class="summary-label">
-        평균 문장 읽기시간
+        평균 읽기시간
       </div>
 
       <div
@@ -536,7 +598,7 @@ footer{
     <div class="summary-card">
 
       <div class="summary-label">
-        전체 이해도 정답률
+        이해도 정답률
       </div>
 
       <div
@@ -558,7 +620,7 @@ footer{
 
       <div
         class="summary-value"
-        id="avgQuestionTime">
+        id="avgResponseTime">
 
         -
 
@@ -570,12 +632,12 @@ footer{
     <div class="summary-card">
 
       <div class="summary-label">
-        완료 문장
+        완료 문항
       </div>
 
       <div
         class="summary-value"
-        id="sentenceCount">
+        id="completedItems">
 
         -
 
@@ -590,15 +652,20 @@ footer{
 
 
 
-<!-- =========================
-     PROFILE
-========================= -->
+<!-- =========================================
+     DOMAIN PROFILE
+========================================= -->
 
 <section class="section">
 
   <h2 class="section-title">
     영역별 읽기 프로파일
   </h2>
+
+  <p class="section-desc">
+    각 영역의 읽기시간, 이해도 및 문항 반응시간을 종합하여
+    이번 수행에서 나타난 상대적인 처리 부담을 보여줍니다.
+  </p>
 
   <div
     class="profile-card"
@@ -609,9 +676,9 @@ footer{
 
 
 
-<!-- =========================
+<!-- =========================================
      XAI
-========================= -->
+========================================= -->
 
 <section class="section">
 
@@ -634,9 +701,9 @@ footer{
 
 
 
-<!-- =========================
-     DETAIL
-========================= -->
+<!-- =========================================
+     DOMAIN DETAIL
+========================================= -->
 
 <section class="section">
 
@@ -653,15 +720,21 @@ footer{
 
 
 
-<!-- =========================
-     TARGET FEATURE TABLE
-========================= -->
+<!-- =========================================
+     FEATURE DETAIL
+========================================= -->
 
 <section class="section">
 
   <h2 class="section-title">
-    주요 언어 요소별 결과
+    세부 언어 요소별 결과
   </h2>
+
+  <p class="section-desc">
+    각 영역 안에서 어떤 언어 요소에서 상대적으로 긴 읽기시간이나
+    낮은 이해도가 나타났는지 확인할 수 있습니다.
+  </p>
+
 
   <div class="table-card">
 
@@ -671,17 +744,29 @@ footer{
 
         <tr>
 
-          <th>영역</th>
+          <th>
+            영역
+          </th>
 
-          <th>세부 요소</th>
+          <th>
+            세부 요소
+          </th>
 
-          <th>목표 문장</th>
+          <th>
+            문항 수
+          </th>
 
-          <th>읽기시간</th>
+          <th>
+            평균 읽기시간
+          </th>
 
-          <th>이해도</th>
+          <th>
+            이해도
+          </th>
 
-          <th>문항 반응시간</th>
+          <th>
+            평균 반응시간
+          </th>
 
         </tr>
 
@@ -698,18 +783,20 @@ footer{
 
 
 
-<!-- =========================
-     INFO
-========================= -->
+<!-- =========================================
+     NOTICE
+========================================= -->
 
 <section class="section">
 
   <div class="info-box">
 
-    본 결과는 각 문장의 읽기시간과 이해도 수행을 바탕으로 산출한
-    <strong>파일럿용 개인 내 상대적 프로파일</strong>입니다.
-    ‘높음·보통·낮음’은 표준화된 중국어 능력 점수나 임상적 진단을 의미하지 않으며,
-    이번 읽기 수행에서 나타난 영역 간 상대적인 처리 특성을 설명하기 위한 결과입니다.
+    본 결과의 ‘높음·보통·낮음’은
+    실전 읽기 30문항에서 나타난
+    <strong>개인 내 상대적인 처리 패턴</strong>을 설명하기 위한
+    파일럿용 프로파일입니다.
+    현재 단계에서는 표준화된 중국어 능력 점수나
+    확정적인 인지 진단 결과를 의미하지 않습니다.
 
   </div>
 
@@ -717,9 +804,9 @@ footer{
 
 
 
-<!-- =========================
+<!-- =========================================
      ACTIONS
-========================= -->
+========================================= -->
 
 <div class="actions">
 
@@ -839,11 +926,14 @@ const savedData =
   );
 
 
-if(!savedData){
+if(
+  !savedData
+){
 
   showEmpty();
 
-}else{
+}
+else{
 
   try{
 
@@ -858,11 +948,10 @@ if(!savedData){
     );
 
   }
-
   catch(error){
 
     console.error(
-      "결과 데이터를 불러오는 중 오류:",
+      "데이터 읽기 오류:",
       error
     );
 
@@ -908,30 +997,19 @@ function createProfile(
   experiment
 ){
 
+  /*
+    현재 reading-test.html에서는
+    실전 30문항만 results에 저장됨.
+
+    practiceResults는 분석에서 제외.
+  */
+
   const results =
     experiment.results || [];
 
 
-  const sentences =
-    results.filter(
-      r =>
-        r.type ===
-        "sentence"
-    );
-
-
-  const questions =
-    results.filter(
-      r =>
-        r.type ===
-        "question"
-    );
-
-
   if(
-    !sentences.length
-    ||
-    !questions.length
+    !results.length
   ){
 
     showEmpty();
@@ -941,51 +1019,41 @@ function createProfile(
   }
 
 
-  /*
-    문장 읽기 결과와 이해도 결과를
-    passageId + sentenceIndex 기준으로 연결
-  */
-
-  const pairedData =
-    createPairedData(
-      sentences,
-      questions
-    );
-
-
-  /* =========================
-     SUMMARY
-  ========================= */
+  /* =========================================
+     OVERALL SUMMARY
+  ========================================= */
 
   const avgReadingMs =
     average(
-      pairedData.map(
-        d =>
-          d.readingTimeMs
+      results.map(
+        r =>
+          r.readingTimeMs
       )
     );
+
+
+  const avgResponseMs =
+    average(
+      results.map(
+        r =>
+          r.responseTimeMs
+      )
+    );
+
+
+  const correctCount =
+    results.filter(
+      r =>
+        r.correct ===
+        true
+    ).length;
 
 
   const accuracy =
-    pairedData.length
-    ?
-    pairedData.filter(
-      d =>
-        d.correct
-    ).length
+
+    correctCount
     /
-    pairedData.length
-    :
-    0;
-
-
-  const avgQuestionMs =
-    average(
-      pairedData.map(
-        d =>
-          d.responseTimeMs
-      )
-    );
+    results.length;
 
 
   document
@@ -993,6 +1061,7 @@ function createProfile(
       "avgReadingTime"
     )
     .textContent =
+
       formatSeconds(
         avgReadingMs
       );
@@ -1003,6 +1072,7 @@ function createProfile(
       "accuracy"
     )
     .textContent =
+
       formatPercent(
         accuracy
       );
@@ -1010,26 +1080,29 @@ function createProfile(
 
   document
     .getElementById(
-      "avgQuestionTime"
+      "avgResponseTime"
     )
     .textContent =
+
       formatSeconds(
-        avgQuestionMs
+        avgResponseMs
       );
 
 
   document
     .getElementById(
-      "sentenceCount"
+      "completedItems"
     )
     .textContent =
-      pairedData.length
-      + "개";
+
+      results.length
+      +
+      " / 30";
 
 
-  /* =========================
+  /* =========================================
      DOMAIN DATA
-  ========================= */
+  ========================================= */
 
   const domains = [
 
@@ -1044,83 +1117,67 @@ function createProfile(
   ];
 
 
-  const domainData = {};
+  const domainData =
+    {};
 
 
   domains.forEach(
     domain=>{
 
-      const data =
-        pairedData.filter(
-          d =>
-            d.domain ===
+      const items =
+        results.filter(
+          r =>
+            r.domain ===
             domain
         );
 
 
-      const targetData =
-        data.filter(
-          d =>
-            d.isTarget
-        );
+      const correct =
+        items.filter(
+          r =>
+            r.correct ===
+            true
+        ).length;
 
 
       domainData[
         domain
       ] = {
 
-        all:
-          data,
+        items:
+          items,
 
-        target:
-          targetData,
+        count:
+          items.length,
 
         avgReadingMs:
           average(
-            data.map(
-              d =>
-                d.readingTimeMs
+            items.map(
+              r =>
+                r.readingTimeMs
+            )
+          ),
+
+        avgResponseMs:
+          average(
+            items.map(
+              r =>
+                r.responseTimeMs
             )
           ),
 
         accuracy:
-          data.length
+
+          items.length
+
           ?
-          data.filter(
-            d =>
-              d.correct
-          ).length
+
+          correct
           /
-          data.length
+          items.length
+
           :
-          0,
 
-        avgQuestionMs:
-          average(
-            data.map(
-              d =>
-                d.responseTimeMs
-            )
-          ),
-
-        targetReadingMs:
-          average(
-            targetData.map(
-              d =>
-                d.readingTimeMs
-            )
-          ),
-
-        targetAccuracy:
-          targetData.length
-          ?
-          targetData.filter(
-            d =>
-              d.correct
-          ).length
-          /
-          targetData.length
-          :
           0,
 
         burdenScore:
@@ -1132,54 +1189,58 @@ function createProfile(
   );
 
 
-  /* =========================
+  /* =========================================
      RELATIVE BURDEN
 
-     파일럿용 상대 지표
+     현재는 파일럿용 상대지표
 
-     읽기시간 55%
-     이해도 오류 30%
-     문항 반응시간 15%
-  ========================= */
+     읽기시간       55%
+     이해도 오류율   30%
+     문항 반응시간   15%
+  ========================================= */
 
 
-  const readingValues =
+  const readingTimes =
     domains.map(
-      d =>
-        domainData[d]
+      domain =>
+        domainData[
+          domain
+        ]
         .avgReadingMs
     );
 
 
-  const responseValues =
+  const responseTimes =
     domains.map(
-      d =>
-        domainData[d]
-        .avgQuestionMs
+      domain =>
+        domainData[
+          domain
+        ]
+        .avgResponseMs
     );
 
 
   const minReading =
     Math.min(
-      ...readingValues
+      ...readingTimes
     );
 
 
   const maxReading =
     Math.max(
-      ...readingValues
+      ...readingTimes
     );
 
 
   const minResponse =
     Math.min(
-      ...responseValues
+      ...responseTimes
     );
 
 
   const maxResponse =
     Math.max(
-      ...responseValues
+      ...responseTimes
     );
 
 
@@ -1194,22 +1255,32 @@ function createProfile(
 
       const normalizedReading =
         normalize(
+
           data.avgReadingMs,
+
           minReading,
+
           maxReading
+
         );
 
 
       const normalizedResponse =
         normalize(
-          data.avgQuestionMs,
+
+          data.avgResponseMs,
+
           minResponse,
+
           maxResponse
+
         );
 
 
       const errorRate =
-        1 -
+
+        1
+        -
         data.accuracy;
 
 
@@ -1239,37 +1310,41 @@ function createProfile(
 
 
       data.burdenScore =
+
         Math.round(
-          burden *
+
+          burden
+          *
           100
+
         );
 
     }
   );
 
 
-  /* =========================
+  /* =========================================
      RENDER
-  ========================= */
+  ========================================= */
 
-  createProfileUI(
+  renderDomainProfile(
     domainData
   );
 
 
-  createDetailUI(
+  renderDomainDetails(
     domainData
   );
 
 
-  createFeatureTable(
-    pairedData
+  renderFeatureTable(
+    results
   );
 
 
-  createXAI(
+  renderXAI(
     domainData,
-    pairedData
+    results
   );
 
 }
@@ -1277,87 +1352,10 @@ function createProfile(
 
 
 /* =====================================================
-   PAIR DATA
+   DOMAIN PROFILE
 ===================================================== */
 
-function createPairedData(
-  sentences,
-  questions
-){
-
-  return sentences.map(
-    sentence=>{
-
-      const question =
-        questions.find(
-          q =>
-            q.passageId ===
-            sentence.passageId
-            &&
-            q.sentenceIndex ===
-            sentence.sentenceIndex
-        );
-
-
-      return{
-
-        passageId:
-          sentence.passageId,
-
-        sentenceIndex:
-          sentence.sentenceIndex,
-
-        domain:
-          sentence.domain,
-
-        feature:
-          sentence.feature,
-
-        isTarget:
-          sentence.isTarget ===
-          true,
-
-        sentence:
-          sentence.sentence,
-
-        readingTimeMs:
-          sentence.readingTimeMs,
-
-        question:
-          question
-          ?
-          question.question
-          :
-          "",
-
-        correct:
-          question
-          ?
-          question.correct
-          :
-          false,
-
-        responseTimeMs:
-          question
-          ?
-          question.responseTimeMs
-          :
-          0
-
-      };
-
-    }
-  );
-
-}
-
-
-
-/* =====================================================
-   PROFILE UI
-===================================================== */
-
-function createProfileUI(
+function renderDomainProfile(
   domainData
 ){
 
@@ -1371,117 +1369,118 @@ function createProfileUI(
     "";
 
 
-  Object.keys(
-    domainData
-  )
-  .forEach(
-    domain=>{
+  Object
+    .keys(
+      domainData
+    )
+    .forEach(
+      domain=>{
 
-      const data =
-        domainData[
-          domain
-        ];
-
-
-      const level =
-        getBurdenLevel(
-          data.burdenScore
-        );
+        const data =
+          domainData[
+            domain
+          ];
 
 
-      const row =
-        document.createElement(
-          "div"
-        );
+        const level =
+          getBurdenLevel(
+            data.burdenScore
+          );
 
 
-      row.className =
-        "domain-row";
+        const row =
+          document.createElement(
+            "div"
+          );
 
 
-      row.innerHTML = `
-
-        <div class="domain-head">
-
-          <span class="domain-name">
-
-            ${domainNames[domain]} 영역
-
-          </span>
+        row.className =
+          "domain-row";
 
 
-          <span
-            class="
-            domain-status
-            ${level.className}
-            ">
+        row.innerHTML = `
 
-            ${level.label}
+          <div class="domain-header">
 
-          </span>
+            <span class="domain-name">
 
-        </div>
+              ${domainNames[domain]} 영역
+
+            </span>
 
 
-        <div class="bar-bg">
+            <span
+              class="
+                status
+                ${level.className}
+              ">
 
-          <div
-            class="bar"
-            style="
-              width:
-              ${Math.max(
-                data.burdenScore,
-                5
-              )}%;
-            ">
+              ${level.label}
+
+            </span>
+
           </div>
 
-        </div>
+
+          <div class="bar-background">
+
+            <div
+              class="bar"
+              style="
+                width:
+                ${Math.max(
+                  data.burdenScore,
+                  5
+                )}%;
+              ">
+            </div>
+
+          </div>
 
 
-        <div class="domain-detail">
+          <div class="domain-data">
 
-          평균 읽기시간
-          ${formatSeconds(
-            data.avgReadingMs
-          )}
+            평균 읽기시간
+            ${formatSeconds(
+              data.avgReadingMs
+            )}
 
-          ·
+            ·
 
-          이해도
-          ${formatPercent(
-            data.accuracy
-          )}
+            이해도
+            ${formatPercent(
+              data.accuracy
+            )}
 
-          ·
+            ·
 
-          평균 문항 반응시간
-          ${formatSeconds(
-            data.avgQuestionMs
-          )}
+            평균 문항 반응시간
+            ${formatSeconds(
+              data.avgResponseMs
+            )}
 
-        </div>
+          </div>
 
-      `;
+        `;
 
 
-      container
-        .appendChild(
-          row
-        );
+        container
+          .appendChild(
+            row
+          );
 
-    }
-  );
+      }
+    );
 
 }
 
 
 
 /* =====================================================
-   DETAIL
+   DOMAIN DETAILS
 ===================================================== */
 
-function createDetailUI(
+function renderDomainDetails(
   domainData
 ){
 
@@ -1495,90 +1494,89 @@ function createDetailUI(
     "";
 
 
-  Object.keys(
-    domainData
-  )
-  .forEach(
-    domain=>{
+  Object
+    .keys(
+      domainData
+    )
+    .forEach(
+      domain=>{
 
-      const data =
-        domainData[
-          domain
-        ];
-
-
-      const card =
-        document.createElement(
-          "div"
-        );
+        const data =
+          domainData[
+            domain
+          ];
 
 
-      card.className =
-        "detail-card";
+        const level =
+          getBurdenLevel(
+            data.burdenScore
+          );
 
 
-      card.innerHTML = `
-
-        <h3>
-          ${domainNames[domain]} 영역
-        </h3>
-
-        <p>
-
-          평균 문장 읽기시간:
-          ${formatSeconds(
-            data.avgReadingMs
-          )}
-
-          <br>
-
-          전체 문장 이해도:
-          ${formatPercent(
-            data.accuracy
-          )}
-
-          <br>
-
-          평균 문항 반응시간:
-          ${formatSeconds(
-            data.avgQuestionMs
-          )}
-
-          <br><br>
-
-          목표 언어 요소 문장 평균 읽기시간:
-          ${formatSeconds(
-            data.targetReadingMs
-          )}
-
-          <br>
-
-          목표 언어 요소 이해도:
-          ${formatPercent(
-            data.targetAccuracy
-          )}
-
-          <br><br>
-
-          상대적 처리 부담:
-          <strong>
-            ${getBurdenLevel(
-              data.burdenScore
-            ).label}
-          </strong>
-
-        </p>
-
-      `;
+        const card =
+          document.createElement(
+            "div"
+          );
 
 
-      container
-        .appendChild(
-          card
-        );
+        card.className =
+          "detail-card";
 
-    }
-  );
+
+        card.innerHTML = `
+
+          <h3>
+
+            ${domainNames[domain]} 영역
+
+          </h3>
+
+
+          <p>
+
+            분석 문항:
+            ${data.count}문항
+
+            <br>
+
+            평균 읽기시간:
+            ${formatSeconds(
+              data.avgReadingMs
+            )}
+
+            <br>
+
+            이해도 정답률:
+            ${formatPercent(
+              data.accuracy
+            )}
+
+            <br>
+
+            평균 문항 반응시간:
+            ${formatSeconds(
+              data.avgResponseMs
+            )}
+
+            <br><br>
+
+            상대적 처리 부담:
+            <strong>
+              ${level.label}
+            </strong>
+
+          </p>
+
+        `;
+
+
+        container
+          .appendChild(
+            card
+          );
+
+      }
+    );
 
 }
 
@@ -1588,8 +1586,8 @@ function createDetailUI(
    FEATURE TABLE
 ===================================================== */
 
-function createFeatureTable(
-  pairedData
+function renderFeatureTable(
+  results
 ){
 
   const tbody =
@@ -1603,65 +1601,210 @@ function createFeatureTable(
 
 
   /*
-    주요 목표 문장만 표에 표시
+    feature별 그룹 생성
   */
 
-  const targetItems =
-    pairedData.filter(
-      d =>
-        d.isTarget
-    );
+  const grouped =
+    {};
 
 
-  targetItems.forEach(
+  results.forEach(
     item=>{
 
-      const tr =
+      const key =
+        item.feature;
+
+
+      if(
+        !grouped[
+          key
+        ]
+      ){
+
+        grouped[
+          key
+        ] = {
+
+          domain:
+            item.domain,
+
+          feature:
+            item.feature,
+
+          items:
+            []
+
+        };
+
+      }
+
+
+      grouped[
+        key
+      ]
+      .items
+      .push(
+        item
+      );
+
+    }
+  );
+
+
+  /*
+    논문에서 보는 영역 순서에 맞게 정렬
+  */
+
+  const featureOrder = [
+
+    "relative_clause",
+
+    "ba_construction",
+
+    "bei_construction",
+
+    "low_frequency",
+
+    "semantic_transparency",
+
+    "contextual_inference",
+
+    "collocation_frequency",
+
+    "association_strength",
+
+    "conventional_collocation",
+
+    "cohesion",
+
+    "information_density",
+
+    "causal_reference"
+
+  ];
+
+
+  featureOrder.forEach(
+    feature=>{
+
+      if(
+        !grouped[
+          feature
+        ]
+      ){
+
+        return;
+
+      }
+
+
+      const group =
+        grouped[
+          feature
+        ];
+
+
+      const items =
+        group.items;
+
+
+      const correctCount =
+        items.filter(
+          item =>
+            item.correct
+        ).length;
+
+
+      const accuracy =
+
+        correctCount
+        /
+        items.length;
+
+
+      const avgReading =
+
+        average(
+
+          items.map(
+            item =>
+              item.readingTimeMs
+          )
+
+        );
+
+
+      const avgResponse =
+
+        average(
+
+          items.map(
+            item =>
+              item.responseTimeMs
+          )
+
+        );
+
+
+      const row =
         document.createElement(
           "tr"
         );
 
 
-      tr.innerHTML = `
+      row.innerHTML = `
 
         <td>
+
           ${domainNames[
-            item.domain
+            group.domain
           ]}
+
         </td>
 
+
         <td>
+
           ${featureNames[
-            item.feature
+            feature
           ]
           ||
-          item.feature}
+          feature}
+
         </td>
 
-        <td>
-          ${item.sentence}
-        </td>
 
         <td>
+
+          ${items.length}
+
+        </td>
+
+
+        <td>
+
           ${formatSeconds(
-            item.readingTimeMs
+            avgReading
           )}
+
         </td>
 
-        <td>
-          ${
-            item.correct
-            ?
-            "정답"
-            :
-            "오답"
-          }
-        </td>
 
         <td>
+
+          ${formatPercent(
+            accuracy
+          )}
+
+        </td>
+
+
+        <td>
+
           ${formatSeconds(
-            item.responseTimeMs
+            avgResponse
           )}
+
         </td>
 
       `;
@@ -1669,7 +1812,7 @@ function createFeatureTable(
 
       tbody
         .appendChild(
-          tr
+          row
         );
 
     }
@@ -1683,9 +1826,9 @@ function createFeatureTable(
    XAI
 ===================================================== */
 
-function createXAI(
+function renderXAI(
   domainData,
-  pairedData
+  results
 ){
 
   const domains =
@@ -1694,122 +1837,274 @@ function createXAI(
     );
 
 
-  const sorted =
+  /*
+    처리 부담 높은 순
+  */
+
+  const sortedDomains =
+
     [...domains]
     .sort(
       (a,b)=>
 
-        domainData[b]
+        domainData[
+          b
+        ]
         .burdenScore
 
         -
 
-        domainData[a]
+        domainData[
+          a
+        ]
         .burdenScore
+
     );
 
 
-  const highest =
-    sorted[0];
+  const highestDomain =
+    sortedDomains[0];
 
 
-  const second =
-    sorted[1];
+  const secondDomain =
+    sortedDomains[1];
 
 
-  const highestData =
+  const highData =
     domainData[
-      highest
+      highestDomain
     ];
 
 
   /*
-    최고 영역 내 목표 문장 중
-    상대적으로 읽기시간이 긴 문장
+    최고 영역 안에서
+    feature별 결과를 구해
+    상대적으로 부담이 큰 세부요소 탐색
   */
 
-  const targets =
-    pairedData.filter(
-      d =>
-        d.domain ===
-        highest
-        &&
-        d.isTarget
+  const domainItems =
+    results.filter(
+      item =>
+        item.domain ===
+        highestDomain
     );
 
 
-  const slowest =
-    targets.length
-    ?
-    [...targets]
-    .sort(
-      (a,b)=>
+  const featureGroups =
+    {};
 
-        b.readingTimeMs
-        -
-        a.readingTimeMs
-    )[0]
-    :
+
+  domainItems.forEach(
+    item=>{
+
+      if(
+        !featureGroups[
+          item.feature
+        ]
+      ){
+
+        featureGroups[
+          item.feature
+        ] =
+          [];
+
+      }
+
+
+      featureGroups[
+        item.feature
+      ]
+      .push(
+        item
+      );
+
+    }
+  );
+
+
+  let difficultFeature =
     null;
+
+
+  let difficultFeatureScore =
+    -1;
+
+
+  Object
+    .keys(
+      featureGroups
+    )
+    .forEach(
+      feature=>{
+
+        const items =
+          featureGroups[
+            feature
+          ];
+
+
+        const avgReading =
+          average(
+            items.map(
+              item =>
+                item.readingTimeMs
+            )
+          );
+
+
+        const accuracy =
+
+          items.filter(
+            item =>
+              item.correct
+          ).length
+
+          /
+
+          items.length;
+
+
+        /*
+          해당 영역 안에서만
+          매우 간단한 탐색용 점수
+        */
+
+        const score =
+
+          avgReading
+          *
+          (
+            1
+            +
+            (
+              1
+              -
+              accuracy
+            )
+          );
+
+
+        if(
+          score >
+          difficultFeatureScore
+        ){
+
+          difficultFeatureScore =
+            score;
+
+
+          difficultFeature =
+            feature;
+
+        }
+
+      }
+    );
+
+
+  /*
+    세부 feature 정보
+  */
+
+  const difficultItems =
+
+    difficultFeature
+
+    ?
+
+    featureGroups[
+      difficultFeature
+    ]
+
+    :
+
+    [];
+
+
+  const difficultReading =
+    average(
+      difficultItems.map(
+        item =>
+          item.readingTimeMs
+      )
+    );
+
+
+  const difficultAccuracy =
+
+    difficultItems.length
+
+    ?
+
+    difficultItems.filter(
+      item =>
+        item.correct
+    ).length
+    /
+    difficultItems.length
+
+    :
+
+    0;
 
 
   let text = `
 
     이번 읽기 수행에서는
-    <strong>${domainNames[highest]} 영역</strong>에서
-    다른 영역보다 상대적으로 높은 처리 부담이 나타났습니다.
+    <strong>${domainNames[highestDomain]} 영역</strong>에서
+    다른 영역에 비해 상대적으로 높은 처리 부담이 나타났습니다.
 
-    이 영역의 평균 문장 읽기시간은
-    <strong>${formatSeconds(highestData.avgReadingMs)}</strong>,
+    해당 영역의 평균 읽기시간은
+    <strong>${formatSeconds(highData.avgReadingMs)}</strong>,
     이해도 정답률은
-    <strong>${formatPercent(highestData.accuracy)}</strong>,
+    <strong>${formatPercent(highData.accuracy)}</strong>,
     평균 문항 반응시간은
-    <strong>${formatSeconds(highestData.avgQuestionMs)}</strong>입니다.
+    <strong>${formatSeconds(highData.avgResponseMs)}</strong>입니다.
 
   `;
 
 
   if(
-    slowest
+    difficultFeature
   ){
-
-    const feature =
-      featureNames[
-        slowest.feature
-      ]
-      ||
-      slowest.feature;
-
 
     text += `
 
-      특히
-      <strong>${feature}</strong>이 포함된 목표 문장에서
-      상대적으로 긴 읽기시간이 관찰되었습니다.
+      세부적으로는
+      <strong>${featureNames[difficultFeature]}</strong> 관련 문항에서
+      상대적으로 높은 부담이 관찰되었습니다.
+
+      해당 문항들의 평균 읽기시간은
+      <strong>${formatSeconds(difficultReading)}</strong>,
+      이해도 정답률은
+      <strong>${formatPercent(difficultAccuracy)}</strong>입니다.
 
     `;
 
 
     if(
-      slowest.correct
+      difficultAccuracy >=
+      0.8
     ){
 
       text += `
 
-        해당 문장의 이해도 문항에는 정답을 제시했습니다.
-        따라서 내용을 이해하지 못했다기보다,
-        해당 언어 요소를 처리하는 과정에서
-        상대적으로 더 많은 시간이 필요했을 가능성이 있습니다.
+        이해도는 비교적 안정적으로 유지되었으나
+        처리시간이 길게 나타난 경우,
+        해당 언어 요소를 이해하는 데 실패했다기보다
+        의미를 처리하는 과정에서 상대적으로 더 많은 시간이
+        필요했을 가능성이 있습니다.
 
       `;
 
-    }else{
+    }
+    else{
 
       text += `
 
-        해당 문장의 이해도 문항에서도 오답이 나타났습니다.
-        따라서 이 언어 요소는 읽기시간뿐 아니라
-        의미 이해 과정에서도 상대적인 어려움과 관련되었을 가능성이 있습니다.
+        읽기시간뿐 아니라 이해도에서도 상대적으로 낮은 수행이 나타나
+        해당 언어 요소가 이번 읽기에서
+        취약 요인으로 작용했을 가능성이 있습니다.
 
       `;
 
@@ -1819,13 +2114,13 @@ function createXAI(
 
 
   if(
-    second
+    secondDomain
   ){
 
     text += `
 
       다음으로는
-      <strong>${domainNames[second]} 영역</strong>에서도
+      <strong>${domainNames[secondDomain]} 영역</strong>에서
       비교적 높은 처리 부담이 나타났습니다.
 
     `;
@@ -1835,10 +2130,9 @@ function createXAI(
 
   text += `
 
-    이 결과는 이번 수행에서 나타난 개인 내 상대적 패턴입니다.
-    이후 생성형 AI 기반 맞춤형 읽기 지원에서는
-    처리 부담이 상대적으로 높게 나타난 영역과 세부 언어 요소를 중심으로
-    읽기 자료와 설명을 제공할 수 있습니다.
+    이러한 결과를 바탕으로 이후 개인맞춤형 읽기 지원에서는
+    상대적으로 부담이 높게 나타난 영역과 세부 언어 요소를 우선적으로 반영하여
+    읽기 자료와 설명 및 연습 활동을 제공할 수 있습니다.
 
   `;
 
@@ -1862,9 +2156,13 @@ function getBurdenLevel(
   score
 ){
 
+  /*
+    파일럿 프로토타입 기준.
+    절대적 진단 기준이 아님.
+  */
+
   if(
-    score >=
-    65
+    score >= 65
   ){
 
     return{
@@ -1881,8 +2179,7 @@ function getBurdenLevel(
 
 
   if(
-    score >=
-    35
+    score >= 35
   ){
 
     return{
@@ -1922,12 +2219,16 @@ function average(
 
   const clean =
     values.filter(
-      v =>
+      value =>
+
         Number.isFinite(
-          v
+          value
         )
+
         &&
-        v >= 0
+
+        value >= 0
+
     );
 
 
@@ -1943,8 +2244,8 @@ function average(
   return (
 
     clean.reduce(
-      (sum,v)=>
-        sum + v,
+      (sum,value)=>
+        sum + value,
       0
     )
 
@@ -1976,7 +2277,8 @@ function normalize(
 
 
   if(
-    max === min
+    max ===
+    min
   ){
 
     return 0;
@@ -1986,7 +2288,8 @@ function normalize(
 
   return (
 
-    value -
+    value
+    -
     min
 
   )
@@ -1995,7 +2298,8 @@ function normalize(
 
   (
 
-    max -
+    max
+    -
     min
 
   );
@@ -2012,8 +2316,11 @@ function formatSeconds(
     !Number.isFinite(
       milliseconds
     )
+
     ||
-    milliseconds <= 0
+
+    milliseconds <=
+    0
   ){
 
     return "-";
@@ -2023,14 +2330,17 @@ function formatSeconds(
 
   return (
 
-    milliseconds /
+    milliseconds
+    /
     1000
 
   )
   .toFixed(
     2
   )
+
   +
+
   "초";
 
 }
@@ -2055,7 +2365,8 @@ function formatPercent(
   return (
 
     Math.round(
-      value *
+      value
+      *
       100
     )
 
@@ -2071,4 +2382,5 @@ function formatPercent(
 
 </body>
 </html>
- 
+
+
