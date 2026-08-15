@@ -1,0 +1,2068 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Chinese Flow Lab | Reading Profile</title>
+
+<style>
+
+:root{
+  --primary:#2457A6;
+  --primary-dark:#173D75;
+  --primary-light:#EAF2FF;
+  --accent:#4D83D1;
+
+  --background:#F5F8FC;
+  --card:#FFFFFF;
+
+  --text:#243247;
+  --subtext:#66758A;
+
+  --border:#D9E4F2;
+
+  --low:#3D7A62;
+  --medium:#B18432;
+  --high:#A54D4D;
+}
+
+*{
+  box-sizing:border-box;
+}
+
+body{
+  margin:0;
+  font-family:"Pretendard","Noto Sans KR",sans-serif;
+  background:var(--background);
+  color:var(--text);
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.hero{
+  background:linear-gradient(
+    135deg,
+    var(--primary-dark),
+    var(--accent)
+  );
+
+  color:white;
+  text-align:center;
+
+  padding:70px 8%;
+}
+
+.hero .label{
+  font-size:14px;
+  font-weight:700;
+  letter-spacing:.12em;
+  opacity:.9;
+  margin-bottom:10px;
+}
+
+.hero h1{
+  margin:0 0 14px;
+  font-size:44px;
+}
+
+.hero p{
+  margin:0 auto;
+  max-width:760px;
+  font-size:18px;
+  line-height:1.8;
+  opacity:.94;
+}
+
+
+/* =========================
+   MAIN
+========================= */
+
+.container{
+  max-width:1100px;
+  margin:auto;
+  padding:55px 7%;
+}
+
+.section{
+  margin-bottom:42px;
+}
+
+.section-title{
+  color:var(--primary);
+  font-size:28px;
+  margin:0 0 20px;
+}
+
+
+/* =========================
+   SUMMARY
+========================= */
+
+.summary-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:18px;
+}
+
+.summary-card{
+  background:white;
+  border:1px solid var(--border);
+  border-radius:22px;
+  padding:26px 20px;
+  text-align:center;
+  box-shadow:0 8px 22px rgba(24,61,117,.06);
+}
+
+.summary-label{
+  color:var(--subtext);
+  font-size:14px;
+  margin-bottom:12px;
+}
+
+.summary-value{
+  color:var(--primary);
+  font-size:29px;
+  font-weight:800;
+}
+
+
+/* =========================
+   PROFILE
+========================= */
+
+.profile-card{
+  background:white;
+  border:1px solid var(--border);
+  border-radius:26px;
+  padding:34px;
+  box-shadow:0 8px 22px rgba(24,61,117,.06);
+}
+
+.domain-row{
+  margin-bottom:30px;
+}
+
+.domain-row:last-child{
+  margin-bottom:0;
+}
+
+.domain-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:10px;
+}
+
+.domain-name{
+  font-size:19px;
+  font-weight:750;
+}
+
+.domain-status{
+  font-size:14px;
+  font-weight:750;
+  padding:6px 12px;
+  border-radius:999px;
+}
+
+.status-low{
+  color:var(--low);
+  background:#EDF7F2;
+}
+
+.status-medium{
+  color:var(--medium);
+  background:#FFF7E6;
+}
+
+.status-high{
+  color:var(--high);
+  background:#FCEEEE;
+}
+
+.bar-bg{
+  width:100%;
+  height:12px;
+  border-radius:999px;
+  background:#E8EEF6;
+  overflow:hidden;
+}
+
+.bar{
+  height:100%;
+  border-radius:999px;
+  background:linear-gradient(
+    90deg,
+    #8FB4E5,
+    var(--primary)
+  );
+  transition:.5s;
+}
+
+.domain-detail{
+  margin-top:10px;
+  color:var(--subtext);
+  font-size:14px;
+  line-height:1.7;
+}
+
+
+/* =========================
+   XAI
+========================= */
+
+.xai-card{
+  background:#EEF5FF;
+  border:1px solid #D5E5F8;
+  border-radius:26px;
+  padding:32px;
+}
+
+.xai-title{
+  color:var(--primary);
+  font-weight:800;
+  font-size:21px;
+  margin-bottom:15px;
+}
+
+.xai-card p{
+  color:#465A73;
+  font-size:16px;
+  line-height:1.9;
+  margin:0;
+}
+
+
+/* =========================
+   DETAIL
+========================= */
+
+.detail-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:18px;
+}
+
+.detail-card{
+  background:white;
+  border:1px solid var(--border);
+  border-radius:20px;
+  padding:24px;
+}
+
+.detail-card h3{
+  color:var(--primary);
+  margin:0 0 13px;
+  font-size:19px;
+}
+
+.detail-card p{
+  margin:0;
+  color:var(--subtext);
+  line-height:1.8;
+  font-size:15px;
+}
+
+
+/* =========================
+   FEATURE TABLE
+========================= */
+
+.feature-card{
+  background:white;
+  border:1px solid var(--border);
+  border-radius:24px;
+  overflow:hidden;
+}
+
+.feature-table{
+  width:100%;
+  border-collapse:collapse;
+}
+
+.feature-table th,
+.feature-table td{
+  padding:15px 16px;
+  border-bottom:1px solid var(--border);
+  text-align:left;
+  font-size:14px;
+}
+
+.feature-table th{
+  background:#F3F7FC;
+  color:var(--primary);
+}
+
+.feature-table td{
+  color:#536479;
+}
+
+.feature-table tr:last-child td{
+  border-bottom:none;
+}
+
+
+/* =========================
+   INFO
+========================= */
+
+.info-box{
+  background:#FAFCFF;
+  border:1px solid var(--border);
+  border-radius:20px;
+  padding:22px 25px;
+  color:#5B6B7F;
+  font-size:14px;
+  line-height:1.8;
+}
+
+
+/* =========================
+   BUTTON
+========================= */
+
+.actions{
+  margin-top:42px;
+  display:flex;
+  gap:15px;
+  justify-content:center;
+  flex-wrap:wrap;
+}
+
+.btn{
+  display:inline-block;
+  padding:16px 28px;
+  border-radius:999px;
+  border:none;
+  text-decoration:none;
+  font-size:16px;
+  font-weight:750;
+  cursor:pointer;
+  background:var(--primary);
+  color:white;
+}
+
+.btn:hover{
+  background:var(--primary-dark);
+}
+
+.btn-light{
+  background:var(--primary-light);
+  color:var(--primary);
+  border:1px solid var(--border);
+}
+
+.btn-light:hover{
+  background:#DDEBFC;
+}
+
+
+/* =========================
+   EMPTY
+========================= */
+
+.empty{
+  background:white;
+  border:1px solid var(--border);
+  border-radius:25px;
+  padding:45px;
+  text-align:center;
+}
+
+.empty h2{
+  color:var(--primary);
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+  text-align:center;
+  padding:40px;
+  color:#7C8999;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:850px){
+
+  .summary-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .detail-grid{
+    grid-template-columns:1fr;
+  }
+
+}
+
+@media(max-width:600px){
+
+  .summary-grid{
+    grid-template-columns:1fr;
+  }
+
+  .hero h1{
+    font-size:34px;
+  }
+
+  .container{
+    padding:40px 6%;
+  }
+
+  .profile-card{
+    padding:26px 20px;
+  }
+
+  .feature-card{
+    overflow-x:auto;
+  }
+
+  .feature-table{
+    min-width:650px;
+  }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     HERO
+========================= -->
+
+<section class="hero">
+
+  <div class="label">
+    LEARNER COGNITIVE PROFILE
+  </div>
+
+  <h1>
+    나의 중국어 읽기 프로파일
+  </h1>
+
+  <p>
+    문장별 읽기시간과 이해도 결과를 바탕으로
+    통사·어휘·연어·담화 영역의 상대적인 읽기 처리 특성을 분석합니다.
+  </p>
+
+</section>
+
+
+
+<main class="container">
+
+
+<!-- =========================
+     EMPTY
+========================= -->
+
+<section
+  id="emptyScreen"
+  class="empty"
+  style="display:none;">
+
+  <h2>
+    읽기 수행 결과가 없습니다.
+  </h2>
+
+  <p>
+    먼저 중국어 읽기 수행을 완료해 주세요.
+  </p>
+
+  <a
+    href="reading-test.html"
+    class="btn">
+
+    읽기 수행하기
+
+  </a>
+
+</section>
+
+
+
+<!-- =========================
+     RESULT
+========================= -->
+
+<div id="resultScreen">
+
+
+<!-- =========================
+     SUMMARY
+========================= -->
+
+<section class="section">
+
+  <h2 class="section-title">
+    읽기 수행 요약
+  </h2>
+
+
+  <div class="summary-grid">
+
+
+    <div class="summary-card">
+
+      <div class="summary-label">
+        평균 문장 읽기시간
+      </div>
+
+      <div
+        class="summary-value"
+        id="avgReadingTime">
+
+        -
+
+      </div>
+
+    </div>
+
+
+    <div class="summary-card">
+
+      <div class="summary-label">
+        목표 문장 이해도
+      </div>
+
+      <div
+        class="summary-value"
+        id="targetAccuracy">
+
+        -
+
+      </div>
+
+    </div>
+
+
+    <div class="summary-card">
+
+      <div class="summary-label">
+        지문 전체 이해도
+      </div>
+
+      <div
+        class="summary-value"
+        id="finalAccuracy">
+
+        -
+
+      </div>
+
+    </div>
+
+
+    <div class="summary-card">
+
+      <div class="summary-label">
+        완료한 읽기 자료
+      </div>
+
+      <div
+        class="summary-value"
+        id="passageCount">
+
+        -
+
+      </div>
+
+    </div>
+
+
+  </div>
+
+</section>
+
+
+
+<!-- =========================
+     PROFILE
+========================= -->
+
+<section class="section">
+
+  <h2 class="section-title">
+    영역별 읽기 프로파일
+  </h2>
+
+  <div
+    class="profile-card"
+    id="profileContainer">
+  </div>
+
+</section>
+
+
+
+<!-- =========================
+     XAI
+========================= -->
+
+<section class="section">
+
+  <h2 class="section-title">
+    XAI 기반 결과 설명
+  </h2>
+
+  <div class="xai-card">
+
+    <div class="xai-title">
+      나의 읽기 특성 분석
+    </div>
+
+    <p id="xaiText">
+    </p>
+
+  </div>
+
+</section>
+
+
+
+<!-- =========================
+     DETAIL
+========================= -->
+
+<section class="section">
+
+  <h2 class="section-title">
+    영역별 세부 결과
+  </h2>
+
+  <div
+    class="detail-grid"
+    id="detailContainer">
+  </div>
+
+</section>
+
+
+
+<!-- =========================
+     FEATURE DETAIL
+========================= -->
+
+<section class="section">
+
+  <h2 class="section-title">
+    세부 언어 요소별 결과
+  </h2>
+
+  <div class="feature-card">
+
+    <table class="feature-table">
+
+      <thead>
+
+        <tr>
+
+          <th>
+            영역
+          </th>
+
+          <th>
+            세부 요소
+          </th>
+
+          <th>
+            목표 문장 읽기시간
+          </th>
+
+          <th>
+            목표 이해도
+          </th>
+
+          <th>
+            지문 이해도
+          </th>
+
+        </tr>
+
+      </thead>
+
+      <tbody id="featureTableBody">
+      </tbody>
+
+    </table>
+
+  </div>
+
+</section>
+
+
+
+<!-- =========================
+     INFO
+========================= -->
+
+<section class="section">
+
+  <div class="info-box">
+
+    본 결과의 ‘높음·보통·낮음’은 이번 읽기 수행에서 나타난
+    <strong>개인 내 영역 간 상대적 차이</strong>를 이해하기 위한
+    파일럿용 지표입니다.
+    현재 단계에서는 표준화된 진단 점수나 절대적인 능력 수준을 의미하지 않습니다.
+
+  </div>
+
+</section>
+
+
+
+<!-- =========================
+     ACTION
+========================= -->
+
+<div class="actions">
+
+  <a
+    href="ai-reading.html"
+    class="btn">
+
+    AI 맞춤형 읽기 학습 시작하기
+
+  </a>
+
+
+  <a
+    href="reading-test.html"
+    class="btn btn-light">
+
+    읽기 다시 수행하기
+
+  </a>
+
+
+  <a
+    href="reading-research.html"
+    class="btn btn-light">
+
+    Reading Research로 돌아가기
+
+  </a>
+
+</div>
+
+
+</div>
+
+</main>
+
+
+
+<footer>
+  Chinese Flow Lab © 2026
+</footer>
+
+
+
+<script>
+
+/* =====================================================
+   DOMAIN / FEATURE LABELS
+===================================================== */
+
+const domainNames = {
+
+  syntax:"통사",
+
+  vocabulary:"어휘",
+
+  collocation:"연어",
+
+  discourse:"담화"
+
+};
+
+
+const featureNames = {
+
+  relative_clause:
+    "관계절",
+
+  ba_construction:
+    "把자문",
+
+  bei_construction:
+    "被자문",
+
+  low_frequency:
+    "저빈도 어휘",
+
+  semantic_transparency:
+    "의미투명도",
+
+  contextual_inference:
+    "문맥적 의미 추론",
+
+  collocation_frequency:
+    "연어 빈도",
+
+  association_strength:
+    "연어 결합강도",
+
+  conventional_collocation:
+    "관습적 연어 결합",
+
+  cohesion:
+    "담화 응집성",
+
+  information_density:
+    "정보 밀도",
+
+  causal_reference:
+    "인과·지시 관계"
+
+};
+
+
+
+/* =====================================================
+   LOAD RESULT
+===================================================== */
+
+const savedData =
+  localStorage.getItem(
+    "readingExperimentData"
+  );
+
+
+if(!savedData){
+
+  document
+    .getElementById(
+      "resultScreen"
+    )
+    .style.display =
+      "none";
+
+
+  document
+    .getElementById(
+      "emptyScreen"
+    )
+    .style.display =
+      "block";
+
+}else{
+
+  try{
+
+    const experiment =
+      JSON.parse(
+        savedData
+      );
+
+
+    createProfile(
+      experiment
+    );
+
+  }catch(error){
+
+    console.error(
+      error
+    );
+
+
+    document
+      .getElementById(
+        "resultScreen"
+      )
+      .style.display =
+        "none";
+
+
+    document
+      .getElementById(
+        "emptyScreen"
+      )
+      .style.display =
+        "block";
+
+  }
+
+}
+
+
+
+/* =====================================================
+   CREATE PROFILE
+===================================================== */
+
+function createProfile(
+  experiment
+){
+
+  const results =
+    experiment.results || [];
+
+
+  const sentences =
+    results.filter(
+      r =>
+        r.type ===
+        "sentence"
+    );
+
+
+  const questions =
+    results.filter(
+      r =>
+        r.type ===
+        "question"
+    );
+
+
+  const targetQuestions =
+    questions.filter(
+      q =>
+        q.questionType ===
+        "target"
+    );
+
+
+  const finalQuestions =
+    questions.filter(
+      q =>
+        q.questionType ===
+        "final"
+    );
+
+
+  /* ==============================
+     OVERALL SUMMARY
+  ============================== */
+
+  const avgReadingMs =
+    average(
+      sentences.map(
+        s =>
+          s.readingTimeMs
+      )
+    );
+
+
+  const targetAccuracy =
+    calculateAccuracy(
+      targetQuestions
+    );
+
+
+  const finalAccuracy =
+    calculateAccuracy(
+      finalQuestions
+    );
+
+
+  document
+    .getElementById(
+      "avgReadingTime"
+    )
+    .textContent =
+
+      formatSeconds(
+        avgReadingMs
+      );
+
+
+  document
+    .getElementById(
+      "targetAccuracy"
+    )
+    .textContent =
+
+      formatPercent(
+        targetAccuracy
+      );
+
+
+  document
+    .getElementById(
+      "finalAccuracy"
+    )
+    .textContent =
+
+      formatPercent(
+        finalAccuracy
+      );
+
+
+  const uniquePassages =
+    new Set(
+      sentences.map(
+        s =>
+          s.passageId
+      )
+    );
+
+
+  document
+    .getElementById(
+      "passageCount"
+    )
+    .textContent =
+
+      uniquePassages.size
+      + "개";
+
+
+  /* ==============================
+     DOMAIN DATA
+  ============================== */
+
+  const domains = [
+
+    "syntax",
+
+    "vocabulary",
+
+    "collocation",
+
+    "discourse"
+
+  ];
+
+
+  const domainData = {};
+
+
+  domains.forEach(
+    domain=>{
+
+      const allSentences =
+        sentences.filter(
+          s =>
+            s.domain ===
+            domain
+        );
+
+
+      const targetSentences =
+        allSentences.filter(
+          s =>
+            s.isTarget ===
+            true
+        );
+
+
+      const domainTargetQuestions =
+        targetQuestions.filter(
+          q =>
+            q.domain ===
+            domain
+        );
+
+
+      const domainFinalQuestions =
+        finalQuestions.filter(
+          q =>
+            q.domain ===
+            domain
+        );
+
+
+      domainData[domain] = {
+
+        overallReadingMs:
+          average(
+            allSentences.map(
+              s =>
+                s.readingTimeMs
+            )
+          ),
+
+        targetReadingMs:
+          average(
+            targetSentences.map(
+              s =>
+                s.readingTimeMs
+            )
+          ),
+
+        targetAccuracy:
+          calculateAccuracy(
+            domainTargetQuestions
+          ),
+
+        finalAccuracy:
+          calculateAccuracy(
+            domainFinalQuestions
+          ),
+
+        burdenScore:0
+
+      };
+
+    }
+  );
+
+
+
+  /* ==============================
+     RELATIVE BURDEN
+
+     파일럿용 상대지표
+
+     목표문장 읽기시간 60%
+     목표문장 이해도 오류율 25%
+     지문 전체 이해도 오류율 15%
+  ============================== */
+
+
+  const validTargetTimes =
+    domains
+    .map(
+      d =>
+        domainData[d]
+        .targetReadingMs
+    )
+    .filter(
+      value =>
+        value > 0
+    );
+
+
+  const minTime =
+    validTargetTimes.length
+    ?
+    Math.min(
+      ...validTargetTimes
+    )
+    :
+    0;
+
+
+  const maxTime =
+    validTargetTimes.length
+    ?
+    Math.max(
+      ...validTargetTimes
+    )
+    :
+    0;
+
+
+  domains.forEach(
+    domain=>{
+
+      const data =
+        domainData[
+          domain
+        ];
+
+
+      let normalizedTargetTime =
+        0;
+
+
+      if(
+        maxTime >
+        minTime
+        &&
+        data.targetReadingMs >
+        0
+      ){
+
+        normalizedTargetTime =
+
+          (
+            data.targetReadingMs
+            -
+            minTime
+          )
+          /
+          (
+            maxTime
+            -
+            minTime
+          );
+
+      }
+
+
+      const targetError =
+        1 -
+        data.targetAccuracy;
+
+
+      const finalError =
+        1 -
+        data.finalAccuracy;
+
+
+      const burden =
+
+        (
+          normalizedTargetTime
+          *
+          0.60
+        )
+
+        +
+
+        (
+          targetError
+          *
+          0.25
+        )
+
+        +
+
+        (
+          finalError
+          *
+          0.15
+        );
+
+
+      data.burdenScore =
+        Math.round(
+          burden *
+          100
+        );
+
+    }
+  );
+
+
+
+  createProfileUI(
+    domainData
+  );
+
+
+  createDetailUI(
+    domainData
+  );
+
+
+  createFeatureTable(
+    sentences,
+    questions
+  );
+
+
+  createXAI(
+    domainData,
+    sentences,
+    questions
+  );
+
+}
+
+
+
+/* =====================================================
+   PROFILE UI
+===================================================== */
+
+function createProfileUI(
+  domainData
+){
+
+  const domains =
+    Object.keys(
+      domainData
+    );
+
+
+  const container =
+    document.getElementById(
+      "profileContainer"
+    );
+
+
+  container.innerHTML =
+    "";
+
+
+  domains.forEach(
+    domain=>{
+
+      const data =
+        domainData[
+          domain
+        ];
+
+
+      const level =
+        getBurdenLevel(
+          data.burdenScore
+        );
+
+
+      const row =
+        document.createElement(
+          "div"
+        );
+
+
+      row.className =
+        "domain-row";
+
+
+      row.innerHTML = `
+
+        <div class="domain-head">
+
+          <span class="domain-name">
+
+            ${domainNames[domain]} 영역
+
+          </span>
+
+
+          <span
+            class="
+            domain-status
+            ${level.className}
+            ">
+
+            ${level.label}
+
+          </span>
+
+        </div>
+
+
+        <div class="bar-bg">
+
+          <div
+            class="bar"
+            style="
+              width:
+              ${Math.max(
+                data.burdenScore,
+                5
+              )}%;
+            ">
+          </div>
+
+        </div>
+
+
+        <div class="domain-detail">
+
+          목표 문장 평균 읽기시간
+          ${formatSeconds(
+            data.targetReadingMs
+          )}
+
+          ·
+
+          목표 이해도
+          ${formatPercent(
+            data.targetAccuracy
+          )}
+
+          ·
+
+          지문 이해도
+          ${formatPercent(
+            data.finalAccuracy
+          )}
+
+        </div>
+
+      `;
+
+
+      container
+        .appendChild(
+          row
+        );
+
+    }
+  );
+
+}
+
+
+
+/* =====================================================
+   DETAIL UI
+===================================================== */
+
+function createDetailUI(
+  domainData
+){
+
+  const container =
+    document.getElementById(
+      "detailContainer"
+    );
+
+
+  container.innerHTML =
+    "";
+
+
+  Object.keys(
+    domainData
+  )
+  .forEach(
+    domain=>{
+
+      const data =
+        domainData[
+          domain
+        ];
+
+
+      const card =
+        document.createElement(
+          "div"
+        );
+
+
+      card.className =
+        "detail-card";
+
+
+      card.innerHTML = `
+
+        <h3>
+          ${domainNames[domain]} 영역
+        </h3>
+
+
+        <p>
+
+          전체 문장 평균 읽기시간:
+          ${formatSeconds(
+            data.overallReadingMs
+          )}
+
+          <br>
+
+          목표 문장 평균 읽기시간:
+          ${formatSeconds(
+            data.targetReadingMs
+          )}
+
+          <br>
+
+          목표 문장 이해도:
+          ${formatPercent(
+            data.targetAccuracy
+          )}
+
+          <br>
+
+          지문 전체 이해도:
+          ${formatPercent(
+            data.finalAccuracy
+          )}
+
+          <br>
+
+          상대적 처리 부담:
+          <strong>
+            ${getBurdenLevel(
+              data.burdenScore
+            ).label}
+          </strong>
+
+        </p>
+
+      `;
+
+
+      container
+        .appendChild(
+          card
+        );
+
+    }
+  );
+
+}
+
+
+
+/* =====================================================
+   FEATURE TABLE
+===================================================== */
+
+function createFeatureTable(
+  sentences,
+  questions
+){
+
+  const tbody =
+    document.getElementById(
+      "featureTableBody"
+    );
+
+
+  tbody.innerHTML =
+    "";
+
+
+  const passageIds =
+    [
+      ...new Set(
+        sentences.map(
+          s =>
+            s.passageId
+        )
+      )
+    ];
+
+
+  passageIds.forEach(
+    passageId=>{
+
+      const passageSentences =
+        sentences.filter(
+          s =>
+            s.passageId ===
+            passageId
+        );
+
+
+      if(
+        !passageSentences.length
+      ){
+        return;
+      }
+
+
+      const sample =
+        passageSentences[0];
+
+
+      const targetSentence =
+        passageSentences.find(
+          s =>
+            s.isTarget ===
+            true
+        );
+
+
+      const targetQuestion =
+        questions.find(
+          q =>
+            q.passageId ===
+            passageId
+            &&
+            q.questionType ===
+            "target"
+        );
+
+
+      const finalQuestion =
+        questions.find(
+          q =>
+            q.passageId ===
+            passageId
+            &&
+            q.questionType ===
+            "final"
+        );
+
+
+      const tr =
+        document.createElement(
+          "tr"
+        );
+
+
+      tr.innerHTML = `
+
+        <td>
+          ${domainNames[
+            sample.domain
+          ]}
+        </td>
+
+        <td>
+          ${featureNames[
+            sample.feature
+          ] || sample.feature}
+        </td>
+
+        <td>
+          ${
+            targetSentence
+            ?
+            formatSeconds(
+              targetSentence
+              .readingTimeMs
+            )
+            :
+            "-"
+          }
+        </td>
+
+        <td>
+          ${
+            targetQuestion
+            ?
+            (
+              targetQuestion.correct
+              ?
+              "정답"
+              :
+              "오답"
+            )
+            :
+            "-"
+          }
+        </td>
+
+        <td>
+          ${
+            finalQuestion
+            ?
+            (
+              finalQuestion.correct
+              ?
+              "정답"
+              :
+              "오답"
+            )
+            :
+            "-"
+          }
+        </td>
+
+      `;
+
+
+      tbody
+        .appendChild(
+          tr
+        );
+
+    }
+  );
+
+}
+
+
+
+/* =====================================================
+   XAI
+===================================================== */
+
+function createXAI(
+  domainData,
+  sentences,
+  questions
+){
+
+  const domains =
+    Object.keys(
+      domainData
+    );
+
+
+  const sortedDomains =
+    [...domains]
+    .sort(
+      (a,b)=>
+
+        domainData[b]
+        .burdenScore
+
+        -
+
+        domainData[a]
+        .burdenScore
+    );
+
+
+  const highest =
+    sortedDomains[0];
+
+
+  const second =
+    sortedDomains[1];
+
+
+  const highestData =
+    domainData[
+      highest
+    ];
+
+
+  /* ==============================
+     세부 feature 탐색
+  ============================== */
+
+
+  const targetSentences =
+    sentences.filter(
+      s =>
+        s.domain ===
+        highest
+        &&
+        s.isTarget ===
+        true
+    );
+
+
+  let mostDifficultFeature =
+    null;
+
+
+  let slowestTarget =
+    null;
+
+
+  if(
+    targetSentences.length
+  ){
+
+    slowestTarget =
+      [...targetSentences]
+      .sort(
+        (a,b)=>
+
+          b.readingTimeMs
+          -
+          a.readingTimeMs
+      )[0];
+
+
+    mostDifficultFeature =
+      featureNames[
+        slowestTarget.feature
+      ]
+      ||
+      slowestTarget.feature;
+
+  }
+
+
+  /* target question */
+
+  let relatedQuestion =
+    null;
+
+
+  if(
+    slowestTarget
+  ){
+
+    relatedQuestion =
+      questions.find(
+        q =>
+
+          q.passageId ===
+          slowestTarget
+          .passageId
+
+          &&
+
+          q.questionType ===
+          "target"
+      );
+
+  }
+
+
+  /* ==============================
+     설명 생성
+  ============================== */
+
+  let text = `
+
+    이번 읽기 수행에서는
+    <strong>${domainNames[highest]} 영역</strong>에서
+    다른 영역보다 상대적으로 높은 처리 부담이 나타났습니다.
+
+    ${domainNames[highest]} 영역의 목표 문장 평균 읽기시간은
+    <strong>${formatSeconds(highestData.targetReadingMs)}</strong>이며,
+    목표 문장 이해도는
+    <strong>${formatPercent(highestData.targetAccuracy)}</strong>,
+    지문 전체 이해도는
+    <strong>${formatPercent(highestData.finalAccuracy)}</strong>로 나타났습니다.
+
+  `;
+
+
+  if(
+    mostDifficultFeature
+  ){
+
+    text += `
+
+      세부적으로는
+      <strong>${mostDifficultFeature}</strong>이 포함된 목표 문장에서
+      상대적으로 긴 읽기시간이 관찰되었습니다.
+
+    `;
+
+
+    if(
+      relatedQuestion
+    ){
+
+      if(
+        relatedQuestion.correct
+      ){
+
+        text += `
+
+          해당 목표 문장의 이해도 문항에는 정답을 제시하였으므로,
+          내용을 이해하지 못했다기보다
+          해당 언어 구조를 처리하는 데 상대적으로 더 많은 시간이
+          필요했을 가능성이 있습니다.
+
+        `;
+
+      }else{
+
+        text += `
+
+          해당 목표 문장의 이해도 문항에서도 오답이 나타나
+          읽기시간뿐 아니라 해당 언어 요소의 이해 과정에서도
+          상대적인 어려움이 나타났을 가능성이 있습니다.
+
+        `;
+
+      }
+
+    }
+
+  }
+
+
+  if(
+    second
+  ){
+
+    text += `
+
+      다음으로는
+      <strong>${domainNames[second]} 영역</strong>에서
+      비교적 높은 처리 부담이 나타났습니다.
+
+    `;
+
+  }
+
+
+  text += `
+
+    이 결과는 이번 읽기 수행에서 나타난 개인 내 상대적인 패턴이며,
+    절대적인 중국어 능력 수준이나 표준화된 진단 결과를 의미하지 않습니다.
+    이후 맞춤형 읽기 지원에서는 상대적으로 부담이 높게 나타난 영역과
+    세부 언어 요소를 중심으로 학습 자료를 제공할 수 있습니다.
+
+  `;
+
+
+  document
+    .getElementById(
+      "xaiText"
+    )
+    .innerHTML =
+      text;
+
+}
+
+
+
+/* =====================================================
+   BURDEN LEVEL
+===================================================== */
+
+function getBurdenLevel(
+  score
+){
+
+  if(
+    score >= 65
+  ){
+
+    return{
+
+      label:"높음",
+
+      className:
+        "status-high"
+
+    };
+
+  }
+
+
+  if(
+    score >= 35
+  ){
+
+    return{
+
+      label:"보통",
+
+      className:
+        "status-medium"
+
+    };
+
+  }
+
+
+  return{
+
+    label:"낮음",
+
+    className:
+      "status-low"
+
+  };
+
+}
+
+
+
+/* =====================================================
+   UTILITIES
+===================================================== */
+
+function average(
+  values
+){
+
+  const clean =
+    values.filter(
+      value =>
+        Number.isFinite(
+          value
+        )
+        &&
+        value >= 0
+    );
+
+
+  if(
+    !clean.length
+  ){
+
+    return 0;
+
+  }
+
+
+  return (
+
+    clean.reduce(
+      (sum,value)=>
+        sum + value,
+      0
+    )
+
+    /
+
+    clean.length
+
+  );
+
+}
+
+
+
+function calculateAccuracy(
+  questions
+){
+
+  if(
+    !questions.length
+  ){
+
+    return 0;
+
+  }
+
+
+  const correct =
+    questions.filter(
+      q =>
+        q.correct ===
+        true
+    ).length;
+
+
+  return (
+    correct /
+    questions.length
+  );
+
+}
+
+
+
+function formatSeconds(
+  milliseconds
+){
+
+  if(
+    !milliseconds
+  ){
+
+    return "-";
+
+  }
+
+
+  return (
+    milliseconds /
+    1000
+  )
+  .toFixed(2)
+  + "초";
+
+}
+
+
+
+function formatPercent(
+  value
+){
+
+  if(
+    !Number.isFinite(
+      value
+    )
+  ){
+
+    return "-";
+
+  }
+
+
+  return (
+    Math.round(
+      value * 100
+    )
+    +
+    "%"
+  );
+
+}
+
+</script>
+
+</body>
+</html>
