@@ -13,14 +13,11 @@
   --primary-dark:#173D75;
   --primary-light:#EAF2FF;
   --accent:#4D83D1;
-
   --background:#F5F8FC;
   --card:#FFFFFF;
-
   --text:#243247;
   --subtext:#66758A;
   --border:#D9E4F2;
-
   --success:#2F7D5A;
 }
 
@@ -70,6 +67,7 @@ body{
 .progress-info{
   display:flex;
   justify-content:space-between;
+  gap:20px;
   margin-bottom:8px;
   font-size:14px;
   color:var(--subtext);
@@ -324,7 +322,6 @@ body{
   .option{
     font-size:15px;
   }
-
 }
 
 </style>
@@ -367,16 +364,15 @@ body{
   </p>
 
   <div class="notice">
-
     • 먼저 연습문제 2문항을 진행합니다.<br>
     • 연습 후 실전문제 30문항이 시작됩니다.<br>
-    • 실전문제는 무작위 순서로 제시됩니다.<br>
+    • 실전문제의 제시 순서는 무작위입니다.<br>
+    • 각 확인 문제의 선택지 순서도 무작위로 제시됩니다.<br>
     • 중국어 문장을 충분히 읽은 뒤 <strong>다음</strong> 버튼을 눌러주세요.<br>
     • 읽기 화면에서는 <strong>Space</strong> 키도 사용할 수 있습니다.<br>
     • 내용 확인 문제는 한국어로 제시됩니다.<br>
     • 답변을 확정하기 전에는 선택을 변경할 수 있습니다.<br>
     • 평소와 비슷한 자연스러운 속도로 읽어주세요.
-
   </div>
 
   <button class="btn" onclick="startPractice()">
@@ -384,7 +380,6 @@ body{
   </button>
 
 </section>
-
 
 <!-- READING -->
 
@@ -415,7 +410,6 @@ body{
   </div>
 
 </section>
-
 
 <!-- QUESTION -->
 
@@ -453,7 +447,6 @@ body{
 
 </section>
 
-
 <!-- PRACTICE COMPLETE -->
 
 <section
@@ -474,7 +467,6 @@ body{
   </button>
 
 </section>
-
 
 <!-- COMPLETE -->
 
@@ -500,12 +492,10 @@ body{
 
 </main>
 
-
 <script>
 
 /* =====================================================
-   연습문항 2개
-   분석 제외
+   PRACTICE ITEMS
 ===================================================== */
 
 const practiceItems = [
@@ -548,14 +538,12 @@ const practiceItems = [
 
 
 /* =====================================================
-   실전문항 30개
+   MAIN ITEMS 30
 ===================================================== */
 
 const mainItems = [
 
-/* =========================
-   SYNTAX 10
-========================= */
+/* ---------- SYNTAX ---------- */
 
 {
   id:"SYN01",
@@ -757,10 +745,7 @@ const mainItems = [
   answer:0
 },
 
-
-/* =========================
-   VOCABULARY 4
-========================= */
+/* ---------- VOCABULARY ---------- */
 
 {
   id:"LEX01",
@@ -842,10 +827,7 @@ const mainItems = [
   answer:0
 },
 
-
-/* =========================
-   COLLOCATION 4
-========================= */
+/* ---------- COLLOCATION ---------- */
 
 {
   id:"COL01",
@@ -927,10 +909,7 @@ const mainItems = [
   answer:0
 },
 
-
-/* =========================
-   DISCOURSE 4
-========================= */
+/* ---------- DISCOURSE ---------- */
 
 {
   id:"DIS01",
@@ -1012,10 +991,7 @@ const mainItems = [
   answer:0
 },
 
-
-/* =========================
-   BASELINE / FILLER 8
-========================= */
+/* ---------- BASELINE / FILLER ---------- */
 
 {
   id:"BF01",
@@ -1189,6 +1165,7 @@ let mode = "practice";
 let practiceIndex = 0;
 let mainIndex = 0;
 
+let randomizedPracticeItems = [];
 let randomizedMainItems = [];
 
 let currentItem = null;
@@ -1197,7 +1174,6 @@ let sentenceStartTime = 0;
 let questionStartTime = 0;
 
 let selectedAnswer = null;
-
 let readingActive = false;
 
 let practiceResults = [];
@@ -1205,23 +1181,127 @@ let mainResults = [];
 
 
 /* =====================================================
-   SHUFFLE
+   ARRAY SHUFFLE
 ===================================================== */
 
-function shuffle(array){
+function shuffleArray(array){
 
   const copy = [...array];
 
   for(let i = copy.length - 1; i > 0; i--){
 
-    const j = Math.floor(Math.random() * (i + 1));
+    const j =
+      Math.floor(
+        Math.random() * (i + 1)
+      );
 
     [copy[i],copy[j]] =
-    [copy[j],copy[i]];
-
+      [copy[j],copy[i]];
   }
 
   return copy;
+}
+
+
+/* =====================================================
+   OPTION SHUFFLE
+
+   선택지와 정답 정보를 함께 섞음
+===================================================== */
+
+function shuffleQuestionOptions(item){
+
+  const optionObjects =
+    item.options.map(
+      (text,index)=>({
+
+        text:text,
+
+        isCorrect:
+          index === item.answer
+
+      })
+    );
+
+
+  const shuffled =
+    shuffleArray(optionObjects);
+
+
+  const newOptions =
+    shuffled.map(
+      option =>
+        option.text
+    );
+
+
+  const newAnswer =
+    shuffled.findIndex(
+      option =>
+        option.isCorrect
+    );
+
+
+  return{
+
+    ...item,
+
+    /*
+      원래 정답 텍스트도 보관
+    */
+
+    originalCorrectText:
+      item.options[item.answer],
+
+    options:
+      newOptions,
+
+    answer:
+      newAnswer
+
+  };
+}
+
+
+/* =====================================================
+   PREPARE PRACTICE
+===================================================== */
+
+function preparePracticeItems(){
+
+  /*
+    연습문제 순서는 고정.
+    선택지만 랜덤.
+  */
+
+  randomizedPracticeItems =
+    practiceItems.map(
+      item =>
+        shuffleQuestionOptions(item)
+    );
+}
+
+
+/* =====================================================
+   PREPARE MAIN
+
+   1. 선택지 랜덤
+   2. 30문항 전체 순서 랜덤
+===================================================== */
+
+function prepareMainItems(){
+
+  const optionsRandomized =
+    mainItems.map(
+      item =>
+        shuffleQuestionOptions(item)
+    );
+
+
+  randomizedMainItems =
+    shuffleArray(
+      optionsRandomized
+    );
 }
 
 
@@ -1231,23 +1311,39 @@ function shuffle(array){
 
 function startPractice(){
 
-  localStorage.removeItem("readingExperimentData");
+  localStorage.removeItem(
+    "readingExperimentData"
+  );
 
-  mode = "practice";
 
-  practiceIndex = 0;
-  mainIndex = 0;
+  mode =
+    "practice";
 
-  practiceResults = [];
-  mainResults = [];
+  practiceIndex =
+    0;
+
+  mainIndex =
+    0;
+
+  practiceResults =
+    [];
+
+  mainResults =
+    [];
+
+
+  preparePracticeItems();
+
 
   document
     .getElementById("introScreen")
     .classList.add("hidden");
 
+
   document
     .getElementById("progressWrap")
     .classList.remove("hidden");
+
 
   showCurrentReading();
 }
@@ -1259,38 +1355,46 @@ function startPractice(){
 
 function startMainTest(){
 
-  mode = "main";
+  mode =
+    "main";
 
-  mainIndex = 0;
+  mainIndex =
+    0;
 
-  randomizedMainItems =
-    shuffle(mainItems);
+
+  prepareMainItems();
+
 
   document
     .getElementById("practiceCompleteScreen")
     .classList.add("hidden");
 
+
   document
     .getElementById("progressWrap")
     .classList.remove("hidden");
+
 
   showCurrentReading();
 }
 
 
 /* =====================================================
-   CURRENT ITEM
+   GET CURRENT ITEM
 ===================================================== */
 
 function getCurrentItem(){
 
   if(mode === "practice"){
 
-    return practiceItems[practiceIndex];
-
+    return randomizedPracticeItems[
+      practiceIndex
+    ];
   }
 
-  return randomizedMainItems[mainIndex];
+  return randomizedMainItems[
+    mainIndex
+  ];
 }
 
 
@@ -1303,15 +1407,19 @@ function showCurrentReading(){
   currentItem =
     getCurrentItem();
 
-  selectedAnswer = null;
+  selectedAnswer =
+    null;
+
 
   document
     .getElementById("questionScreen")
     .classList.add("hidden");
 
+
   document
     .getElementById("readingScreen")
     .classList.remove("hidden");
+
 
   document
     .getElementById("sentenceText")
@@ -1326,10 +1434,12 @@ function showCurrentReading(){
       .textContent =
         `연습문제 ${practiceIndex + 1}`;
 
+
     document
       .getElementById("progressLeft")
       .textContent =
-        `연습 ${practiceIndex + 1} / ${practiceItems.length}`;
+        `연습 ${practiceIndex + 1} / ${randomizedPracticeItems.length}`;
+
 
     document
       .getElementById("progressRight")
@@ -1343,25 +1453,29 @@ function showCurrentReading(){
       .textContent =
         `읽기 수행 ${mainIndex + 1}`;
 
+
     document
       .getElementById("progressLeft")
       .textContent =
         `실전 ${mainIndex + 1} / ${randomizedMainItems.length}`;
 
+
     document
       .getElementById("progressRight")
       .textContent =
         "문장 읽기";
-
   }
 
 
   updateProgress();
 
+
   sentenceStartTime =
     performance.now();
 
-  readingActive = true;
+
+  readingActive =
+    true;
 }
 
 
@@ -1375,7 +1489,10 @@ function finishReading(){
     return;
   }
 
-  readingActive = false;
+
+  readingActive =
+    false;
+
 
   currentItem._readingTimeMs =
     Math.round(
@@ -1383,6 +1500,7 @@ function finishReading(){
       -
       sentenceStartTime
     );
+
 
   showQuestion();
 }
@@ -1394,15 +1512,19 @@ function finishReading(){
 
 function showQuestion(){
 
-  selectedAnswer = null;
+  selectedAnswer =
+    null;
+
 
   document
     .getElementById("readingScreen")
     .classList.add("hidden");
 
+
   document
     .getElementById("questionScreen")
     .classList.remove("hidden");
+
 
   document
     .getElementById("questionText")
@@ -1415,7 +1537,7 @@ function showQuestion(){
     document
       .getElementById("questionSub")
       .textContent =
-        `연습 ${practiceIndex + 1} / ${practiceItems.length} · 내용 확인`;
+        `연습 ${practiceIndex + 1} / ${randomizedPracticeItems.length} · 내용 확인`;
 
   }else{
 
@@ -1423,7 +1545,6 @@ function showQuestion(){
       .getElementById("questionSub")
       .textContent =
         `실전 ${mainIndex + 1} / ${randomizedMainItems.length} · 내용 확인`;
-
   }
 
 
@@ -1436,7 +1557,9 @@ function showQuestion(){
   const optionsDiv =
     document.getElementById("options");
 
-  optionsDiv.innerHTML = "";
+
+  optionsDiv.innerHTML =
+    "";
 
 
   currentItem.options.forEach(
@@ -1445,19 +1568,26 @@ function showQuestion(){
       const button =
         document.createElement("button");
 
+
       button.className =
         "option";
+
 
       button.dataset.index =
         index;
 
+
       button.textContent =
         `${index + 1}. ${option}`;
+
 
       button.onclick =
         ()=>selectAnswer(index);
 
-      optionsDiv.appendChild(button);
+
+      optionsDiv.appendChild(
+        button
+      );
 
     }
   );
@@ -1480,16 +1610,18 @@ function showQuestion(){
 
 function selectAnswer(index){
 
-  selectedAnswer = index;
+  selectedAnswer =
+    index;
+
 
   document
     .querySelectorAll(".option")
     .forEach(
       button=>{
 
-        button
-          .classList
-          .remove("selected");
+        button.classList.remove(
+          "selected"
+        );
 
       }
     );
@@ -1503,10 +1635,9 @@ function selectAnswer(index){
 
   if(selectedButton){
 
-    selectedButton
-      .classList
-      .add("selected");
-
+    selectedButton.classList.add(
+      "selected"
+    );
   }
 
 
@@ -1562,21 +1693,43 @@ function confirmAnswer(){
     question:
       currentItem.question,
 
+    /*
+      랜덤화된 화면상의 선택 위치
+    */
+
     selectedIndex:
       selectedAnswer,
+
+    selectedPosition:
+      selectedAnswer + 1,
 
     selectedText:
       currentItem.options[
         selectedAnswer
       ],
 
+    /*
+      랜덤화 후 실제 정답 위치
+    */
+
     correctAnswerIndex:
       currentItem.answer,
+
+    correctAnswerPosition:
+      currentItem.answer + 1,
 
     correctAnswerText:
       currentItem.options[
         currentItem.answer
       ],
+
+    /*
+      랜덤화 전에도 무엇이 정답이었는지
+      텍스트로 보존
+    */
+
+    originalCorrectText:
+      currentItem.originalCorrectText,
 
     correct:
       correct,
@@ -1592,14 +1745,17 @@ function confirmAnswer(){
 
   if(mode === "practice"){
 
-    practiceResults.push(result);
+    practiceResults.push(
+      result
+    );
+
 
     practiceIndex++;
 
 
     if(
       practiceIndex <
-      practiceItems.length
+      randomizedPracticeItems.length
     ){
 
       showCurrentReading();
@@ -1607,7 +1763,6 @@ function confirmAnswer(){
     }else{
 
       finishPractice();
-
     }
 
   }else{
@@ -1637,11 +1792,8 @@ function confirmAnswer(){
     }else{
 
       finishMainTest();
-
     }
-
   }
-
 }
 
 
@@ -1655,9 +1807,11 @@ function finishPractice(){
     .getElementById("questionScreen")
     .classList.add("hidden");
 
+
   document
     .getElementById("progressWrap")
     .classList.add("hidden");
+
 
   document
     .getElementById("practiceCompleteScreen")
@@ -1666,7 +1820,7 @@ function finishPractice(){
 
 
 /* =====================================================
-   FINISH MAIN
+   FINISH MAIN TEST
 ===================================================== */
 
 function finishMainTest(){
@@ -1675,13 +1829,16 @@ function finishMainTest(){
     .getElementById("questionScreen")
     .classList.add("hidden");
 
+
   document
     .getElementById("readingScreen")
     .classList.add("hidden");
 
+
   document
     .getElementById("progressWrap")
     .classList.add("hidden");
+
 
   document
     .getElementById("completeScreen")
@@ -1707,8 +1864,7 @@ function finishMainTest(){
     ?
     baselineResults.reduce(
       (sum,item)=>
-        sum +
-        item.readingTimeMs,
+        sum + item.readingTimeMs,
       0
     )
     /
@@ -1716,6 +1872,10 @@ function finishMainTest(){
     :
     0;
 
+
+  /*
+    실제 제시 문항 순서 기록
+  */
 
   const presentationSequence =
     randomizedMainItems.map(
@@ -1725,7 +1885,10 @@ function finishMainTest(){
           index + 1,
 
         itemId:
-          item.id
+          item.id,
+
+        correctAnswerPosition:
+          item.answer + 1
 
       })
     );
@@ -1737,13 +1900,13 @@ function finishMainTest(){
       "ChineseFlowLab_Reading_Pilot",
 
     version:
-      "final_stimuli_30_randomized",
+      "final30_random_item_and_option_order",
 
     completedAt:
       new Date().toISOString(),
 
     practiceCount:
-      practiceItems.length,
+      randomizedPracticeItems.length,
 
     mainItemCount:
       mainResults.length,
@@ -1762,11 +1925,24 @@ function finishMainTest(){
     baselineAvgReadingTimeMs:
       baselineAvgReadingTime,
 
+    /*
+      문항 및 정답 위치의 실제 랜덤화 상태
+    */
+
     presentationSequence:
       presentationSequence,
 
+    /*
+      연습 결과:
+      프로파일 계산에서 제외
+    */
+
     practiceResults:
       practiceResults,
+
+    /*
+      실전 30문항 분석 데이터
+    */
 
     results:
       mainResults
@@ -1795,7 +1971,8 @@ function finishMainTest(){
 
 function updateProgress(){
 
-  let percentage = 0;
+  let percentage =
+    0;
 
 
   if(mode === "practice"){
@@ -1804,7 +1981,7 @@ function updateProgress(){
       (
         practiceIndex
         /
-        practiceItems.length
+        randomizedPracticeItems.length
       )
       *
       100;
@@ -1819,7 +1996,6 @@ function updateProgress(){
       )
       *
       100;
-
   }
 
 
@@ -1849,6 +2025,10 @@ document.addEventListener(
   "keydown",
   function(event){
 
+    /*
+      읽기 화면에서만 Space 작동
+    */
+
     if(
       event.code === "Space"
       &&
@@ -1860,9 +2040,7 @@ document.addEventListener(
       event.preventDefault();
 
       finishReading();
-
     }
-
   }
 );
 
@@ -1870,9 +2048,4 @@ document.addEventListener(
 
 </body>
 </html>
-
-
-   
-
- 
  
