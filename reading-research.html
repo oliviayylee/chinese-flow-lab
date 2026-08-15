@@ -12,287 +12,728 @@
   --primary:#2457A6;
   --primary-dark:#173D75;
   --primary-light:#EAF2FF;
+  --primary-soft:#F2F7FD;
+
   --accent:#4D83D1;
+
   --background:#F5F8FC;
   --card:#FFFFFF;
+
   --text:#243247;
   --subtext:#66758A;
   --border:#D9E4F2;
+
+  --success:#2F7D5A;
+  --danger:#B34A4A;
 }
 
 *{
   box-sizing:border-box;
 }
 
+html{
+  scroll-behavior:smooth;
+}
+
 body{
   margin:0;
-  font-family:"Pretendard","Noto Sans KR",sans-serif;
+  font-family:
+    "Pretendard",
+    "Noto Sans KR",
+    Arial,
+    sans-serif;
+
   background:var(--background);
   color:var(--text);
 }
 
 
-/* =========================
+/* =====================================================
    HERO
-========================= */
+===================================================== */
 
 .hero{
-  background:linear-gradient(135deg,var(--primary-dark),var(--accent));
-  padding:82px 10%;
+
+  background:
+    linear-gradient(
+      135deg,
+      var(--primary-dark),
+      var(--accent)
+    );
+
   color:white;
+
+  padding:
+    78px 8%
+    72px;
+
   text-align:center;
 }
 
-.hero .label{
-  font-size:15px;
+
+.hero-label{
+
+  font-size:14px;
   font-weight:700;
-  letter-spacing:.12em;
+
+  letter-spacing:.15em;
+
   opacity:.9;
+
   margin-bottom:12px;
 }
 
+
 .hero h1{
-  font-size:52px;
-  margin:0 0 16px;
+
+  margin:
+    0 0 15px;
+
+  font-size:48px;
 }
+
 
 .hero p{
-  font-size:20px;
+
+  max-width:800px;
+
+  margin:auto;
+
+  font-size:19px;
+
   line-height:1.8;
-  max-width:780px;
-  margin:0 auto;
-  opacity:.95;
+
+  opacity:.94;
 }
 
 
-/* =========================
+/* =====================================================
    MAIN
-========================= */
+===================================================== */
 
 .container{
-  max-width:1180px;
+
+  max-width:1150px;
+
   margin:auto;
-  padding:65px 8%;
+
+  padding:
+    55px 7%
+    80px;
 }
 
 
-/* =========================
-   INTRO
-========================= */
+.section{
 
-.intro{
-  text-align:center;
-  margin-bottom:50px;
+  margin-bottom:45px;
 }
 
-.intro h2{
-  font-size:34px;
+
+.section-title{
+
+  margin:
+    0 0 12px;
+
   color:var(--primary);
-  margin:0 0 16px;
+
+  font-size:29px;
 }
 
-.intro p{
-  max-width:850px;
-  margin:auto;
-  font-size:18px;
-  line-height:1.85;
+
+.section-desc{
+
+  margin:
+    0 0 24px;
+
   color:var(--subtext);
+
+  font-size:16px;
+
+  line-height:1.85;
 }
 
 
-/* =========================
-   FUNCTION GRID
-========================= */
+/* =====================================================
+   PARTICIPANT
+===================================================== */
 
-.grid{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:26px;
-}
+.participant-card{
 
-.card{
-  background:var(--card);
-  border:1px solid var(--border);
-  border-radius:24px;
-  padding:34px;
-  box-shadow:0 8px 22px rgba(24,61,117,.06);
-  transition:.22s ease;
+  background:white;
 
-  display:flex;
-  flex-direction:column;
-  min-height:320px;
-}
+  border:
+    1px solid
+    var(--border);
 
-.card:hover{
-  transform:translateY(-4px);
-  box-shadow:0 14px 30px rgba(24,61,117,.12);
+  border-radius:26px;
+
+  padding:35px;
+
+  box-shadow:
+    0 10px 28px
+    rgba(24,61,117,.07);
 }
 
 
-/* =========================
-   CARD NUMBER
-========================= */
+.participant-title{
 
-.number{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-
-  width:42px;
-  height:42px;
-
-  border-radius:12px;
-
-  background:var(--primary-light);
   color:var(--primary);
+
+  font-size:22px;
 
   font-weight:800;
-  font-size:16px;
 
-  margin-bottom:18px;
+  margin-bottom:8px;
 }
 
 
-/* =========================
-   CARD CONTENT
-========================= */
+.participant-desc{
 
-.card h3{
-  font-size:24px;
-  color:var(--primary);
-  margin:0 0 14px;
-}
-
-.card p{
-  font-size:16px;
-  line-height:1.8;
   color:var(--subtext);
-  margin:0 0 24px;
-  flex-grow:1;
+
+  line-height:1.8;
+
+  margin-bottom:24px;
 }
 
 
-/* =========================
+.form-row{
+
+  display:flex;
+
+  gap:14px;
+
+  align-items:flex-end;
+}
+
+
+.form-group{
+
+  flex:1;
+}
+
+
+.form-group label{
+
+  display:block;
+
+  margin-bottom:8px;
+
+  font-size:14px;
+
+  font-weight:700;
+
+  color:#40536B;
+}
+
+
+.form-group input{
+
+  width:100%;
+
+  padding:
+    15px 17px;
+
+  border:
+    1px solid
+    var(--border);
+
+  border-radius:13px;
+
+  background:#FAFCFF;
+
+  color:var(--text);
+
+  font-size:16px;
+
+  outline:none;
+}
+
+
+.form-group input:focus{
+
+  border-color:var(--primary);
+
+  box-shadow:
+    0 0 0 3px
+    rgba(36,87,166,.08);
+}
+
+
+.participant-help{
+
+  margin-top:13px;
+
+  color:#8290A2;
+
+  font-size:13px;
+
+  line-height:1.7;
+}
+
+
+.status-box{
+
+  display:none;
+
+  margin-top:20px;
+
+  padding:17px 20px;
+
+  border-radius:15px;
+
+  background:#EEF5FF;
+
+  color:#405B7D;
+
+  line-height:1.7;
+}
+
+
+.status-box.show{
+
+  display:block;
+}
+
+
+.status-box strong{
+
+  color:var(--primary);
+}
+
+
+/* =====================================================
    BUTTON
-========================= */
+===================================================== */
 
 .btn{
-  display:inline-block;
 
-  padding:14px 25px;
+  display:inline-flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  min-height:51px;
+
+  padding:
+    14px 25px;
+
+  border:none;
 
   border-radius:999px;
 
-  text-decoration:none;
-  font-weight:700;
-  font-size:16px;
-
   background:var(--primary);
+
   color:white;
 
-  width:fit-content;
+  font-size:15px;
 
-  transition:.2s ease;
+  font-weight:750;
+
+  text-decoration:none;
+
+  cursor:pointer;
+
+  transition:.18s;
 }
 
+
 .btn:hover{
+
   background:var(--primary-dark);
+
   transform:translateY(-1px);
 }
 
 
-/* =========================
-   NOTICE
-========================= */
+.btn-light{
 
-.notice{
-  margin-top:42px;
+  background:var(--primary-light);
 
-  background:#EEF5FF;
-  border:1px solid #D4E4F8;
+  color:var(--primary);
 
-  border-radius:20px;
-
-  padding:24px 28px;
+  border:
+    1px solid
+    #CADDF5;
 }
 
-.notice strong{
+
+.btn-light:hover{
+
+  background:#DDEBFC;
+}
+
+
+/* =====================================================
+   RESEARCH STRUCTURE
+===================================================== */
+
+.flow-card{
+
+  background:white;
+
+  border:
+    1px solid
+    var(--border);
+
+  border-radius:26px;
+
+  padding:34px;
+
+  box-shadow:
+    0 8px 24px
+    rgba(24,61,117,.05);
+}
+
+
+.flow{
+
+  display:grid;
+
+  grid-template-columns:
+    repeat(4,1fr);
+
+  gap:15px;
+}
+
+
+.flow-item{
+
+  position:relative;
+
+  padding:
+    24px 18px;
+
+  border-radius:18px;
+
+  background:
+    var(--primary-soft);
+
+  text-align:center;
+}
+
+
+.flow-number{
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  width:34px;
+
+  height:34px;
+
+  margin:
+    0 auto 13px;
+
+  border-radius:50%;
+
+  background:var(--primary);
+
+  color:white;
+
+  font-weight:800;
+
+  font-size:14px;
+}
+
+
+.flow-item h3{
+
+  margin:
+    0 0 8px;
+
   color:var(--primary);
+
   font-size:17px;
 }
 
-.notice p{
-  margin:7px 0 0;
+
+.flow-item p{
+
+  margin:0;
+
+  color:var(--subtext);
+
+  font-size:13px;
 
   line-height:1.7;
-  color:#52657D;
 }
 
 
-/* =========================
-   BACK
-========================= */
+/* =====================================================
+   RESEARCH MENU
+===================================================== */
 
-.back-wrap{
-  margin-top:38px;
-  text-align:center;
+.menu-grid{
+
+  display:grid;
+
+  grid-template-columns:
+    repeat(2,1fr);
+
+  gap:20px;
 }
 
-.back-link{
+
+.research-card{
+
+  display:flex;
+
+  flex-direction:column;
+
+  background:white;
+
+  border:
+    1px solid
+    var(--border);
+
+  border-radius:24px;
+
+  padding:30px;
+
+  box-shadow:
+    0 8px 22px
+    rgba(24,61,117,.05);
+
+  transition:.2s;
+}
+
+
+.research-card:hover{
+
+  transform:
+    translateY(-3px);
+
+  box-shadow:
+    0 13px 30px
+    rgba(24,61,117,.09);
+}
+
+
+.card-number{
+
+  color:#86A8D6;
+
+  font-size:13px;
+
+  font-weight:800;
+
+  letter-spacing:.08em;
+
+  margin-bottom:9px;
+}
+
+
+.research-card h3{
+
+  margin:
+    0 0 12px;
+
   color:var(--primary);
-  text-decoration:none;
-  font-weight:700;
-  font-size:16px;
-}
 
-.back-link:hover{
-  text-decoration:underline;
+  font-size:23px;
 }
 
 
-/* =========================
+.research-card p{
+
+  flex:1;
+
+  margin:
+    0 0 22px;
+
+  color:var(--subtext);
+
+  font-size:15px;
+
+  line-height:1.8;
+}
+
+
+.card-note{
+
+  margin-bottom:18px;
+
+  padding:
+    12px 14px;
+
+  border-radius:12px;
+
+  background:#F5F8FC;
+
+  color:#6A7B90;
+
+  font-size:13px;
+
+  line-height:1.6;
+}
+
+
+/* =====================================================
+   RECORD NOTICE
+===================================================== */
+
+.record-info{
+
+  display:flex;
+
+  gap:20px;
+
+  align-items:flex-start;
+
+  padding:25px 27px;
+
+  border:
+    1px solid
+    #D5E5F8;
+
+  border-radius:20px;
+
+  background:#EEF5FF;
+}
+
+
+.record-icon{
+
+  flex:
+    0 0 auto;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  width:43px;
+
+  height:43px;
+
+  border-radius:50%;
+
+  background:white;
+
+  color:var(--primary);
+
+  font-size:20px;
+
+  font-weight:800;
+}
+
+
+.record-info h3{
+
+  margin:
+    0 0 7px;
+
+  color:var(--primary);
+
+  font-size:18px;
+}
+
+
+.record-info p{
+
+  margin:0;
+
+  color:#526B88;
+
+  font-size:14px;
+
+  line-height:1.8;
+}
+
+
+/* =====================================================
    FOOTER
-========================= */
+===================================================== */
 
 footer{
+
   text-align:center;
 
-  padding:42px;
+  padding:
+    38px 20px;
 
-  color:#7B8797;
-  font-size:15px;
+  color:#8290A2;
+
+  font-size:14px;
 }
 
 
-/* =========================
+/* =====================================================
    MOBILE
-========================= */
+===================================================== */
 
-@media(max-width:850px){
+@media(max-width:900px){
 
-  .grid{
+  .flow{
+
+    grid-template-columns:
+      repeat(2,1fr);
+  }
+
+
+  .menu-grid{
+
     grid-template-columns:1fr;
   }
 
+}
+
+
+@media(max-width:650px){
+
   .hero{
-    padding:62px 7%;
+
+    padding:
+      60px 7%;
   }
+
 
   .hero h1{
-    font-size:40px;
+
+    font-size:36px;
   }
+
 
   .hero p{
-    font-size:18px;
+
+    font-size:16px;
   }
+
 
   .container{
-    padding:50px 6%;
+
+    padding:
+      40px 6%
+      65px;
   }
 
-  .card{
-    padding:28px 24px;
-    min-height:auto;
+
+  .participant-card,
+  .flow-card,
+  .research-card{
+
+    padding:
+      25px 21px;
+  }
+
+
+  .form-row{
+
+    flex-direction:column;
+
+    align-items:stretch;
+  }
+
+
+  .flow{
+
+    grid-template-columns:1fr;
   }
 
 }
@@ -304,24 +745,25 @@ footer{
 <body>
 
 
-<!-- ==========================================
+<!-- =====================================================
      HERO
-========================================== -->
+===================================================== -->
 
 <section class="hero">
 
-  <div class="label">
-    READING RESEARCH
+  <div class="hero-label">
+    CHINESE FLOW LAB
   </div>
 
   <h1>
-    중국어 읽기 인지 연구
+    Reading Research
   </h1>
 
   <p>
-    중국어 읽기 수행 데이터를 기반으로 학습자의 인지적 특성과
-    언어학적 취약 영역을 분석하고,
-    AI 기반 개인맞춤형 읽기 지원을 제공합니다.
+    중국어 읽기 수행 데이터를 기반으로
+    학습자의 영역별 읽기 처리 특성을 분석하고,
+    인지 프로파일과 XAI 기반 원인 설명을 통해
+    개인맞춤형 읽기 지원으로 연결합니다.
   </p>
 
 </section>
@@ -331,172 +773,427 @@ footer{
 <main class="container">
 
 
-<!-- ==========================================
-     INTRO
-========================================== -->
+<!-- =====================================================
+     PARTICIPANT IDENTIFICATION
+===================================================== -->
 
-<section class="intro">
+<section class="section">
 
-  <h2>Reading Research</h2>
+  <h2 class="section-title">
+    참여자 확인
+  </h2>
 
-  <p>
-    중국어 읽기 과정에서 생성되는 수행 데이터와
-    읽기 자료의 언어학적 특성을 함께 분석하여
-    학습자의 영역별 인지적 부담과 취약성을 파악합니다.
-    분석 결과는 학습자 인지 프로파일과 XAI 기반 원인 설명,
-    생성형 AI 기반 개인맞춤형 읽기 지원에 활용됩니다.
+  <p class="section-desc">
+    읽기 수행과 개인별 결과를 연결하기 위해
+    연구자가 부여한 참여자 ID를 입력해 주세요.
   </p>
+
+
+  <div class="participant-card">
+
+    <div class="participant-title">
+      참여자 ID
+    </div>
+
+
+    <div class="participant-desc">
+
+      동일한 참여자 ID를 사용하면
+      읽기 수행 결과와 인지 프로파일,
+      XAI 분석 결과를 동일한 학습자 기록으로 연결할 수 있습니다.
+
+    </div>
+
+
+    <div class="form-row">
+
+      <div class="form-group">
+
+        <label for="participantId">
+          참여자 ID
+        </label>
+
+        <input
+          type="text"
+          id="participantId"
+          maxlength="30"
+          autocomplete="off"
+          placeholder="예: R2026-001">
+
+      </div>
+
+
+      <button
+        type="button"
+        class="btn"
+        onclick="saveParticipant()">
+
+        참여자 확인
+
+      </button>
+
+    </div>
+
+
+    <div class="participant-help">
+
+      ※ 파일럿 단계에서는 연구자가 부여한 익명 참여자 ID를 사용합니다.
+      이름 등 직접적인 개인정보는 입력하지 않는 것을 권장합니다.
+
+    </div>
+
+
+    <div
+      class="status-box"
+      id="participantStatus">
+
+    </div>
+
+  </div>
 
 </section>
 
 
 
-<!-- ==========================================
-     FUNCTION CARDS
-========================================== -->
+<!-- =====================================================
+     RESEARCH FLOW
+===================================================== -->
 
-<section class="grid">
+<section class="section">
 
+  <h2 class="section-title">
+    Reading Research 구성
+  </h2>
 
-<!-- 01 읽기 수행 -->
+  <p class="section-desc">
 
-<article class="card">
+    읽기 수행에서 수집된 데이터는
+    학습자 인지 프로파일과 XAI 기반 분석을 거쳐
+    개인맞춤형 읽기 지원에 활용됩니다.
 
-  <div class="number">
-    01
-  </div>
-
-  <h3>
-    읽기 수행 및 데이터 수집
-  </h3>
-
-  <p>
-    중국어 읽기 자료를 읽고 이해도 문항에 응답합니다.
-    읽기시간, 문항 반응시간, 반복읽기, 이해도 등
-    읽기 수행 과정에서 생성되는 데이터를 수집합니다.
   </p>
 
-  <a href="reading-test.html" class="btn">
-    읽기 수행 시작하기
-  </a>
 
-</article>
+  <div class="flow-card">
 
+    <div class="flow">
 
 
-<!-- 02 인지 프로파일 -->
+      <div class="flow-item">
 
-<article class="card">
+        <div class="flow-number">
+          1
+        </div>
 
-  <div class="number">
-    02
+        <h3>
+          읽기 수행
+        </h3>
+
+        <p>
+          읽기시간·이해도·
+          문항 반응시간 수집
+        </p>
+
+      </div>
+
+
+      <div class="flow-item">
+
+        <div class="flow-number">
+          2
+        </div>
+
+        <h3>
+          인지 프로파일
+        </h3>
+
+        <p>
+          통사·어휘·연어·담화
+          영역별 처리 특성 분석
+        </p>
+
+      </div>
+
+
+      <div class="flow-item">
+
+        <div class="flow-number">
+          3
+        </div>
+
+        <h3>
+          XAI 원인 설명
+        </h3>
+
+        <p>
+          상대적 처리 부담의
+          영역 및 세부 요인 설명
+        </p>
+
+      </div>
+
+
+      <div class="flow-item">
+
+        <div class="flow-number">
+          4
+        </div>
+
+        <h3>
+          AI 읽기 지원
+        </h3>
+
+        <p>
+          분석 결과 기반
+          개인맞춤형 학습 지원
+        </p>
+
+      </div>
+
+
+    </div>
+
   </div>
-
-  <h3>
-    학습자 인지 프로파일
-  </h3>
-
-  <p>
-    읽기 수행 데이터와 통사·어휘·연어·담화 영역의
-    언어학적 특성을 통합 분석하여
-    학습자의 영역별 인지적 부담과 취약 영역을 확인합니다.
-  </p>
-
-  <a href="cognitive-profile.html" class="btn">
-    인지 프로파일 보기
-  </a>
-
-</article>
-
-
-
-<!-- 03 XAI -->
-
-<article class="card">
-
-  <div class="number">
-    03
-  </div>
-
-  <h3>
-    XAI 기반 원인 설명
-  </h3>
-
-  <p>
-    학습자의 인지 프로파일을 바탕으로
-    어떤 언어학적 요소에서 높은 인지적 부담이 나타났는지를
-    분석하고 그 원인을 이해할 수 있도록 제시합니다.
-  </p>
-
-  <a href="xai-report.html" class="btn">
-    XAI 분석 결과 보기
-  </a>
-
-</article>
-
-
-
-<!-- 04 생성형 AI -->
-
-<article class="card">
-
-  <div class="number">
-    04
-  </div>
-
-  <h3>
-    생성형 AI 기반 맞춤형 읽기 지원
-  </h3>
-
-  <p>
-    학습자 인지 프로파일과 XAI 분석 결과를 바탕으로
-    학습자의 수준과 취약 영역에 적합한 읽기 자료,
-    문법·어휘 설명 및 맞춤형 학습 지원을 제공합니다.
-  </p>
-
-  <a href="ai-reading.html" class="btn">
-    AI 읽기 지원 시작하기
-  </a>
-
-</article>
-
 
 </section>
 
 
 
-<!-- ==========================================
-     DATA NOTICE
-========================================== -->
+<!-- =====================================================
+     RESEARCH MENU
+===================================================== -->
 
-<section class="notice">
+<section class="section">
 
-  <strong>
-    연구 데이터 안내
-  </strong>
+  <h2 class="section-title">
+    Reading Research 시작하기
+  </h2>
 
-  <p>
-    읽기 수행 과정에서 축적되는 데이터는
-    학습자의 인지적 특성과 영역별 취약성을 분석하고,
-    학습자 인지 프로파일을 지속적으로 갱신하기 위한
-    연구 자료로 활용됩니다.
+  <p class="section-desc">
+
+    새 읽기 수행을 시작하거나
+    기존에 저장된 개인별 분석 결과를 확인할 수 있습니다.
+
   </p>
+
+
+  <div class="menu-grid">
+
+
+    <!-- 01 READING TEST -->
+
+    <article class="research-card">
+
+      <div class="card-number">
+        STEP 01
+      </div>
+
+      <h3>
+        중국어 읽기 수행
+      </h3>
+
+      <p>
+
+        중국어 문장을 한 문장씩 읽고
+        각 문장에 대한 한국어 내용 확인 문제에 응답합니다.
+
+        읽기 수행 과정에서
+        읽기시간, 이해도 및 문항 반응시간이 수집됩니다.
+
+      </p>
+
+
+      <div class="card-note">
+
+        연습 2문항 + 실전 30문항
+
+      </div>
+
+
+      <button
+        type="button"
+        class="btn"
+        onclick="openPage('reading-test.html')">
+
+        새 읽기 수행 시작하기
+
+      </button>
+
+    </article>
+
+
+
+    <!-- 02 COGNITIVE PROFILE -->
+
+    <article class="research-card">
+
+      <div class="card-number">
+        STEP 02
+      </div>
+
+      <h3>
+        학습자 인지 프로파일
+      </h3>
+
+      <p>
+
+        읽기 수행 데이터를 바탕으로
+        개인 Baseline과 비교한
+        통사·어휘·연어·담화 영역별
+        읽기 처리 특성을 확인합니다.
+
+      </p>
+
+
+      <div class="card-note">
+
+        평균 읽기시간 · 이해도 · 반응시간 ·
+        영역별 상대적 처리 특성
+
+      </div>
+
+
+      <button
+        type="button"
+        class="btn btn-light"
+        onclick="openPage('cognitive-profile.html')">
+
+        인지 프로파일 보기
+
+      </button>
+
+    </article>
+
+
+
+    <!-- 03 XAI -->
+
+    <article class="research-card">
+
+      <div class="card-number">
+        STEP 03
+      </div>
+
+      <h3>
+        XAI 기반 원인 설명
+      </h3>
+
+      <p>
+
+        영역별 읽기 수행 결과와
+        세부 언어학적 특성을 연계하여
+        상대적으로 높은 처리 부담이
+        나타난 요인을 확인합니다.
+
+      </p>
+
+
+      <div class="card-note">
+
+        영역별 부담 분석 · 세부 언어 요소 분석 ·
+        결과 설명
+
+      </div>
+
+
+      <button
+        type="button"
+        class="btn btn-light"
+        onclick="openPage('xai-report.html')">
+
+        XAI 분석 결과 보기
+
+      </button>
+
+    </article>
+
+
+
+    <!-- 04 AI -->
+
+    <article class="research-card">
+
+      <div class="card-number">
+        STEP 04
+      </div>
+
+      <h3>
+        생성형 AI 맞춤형 읽기 지원
+      </h3>
+
+      <p>
+
+        학습자의 인지 프로파일과
+        XAI 분석 결과를 바탕으로
+        취약 영역과 읽기 수준을 반영한
+        개인맞춤형 읽기 자료와 학습 지원을 제공합니다.
+
+      </p>
+
+
+      <div class="card-note">
+
+        맞춤형 지문 · 문법 설명 · 어휘 해설 ·
+        이해도 문제 · 학습 피드백
+
+      </div>
+
+
+      <button
+        type="button"
+        class="btn btn-light"
+        onclick="openPage('ai-reading.html')">
+
+        AI 맞춤형 읽기 시작하기
+
+      </button>
+
+    </article>
+
+
+  </div>
 
 </section>
 
 
 
-<!-- ==========================================
-     BACK
-========================================== -->
+<!-- =====================================================
+     RECORD INFORMATION
+===================================================== -->
 
-<div class="back-wrap">
+<section class="section">
 
-  <a href="research.html" class="back-link">
-    ← Research Track으로 돌아가기
-  </a>
+  <div class="record-info">
 
-</div>
+    <div class="record-icon">
+      i
+    </div>
+
+
+    <div>
+
+      <h3>
+        개인별 읽기 기록
+      </h3>
+
+      <p>
+
+        최종 플랫폼에서는 참여자 ID별로
+        읽기 수행 회차를 저장하여
+        과거 인지 프로파일과 XAI 분석 결과를
+        다시 조회할 수 있도록 구성할 수 있습니다.
+
+        새 읽기 수행 결과가 축적되면
+        이후 개인맞춤형 읽기 지원에도
+        갱신된 프로파일을 반영할 수 있습니다.
+
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
 
 
 </main>
@@ -508,6 +1205,316 @@ footer{
 </footer>
 
 
+
+<script>
+
+/* =====================================================
+   STORAGE KEYS
+===================================================== */
+
+const PARTICIPANT_KEY =
+  "cflParticipantId";
+
+
+/* =====================================================
+   LOAD PARTICIPANT
+===================================================== */
+
+document.addEventListener(
+  "DOMContentLoaded",
+  function(){
+
+    const savedId =
+      localStorage.getItem(
+        PARTICIPANT_KEY
+      );
+
+
+    if(savedId){
+
+      document
+        .getElementById(
+          "participantId"
+        )
+        .value =
+          savedId;
+
+
+      showParticipantStatus(
+        savedId
+      );
+
+    }
+
+  }
+);
+
+
+
+/* =====================================================
+   SAVE PARTICIPANT
+===================================================== */
+
+function saveParticipant(){
+
+  const input =
+    document.getElementById(
+      "participantId"
+    );
+
+
+  const participantId =
+    input.value
+      .trim()
+      .toUpperCase();
+
+
+  if(!participantId){
+
+    alert(
+      "참여자 ID를 입력해 주세요."
+    );
+
+    input.focus();
+
+    return false;
+
+  }
+
+
+  /*
+    허용:
+    영문 / 숫자 / - / _
+  */
+
+  const validPattern =
+    /^[A-Z0-9_-]{3,30}$/;
+
+
+  if(
+    !validPattern.test(
+      participantId
+    )
+  ){
+
+    alert(
+      "참여자 ID는 영문, 숫자, 하이픈(-), 밑줄(_)을 사용하여 입력해 주세요."
+    );
+
+    input.focus();
+
+    return false;
+
+  }
+
+
+  localStorage.setItem(
+    PARTICIPANT_KEY,
+    participantId
+  );
+
+
+  input.value =
+    participantId;
+
+
+  showParticipantStatus(
+    participantId
+  );
+
+
+  return true;
+
+}
+
+
+
+/* =====================================================
+   STATUS
+===================================================== */
+
+function showParticipantStatus(
+  participantId
+){
+
+  const box =
+    document.getElementById(
+      "participantStatus"
+    );
+
+
+  box.innerHTML = `
+
+    현재 참여자:
+    <strong>${escapeHTML(participantId)}</strong>
+
+    <br>
+
+    이 참여자 ID를 기준으로
+    읽기 수행 및 분석 결과를 연결합니다.
+
+  `;
+
+
+  box.classList.add(
+    "show"
+  );
+
+}
+
+
+
+/* =====================================================
+   GET PARTICIPANT
+===================================================== */
+
+function getParticipant(){
+
+  const input =
+    document.getElementById(
+      "participantId"
+    );
+
+
+  const typedId =
+    input.value
+      .trim()
+      .toUpperCase();
+
+
+  const savedId =
+    localStorage.getItem(
+      PARTICIPANT_KEY
+    );
+
+
+  /*
+    입력창을 변경한 경우
+    새 ID를 저장하도록 함
+  */
+
+  if(
+    typedId
+    &&
+    typedId !== savedId
+  ){
+
+    const saved =
+      saveParticipant();
+
+
+    if(!saved){
+
+      return null;
+    }
+
+
+    return localStorage.getItem(
+      PARTICIPANT_KEY
+    );
+
+  }
+
+
+  if(savedId){
+
+    return savedId;
+  }
+
+
+  alert(
+    "먼저 참여자 ID를 입력하고 참여자 확인 버튼을 눌러 주세요."
+  );
+
+
+  input.focus();
+
+  return null;
+
+}
+
+
+
+/* =====================================================
+   OPEN PAGE
+===================================================== */
+
+function openPage(
+  page
+){
+
+  const participantId =
+    getParticipant();
+
+
+  if(!participantId){
+
+    return;
+  }
+
+
+  /*
+    participant ID를 URL에도 전달.
+    다음 단계에서 DB 연결 시 사용 가능.
+  */
+
+  const target =
+
+    page
+
+    +
+
+    "?participant="
+
+    +
+
+    encodeURIComponent(
+      participantId
+    );
+
+
+  window.location.href =
+    target;
+
+}
+
+
+
+/* =====================================================
+   ESCAPE HTML
+===================================================== */
+
+function escapeHTML(
+  value
+){
+
+  return String(value)
+    .replace(
+      /&/g,
+      "&amp;"
+    )
+    .replace(
+      /</g,
+      "&lt;"
+    )
+    .replace(
+      />/g,
+      "&gt;"
+    )
+    .replace(
+      /"/g,
+      "&quot;"
+    )
+    .replace(
+      /'/g,
+      "&#039;"
+    );
+
+}
+
+</script>
+
+
 </body>
 </html>
-  
+ 
