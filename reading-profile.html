@@ -71,7 +71,7 @@ body{
 
 .hero p{
   margin:0 auto;
-  max-width:760px;
+  max-width:780px;
   font-size:18px;
   line-height:1.8;
   opacity:.94;
@@ -83,7 +83,7 @@ body{
 ========================= */
 
 .container{
-  max-width:1100px;
+  max-width:1120px;
   margin:auto;
   padding:55px 7%;
 }
@@ -270,39 +270,39 @@ body{
 
 
 /* =========================
-   FEATURE TABLE
+   TABLE
 ========================= */
 
-.feature-card{
+.table-card{
   background:white;
   border:1px solid var(--border);
   border-radius:24px;
   overflow:hidden;
 }
 
-.feature-table{
+.result-table{
   width:100%;
   border-collapse:collapse;
 }
 
-.feature-table th,
-.feature-table td{
-  padding:15px 16px;
+.result-table th,
+.result-table td{
+  padding:14px 15px;
   border-bottom:1px solid var(--border);
   text-align:left;
   font-size:14px;
 }
 
-.feature-table th{
+.result-table th{
   background:#F3F7FC;
   color:var(--primary);
 }
 
-.feature-table td{
+.result-table td{
   color:#536479;
 }
 
-.feature-table tr:last-child td{
+.result-table tr:last-child td{
   border-bottom:none;
 }
 
@@ -323,7 +323,7 @@ body{
 
 
 /* =========================
-   BUTTON
+   ACTION
 ========================= */
 
 .actions{
@@ -394,7 +394,7 @@ footer{
    MOBILE
 ========================= */
 
-@media(max-width:850px){
+@media(max-width:900px){
 
   .summary-grid{
     grid-template-columns:repeat(2,1fr);
@@ -424,12 +424,12 @@ footer{
     padding:26px 20px;
   }
 
-  .feature-card{
+  .table-card{
     overflow-x:auto;
   }
 
-  .feature-table{
-    min-width:650px;
+  .result-table{
+    min-width:720px;
   }
 
 }
@@ -456,8 +456,8 @@ footer{
   </h1>
 
   <p>
-    문장별 읽기시간과 이해도 결과를 바탕으로
-    통사·어휘·연어·담화 영역의 상대적인 읽기 처리 특성을 분석합니다.
+    문장별 읽기시간과 이해도 결과를 함께 분석하여
+    통사·어휘·연어·담화 영역의 상대적인 읽기 처리 특성을 확인합니다.
   </p>
 
 </section>
@@ -497,7 +497,7 @@ footer{
 
 
 <!-- =========================
-     RESULT
+     RESULTS
 ========================= -->
 
 <div id="resultScreen">
@@ -512,7 +512,6 @@ footer{
   <h2 class="section-title">
     읽기 수행 요약
   </h2>
-
 
   <div class="summary-grid">
 
@@ -537,12 +536,12 @@ footer{
     <div class="summary-card">
 
       <div class="summary-label">
-        목표 문장 이해도
+        전체 이해도 정답률
       </div>
 
       <div
         class="summary-value"
-        id="targetAccuracy">
+        id="accuracy">
 
         -
 
@@ -554,12 +553,12 @@ footer{
     <div class="summary-card">
 
       <div class="summary-label">
-        지문 전체 이해도
+        평균 문항 반응시간
       </div>
 
       <div
         class="summary-value"
-        id="finalAccuracy">
+        id="avgQuestionTime">
 
         -
 
@@ -571,12 +570,12 @@ footer{
     <div class="summary-card">
 
       <div class="summary-label">
-        완료한 읽기 자료
+        완료 문장
       </div>
 
       <div
         class="summary-value"
-        id="passageCount">
+        id="sentenceCount">
 
         -
 
@@ -655,42 +654,34 @@ footer{
 
 
 <!-- =========================
-     FEATURE DETAIL
+     TARGET FEATURE TABLE
 ========================= -->
 
 <section class="section">
 
   <h2 class="section-title">
-    세부 언어 요소별 결과
+    주요 언어 요소별 결과
   </h2>
 
-  <div class="feature-card">
+  <div class="table-card">
 
-    <table class="feature-table">
+    <table class="result-table">
 
       <thead>
 
         <tr>
 
-          <th>
-            영역
-          </th>
+          <th>영역</th>
 
-          <th>
-            세부 요소
-          </th>
+          <th>세부 요소</th>
 
-          <th>
-            목표 문장 읽기시간
-          </th>
+          <th>목표 문장</th>
 
-          <th>
-            목표 이해도
-          </th>
+          <th>읽기시간</th>
 
-          <th>
-            지문 이해도
-          </th>
+          <th>이해도</th>
+
+          <th>문항 반응시간</th>
 
         </tr>
 
@@ -715,10 +706,10 @@ footer{
 
   <div class="info-box">
 
-    본 결과의 ‘높음·보통·낮음’은 이번 읽기 수행에서 나타난
-    <strong>개인 내 영역 간 상대적 차이</strong>를 이해하기 위한
-    파일럿용 지표입니다.
-    현재 단계에서는 표준화된 진단 점수나 절대적인 능력 수준을 의미하지 않습니다.
+    본 결과는 각 문장의 읽기시간과 이해도 수행을 바탕으로 산출한
+    <strong>파일럿용 개인 내 상대적 프로파일</strong>입니다.
+    ‘높음·보통·낮음’은 표준화된 중국어 능력 점수나 임상적 진단을 의미하지 않으며,
+    이번 읽기 수행에서 나타난 영역 간 상대적인 처리 특성을 설명하기 위한 결과입니다.
 
   </div>
 
@@ -727,7 +718,7 @@ footer{
 
 
 <!-- =========================
-     ACTION
+     ACTIONS
 ========================= -->
 
 <div class="actions">
@@ -776,18 +767,22 @@ footer{
 <script>
 
 /* =====================================================
-   DOMAIN / FEATURE LABELS
+   LABELS
 ===================================================== */
 
 const domainNames = {
 
-  syntax:"통사",
+  syntax:
+    "통사",
 
-  vocabulary:"어휘",
+  vocabulary:
+    "어휘",
 
-  collocation:"연어",
+  collocation:
+    "연어",
 
-  discourse:"담화"
+  discourse:
+    "담화"
 
 };
 
@@ -835,7 +830,7 @@ const featureNames = {
 
 
 /* =====================================================
-   LOAD RESULT
+   LOAD DATA
 ===================================================== */
 
 const savedData =
@@ -846,20 +841,7 @@ const savedData =
 
 if(!savedData){
 
-  document
-    .getElementById(
-      "resultScreen"
-    )
-    .style.display =
-      "none";
-
-
-  document
-    .getElementById(
-      "emptyScreen"
-    )
-    .style.display =
-      "block";
+  showEmpty();
 
 }else{
 
@@ -875,29 +857,44 @@ if(!savedData){
       experiment
     );
 
-  }catch(error){
+  }
+
+  catch(error){
 
     console.error(
+      "결과 데이터를 불러오는 중 오류:",
       error
     );
 
 
-    document
-      .getElementById(
-        "resultScreen"
-      )
-      .style.display =
-        "none";
-
-
-    document
-      .getElementById(
-        "emptyScreen"
-      )
-      .style.display =
-        "block";
+    showEmpty();
 
   }
+
+}
+
+
+
+/* =====================================================
+   EMPTY
+===================================================== */
+
+function showEmpty(){
+
+  document
+    .getElementById(
+      "resultScreen"
+    )
+    .style.display =
+      "none";
+
+
+  document
+    .getElementById(
+      "emptyScreen"
+    )
+    .style.display =
+      "block";
 
 }
 
@@ -931,44 +928,63 @@ function createProfile(
     );
 
 
-  const targetQuestions =
-    questions.filter(
-      q =>
-        q.questionType ===
-        "target"
+  if(
+    !sentences.length
+    ||
+    !questions.length
+  ){
+
+    showEmpty();
+
+    return;
+
+  }
+
+
+  /*
+    문장 읽기 결과와 이해도 결과를
+    passageId + sentenceIndex 기준으로 연결
+  */
+
+  const pairedData =
+    createPairedData(
+      sentences,
+      questions
     );
 
 
-  const finalQuestions =
-    questions.filter(
-      q =>
-        q.questionType ===
-        "final"
-    );
-
-
-  /* ==============================
-     OVERALL SUMMARY
-  ============================== */
+  /* =========================
+     SUMMARY
+  ========================= */
 
   const avgReadingMs =
     average(
-      sentences.map(
-        s =>
-          s.readingTimeMs
+      pairedData.map(
+        d =>
+          d.readingTimeMs
       )
     );
 
 
-  const targetAccuracy =
-    calculateAccuracy(
-      targetQuestions
-    );
+  const accuracy =
+    pairedData.length
+    ?
+    pairedData.filter(
+      d =>
+        d.correct
+    ).length
+    /
+    pairedData.length
+    :
+    0;
 
 
-  const finalAccuracy =
-    calculateAccuracy(
-      finalQuestions
+  const avgQuestionMs =
+    average(
+      pairedData.map(
+        d =>
+          d.responseTimeMs
+      )
     );
 
 
@@ -977,7 +993,6 @@ function createProfile(
       "avgReadingTime"
     )
     .textContent =
-
       formatSeconds(
         avgReadingMs
       );
@@ -985,48 +1000,36 @@ function createProfile(
 
   document
     .getElementById(
-      "targetAccuracy"
+      "accuracy"
     )
     .textContent =
-
       formatPercent(
-        targetAccuracy
+        accuracy
       );
 
 
   document
     .getElementById(
-      "finalAccuracy"
+      "avgQuestionTime"
     )
     .textContent =
-
-      formatPercent(
-        finalAccuracy
+      formatSeconds(
+        avgQuestionMs
       );
-
-
-  const uniquePassages =
-    new Set(
-      sentences.map(
-        s =>
-          s.passageId
-      )
-    );
 
 
   document
     .getElementById(
-      "passageCount"
+      "sentenceCount"
     )
     .textContent =
-
-      uniquePassages.size
+      pairedData.length
       + "개";
 
 
-  /* ==============================
+  /* =========================
      DOMAIN DATA
-  ============================== */
+  ========================= */
 
   const domains = [
 
@@ -1047,67 +1050,81 @@ function createProfile(
   domains.forEach(
     domain=>{
 
-      const allSentences =
-        sentences.filter(
-          s =>
-            s.domain ===
+      const data =
+        pairedData.filter(
+          d =>
+            d.domain ===
             domain
         );
 
 
-      const targetSentences =
-        allSentences.filter(
-          s =>
-            s.isTarget ===
-            true
+      const targetData =
+        data.filter(
+          d =>
+            d.isTarget
         );
 
 
-      const domainTargetQuestions =
-        targetQuestions.filter(
-          q =>
-            q.domain ===
-            domain
-        );
+      domainData[
+        domain
+      ] = {
 
+        all:
+          data,
 
-      const domainFinalQuestions =
-        finalQuestions.filter(
-          q =>
-            q.domain ===
-            domain
-        );
+        target:
+          targetData,
 
-
-      domainData[domain] = {
-
-        overallReadingMs:
+        avgReadingMs:
           average(
-            allSentences.map(
-              s =>
-                s.readingTimeMs
+            data.map(
+              d =>
+                d.readingTimeMs
+            )
+          ),
+
+        accuracy:
+          data.length
+          ?
+          data.filter(
+            d =>
+              d.correct
+          ).length
+          /
+          data.length
+          :
+          0,
+
+        avgQuestionMs:
+          average(
+            data.map(
+              d =>
+                d.responseTimeMs
             )
           ),
 
         targetReadingMs:
           average(
-            targetSentences.map(
-              s =>
-                s.readingTimeMs
+            targetData.map(
+              d =>
+                d.readingTimeMs
             )
           ),
 
         targetAccuracy:
-          calculateAccuracy(
-            domainTargetQuestions
-          ),
+          targetData.length
+          ?
+          targetData.filter(
+            d =>
+              d.correct
+          ).length
+          /
+          targetData.length
+          :
+          0,
 
-        finalAccuracy:
-          calculateAccuracy(
-            domainFinalQuestions
-          ),
-
-        burdenScore:0
+        burdenScore:
+          0
 
       };
 
@@ -1115,49 +1132,55 @@ function createProfile(
   );
 
 
-
-  /* ==============================
+  /* =========================
      RELATIVE BURDEN
 
-     파일럿용 상대지표
+     파일럿용 상대 지표
 
-     목표문장 읽기시간 60%
-     목표문장 이해도 오류율 25%
-     지문 전체 이해도 오류율 15%
-  ============================== */
+     읽기시간 55%
+     이해도 오류 30%
+     문항 반응시간 15%
+  ========================= */
 
 
-  const validTargetTimes =
-    domains
-    .map(
+  const readingValues =
+    domains.map(
       d =>
         domainData[d]
-        .targetReadingMs
-    )
-    .filter(
-      value =>
-        value > 0
+        .avgReadingMs
     );
 
 
-  const minTime =
-    validTargetTimes.length
-    ?
+  const responseValues =
+    domains.map(
+      d =>
+        domainData[d]
+        .avgQuestionMs
+    );
+
+
+  const minReading =
     Math.min(
-      ...validTargetTimes
-    )
-    :
-    0;
+      ...readingValues
+    );
 
 
-  const maxTime =
-    validTargetTimes.length
-    ?
+  const maxReading =
     Math.max(
-      ...validTargetTimes
-    )
-    :
-    0;
+      ...readingValues
+    );
+
+
+  const minResponse =
+    Math.min(
+      ...responseValues
+    );
+
+
+  const maxResponse =
+    Math.max(
+      ...responseValues
+    );
 
 
   domains.forEach(
@@ -1169,65 +1192,47 @@ function createProfile(
         ];
 
 
-      let normalizedTargetTime =
-        0;
+      const normalizedReading =
+        normalize(
+          data.avgReadingMs,
+          minReading,
+          maxReading
+        );
 
 
-      if(
-        maxTime >
-        minTime
-        &&
-        data.targetReadingMs >
-        0
-      ){
-
-        normalizedTargetTime =
-
-          (
-            data.targetReadingMs
-            -
-            minTime
-          )
-          /
-          (
-            maxTime
-            -
-            minTime
-          );
-
-      }
+      const normalizedResponse =
+        normalize(
+          data.avgQuestionMs,
+          minResponse,
+          maxResponse
+        );
 
 
-      const targetError =
+      const errorRate =
         1 -
-        data.targetAccuracy;
-
-
-      const finalError =
-        1 -
-        data.finalAccuracy;
+        data.accuracy;
 
 
       const burden =
 
         (
-          normalizedTargetTime
+          normalizedReading
           *
-          0.60
+          0.55
         )
 
         +
 
         (
-          targetError
+          errorRate
           *
-          0.25
+          0.30
         )
 
         +
 
         (
-          finalError
+          normalizedResponse
           *
           0.15
         );
@@ -1243,6 +1248,9 @@ function createProfile(
   );
 
 
+  /* =========================
+     RENDER
+  ========================= */
 
   createProfileUI(
     domainData
@@ -1255,15 +1263,90 @@ function createProfile(
 
 
   createFeatureTable(
-    sentences,
-    questions
+    pairedData
   );
 
 
   createXAI(
     domainData,
-    sentences,
-    questions
+    pairedData
+  );
+
+}
+
+
+
+/* =====================================================
+   PAIR DATA
+===================================================== */
+
+function createPairedData(
+  sentences,
+  questions
+){
+
+  return sentences.map(
+    sentence=>{
+
+      const question =
+        questions.find(
+          q =>
+            q.passageId ===
+            sentence.passageId
+            &&
+            q.sentenceIndex ===
+            sentence.sentenceIndex
+        );
+
+
+      return{
+
+        passageId:
+          sentence.passageId,
+
+        sentenceIndex:
+          sentence.sentenceIndex,
+
+        domain:
+          sentence.domain,
+
+        feature:
+          sentence.feature,
+
+        isTarget:
+          sentence.isTarget ===
+          true,
+
+        sentence:
+          sentence.sentence,
+
+        readingTimeMs:
+          sentence.readingTimeMs,
+
+        question:
+          question
+          ?
+          question.question
+          :
+          "",
+
+        correct:
+          question
+          ?
+          question.correct
+          :
+          false,
+
+        responseTimeMs:
+          question
+          ?
+          question.responseTimeMs
+          :
+          0
+
+      };
+
+    }
   );
 
 }
@@ -1278,12 +1361,6 @@ function createProfileUI(
   domainData
 ){
 
-  const domains =
-    Object.keys(
-      domainData
-    );
-
-
   const container =
     document.getElementById(
       "profileContainer"
@@ -1294,7 +1371,10 @@ function createProfileUI(
     "";
 
 
-  domains.forEach(
+  Object.keys(
+    domainData
+  )
+  .forEach(
     domain=>{
 
       const data =
@@ -1361,23 +1441,23 @@ function createProfileUI(
 
         <div class="domain-detail">
 
-          목표 문장 평균 읽기시간
+          평균 읽기시간
           ${formatSeconds(
-            data.targetReadingMs
+            data.avgReadingMs
           )}
 
           ·
 
-          목표 이해도
+          이해도
           ${formatPercent(
-            data.targetAccuracy
+            data.accuracy
           )}
 
           ·
 
-          지문 이해도
-          ${formatPercent(
-            data.finalAccuracy
+          평균 문항 반응시간
+          ${formatSeconds(
+            data.avgQuestionMs
           )}
 
         </div>
@@ -1398,7 +1478,7 @@ function createProfileUI(
 
 
 /* =====================================================
-   DETAIL UI
+   DETAIL
 ===================================================== */
 
 function createDetailUI(
@@ -1443,36 +1523,42 @@ function createDetailUI(
           ${domainNames[domain]} 영역
         </h3>
 
-
         <p>
 
-          전체 문장 평균 읽기시간:
+          평균 문장 읽기시간:
           ${formatSeconds(
-            data.overallReadingMs
+            data.avgReadingMs
           )}
 
           <br>
 
-          목표 문장 평균 읽기시간:
+          전체 문장 이해도:
+          ${formatPercent(
+            data.accuracy
+          )}
+
+          <br>
+
+          평균 문항 반응시간:
+          ${formatSeconds(
+            data.avgQuestionMs
+          )}
+
+          <br><br>
+
+          목표 언어 요소 문장 평균 읽기시간:
           ${formatSeconds(
             data.targetReadingMs
           )}
 
           <br>
 
-          목표 문장 이해도:
+          목표 언어 요소 이해도:
           ${formatPercent(
             data.targetAccuracy
           )}
 
-          <br>
-
-          지문 전체 이해도:
-          ${formatPercent(
-            data.finalAccuracy
-          )}
-
-          <br>
+          <br><br>
 
           상대적 처리 부담:
           <strong>
@@ -1503,8 +1589,7 @@ function createDetailUI(
 ===================================================== */
 
 function createFeatureTable(
-  sentences,
-  questions
+  pairedData
 ){
 
   const tbody =
@@ -1517,68 +1602,19 @@ function createFeatureTable(
     "";
 
 
-  const passageIds =
-    [
-      ...new Set(
-        sentences.map(
-          s =>
-            s.passageId
-        )
-      )
-    ];
+  /*
+    주요 목표 문장만 표에 표시
+  */
+
+  const targetItems =
+    pairedData.filter(
+      d =>
+        d.isTarget
+    );
 
 
-  passageIds.forEach(
-    passageId=>{
-
-      const passageSentences =
-        sentences.filter(
-          s =>
-            s.passageId ===
-            passageId
-        );
-
-
-      if(
-        !passageSentences.length
-      ){
-        return;
-      }
-
-
-      const sample =
-        passageSentences[0];
-
-
-      const targetSentence =
-        passageSentences.find(
-          s =>
-            s.isTarget ===
-            true
-        );
-
-
-      const targetQuestion =
-        questions.find(
-          q =>
-            q.passageId ===
-            passageId
-            &&
-            q.questionType ===
-            "target"
-        );
-
-
-      const finalQuestion =
-        questions.find(
-          q =>
-            q.passageId ===
-            passageId
-            &&
-            q.questionType ===
-            "final"
-        );
-
+  targetItems.forEach(
+    item=>{
 
       const tr =
         document.createElement(
@@ -1590,59 +1626,42 @@ function createFeatureTable(
 
         <td>
           ${domainNames[
-            sample.domain
+            item.domain
           ]}
         </td>
 
         <td>
           ${featureNames[
-            sample.feature
-          ] || sample.feature}
+            item.feature
+          ]
+          ||
+          item.feature}
+        </td>
+
+        <td>
+          ${item.sentence}
+        </td>
+
+        <td>
+          ${formatSeconds(
+            item.readingTimeMs
+          )}
         </td>
 
         <td>
           ${
-            targetSentence
+            item.correct
             ?
-            formatSeconds(
-              targetSentence
-              .readingTimeMs
-            )
+            "정답"
             :
-            "-"
+            "오답"
           }
         </td>
 
         <td>
-          ${
-            targetQuestion
-            ?
-            (
-              targetQuestion.correct
-              ?
-              "정답"
-              :
-              "오답"
-            )
-            :
-            "-"
-          }
-        </td>
-
-        <td>
-          ${
-            finalQuestion
-            ?
-            (
-              finalQuestion.correct
-              ?
-              "정답"
-              :
-              "오답"
-            )
-            :
-            "-"
-          }
+          ${formatSeconds(
+            item.responseTimeMs
+          )}
         </td>
 
       `;
@@ -1666,8 +1685,7 @@ function createFeatureTable(
 
 function createXAI(
   domainData,
-  sentences,
-  questions
+  pairedData
 ){
 
   const domains =
@@ -1676,7 +1694,7 @@ function createXAI(
     );
 
 
-  const sortedDomains =
+  const sorted =
     [...domains]
     .sort(
       (a,b)=>
@@ -1692,11 +1710,11 @@ function createXAI(
 
 
   const highest =
-    sortedDomains[0];
+    sorted[0];
 
 
   const second =
-    sortedDomains[1];
+    sorted[1];
 
 
   const highestData =
@@ -1705,85 +1723,35 @@ function createXAI(
     ];
 
 
-  /* ==============================
-     세부 feature 탐색
-  ============================== */
+  /*
+    최고 영역 내 목표 문장 중
+    상대적으로 읽기시간이 긴 문장
+  */
 
-
-  const targetSentences =
-    sentences.filter(
-      s =>
-        s.domain ===
+  const targets =
+    pairedData.filter(
+      d =>
+        d.domain ===
         highest
         &&
-        s.isTarget ===
-        true
+        d.isTarget
     );
 
 
-  let mostDifficultFeature =
+  const slowest =
+    targets.length
+    ?
+    [...targets]
+    .sort(
+      (a,b)=>
+
+        b.readingTimeMs
+        -
+        a.readingTimeMs
+    )[0]
+    :
     null;
 
-
-  let slowestTarget =
-    null;
-
-
-  if(
-    targetSentences.length
-  ){
-
-    slowestTarget =
-      [...targetSentences]
-      .sort(
-        (a,b)=>
-
-          b.readingTimeMs
-          -
-          a.readingTimeMs
-      )[0];
-
-
-    mostDifficultFeature =
-      featureNames[
-        slowestTarget.feature
-      ]
-      ||
-      slowestTarget.feature;
-
-  }
-
-
-  /* target question */
-
-  let relatedQuestion =
-    null;
-
-
-  if(
-    slowestTarget
-  ){
-
-    relatedQuestion =
-      questions.find(
-        q =>
-
-          q.passageId ===
-          slowestTarget
-          .passageId
-
-          &&
-
-          q.questionType ===
-          "target"
-      );
-
-  }
-
-
-  /* ==============================
-     설명 생성
-  ============================== */
 
   let text = `
 
@@ -1791,57 +1759,59 @@ function createXAI(
     <strong>${domainNames[highest]} 영역</strong>에서
     다른 영역보다 상대적으로 높은 처리 부담이 나타났습니다.
 
-    ${domainNames[highest]} 영역의 목표 문장 평균 읽기시간은
-    <strong>${formatSeconds(highestData.targetReadingMs)}</strong>이며,
-    목표 문장 이해도는
-    <strong>${formatPercent(highestData.targetAccuracy)}</strong>,
-    지문 전체 이해도는
-    <strong>${formatPercent(highestData.finalAccuracy)}</strong>로 나타났습니다.
+    이 영역의 평균 문장 읽기시간은
+    <strong>${formatSeconds(highestData.avgReadingMs)}</strong>,
+    이해도 정답률은
+    <strong>${formatPercent(highestData.accuracy)}</strong>,
+    평균 문항 반응시간은
+    <strong>${formatSeconds(highestData.avgQuestionMs)}</strong>입니다.
 
   `;
 
 
   if(
-    mostDifficultFeature
+    slowest
   ){
+
+    const feature =
+      featureNames[
+        slowest.feature
+      ]
+      ||
+      slowest.feature;
+
 
     text += `
 
-      세부적으로는
-      <strong>${mostDifficultFeature}</strong>이 포함된 목표 문장에서
+      특히
+      <strong>${feature}</strong>이 포함된 목표 문장에서
       상대적으로 긴 읽기시간이 관찰되었습니다.
 
     `;
 
 
     if(
-      relatedQuestion
+      slowest.correct
     ){
 
-      if(
-        relatedQuestion.correct
-      ){
+      text += `
 
-        text += `
+        해당 문장의 이해도 문항에는 정답을 제시했습니다.
+        따라서 내용을 이해하지 못했다기보다,
+        해당 언어 요소를 처리하는 과정에서
+        상대적으로 더 많은 시간이 필요했을 가능성이 있습니다.
 
-          해당 목표 문장의 이해도 문항에는 정답을 제시하였으므로,
-          내용을 이해하지 못했다기보다
-          해당 언어 구조를 처리하는 데 상대적으로 더 많은 시간이
-          필요했을 가능성이 있습니다.
+      `;
 
-        `;
+    }else{
 
-      }else{
+      text += `
 
-        text += `
+        해당 문장의 이해도 문항에서도 오답이 나타났습니다.
+        따라서 이 언어 요소는 읽기시간뿐 아니라
+        의미 이해 과정에서도 상대적인 어려움과 관련되었을 가능성이 있습니다.
 
-          해당 목표 문장의 이해도 문항에서도 오답이 나타나
-          읽기시간뿐 아니라 해당 언어 요소의 이해 과정에서도
-          상대적인 어려움이 나타났을 가능성이 있습니다.
-
-        `;
-
-      }
+      `;
 
     }
 
@@ -1855,7 +1825,7 @@ function createXAI(
     text += `
 
       다음으로는
-      <strong>${domainNames[second]} 영역</strong>에서
+      <strong>${domainNames[second]} 영역</strong>에서도
       비교적 높은 처리 부담이 나타났습니다.
 
     `;
@@ -1865,10 +1835,10 @@ function createXAI(
 
   text += `
 
-    이 결과는 이번 읽기 수행에서 나타난 개인 내 상대적인 패턴이며,
-    절대적인 중국어 능력 수준이나 표준화된 진단 결과를 의미하지 않습니다.
-    이후 맞춤형 읽기 지원에서는 상대적으로 부담이 높게 나타난 영역과
-    세부 언어 요소를 중심으로 학습 자료를 제공할 수 있습니다.
+    이 결과는 이번 수행에서 나타난 개인 내 상대적 패턴입니다.
+    이후 생성형 AI 기반 맞춤형 읽기 지원에서는
+    처리 부담이 상대적으로 높게 나타난 영역과 세부 언어 요소를 중심으로
+    읽기 자료와 설명을 제공할 수 있습니다.
 
   `;
 
@@ -1893,12 +1863,14 @@ function getBurdenLevel(
 ){
 
   if(
-    score >= 65
+    score >=
+    65
   ){
 
     return{
 
-      label:"높음",
+      label:
+        "높음",
 
       className:
         "status-high"
@@ -1909,12 +1881,14 @@ function getBurdenLevel(
 
 
   if(
-    score >= 35
+    score >=
+    35
   ){
 
     return{
 
-      label:"보통",
+      label:
+        "보통",
 
       className:
         "status-medium"
@@ -1926,7 +1900,8 @@ function getBurdenLevel(
 
   return{
 
-    label:"낮음",
+    label:
+      "낮음",
 
     className:
       "status-low"
@@ -1947,12 +1922,12 @@ function average(
 
   const clean =
     values.filter(
-      value =>
+      v =>
         Number.isFinite(
-          value
+          v
         )
         &&
-        value >= 0
+        v >= 0
     );
 
 
@@ -1968,8 +1943,8 @@ function average(
   return (
 
     clean.reduce(
-      (sum,value)=>
-        sum + value,
+      (sum,v)=>
+        sum + v,
       0
     )
 
@@ -1983,12 +1958,16 @@ function average(
 
 
 
-function calculateAccuracy(
-  questions
+function normalize(
+  value,
+  min,
+  max
 ){
 
   if(
-    !questions.length
+    !Number.isFinite(
+      value
+    )
   ){
 
     return 0;
@@ -1996,17 +1975,29 @@ function calculateAccuracy(
   }
 
 
-  const correct =
-    questions.filter(
-      q =>
-        q.correct ===
-        true
-    ).length;
+  if(
+    max === min
+  ){
+
+    return 0;
+
+  }
 
 
   return (
-    correct /
-    questions.length
+
+    value -
+    min
+
+  )
+
+  /
+
+  (
+
+    max -
+    min
+
   );
 
 }
@@ -2018,7 +2009,11 @@ function formatSeconds(
 ){
 
   if(
-    !milliseconds
+    !Number.isFinite(
+      milliseconds
+    )
+    ||
+    milliseconds <= 0
   ){
 
     return "-";
@@ -2027,11 +2022,16 @@ function formatSeconds(
 
 
   return (
+
     milliseconds /
     1000
+
   )
-  .toFixed(2)
-  + "초";
+  .toFixed(
+    2
+  )
+  +
+  "초";
 
 }
 
@@ -2053,11 +2053,16 @@ function formatPercent(
 
 
   return (
+
     Math.round(
-      value * 100
+      value *
+      100
     )
+
     +
+
     "%"
+
   );
 
 }
@@ -2066,3 +2071,4 @@ function formatPercent(
 
 </body>
 </html>
+ 
