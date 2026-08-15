@@ -19,8 +19,8 @@
 
   --text:#243247;
   --subtext:#66758A;
-
   --border:#D9E4F2;
+
   --success:#2F7D5A;
 }
 
@@ -36,9 +36,9 @@ body{
 }
 
 
-/* =========================
+/* =====================================
    HEADER
-========================= */
+===================================== */
 
 .header{
   background:linear-gradient(
@@ -68,9 +68,9 @@ body{
 }
 
 
-/* =========================
+/* =====================================
    PROGRESS
-========================= */
+===================================== */
 
 .progress-wrap{
   max-width:1000px;
@@ -81,7 +81,10 @@ body{
 .progress-info{
   display:flex;
   justify-content:space-between;
+  gap:20px;
+
   margin-bottom:8px;
+
   font-size:14px;
   color:var(--subtext);
 }
@@ -89,22 +92,27 @@ body{
 .progress-bar{
   width:100%;
   height:8px;
+
   background:#DFE8F4;
+
   border-radius:999px;
+
   overflow:hidden;
 }
 
 .progress{
   height:100%;
   width:0;
+
   background:var(--primary);
+
   transition:.25s;
 }
 
 
-/* =========================
+/* =====================================
    MAIN
-========================= */
+===================================== */
 
 .container{
   max-width:900px;
@@ -114,9 +122,14 @@ body{
 
 .card{
   background:white;
+
   border:1px solid var(--border);
   border-radius:28px;
-  box-shadow:0 12px 30px rgba(24,61,117,.08);
+
+  box-shadow:
+    0 12px 30px
+    rgba(24,61,117,.08);
+
   padding:45px;
 }
 
@@ -125,9 +138,9 @@ body{
 }
 
 
-/* =========================
+/* =====================================
    INTRO
-========================= */
+===================================== */
 
 .intro h2{
   color:var(--primary);
@@ -143,20 +156,26 @@ body{
 
 .notice{
   background:#EEF5FF;
+
   padding:20px 24px;
+
   border-radius:16px;
+
   margin:25px 0;
-  line-height:1.8;
+
+  line-height:1.85;
+
   color:#4D6078;
 }
 
 
-/* =========================
+/* =====================================
    BUTTON
-========================= */
+===================================== */
 
 .btn{
   border:none;
+
   background:var(--primary);
   color:white;
 
@@ -170,6 +189,7 @@ body{
   cursor:pointer;
 
   text-decoration:none;
+
   display:inline-block;
 
   transition:.2s;
@@ -185,21 +205,36 @@ body{
 }
 
 
-/* =========================
-   READING SCREEN
-========================= */
+/* =====================================
+   READING
+===================================== */
 
-.reading-top{
+.reading-label{
   text-align:center;
-  color:var(--subtext);
+
+  color:var(--primary);
+
+  font-weight:750;
   font-size:15px;
+
+  margin-bottom:8px;
+}
+
+.reading-guide{
+  text-align:center;
+
+  color:var(--subtext);
+
+  font-size:14px;
+
   margin-bottom:30px;
 }
 
 .sentence-area{
-  min-height:230px;
+  min-height:240px;
 
   display:flex;
+
   align-items:center;
   justify-content:center;
 
@@ -213,12 +248,12 @@ body{
     "PingFang SC",
     sans-serif;
 
-  font-size:34px;
+  font-size:35px;
   line-height:1.75;
 
   color:#1E2E46;
 
-  max-width:720px;
+  max-width:750px;
 
   word-break:keep-all;
 }
@@ -229,37 +264,43 @@ body{
 }
 
 .keyboard-guide{
-  margin-top:15px;
-  color:#8A96A6;
+  margin-top:14px;
+
   font-size:13px;
+
+  color:#8A96A6;
 }
 
 
-/* =========================
+/* =====================================
    QUESTION
-========================= */
+===================================== */
 
 .question-title{
   font-size:25px;
+
   color:var(--primary);
-  margin:0 0 12px;
+
+  margin:
+    0
+    0
+    10px;
 }
 
 .question-sub{
   color:var(--subtext);
+
   font-size:14px;
-  margin-bottom:25px;
+
+  margin-bottom:26px;
 }
 
 .question{
-  font-family:
-    "Noto Sans SC",
-    "Microsoft YaHei",
-    sans-serif;
+  font-size:21px;
 
-  font-size:22px;
-  font-weight:650;
-  line-height:1.6;
+  font-weight:700;
+
+  line-height:1.65;
 
   margin-bottom:25px;
 }
@@ -272,65 +313,99 @@ body{
 .option{
   width:100%;
 
-  background:#F7FAFE;
-
-  border:1px solid var(--border);
-
   padding:17px 20px;
+
+  border:
+    1px
+    solid
+    var(--border);
 
   border-radius:14px;
 
-  cursor:pointer;
-
-  font-family:
-    "Noto Sans SC",
-    "Microsoft YaHei",
-    sans-serif;
-
-  font-size:17px;
-
-  text-align:left;
+  background:#F7FAFE;
 
   color:var(--text);
+
+  font-size:16px;
+  text-align:left;
+
+  cursor:pointer;
 
   transition:.15s;
 }
 
 .option:hover{
   background:var(--primary-light);
+
   border-color:#AFC8E8;
 }
 
 .option.selected{
   background:#EAF2FF;
-  border:2px solid var(--primary);
+
+  border:
+    2px
+    solid
+    var(--primary);
+
   color:var(--primary-dark);
+
   font-weight:700;
 }
 
 .option.selected::after{
   content:"  ✓ 선택";
+
   color:var(--primary);
-  font-size:14px;
+
+  font-size:13px;
+
   font-weight:700;
 }
 
 .question-help{
   margin-top:18px;
+
   text-align:center;
+
   color:var(--subtext);
-  font-size:14px;
+
+  font-size:13px;
 }
 
 .question-action{
   margin-top:28px;
+
   text-align:center;
 }
 
 
-/* =========================
+/* =====================================
+   TRANSITION
+===================================== */
+
+.transition{
+  text-align:center;
+}
+
+.transition h2{
+  color:var(--primary);
+
+  font-size:30px;
+}
+
+.transition p{
+  color:var(--subtext);
+
+  line-height:1.8;
+
+  font-size:17px;
+}
+
+
+/* =====================================
    COMPLETE
-========================= */
+===================================== */
 
 .complete{
   text-align:center;
@@ -338,19 +413,22 @@ body{
 
 .complete h2{
   color:var(--success);
+
   font-size:32px;
 }
 
 .complete p{
   color:var(--subtext);
+
   font-size:17px;
+
   line-height:1.8;
 }
 
 
-/* =========================
+/* =====================================
    MOBILE
-========================= */
+===================================== */
 
 @media(max-width:700px){
 
@@ -367,7 +445,11 @@ body{
   }
 
   .option{
-    font-size:16px;
+    font-size:15px;
+  }
+
+  .progress-info{
+    font-size:13px;
   }
 
 }
@@ -379,9 +461,9 @@ body{
 <body>
 
 
-<!-- =========================
+<!-- =====================================
      HEADER
-========================= -->
+===================================== -->
 
 <header class="header">
 
@@ -401,9 +483,9 @@ body{
 
 
 
-<!-- =========================
+<!-- =====================================
      PROGRESS
-========================= -->
+===================================== -->
 
 <div
   class="progress-wrap hidden"
@@ -411,12 +493,12 @@ body{
 
   <div class="progress-info">
 
-    <span id="passageProgress">
-      읽기 1 / 12
+    <span id="progressLeft">
+      연습 1 / 2
     </span>
 
-    <span id="stepProgress">
-      문장 1 / 5
+    <span id="progressRight">
+      읽기
     </span>
 
   </div>
@@ -437,9 +519,9 @@ body{
 <main class="container">
 
 
-<!-- =========================
+<!-- =====================================
      INTRO
-========================= -->
+===================================== -->
 
 <section
   class="card intro"
@@ -451,37 +533,38 @@ body{
 
   <p>
     중국어 문장이 한 문장씩 제시됩니다.
-    각 문장을 읽은 뒤 해당 문장의 이해도 문항에 응답해 주세요.
-    문장별 읽기시간과 이해도 결과가 자동으로 기록됩니다.
+    문장을 자연스럽게 읽은 뒤 다음으로 이동하면
+    방금 읽은 문장의 내용을 확인하는 한국어 문제가 제시됩니다.
   </p>
 
   <div class="notice">
 
-    • 한 번에 한 문장만 나타납니다.<br>
+    • 먼저 연습문제 2문항을 진행합니다.<br>
 
-    • 문장을 충분히 읽은 후
-    <strong>다음</strong>으로 이동해 주세요.<br>
+    • 연습이 끝나면 실전문제 30문항이 시작됩니다.<br>
+
+    • 실전문제는 참여자마다 다른 순서로 제시될 수 있습니다.<br>
+
+    • 중국어 문장을 충분히 읽은 후
+      <strong>다음</strong> 버튼을 눌러주세요.<br>
 
     • 읽기 화면에서는
-    <strong>다음 문장</strong> 버튼 또는
-    키보드의 <strong>Space</strong> 키를 사용할 수 있습니다.<br>
+      <strong>Space</strong> 키를 사용해도 됩니다.<br>
 
-    • 한 문장을 읽은 직후
-    해당 문장의 이해도 문항이 제시됩니다.<br>
+    • 확인 문제는 한국어로 제시됩니다.<br>
 
-    • 답을 선택한 후
-    <strong>답변 확정 및 다음</strong> 버튼을 눌러주세요.<br>
+    • 답변은
+      <strong>확정하기 전까지 수정</strong>할 수 있습니다.<br>
 
-    • 답변을 확정하기 전에는
-    다른 답으로 변경할 수 있습니다.
+    • 자연스러운 평소 읽기 속도로 수행해 주세요.
 
   </div>
 
   <button
     class="btn"
-    onclick="startExperiment()">
+    onclick="startPractice()">
 
-    읽기 수행 시작하기
+    연습 시작하기
 
   </button>
 
@@ -489,17 +572,25 @@ body{
 
 
 
-<!-- =========================
-     READING
-========================= -->
+<!-- =====================================
+     READING SCREEN
+===================================== -->
 
 <section
   class="card hidden"
   id="readingScreen">
 
-  <div class="reading-top">
+  <div
+    class="reading-label"
+    id="readingLabel">
 
-    문장을 읽은 후 다음으로 이동하세요.
+    연습문제
+
+  </div>
+
+  <div class="reading-guide">
+
+    중국어 문장을 읽은 후 다음으로 이동하세요.
 
   </div>
 
@@ -516,7 +607,7 @@ body{
 
     <button
       class="btn"
-      onclick="finishSentence()">
+      onclick="finishReading()">
 
       다음 →
 
@@ -535,23 +626,23 @@ body{
 
 
 
-<!-- =========================
-     QUESTION
-========================= -->
+<!-- =====================================
+     QUESTION SCREEN
+===================================== -->
 
 <section
   class="card hidden"
   id="questionScreen">
 
   <h2 class="question-title">
-    문장 이해 확인
+    내용 확인
   </h2>
 
   <div
     class="question-sub"
     id="questionSub">
 
-    방금 읽은 문장의 내용을 확인해 주세요.
+    방금 읽은 중국어 문장의 내용을 확인해 주세요.
 
   </div>
 
@@ -567,8 +658,8 @@ body{
 
   <div class="question-help">
 
-    확정하기 전까지
-    다른 답으로 변경할 수 있습니다.
+    답변을 확정하기 전까지
+    다른 선택지로 변경할 수 있습니다.
 
   </div>
 
@@ -590,20 +681,56 @@ body{
 
 
 
-<!-- =========================
+<!-- =====================================
+     PRACTICE COMPLETE
+===================================== -->
+
+<section
+  class="card transition hidden"
+  id="practiceCompleteScreen">
+
+  <h2>
+    연습이 끝났습니다.
+  </h2>
+
+  <p>
+    이제 실전 읽기 수행을 시작합니다.<br>
+    실전문제는 총 30문항이며
+    문항의 유형이나 분석 영역은 화면에 표시되지 않습니다.
+  </p>
+
+  <button
+    class="btn"
+    onclick="startMainTest()">
+
+    실전 읽기 시작하기
+
+  </button>
+
+</section>
+
+
+
+<!-- =====================================
      COMPLETE
-========================= -->
+===================================== -->
 
 <section
   class="card complete hidden"
   id="completeScreen">
 
   <h2>
-    검사가 완료되었습니다.
+    읽기 수행이 완료되었습니다.
   </h2>
 
   <p>
-    모든 문장의 읽기시간과 이해도 결과가 기록되었습니다.
+
+    실전문제 30문항의 읽기시간,
+    이해도 정오답 및 문항 반응시간이 기록되었습니다.<br><br>
+
+    아래 버튼을 눌러
+    자신의 읽기 결과를 확인할 수 있습니다.
+
   </p>
 
   <button
@@ -624,1303 +751,738 @@ body{
 <script>
 
 /* =====================================================
-   DATA
-
-   각 문장마다 이해도 1문항
+   PRACTICE ITEMS
+   분석에서는 제외
 ===================================================== */
 
-const passages = [
+const practiceItems = [
+
+{
+  id:"P01",
+
+  sentence:
+    "今天下午我和朋友一起去图书馆学习。",
+
+  question:
+    "이 문장에서 화자는 오늘 오후에 무엇을 합니까?",
+
+  options:[
+    "친구와 도서관에 가서 공부한다.",
+    "혼자 집에서 공부한다.",
+    "친구와 식당에 간다.",
+    "학교에서 운동한다."
+  ],
+
+  answer:0
+},
+
+{
+  id:"P02",
+
+  sentence:
+    "因为外面下雨，所以小王决定坐地铁回家。",
+
+  question:
+    "샤오왕이 지하철을 타고 집에 가기로 한 이유는 무엇입니까?",
+
+  options:[
+    "시간이 너무 늦어서",
+    "밖에 비가 와서",
+    "친구를 만나기 위해서",
+    "버스가 무료여서"
+  ],
+
+  answer:1
+}
+
+];
+
+
 
 /* =====================================================
-   R01
-   통사 - 관계절
+   MAIN TEST ITEMS
+   30문항
+===================================================== */
+
+const mainItems = [
+
+
+/* =====================================================
+   SYNTAX 01-09
 ===================================================== */
 
 {
-  id:"R01",
+  id:"SYN01",
   domain:"syntax",
   feature:"relative_clause",
 
-  items:[
+  sentence:
+    "老师昨天介绍的那位新同学就是王明。",
 
-    {
-      sentence:
-        "王明今年开始在我们学校认真学习中文。",
+  question:
+    "어제 선생님이 소개한 새 학생은 누구입니까?",
 
-      question:
-        "王明今年开始在哪里学习中文？",
+  options:[
+    "왕밍",
+    "선생님",
+    "중국인 친구",
+    "도서관 학생"
+  ],
 
-      options:[
-        "在我们学校",
-        "在北京",
-        "在家里",
-        "在公司"
-      ],
-
-      answer:0
-    },
-
-
-    {
-      sentence:
-        "他每天上午都会和班里的同学一起上课。",
-
-      question:
-        "王明每天上午和谁一起上课？",
-
-      options:[
-        "老师",
-        "朋友",
-        "班里的同学",
-        "家人"
-      ],
-
-      answer:2
-    },
-
-
-    {
-      sentence:
-        "老师昨天介绍的那位新同学就是王明。",
-
-      question:
-        "老师昨天介绍的新同学是谁？",
-
-      options:[
-        "王明",
-        "老师",
-        "中国朋友",
-        "图书馆学生"
-      ],
-
-      answer:0,
-
-      isTarget:true
-    },
-
-
-    {
-      sentence:
-        "下课以后他常常和同学一起去图书馆。",
-
-      question:
-        "下课以后他常常去哪里？",
-
-      options:[
-        "食堂",
-        "图书馆",
-        "宿舍",
-        "商店"
-      ],
-
-      answer:1
-    },
-
-
-    {
-      sentence:
-        "最近他已经认识了不少学校里的新朋友。",
-
-      question:
-        "最近王明认识了什么人？",
-
-      options:[
-        "不少新朋友",
-        "很多老师",
-        "家里的朋友",
-        "公司的同事"
-      ],
-
-      answer:0
-    }
-
-  ]
+  answer:0
 },
 
 
+{
+  id:"SYN02",
+  domain:"syntax",
+  feature:"relative_clause",
 
-/* =====================================================
-   R02
-   통사 - 把자문
-===================================================== */
+  sentence:
+    "我昨天在书店买的那本小说非常有意思。",
+
+  question:
+    "이 문장에서 매우 재미있다고 한 것은 무엇입니까?",
+
+  options:[
+    "어제 산 소설",
+    "서점",
+    "친구가 빌려준 책",
+    "오늘 산 잡지"
+  ],
+
+  answer:0
+},
+
 
 {
-  id:"R02",
+  id:"SYN03",
+  domain:"syntax",
+  feature:"relative_clause",
+
+  sentence:
+    "坐在窗户旁边看书的那个学生是我的朋友。",
+
+  question:
+    "화자의 친구는 어떤 학생입니까?",
+
+  options:[
+    "창가에서 책을 읽는 학생",
+    "교실에서 자는 학생",
+    "밖에서 운동하는 학생",
+    "선생님과 이야기하는 학생"
+  ],
+
+  answer:0
+},
+
+
+{
+  id:"SYN04",
   domain:"syntax",
   feature:"ba_construction",
 
-  items:[
+  sentence:
+    "出门以前他把桌上的课本放进了书包。",
 
-    {
-      sentence:
-        "李华今天早上比平时起得稍微晚一点。",
+  question:
+    "그는 외출하기 전에 무엇을 가방에 넣었습니까?",
 
-      question:
-        "李华今天早上起得怎么样？",
+  options:[
+    "휴대전화",
+    "교과서",
+    "숙제",
+    "아침 식사"
+  ],
 
-      options:[
-        "比平时早",
-        "比平时晚一点",
-        "和平时一样",
-        "没有起床"
-      ],
-
-      answer:1
-    },
-
-
-    {
-      sentence:
-        "他吃完早饭以后马上准备出门去学校。",
-
-      question:
-        "李华吃完早饭以后准备去哪里？",
-
-      options:[
-        "学校",
-        "医院",
-        "商店",
-        "公园"
-      ],
-
-      answer:0
-    },
-
-
-    {
-      sentence:
-        "出门以前他把桌上的课本放进了书包。",
-
-      question:
-        "李华把什么放进了书包？",
-
-      options:[
-        "手机",
-        "课本",
-        "作业",
-        "早餐"
-      ],
-
-      answer:1,
-
-      isTarget:true
-    },
-
-
-    {
-      sentence:
-        "到了学校以后他才发现忘记带作业。",
-
-      question:
-        "李华到了学校以后发现忘了带什么？",
-
-      options:[
-        "课本",
-        "手机",
-        "作业",
-        "书包"
-      ],
-
-      answer:2
-    },
-
-
-    {
-      sentence:
-        "最后他只好给妈妈打电话请她帮忙。",
-
-      question:
-        "最后李华给谁打了电话？",
-
-      options:[
-        "老师",
-        "朋友",
-        "妈妈",
-        "同学"
-      ],
-
-      answer:2
-    }
-
-  ]
+  answer:1
 },
 
 
+{
+  id:"SYN05",
+  domain:"syntax",
+  feature:"ba_construction",
 
-/* =====================================================
-   R03
-   통사 - 被자문
-===================================================== */
+  sentence:
+    "吃完晚饭以后妈妈把厨房收拾得很干净。",
+
+  question:
+    "저녁 식사 후 어머니는 무엇을 하셨습니까?",
+
+  options:[
+    "주방을 깨끗하게 정리했다.",
+    "저녁을 다시 만들었다.",
+    "밖에 나갔다.",
+    "주방에서 공부했다."
+  ],
+
+  answer:0
+},
+
 
 {
-  id:"R03",
+  id:"SYN06",
+  domain:"syntax",
+  feature:"ba_construction",
+
+  sentence:
+    "请你把今天需要完成的作业放在桌子上。",
+
+  question:
+    "오늘 해야 할 숙제를 어디에 두라고 했습니까?",
+
+  options:[
+    "책상 위",
+    "가방 안",
+    "교실 밖",
+    "도서관"
+  ],
+
+  answer:0
+},
+
+
+{
+  id:"SYN07",
   domain:"syntax",
   feature:"bei_construction",
 
-  items:[
+  sentence:
+    "回酒店时他的手机被一个孩子捡到了。",
 
-    {
-      sentence:
-        "小林上个月和朋友一起去北京旅行。",
+  question:
+    "그의 휴대전화를 주운 사람은 누구입니까?",
 
-      question:
-        "小林上个月去了哪里？",
+  options:[
+    "친구",
+    "아이",
+    "직원",
+    "기사"
+  ],
 
-      options:[
-        "上海",
-        "北京",
-        "广州",
-        "云南"
-      ],
-
-      answer:1
-    },
+  answer:1
+},
 
 
-    {
-      sentence:
-        "他们每天坐地铁去不同的地方参观。",
+{
+  id:"SYN08",
+  domain:"syntax",
+  feature:"bei_construction",
 
-      question:
-        "他们主要坐什么交通工具？",
+  sentence:
+    "昨天放在教室里的雨伞被别人拿走了。",
 
-      options:[
-        "出租车",
-        "公交车",
-        "地铁",
-        "火车"
-      ],
+  question:
+    "어제 교실에 두었던 우산은 어떻게 되었습니까?",
 
-      answer:2
-    },
+  options:[
+    "다른 사람이 가져갔다.",
+    "교실에 그대로 있다.",
+    "선생님이 새로 샀다.",
+    "비 때문에 망가졌다."
+  ],
 
-
-    {
-      sentence:
-        "回酒店时他的手机被一个孩子捡到。",
-
-      question:
-        "谁捡到了小林的手机？",
-
-      options:[
-        "朋友",
-        "孩子",
-        "司机",
-        "老师"
-      ],
-
-      answer:1,
-
-      isTarget:true
-    },
+  answer:0
+},
 
 
-    {
-      sentence:
-        "那个孩子很快把手机交给工作人员。",
+{
+  id:"SYN09",
+  domain:"syntax",
+  feature:"bei_construction",
 
-      question:
-        "孩子把手机交给了谁？",
+  sentence:
+    "因为天气不好比赛被学校临时取消了。",
 
-      options:[
-        "朋友",
-        "警察",
-        "工作人员",
-        "小林的家人"
-      ],
+  question:
+    "경기는 왜 취소되었습니까?",
 
-      answer:2
-    },
+  options:[
+    "날씨가 좋지 않아서",
+    "학생이 적어서",
+    "운동장이 너무 커서",
+    "선생님이 늦어서"
+  ],
 
-
-    {
-      sentence:
-        "小林拿回手机以后马上向大家道谢。",
-
-      question:
-        "小林拿回手机以后做了什么？",
-
-      options:[
-        "马上离开",
-        "向大家道谢",
-        "买了新手机",
-        "继续找手机"
-      ],
-
-      answer:1
-    }
-
-  ]
+  answer:0
 },
 
 
 
 /* =====================================================
-   R04
-   어휘 - 저빈도 어휘
+   VOCABULARY 10-16
 ===================================================== */
 
 {
-  id:"R04",
+  id:"VOC01",
   domain:"vocabulary",
   feature:"low_frequency",
 
-  items:[
+  sentence:
+    "为了避开游客他们去了比较偏僻的小村庄。",
 
-    {
-      sentence:
-        "小张去年暑假和朋友一起去了云南。",
+  question:
+    "문맥상 '偏僻'의 의미와 가장 가까운 것은 무엇입니까?",
 
-      question:
-        "小张什么时候去了云南？",
+  options:[
+    "사람이 적고 중심지에서 떨어진",
+    "교통이 매우 편리한",
+    "관광객이 매우 많은",
+    "상점이 많은"
+  ],
 
-      options:[
-        "去年暑假",
-        "今年春天",
-        "上个月",
-        "昨天"
-      ],
-
-      answer:0
-    },
-
-
-    {
-      sentence:
-        "他们没有跟团而是自己安排行程。",
-
-      question:
-        "他们的旅行是怎样安排的？",
-
-      options:[
-        "参加旅行团",
-        "自己安排",
-        "朋友安排",
-        "学校安排"
-      ],
-
-      answer:1
-    },
-
-
-    {
-      sentence:
-        "为了避开游客他们去了偏僻的村庄。",
-
-      question:
-        "“偏僻”在这里最接近什么意思？",
-
-      options:[
-        "人少而离城市较远",
-        "交通非常方便",
-        "游客很多",
-        "商店很多"
-      ],
-
-      answer:0,
-
-      isTarget:true
-    },
-
-
-    {
-      sentence:
-        "那里交通虽然不便但是风景很漂亮。",
-
-      question:
-        "那个地方的交通怎么样？",
-
-      options:[
-        "非常方便",
-        "不太方便",
-        "特别便宜",
-        "没有道路"
-      ],
-
-      answer:1
-    },
-
-
-    {
-      sentence:
-        "小张觉得这次旅行给他印象很深。",
-
-      question:
-        "小张觉得这次旅行怎么样？",
-
-      options:[
-        "没有意思",
-        "印象很深",
-        "非常危险",
-        "太贵了"
-      ],
-
-      answer:1
-    }
-
-  ]
+  answer:0
 },
 
 
+{
+  id:"VOC02",
+  domain:"vocabulary",
+  feature:"low_frequency",
 
-/* =====================================================
-   R05
-   어휘 - 의미투명도
-===================================================== */
+  sentence:
+    "这家小店虽然位置隐蔽但每天都有很多客人。",
+
+  question:
+    "문맥상 이 가게의 위치는 어떻습니까?",
+
+  options:[
+    "쉽게 눈에 띄지 않는다.",
+    "매우 넓다.",
+    "학교 안에 있다.",
+    "교통이 전혀 없다."
+  ],
+
+  answer:0
+},
+
 
 {
-  id:"R05",
+  id:"VOC03",
+  domain:"vocabulary",
+  feature:"low_frequency",
+
+  sentence:
+    "由于道路十分狭窄大型车辆很难进入村子。",
+
+  question:
+    "큰 차량이 마을에 들어가기 어려운 이유는 무엇입니까?",
+
+  options:[
+    "도로가 매우 좁아서",
+    "차량이 너무 오래되어서",
+    "마을에 사람이 없어서",
+    "도로가 너무 길어서"
+  ],
+
+  answer:0
+},
+
+
+{
+  id:"VOC04",
   domain:"vocabulary",
   feature:"semantic_transparency",
 
-  items:[
+  sentence:
+    "购买二手商品既能省钱也可以做到物尽其用。",
 
-    {
-      sentence:
-        "最近不少年轻人喜欢购买二手商品。",
+  question:
+    "문맥상 '物尽其用'의 의미와 가장 가까운 것은 무엇입니까?",
 
-      question:
-        "最近不少年轻人喜欢买什么？",
+  options:[
+    "물건을 충분히 활용하는 것",
+    "오래된 물건을 모두 버리는 것",
+    "새 물건을 많이 사는 것",
+    "물건을 사용하지 않는 것"
+  ],
 
-      options:[
-        "新商品",
-        "二手商品",
-        "外国商品",
-        "食品"
-      ],
-
-      answer:1
-    },
-
-
-    {
-      sentence:
-        "小陈也常在网上购买一些生活用品。",
-
-      question:
-        "小陈常在哪里买生活用品？",
-
-      options:[
-        "商场",
-        "学校",
-        "网上",
-        "国外"
-      ],
-
-      answer:2
-    },
-
-
-    {
-      sentence:
-        "他觉得这样既能省钱又能物尽其用。",
-
-      question:
-        "“物尽其用”最接近什么意思？",
-
-      options:[
-        "不用旧东西",
-        "让物品得到充分使用",
-        "购买更多商品",
-        "把东西扔掉"
-      ],
-
-      answer:1,
-
-      isTarget:true
-    },
-
-
-    {
-      sentence:
-        "购买以前他都会认真了解商品情况。",
-
-      question:
-        "买东西以前小陈会做什么？",
-
-      options:[
-        "马上付款",
-        "了解商品情况",
-        "找朋友借钱",
-        "不看商品"
-      ],
-
-      answer:1
-    },
-
-
-    {
-      sentence:
-        "这样既能减少浪费也能避免多花钱。",
-
-      question:
-        "这样做有什么好处？",
-
-      options:[
-        "增加浪费",
-        "减少浪费和花费",
-        "增加购物次数",
-        "买更多东西"
-      ],
-
-      answer:1
-    }
-
-  ]
+  answer:0
 },
 
 
+{
+  id:"VOC05",
+  domain:"vocabulary",
+  feature:"semantic_transparency",
 
-/* =====================================================
-   R06
-   어휘 - 문맥적 의미 추론
-===================================================== */
+  sentence:
+    "他做事情总是半途而废所以很难取得好结果。",
+
+  question:
+    "'半途而废'는 이 문장에서 어떤 의미입니까?",
+
+  options:[
+    "하던 일을 중간에 그만두다.",
+    "처음부터 다시 시작하다.",
+    "끝까지 꾸준히 하다.",
+    "다른 사람에게 맡기다."
+  ],
+
+  answer:0
+},
+
 
 {
-  id:"R06",
+  id:"VOC06",
   domain:"vocabulary",
   feature:"contextual_inference",
 
-  items:[
+  sentence:
+    "慢慢地她对拍摄城市夜景越来越着迷。",
 
-    {
-      sentence:
-        "小美从去年开始学习用相机拍照片。",
+  question:
+    "문맥상 '着迷'의 의미와 가장 가까운 것은 무엇입니까?",
 
-      question:
-        "小美从什么时候开始学习摄影？",
+  options:[
+    "매우 흥미를 느끼다.",
+    "두려워하다.",
+    "완전히 잊어버리다.",
+    "싫어하다."
+  ],
 
-      options:[
-        "去年",
-        "今年",
-        "昨天",
-        "上个月"
-      ],
-
-      answer:0
-    },
+  answer:0
+},
 
 
-    {
-      sentence:
-        "周末有时间时她常常一个人去拍照。",
+{
+  id:"VOC07",
+  domain:"vocabulary",
+  feature:"contextual_inference",
 
-      question:
-        "周末有时间时小美常做什么？",
+  sentence:
+    "看到考试结果以后他终于松了一口气。",
 
-      options:[
-        "看电影",
-        "拍照",
-        "购物",
-        "运动"
-      ],
+  question:
+    "시험 결과를 본 뒤 그의 상태로 가장 적절한 것은 무엇입니까?",
 
-      answer:1
-    },
+  options:[
+    "안심했다.",
+    "더 긴장했다.",
+    "화가 났다.",
+    "시험을 포기했다."
+  ],
 
-
-    {
-      sentence:
-        "慢慢地她对拍摄城市夜景越来越着迷。",
-
-      question:
-        "“着迷”最接近什么意思？",
-
-      options:[
-        "非常感兴趣",
-        "非常害怕",
-        "完全忘记",
-        "不愿意学习"
-      ],
-
-      answer:0,
-
-      isTarget:true
-    },
-
-
-    {
-      sentence:
-        "她经常晚上寻找适合拍照的新地方。",
-
-      question:
-        "小美晚上常常寻找什么？",
-
-      options:[
-        "新的饭店",
-        "适合拍照的地方",
-        "朋友的家",
-        "运动场"
-      ],
-
-      answer:1
-    },
-
-
-    {
-      sentence:
-        "现在摄影已经成为她最喜欢的爱好。",
-
-      question:
-        "小美现在最喜欢的爱好是什么？",
-
-      options:[
-        "旅行",
-        "摄影",
-        "游泳",
-        "音乐"
-      ],
-
-      answer:1
-    }
-
-  ]
+  answer:0
 },
 
 
 
 /* =====================================================
-   R07
-   연어 - 연어 빈도
+   COLLOCATION 17-23
 ===================================================== */
 
 {
-  id:"R07",
+  id:"COL01",
   domain:"collocation",
   feature:"collocation_frequency",
 
-  items:[
+  sentence:
+    "为了提高口语水平他每天跟朋友练习中文。",
 
-    {
-      sentence:
-        "小刘学习中文已经有三年多时间。",
+  question:
+    "그가 매일 중국어를 연습하는 목적은 무엇입니까?",
 
-      question:
-        "小刘学习中文多长时间了？",
+  options:[
+    "말하기 실력을 높이기 위해서",
+    "여행을 준비하기 위해서",
+    "친구를 만나기 위해서",
+    "한자를 쓰기 위해서"
+  ],
 
-      options:[
-        "一年",
-        "两年",
-        "三年多",
-        "五年"
-      ],
-
-      answer:2
-    },
-
-
-    {
-      sentence:
-        "最近他觉得自己的口语进步比较慢。",
-
-      question:
-        "小刘觉得哪方面进步比较慢？",
-
-      options:[
-        "写作",
-        "听力",
-        "口语",
-        "阅读"
-      ],
-
-      answer:2
-    },
-
-
-    {
-      sentence:
-        "为了提高口语水平他每天练习中文。",
-
-      question:
-        "小刘每天练习中文是为了什么？",
-
-      options:[
-        "提高口语水平",
-        "准备旅行",
-        "认识朋友",
-        "学习写字"
-      ],
-
-      answer:0,
-
-      isTarget:true
-    },
-
-
-    {
-      sentence:
-        "遇到不会说的内容他就马上记下来。",
-
-      question:
-        "遇到不会说的内容时他怎么做？",
-
-      options:[
-        "马上记下来",
-        "不再练习",
-        "直接回家",
-        "问家人"
-      ],
-
-      answer:0
-    },
-
-
-    {
-      sentence:
-        "坚持一段时间以后他说得自然多了。",
-
-      question:
-        "坚持练习以后他的口语怎么样？",
-
-      options:[
-        "更差了",
-        "自然多了",
-        "没有变化",
-        "完全不会说"
-      ],
-
-      answer:1
-    }
-
-  ]
+  answer:0
 },
 
 
+{
+  id:"COL02",
+  domain:"collocation",
+  feature:"collocation_frequency",
 
-/* =====================================================
-   R08
-   연어 - 결합강도
-===================================================== */
+  sentence:
+    "老师建议我们通过阅读来扩大自己的词汇量。",
+
+  question:
+    "선생님이 어휘량을 늘리기 위해 제안한 방법은 무엇입니까?",
+
+  options:[
+    "독서",
+    "운동",
+    "여행",
+    "쇼핑"
+  ],
+
+  answer:0
+},
+
 
 {
-  id:"R08",
+  id:"COL03",
   domain:"collocation",
   feature:"association_strength",
 
-  items:[
+  sentence:
+    "医生认为适量运动能够有效增强身体素质。",
 
-    {
-      sentence:
-        "最近越来越多人开始注意身体健康。",
+  question:
+    "적당한 운동은 어떤 효과가 있다고 했습니까?",
 
-      question:
-        "最近越来越多人开始注意什么？",
+  options:[
+    "체력을 향상시킨다.",
+    "수면을 줄인다.",
+    "스트레스를 늘린다.",
+    "식욕을 없앤다."
+  ],
 
-      options:[
-        "身体健康",
-        "工作时间",
-        "旅行计划",
-        "学习成绩"
-      ],
-
-      answer:0
-    },
-
-
-    {
-      sentence:
-        "很多人下班以后会安排时间去运动。",
-
-      question:
-        "很多人下班以后会做什么？",
-
-      options:[
-        "加班",
-        "运动",
-        "购物",
-        "睡觉"
-      ],
-
-      answer:1
-    },
-
-
-    {
-      sentence:
-        "医生认为适量运动可以增强身体素质。",
-
-      question:
-        "适量运动可以怎样？",
-
-      options:[
-        "增强身体素质",
-        "减少睡眠",
-        "增加压力",
-        "降低食欲"
-      ],
-
-      answer:0,
-
-      isTarget:true
-    },
-
-
-    {
-      sentence:
-        "合理饮食和充足睡眠对健康也重要。",
-
-      question:
-        "除了运动什么对健康也重要？",
-
-      options:[
-        "饮食和睡眠",
-        "工作和购物",
-        "旅行和学习",
-        "手机和电脑"
-      ],
-
-      answer:0
-    },
-
-
-    {
-      sentence:
-        "长期保持这些习惯会让身体更健康。",
-
-      question:
-        "长期保持这些习惯会有什么结果？",
-
-      options:[
-        "身体更健康",
-        "身体更累",
-        "工作更多",
-        "睡眠减少"
-      ],
-
-      answer:0
-    }
-
-  ]
+  answer:0
 },
 
 
+{
+  id:"COL04",
+  domain:"collocation",
+  feature:"association_strength",
 
-/* =====================================================
-   R09
-   연어 - 관습적 연어
-===================================================== */
+  sentence:
+    "每天保证充足睡眠有助于保持良好的精神状态。",
+
+  question:
+    "충분한 수면은 무엇을 유지하는 데 도움이 됩니까?",
+
+  options:[
+    "좋은 정신 상태",
+    "많은 업무",
+    "빠른 교통",
+    "높은 물가"
+  ],
+
+  answer:0
+},
+
 
 {
-  id:"R09",
+  id:"COL05",
+  domain:"collocation",
+  feature:"association_strength",
+
+  sentence:
+    "长期坚持阅读可以逐渐培养良好的学习习惯。",
+
+  question:
+    "꾸준한 독서는 무엇을 기르는 데 도움이 됩니까?",
+
+  options:[
+    "좋은 학습 습관",
+    "더 긴 수면 시간",
+    "새로운 직장",
+    "여행 계획"
+  ],
+
+  answer:0
+},
+
+
+{
+  id:"COL06",
   domain:"collocation",
   feature:"conventional_collocation",
 
-  items:[
+  sentence:
+    "他希望通过实际工作慢慢积累更多经验。",
 
-    {
-      sentence:
-        "小周今年大学毕业以后开始找工作。",
+  question:
+    "그가 실제 업무를 통해 얻고자 하는 것은 무엇입니까?",
 
-      question:
-        "小周大学毕业以后开始做什么？",
+  options:[
+    "경험",
+    "휴가",
+    "집",
+    "무료 여행"
+  ],
 
-      options:[
-        "旅行",
-        "找工作",
-        "继续上学",
-        "回家休息"
-      ],
-
-      answer:1
-    },
+  answer:0
+},
 
 
-    {
-      sentence:
-        "他向几家公司发送了自己的资料。",
+{
+  id:"COL07",
+  domain:"collocation",
+  feature:"conventional_collocation",
 
-      question:
-        "小周把资料发给了谁？",
+  sentence:
+    "遇到困难的时候我们应该主动寻求别人的帮助。",
 
-      options:[
-        "朋友",
-        "学校",
-        "几家公司",
-        "家人"
-      ],
+  question:
+    "어려움을 만났을 때 어떻게 해야 한다고 했습니까?",
 
-      answer:2
-    },
+  options:[
+    "다른 사람의 도움을 적극적으로 구한다.",
+    "문제를 무시한다.",
+    "혼자 집에 간다.",
+    "일을 모두 그만둔다."
+  ],
 
-
-    {
-      sentence:
-        "他希望通过实际工作慢慢积累经验。",
-
-      question:
-        "小周希望通过工作做什么？",
-
-      options:[
-        "积累经验",
-        "获得假期",
-        "买房子",
-        "免费旅行"
-      ],
-
-      answer:0,
-
-      isTarget:true
-    },
-
-
-    {
-      sentence:
-        "因此找工作时他不只考虑工资多少。",
-
-      question:
-        "找工作时小周只考虑工资吗？",
-
-      options:[
-        "是",
-        "不是"
-      ],
-
-      answer:1
-    },
-
-
-    {
-      sentence:
-        "他认为学习和发展的机会也很重要。",
-
-      question:
-        "小周还认为什么很重要？",
-
-      options:[
-        "学习和发展的机会",
-        "公司距离",
-        "免费午餐",
-        "办公室大小"
-      ],
-
-      answer:0
-    }
-
-  ]
+  answer:0
 },
 
 
 
 /* =====================================================
-   R10
-   담화 - 응집성
+   DISCOURSE 24-30
 ===================================================== */
 
 {
-  id:"R10",
+  id:"DIS01",
   domain:"discourse",
   feature:"cohesion",
 
-  items:[
+  sentence:
+    "商店不再免费提供塑料袋因此很多顾客开始自带购物袋。",
 
-    {
-      sentence:
-        "现在很多城市开始重视塑料垃圾问题。",
+  question:
+    "고객들이 장바구니를 직접 가져오기 시작한 이유는 무엇입니까?",
 
-      question:
-        "很多城市开始重视什么问题？",
+  options:[
+    "상점에서 비닐봉지를 무료로 제공하지 않아서",
+    "상품 가격이 내려가서",
+    "상점이 문을 닫아서",
+    "장바구니를 무료로 받아서"
+  ],
 
-      options:[
-        "交通问题",
-        "塑料垃圾问题",
-        "住房问题",
-        "学习问题"
-      ],
-
-      answer:1
-    },
-
-
-    {
-      sentence:
-        "一些商店不再免费给顾客提供塑料袋。",
-
-      question:
-        "一些商店不再免费提供什么？",
-
-      options:[
-        "购物车",
-        "塑料袋",
-        "商品",
-        "饮料"
-      ],
-
-      answer:1
-    },
-
-
-    {
-      sentence:
-        "因此越来越多顾客开始自己带购物袋。",
-
-      question:
-        "越来越多顾客开始做什么？",
-
-      options:[
-        "自己带购物袋",
-        "不去商店",
-        "多买塑料袋",
-        "网上购物"
-      ],
-
-      answer:0
-    },
-
-
-    {
-      sentence:
-        "这种做法虽然不便却能减少塑料垃圾。",
-
-      question:
-        "“这种做法”有什么好处？",
-
-      options:[
-        "增加塑料垃圾",
-        "减少塑料垃圾",
-        "增加商品价格",
-        "减少顾客"
-      ],
-
-      answer:1,
-
-      isTarget:true
-    },
-
-
-    {
-      sentence:
-        "时间久了不少人也慢慢习惯这种变化。",
-
-      question:
-        "时间久了人们怎么样？",
-
-      options:[
-        "慢慢习惯了",
-        "更加反对",
-        "停止购物",
-        "开始生气"
-      ],
-
-      answer:0
-    }
-
-  ]
+  answer:0
 },
 
 
+{
+  id:"DIS02",
+  domain:"discourse",
+  feature:"cohesion",
 
-/* =====================================================
-   R11
-   담화 - 정보 밀도
-===================================================== */
+  sentence:
+    "他每天坚持运动因此最近身体状况明显好了很多。",
+
+  question:
+    "최근 그의 건강 상태가 좋아진 이유는 무엇입니까?",
+
+  options:[
+    "매일 꾸준히 운동해서",
+    "운동을 그만두어서",
+    "일을 더 많이 해서",
+    "늦게 자서"
+  ],
+
+  answer:0
+},
+
 
 {
-  id:"R11",
+  id:"DIS03",
   domain:"discourse",
   feature:"information_density",
 
-  items:[
+  sentence:
+    "使用人工智能时学生要判断信息来源内容以及结果是否可靠。",
 
-    {
-      sentence:
-        "现在很多大学生会用人工智能学习。",
+  question:
+    "학생이 인공지능을 사용할 때 확인해야 할 것은 무엇입니까?",
 
-      question:
-        "很多大学生现在会用什么学习？",
+  options:[
+    "정보의 출처·내용·결과의 신뢰성",
+    "휴대전화의 가격",
+    "교실의 위치",
+    "수업 시작 시간"
+  ],
 
-      options:[
-        "人工智能",
-        "电视",
-        "游戏",
-        "报纸"
-      ],
-
-      answer:0
-    },
-
-
-    {
-      sentence:
-        "这些工具能帮助学生查找整理资料。",
-
-      question:
-        "这些工具能帮助学生做什么？",
-
-      options:[
-        "查找整理资料",
-        "安排旅行",
-        "购买商品",
-        "寻找工作"
-      ],
-
-      answer:0
-    },
-
-
-    {
-      sentence:
-        "使用时学生要判断来源内容是否可靠。",
-
-      question:
-        "使用这些工具时学生要判断什么？",
-
-      options:[
-        "信息是否可靠",
-        "手机价格",
-        "学校位置",
-        "学习时间"
-      ],
-
-      answer:0,
-
-      isTarget:true
-    },
-
-
-    {
-      sentence:
-        "如果完全依靠它思考机会可能减少。",
-
-      question:
-        "完全依靠人工智能可能有什么影响？",
-
-      options:[
-        "思考机会减少",
-        "学习资料减少",
-        "网络更快",
-        "考试更容易"
-      ],
-
-      answer:0
-    },
-
-
-    {
-      sentence:
-        "因此合理使用比经常使用更加重要。",
-
-      question:
-        "作者认为什么更重要？",
-
-      options:[
-        "合理使用",
-        "经常使用",
-        "完全不用",
-        "每天使用"
-      ],
-
-      answer:0
-    }
-
-  ]
+  answer:0
 },
 
 
+{
+  id:"DIS04",
+  domain:"discourse",
+  feature:"information_density",
 
-/* =====================================================
-   R12
-   담화 - 인과·지시
-===================================================== */
+  sentence:
+    "选择工作时他同时考虑工资发展机会工作地点和个人兴趣。",
+
+  question:
+    "그가 직장을 선택할 때 고려하지 않은 것은 무엇입니까?",
+
+  options:[
+    "날씨",
+    "급여",
+    "발전 기회",
+    "개인적 관심"
+  ],
+
+  answer:0
+},
+
 
 {
-  id:"R12",
+  id:"DIS05",
+  domain:"discourse",
+  feature:"information_density",
+
+  sentence:
+    "旅行前我们需要确认天气交通住宿以及景点开放时间。",
+
+  question:
+    "여행 전에 확인해야 할 내용으로 언급되지 않은 것은 무엇입니까?",
+
+  options:[
+    "학교 성적",
+    "날씨",
+    "교통",
+    "숙박"
+  ],
+
+  answer:0
+},
+
+
+{
+  id:"DIS06",
   domain:"discourse",
   feature:"causal_reference",
 
-  items:[
+  sentence:
+    "第二天上课总是没有精神因此他决定以后每天早点睡觉。",
 
-    {
-      sentence:
-        "小李以前每天晚上都睡得比较晚。",
+  question:
+    "그가 매일 일찍 자기로 결정한 이유는 무엇입니까?",
 
-      question:
-        "小李以前晚上睡得怎么样？",
+  options:[
+    "다음 날 수업 시간에 기운이 없어서",
+    "운동 시간이 부족해서",
+    "학교가 멀어서",
+    "친구가 권해서"
+  ],
 
-      options:[
-        "比较早",
-        "比较晚",
-        "时间固定",
-        "不睡觉"
-      ],
-
-      answer:1
-    },
+  answer:0
+},
 
 
-    {
-      sentence:
-        "第二天上课时他常常觉得没有精神。",
+{
+  id:"DIS07",
+  domain:"discourse",
+  feature:"causal_reference",
 
-      question:
-        "第二天上课时小李感觉怎么样？",
+  sentence:
+    "由于地铁发生故障他只好临时改坐公交车去公司。",
 
-      options:[
-        "很有精神",
-        "没有精神",
-        "非常开心",
-        "特别生气"
-      ],
+  question:
+    "그가 버스로 바꿔 탄 이유는 무엇입니까?",
 
-      answer:1
-    },
+  options:[
+    "지하철에 문제가 생겨서",
+    "버스가 무료여서",
+    "회사에서 요구해서",
+    "친구를 만나기 위해서"
+  ],
 
-
-    {
-      sentence:
-        "为了改变这种情况他决定每天早睡。",
-
-      question:
-        "为了改变这种情况小李决定怎么做？",
-
-      options:[
-        "每天早睡",
-        "每天运动",
-        "停止上课",
-        "晚上工作"
-      ],
-
-      answer:0,
-
-      isTarget:true
-    },
-
-
-    {
-      sentence:
-        "坚持几个星期以后他白天不太累了。",
-
-      question:
-        "几个星期以后小李白天怎么样？",
-
-      options:[
-        "更累了",
-        "不太累了",
-        "不能上课",
-        "睡得更晚"
-      ],
-
-      answer:1
-    },
-
-
-    {
-      sentence:
-        "因此他决定继续保持现在的生活习惯。",
-
-      question:
-        "最后小李决定怎么做？",
-
-      options:[
-        "继续保持现在的习惯",
-        "重新晚睡",
-        "停止学习",
-        "每天熬夜"
-      ],
-
-      answer:0
-    }
-
-  ]
+  answer:0
 }
 
 ];
@@ -1931,56 +1493,139 @@ const passages = [
    STATE
 ===================================================== */
 
-let passageIndex = 0;
+let mode =
+  "practice";
 
-let itemIndex = 0;
 
-let sentenceStartTime = 0;
+let practiceIndex =
+  0;
 
-let questionStartTime = 0;
 
-let selectedAnswer = null;
+let mainIndex =
+  0;
 
-let results = [];
 
-let readingActive = false;
+let randomizedMainItems =
+  [];
+
+
+let currentItem =
+  null;
+
+
+let sentenceStartTime =
+  0;
+
+
+let questionStartTime =
+  0;
+
+
+let selectedAnswer =
+  null;
+
+
+let readingActive =
+  false;
+
+
+let mainResults =
+  [];
+
+
+/* 연습 데이터는 연구 결과에 넣지 않음 */
+
+let practiceResults =
+  [];
 
 
 
 /* =====================================================
-   START
+   SHUFFLE
+   Fisher-Yates
 ===================================================== */
 
-function startExperiment(){
+function shuffle(
+  array
+){
+
+  const copy =
+    [...array];
+
+
+  for(
+    let i =
+      copy.length - 1;
+
+    i > 0;
+
+    i--
+  ){
+
+    const j =
+      Math.floor(
+        Math.random()
+        *
+        (i + 1)
+      );
+
+
+    [
+      copy[i],
+      copy[j]
+    ]
+    =
+    [
+      copy[j],
+      copy[i]
+    ];
+
+  }
+
+
+  return copy;
+
+}
+
+
+
+/* =====================================================
+   START PRACTICE
+===================================================== */
+
+function startPractice(){
 
   localStorage.removeItem(
     "readingExperimentData"
   );
 
 
-  passageIndex = 0;
+  practiceIndex =
+    0;
 
-  itemIndex = 0;
 
-  selectedAnswer = null;
+  mainIndex =
+    0;
 
-  results = [];
+
+  practiceResults =
+    [];
+
+
+  mainResults =
+    [];
+
+
+  mode =
+    "practice";
 
 
   document
     .getElementById(
       "introScreen"
     )
-    .classList.add(
-      "hidden"
-    );
-
-
-  document
-    .getElementById(
-      "readingScreen"
-    )
-    .classList.remove(
+    .classList
+    .add(
       "hidden"
     );
 
@@ -1989,33 +1634,126 @@ function startExperiment(){
     .getElementById(
       "progressWrap"
     )
-    .classList.remove(
+    .classList
+    .remove(
       "hidden"
     );
 
 
-  showSentence();
+  showCurrentReading();
 
 }
 
 
 
 /* =====================================================
-   SHOW SENTENCE
+   START MAIN
 ===================================================== */
 
-function showSentence(){
+function startMainTest(){
 
-  const passage =
-    passages[
-      passageIndex
+  mode =
+    "main";
+
+
+  mainIndex =
+    0;
+
+
+  /*
+    검사 시작 시 한 번만 무작위화
+  */
+
+  randomizedMainItems =
+    shuffle(
+      mainItems
+    );
+
+
+  document
+    .getElementById(
+      "practiceCompleteScreen"
+    )
+    .classList
+    .add(
+      "hidden"
+    );
+
+
+  document
+    .getElementById(
+      "progressWrap"
+    )
+    .classList
+    .remove(
+      "hidden"
+    );
+
+
+  showCurrentReading();
+
+}
+
+
+
+/* =====================================================
+   GET CURRENT ITEM
+===================================================== */
+
+function getCurrentItem(){
+
+  if(
+    mode ===
+    "practice"
+  ){
+
+    return practiceItems[
+      practiceIndex
     ];
 
+  }
 
-  const item =
-    passage.items[
-      itemIndex
-    ];
+
+  return randomizedMainItems[
+    mainIndex
+  ];
+
+}
+
+
+
+/* =====================================================
+   SHOW READING
+===================================================== */
+
+function showCurrentReading(){
+
+  currentItem =
+    getCurrentItem();
+
+
+  selectedAnswer =
+    null;
+
+
+  document
+    .getElementById(
+      "questionScreen"
+    )
+    .classList
+    .add(
+      "hidden"
+    );
+
+
+  document
+    .getElementById(
+      "readingScreen"
+    )
+    .classList
+    .remove(
+      "hidden"
+    );
 
 
   document
@@ -2023,25 +1761,65 @@ function showSentence(){
       "sentenceText"
     )
     .textContent =
-      item.sentence;
+      currentItem.sentence;
 
 
-  document
-    .getElementById(
-      "passageProgress"
-    )
-    .textContent =
+  if(
+    mode ===
+    "practice"
+  ){
 
-      `읽기 ${passageIndex + 1} / ${passages.length}`;
+    document
+      .getElementById(
+        "readingLabel"
+      )
+      .textContent =
+        `연습문제 ${practiceIndex + 1}`;
 
 
-  document
-    .getElementById(
-      "stepProgress"
-    )
-    .textContent =
+    document
+      .getElementById(
+        "progressLeft"
+      )
+      .textContent =
+        `연습 ${practiceIndex + 1} / ${practiceItems.length}`;
 
-      `문장 ${itemIndex + 1} / ${passage.items.length}`;
+
+    document
+      .getElementById(
+        "progressRight"
+      )
+      .textContent =
+        "문장 읽기";
+
+  }
+
+  else{
+
+    document
+      .getElementById(
+        "readingLabel"
+      )
+      .textContent =
+        `읽기 수행 ${mainIndex + 1}`;
+
+
+    document
+      .getElementById(
+        "progressLeft"
+      )
+      .textContent =
+        `실전 ${mainIndex + 1} / ${randomizedMainItems.length}`;
+
+
+    document
+      .getElementById(
+        "progressRight"
+      )
+      .textContent =
+        "문장 읽기";
+
+  }
 
 
   updateProgress();
@@ -2051,22 +1829,25 @@ function showSentence(){
     performance.now();
 
 
-  readingActive = true;
+  readingActive =
+    true;
 
 }
 
 
 
 /* =====================================================
-   FINISH SENTENCE
+   FINISH READING
 ===================================================== */
 
-function finishSentence(){
+function finishReading(){
 
   if(
     !readingActive
   ){
+
     return;
+
   }
 
 
@@ -2074,63 +1855,24 @@ function finishSentence(){
     false;
 
 
-  const passage =
-    passages[
-      passageIndex
-    ];
-
-
-  const item =
-    passage.items[
-      itemIndex
-    ];
-
-
   const readingTime =
     Math.round(
+
       performance.now()
       -
       sentenceStartTime
+
     );
 
 
   /*
-    문장 읽기 데이터 저장
+    임시 읽기값을 currentItem과 함께 기억
   */
 
-  results.push({
+  currentItem
+    ._readingTimeMs =
+      readingTime;
 
-    type:
-      "sentence",
-
-    passageId:
-      passage.id,
-
-    domain:
-      passage.domain,
-
-    feature:
-      passage.feature,
-
-    sentenceIndex:
-      itemIndex + 1,
-
-    isTarget:
-      item.isTarget ===
-      true,
-
-    sentence:
-      item.sentence,
-
-    readingTimeMs:
-      readingTime
-
-  });
-
-
-  /*
-    읽은 즉시 해당 문장 이해도
-  */
 
   showQuestion();
 
@@ -2144,18 +1886,6 @@ function finishSentence(){
 
 function showQuestion(){
 
-  const passage =
-    passages[
-      passageIndex
-    ];
-
-
-  const item =
-    passage.items[
-      itemIndex
-    ];
-
-
   selectedAnswer =
     null;
 
@@ -2164,7 +1894,8 @@ function showQuestion(){
     .getElementById(
       "readingScreen"
     )
-    .classList.add(
+    .classList
+    .add(
       "hidden"
     );
 
@@ -2173,7 +1904,8 @@ function showQuestion(){
     .getElementById(
       "questionScreen"
     )
-    .classList.remove(
+    .classList
+    .remove(
       "hidden"
     );
 
@@ -2183,25 +1915,49 @@ function showQuestion(){
       "questionText"
     )
     .textContent =
-      item.question;
+      currentItem.question;
 
 
-  document
-    .getElementById(
-      "questionSub"
-    )
-    .textContent =
+  if(
+    mode ===
+    "practice"
+  ){
 
-      `읽기 ${passageIndex + 1} · 문장 ${itemIndex + 1} 이해 확인`;
+    document
+      .getElementById(
+        "questionSub"
+      )
+      .textContent =
+        `연습 ${practiceIndex + 1} / ${practiceItems.length} · 내용 확인`;
 
 
-  document
-    .getElementById(
-      "stepProgress"
-    )
-    .textContent =
+    document
+      .getElementById(
+        "progressRight"
+      )
+      .textContent =
+        "내용 확인";
 
-      `이해도 ${itemIndex + 1} / ${passage.items.length}`;
+  }
+
+  else{
+
+    document
+      .getElementById(
+        "questionSub"
+      )
+      .textContent =
+        `실전 ${mainIndex + 1} / ${randomizedMainItems.length} · 내용 확인`;
+
+
+    document
+      .getElementById(
+        "progressRight"
+      )
+      .textContent =
+        "내용 확인";
+
+  }
 
 
   const optionsDiv =
@@ -2214,7 +1970,7 @@ function showQuestion(){
     "";
 
 
-  item.options.forEach(
+  currentItem.options.forEach(
     (option,index)=>{
 
       const button =
@@ -2276,36 +2032,34 @@ function selectAnswer(
     index;
 
 
-  const buttons =
-    document.querySelectorAll(
+  document
+    .querySelectorAll(
       ".option"
+    )
+    .forEach(
+      button=>{
+
+        button
+          .classList
+          .remove(
+            "selected"
+          );
+
+      }
     );
 
 
-  buttons.forEach(
-    button=>{
-
-      button
-        .classList
-        .remove(
-          "selected"
-        );
-
-    }
-  );
-
-
-  const selectedButton =
+  const selected =
     document.querySelector(
       `.option[data-index="${index}"]`
     );
 
 
   if(
-    selectedButton
+    selected
   ){
 
-    selectedButton
+    selected
       .classList
       .add(
         "selected"
@@ -2335,20 +2089,10 @@ function confirmAnswer(){
     selectedAnswer ===
     null
   ){
+
     return;
+
   }
-
-
-  const passage =
-    passages[
-      passageIndex
-    ];
-
-
-  const item =
-    passage.items[
-      itemIndex
-    ];
 
 
   const responseTime =
@@ -2361,93 +2105,131 @@ function confirmAnswer(){
     );
 
 
-  results.push({
-
-    type:
-      "question",
-
-    passageId:
-      passage.id,
-
-    domain:
-      passage.domain,
-
-    feature:
-      passage.feature,
-
-    sentenceIndex:
-      itemIndex + 1,
-
-    isTarget:
-      item.isTarget ===
-      true,
-
-    question:
-      item.question,
-
-    selected:
-      selectedAnswer,
-
-    selectedText:
-      item.options[
-        selectedAnswer
-      ],
-
-    correctAnswer:
-      item.answer,
-
-    correctAnswerText:
-      item.options[
-        item.answer
-      ],
-
-    correct:
-      selectedAnswer ===
-      item.answer,
-
-    responseTimeMs:
-      responseTime
-
-  });
-
-
-  /*
-    다음 문장으로
-  */
-
-  itemIndex++;
+  const correct =
+    selectedAnswer ===
+    currentItem.answer;
 
 
   if(
-    itemIndex <
-    passage.items.length
+    mode ===
+    "practice"
   ){
 
-    document
-      .getElementById(
-        "questionScreen"
-      )
-      .classList.add(
-        "hidden"
-      );
+    practiceResults.push({
+
+      itemId:
+        currentItem.id,
+
+      readingTimeMs:
+        currentItem
+        ._readingTimeMs,
+
+      selected:
+        selectedAnswer,
+
+      correct:
+        correct,
+
+      responseTimeMs:
+        responseTime
+
+    });
 
 
-    document
-      .getElementById(
-        "readingScreen"
-      )
-      .classList.remove(
-        "hidden"
-      );
+    practiceIndex++;
 
 
-    showSentence();
+    if(
+      practiceIndex <
+      practiceItems.length
+    ){
+
+      showCurrentReading();
+
+    }
+
+    else{
+
+      finishPractice();
+
+    }
 
   }
 
   else{
 
-    nextPassage();
+    /*
+      실제 연구 데이터
+
+      domain/feature는 학생 화면에는 표시되지 않음
+    */
+
+    mainResults.push({
+
+      itemId:
+        currentItem.id,
+
+      presentationOrder:
+        mainIndex + 1,
+
+      domain:
+        currentItem.domain,
+
+      feature:
+        currentItem.feature,
+
+      sentence:
+        currentItem.sentence,
+
+      readingTimeMs:
+        currentItem
+        ._readingTimeMs,
+
+      question:
+        currentItem.question,
+
+      selectedIndex:
+        selectedAnswer,
+
+      selectedText:
+        currentItem.options[
+          selectedAnswer
+        ],
+
+      correctAnswerIndex:
+        currentItem.answer,
+
+      correctAnswerText:
+        currentItem.options[
+          currentItem.answer
+        ],
+
+      correct:
+        correct,
+
+      responseTimeMs:
+        responseTime
+
+    });
+
+
+    mainIndex++;
+
+
+    if(
+      mainIndex <
+      randomizedMainItems.length
+    ){
+
+      showCurrentReading();
+
+    }
+
+    else{
+
+      finishMainTest();
+
+    }
 
   }
 
@@ -2456,134 +2238,17 @@ function confirmAnswer(){
 
 
 /* =====================================================
-   NEXT PASSAGE
+   FINISH PRACTICE
 ===================================================== */
 
-function nextPassage(){
-
-  passageIndex++;
-
-  itemIndex = 0;
-
-  selectedAnswer =
-    null;
-
-
-  if(
-    passageIndex <
-    passages.length
-  ){
-
-    document
-      .getElementById(
-        "questionScreen"
-      )
-      .classList.add(
-        "hidden"
-      );
-
-
-    document
-      .getElementById(
-        "readingScreen"
-      )
-      .classList.remove(
-        "hidden"
-      );
-
-
-    showSentence();
-
-  }
-
-  else{
-
-    finishExperiment();
-
-  }
-
-}
-
-
-
-/* =====================================================
-   PROGRESS
-===================================================== */
-
-function updateProgress(){
-
-  const totalItems =
-    passages.reduce(
-      (sum,p)=>
-        sum +
-        p.items.length,
-      0
-    );
-
-
-  let completed =
-    0;
-
-
-  for(
-    let i=0;
-    i<passageIndex;
-    i++
-  ){
-
-    completed +=
-      passages[i]
-      .items
-      .length;
-
-  }
-
-
-  completed +=
-    itemIndex;
-
-
-  const percentage =
-    (
-      completed /
-      totalItems
-    )
-    *
-    100;
-
-
-  document
-    .getElementById(
-      "progress"
-    )
-    .style.width =
-      percentage +
-      "%";
-
-}
-
-
-
-/* =====================================================
-   FINISH
-===================================================== */
-
-function finishExperiment(){
+function finishPractice(){
 
   document
     .getElementById(
       "questionScreen"
     )
-    .classList.add(
-      "hidden"
-    );
-
-
-  document
-    .getElementById(
-      "readingScreen"
-    )
-    .classList.add(
+    .classList
+    .add(
       "hidden"
     );
 
@@ -2592,7 +2257,57 @@ function finishExperiment(){
     .getElementById(
       "progressWrap"
     )
-    .classList.add(
+    .classList
+    .add(
+      "hidden"
+    );
+
+
+  document
+    .getElementById(
+      "practiceCompleteScreen"
+    )
+    .classList
+    .remove(
+      "hidden"
+    );
+
+}
+
+
+
+/* =====================================================
+   FINISH MAIN
+===================================================== */
+
+function finishMainTest(){
+
+  document
+    .getElementById(
+      "questionScreen"
+    )
+    .classList
+    .add(
+      "hidden"
+    );
+
+
+  document
+    .getElementById(
+      "readingScreen"
+    )
+    .classList
+    .add(
+      "hidden"
+    );
+
+
+  document
+    .getElementById(
+      "progressWrap"
+    )
+    .classList
+    .add(
       "hidden"
     );
 
@@ -2601,32 +2316,35 @@ function finishExperiment(){
     .getElementById(
       "completeScreen"
     )
-    .classList.remove(
+    .classList
+    .remove(
       "hidden"
     );
 
 
-  const sentenceResults =
-    results.filter(
-      r =>
-        r.type ===
-        "sentence"
-    );
-
-
-  const questionResults =
-    results.filter(
-      r =>
-        r.type ===
-        "question"
-    );
-
-
   const correctCount =
-    questionResults.filter(
-      q =>
-        q.correct
+    mainResults.filter(
+      item =>
+        item.correct
     ).length;
+
+
+  /*
+    실제 제시 순서도 별도 저장
+  */
+
+  const presentationSequence =
+    randomizedMainItems.map(
+      (item,index)=>({
+
+        order:
+          index + 1,
+
+        itemId:
+          item.id
+
+      })
+    );
 
 
   const experimentData = {
@@ -2634,34 +2352,46 @@ function finishExperiment(){
     experiment:
       "ChineseFlowLab_Reading_Pilot",
 
-    design:
-      "sentence_by_sentence_comprehension",
+    version:
+      "practice2_main30_randomized",
 
     completedAt:
       new Date().toISOString(),
 
-    totalPassages:
-      passages.length,
+    practiceCount:
+      practiceItems.length,
 
-    totalSentences:
-      sentenceResults.length,
-
-    totalQuestions:
-      questionResults.length,
+    mainItemCount:
+      mainResults.length,
 
     correctCount:
       correctCount,
 
     accuracy:
-      questionResults.length
+      mainResults.length
       ?
       correctCount /
-      questionResults.length
+      mainResults.length
       :
       0,
 
+    presentationSequence:
+      presentationSequence,
+
+    /*
+      연습은 별도 보관하지만
+      인지 프로파일 계산에서는 제외
+    */
+
+    practiceResults:
+      practiceResults,
+
+    /*
+      실제 분석용
+    */
+
     results:
-      results
+      mainResults
 
   };
 
@@ -2687,6 +2417,58 @@ function finishExperiment(){
 
 
 /* =====================================================
+   PROGRESS
+===================================================== */
+
+function updateProgress(){
+
+  let percentage =
+    0;
+
+
+  if(
+    mode ===
+    "practice"
+  ){
+
+    percentage =
+      (
+        practiceIndex
+        /
+        practiceItems.length
+      )
+      *
+      100;
+
+  }
+
+  else{
+
+    percentage =
+      (
+        mainIndex
+        /
+        randomizedMainItems.length
+      )
+      *
+      100;
+
+  }
+
+
+  document
+    .getElementById(
+      "progress"
+    )
+    .style.width =
+      percentage +
+      "%";
+
+}
+
+
+
+/* =====================================================
    PROFILE
 ===================================================== */
 
@@ -2700,7 +2482,7 @@ function goToProfile(){
 
 
 /* =====================================================
-   SPACE
+   SPACE KEY
 ===================================================== */
 
 document.addEventListener(
@@ -2708,8 +2490,8 @@ document.addEventListener(
   function(event){
 
     /*
-      Space는 읽기 화면에서만 작동.
-      이해도 문제에서는 사용하지 않음.
+      Space는 중국어 읽기 화면에서만 작동
+      확인 문제에서는 작동하지 않음
     */
 
     if(
@@ -2728,7 +2510,7 @@ document.addEventListener(
 
       event.preventDefault();
 
-      finishSentence();
+      finishReading();
 
     }
 
@@ -2739,5 +2521,3 @@ document.addEventListener(
 
 </body>
 </html>
-
-    
