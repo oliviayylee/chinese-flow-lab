@@ -39,9 +39,9 @@ body{
 }
 
 
-/* =========================================
+/* =========================
    HERO
-========================================= */
+========================= */
 
 .hero{
   background:linear-gradient(
@@ -79,12 +79,12 @@ body{
 }
 
 
-/* =========================================
+/* =========================
    MAIN
-========================================= */
+========================= */
 
 .container{
-  max-width:1120px;
+  max-width:1140px;
   margin:auto;
   padding:55px 7%;
 }
@@ -107,9 +107,9 @@ body{
 }
 
 
-/* =========================================
+/* =========================
    SUMMARY
-========================================= */
+========================= */
 
 .summary-grid{
   display:grid;
@@ -119,12 +119,9 @@ body{
 
 .summary-card{
   background:white;
-
   border:1px solid var(--border);
   border-radius:22px;
-
   padding:27px 20px;
-
   text-align:center;
 
   box-shadow:
@@ -145,9 +142,48 @@ body{
 }
 
 
-/* =========================================
-   DOMAIN PROFILE
-========================================= */
+/* =========================
+   BASELINE
+========================= */
+
+.baseline-card{
+  background:white;
+  border:1px solid var(--border);
+  border-radius:24px;
+
+  padding:28px;
+
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:20px;
+
+  box-shadow:
+    0 8px 22px
+    rgba(24,61,117,.05);
+}
+
+.baseline-item{
+  background:#F7FAFE;
+  border-radius:17px;
+  padding:20px;
+}
+
+.baseline-label{
+  color:var(--subtext);
+  font-size:14px;
+  margin-bottom:8px;
+}
+
+.baseline-value{
+  color:var(--primary);
+  font-size:24px;
+  font-weight:800;
+}
+
+
+/* =========================
+   PROFILE
+========================= */
 
 .profile-card{
   background:white;
@@ -235,13 +271,13 @@ body{
   color:var(--subtext);
 
   font-size:14px;
-  line-height:1.7;
+  line-height:1.75;
 }
 
 
-/* =========================================
+/* =========================
    XAI
-========================================= */
+========================= */
 
 .xai-card{
   background:#EEF5FF;
@@ -271,9 +307,9 @@ body{
 }
 
 
-/* =========================================
-   DOMAIN DETAIL CARDS
-========================================= */
+/* =========================
+   DETAIL
+========================= */
 
 .detail-grid{
   display:grid;
@@ -308,9 +344,9 @@ body{
 }
 
 
-/* =========================================
-   FEATURE TABLE
-========================================= */
+/* =========================
+   TABLE
+========================= */
 
 .table-card{
   background:white;
@@ -333,7 +369,6 @@ body{
   border-bottom:1px solid var(--border);
 
   text-align:left;
-
   font-size:14px;
 }
 
@@ -351,9 +386,9 @@ body{
 }
 
 
-/* =========================================
+/* =========================
    NOTICE
-========================================= */
+========================= */
 
 .info-box{
   padding:23px 26px;
@@ -370,9 +405,9 @@ body{
 }
 
 
-/* =========================================
+/* =========================
    BUTTONS
-========================================= */
+========================= */
 
 .actions{
   display:flex;
@@ -418,9 +453,9 @@ body{
 }
 
 
-/* =========================================
+/* =========================
    EMPTY
-========================================= */
+========================= */
 
 .empty{
   background:white;
@@ -438,22 +473,20 @@ body{
 }
 
 
-/* =========================================
+/* =========================
    FOOTER
-========================================= */
+========================= */
 
 footer{
   text-align:center;
-
   padding:40px;
-
   color:#7C8999;
 }
 
 
-/* =========================================
+/* =========================
    MOBILE
-========================================= */
+========================= */
 
 @media(max-width:900px){
 
@@ -462,6 +495,10 @@ footer{
   }
 
   .detail-grid{
+    grid-template-columns:1fr;
+  }
+
+  .baseline-card{
     grid-template-columns:1fr;
   }
 
@@ -490,7 +527,7 @@ footer{
   }
 
   .result-table{
-    min-width:720px;
+    min-width:760px;
   }
 
 }
@@ -502,9 +539,9 @@ footer{
 <body>
 
 
-<!-- =========================================
+<!-- =========================
      HERO
-========================================= -->
+========================= -->
 
 <section class="hero">
 
@@ -517,9 +554,9 @@ footer{
   </h1>
 
   <p>
-    실전 읽기 30문항에서 수집된 읽기시간,
-    이해도 및 문항 반응시간을 바탕으로
-    통사·어휘·연어·담화 영역의 상대적인 읽기 처리 특성을 분석합니다.
+    읽기 수행에서 수집된 읽기시간과 이해도,
+    문항 반응시간을 바탕으로
+    통사·어휘·연어·담화 영역의 상대적인 처리 특성을 분석합니다.
   </p>
 
 </section>
@@ -529,9 +566,9 @@ footer{
 <main class="container">
 
 
-<!-- =========================================
+<!-- =========================
      EMPTY
-========================================= -->
+========================= -->
 
 <section
   id="emptyScreen"
@@ -558,16 +595,12 @@ footer{
 
 
 
-<!-- =========================================
-     RESULT SCREEN
-========================================= -->
-
 <div id="resultScreen">
 
 
-<!-- =========================================
+<!-- =========================
      SUMMARY
-========================================= -->
+========================= -->
 
 <section class="section">
 
@@ -575,8 +608,8 @@ footer{
     읽기 수행 요약
   </h2>
 
-  <div class="summary-grid">
 
+  <div class="summary-grid">
 
     <div class="summary-card">
 
@@ -587,9 +620,7 @@ footer{
       <div
         class="summary-value"
         id="avgReadingTime">
-
         -
-
       </div>
 
     </div>
@@ -604,9 +635,7 @@ footer{
       <div
         class="summary-value"
         id="accuracy">
-
         -
-
       </div>
 
     </div>
@@ -621,9 +650,7 @@ footer{
       <div
         class="summary-value"
         id="avgResponseTime">
-
         -
-
       </div>
 
     </div>
@@ -638,13 +665,10 @@ footer{
       <div
         class="summary-value"
         id="completedItems">
-
         -
-
       </div>
 
     </div>
-
 
   </div>
 
@@ -652,9 +676,62 @@ footer{
 
 
 
-<!-- =========================================
-     DOMAIN PROFILE
-========================================= -->
+<!-- =========================
+     BASELINE
+========================= -->
+
+<section class="section">
+
+  <h2 class="section-title">
+    개인 읽기 기준선
+  </h2>
+
+  <p class="section-desc">
+    고빈도 어휘와 일반적인 문장 구조로 구성된
+    Baseline/Filler 문항을 이용하여
+    개인의 기본 읽기 수행 수준을 확인합니다.
+  </p>
+
+  <div class="baseline-card">
+
+    <div class="baseline-item">
+
+      <div class="baseline-label">
+        Baseline 평균 읽기시간
+      </div>
+
+      <div
+        class="baseline-value"
+        id="baselineReading">
+        -
+      </div>
+
+    </div>
+
+
+    <div class="baseline-item">
+
+      <div class="baseline-label">
+        Baseline 이해도
+      </div>
+
+      <div
+        class="baseline-value"
+        id="baselineAccuracy">
+        -
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- =========================
+     PROFILE
+========================= -->
 
 <section class="section">
 
@@ -663,8 +740,8 @@ footer{
   </h2>
 
   <p class="section-desc">
-    각 영역의 읽기시간, 이해도 및 문항 반응시간을 종합하여
-    이번 수행에서 나타난 상대적인 처리 부담을 보여줍니다.
+    Baseline 읽기 수행과 비교하여
+    각 언어 영역에서 나타나는 상대적인 처리 부담을 보여줍니다.
   </p>
 
   <div
@@ -676,9 +753,9 @@ footer{
 
 
 
-<!-- =========================================
+<!-- =========================
      XAI
-========================================= -->
+========================= -->
 
 <section class="section">
 
@@ -701,9 +778,9 @@ footer{
 
 
 
-<!-- =========================================
-     DOMAIN DETAIL
-========================================= -->
+<!-- =========================
+     DETAILS
+========================= -->
 
 <section class="section">
 
@@ -720,9 +797,9 @@ footer{
 
 
 
-<!-- =========================================
-     FEATURE DETAIL
-========================================= -->
+<!-- =========================
+     FEATURE TABLE
+========================= -->
 
 <section class="section">
 
@@ -731,45 +808,24 @@ footer{
   </h2>
 
   <p class="section-desc">
-    각 영역 안에서 어떤 언어 요소에서 상대적으로 긴 읽기시간이나
-    낮은 이해도가 나타났는지 확인할 수 있습니다.
+    각 영역 안에서 어떤 세부 언어 요소에서
+    상대적으로 긴 읽기시간 또는 낮은 이해도가 나타났는지 확인할 수 있습니다.
   </p>
-
 
   <div class="table-card">
 
     <table class="result-table">
 
       <thead>
-
         <tr>
-
-          <th>
-            영역
-          </th>
-
-          <th>
-            세부 요소
-          </th>
-
-          <th>
-            문항 수
-          </th>
-
-          <th>
-            평균 읽기시간
-          </th>
-
-          <th>
-            이해도
-          </th>
-
-          <th>
-            평균 반응시간
-          </th>
-
+          <th>영역</th>
+          <th>세부 요소</th>
+          <th>문항 수</th>
+          <th>평균 읽기시간</th>
+          <th>Baseline 대비</th>
+          <th>이해도</th>
+          <th>평균 반응시간</th>
         </tr>
-
       </thead>
 
       <tbody id="featureTableBody">
@@ -783,20 +839,18 @@ footer{
 
 
 
-<!-- =========================================
+<!-- =========================
      NOTICE
-========================================= -->
+========================= -->
 
 <section class="section">
 
   <div class="info-box">
 
-    본 결과의 ‘높음·보통·낮음’은
-    실전 읽기 30문항에서 나타난
-    <strong>개인 내 상대적인 처리 패턴</strong>을 설명하기 위한
-    파일럿용 프로파일입니다.
-    현재 단계에서는 표준화된 중국어 능력 점수나
-    확정적인 인지 진단 결과를 의미하지 않습니다.
+    본 프로파일은 이번 읽기 수행에서 나타난
+    <strong>개인 내 상대적 처리 특성</strong>을 보여주기 위한
+    파일럿용 결과입니다.
+    ‘높음·보통·낮음’은 표준화된 진단 점수나 절대적인 중국어 능력 수준을 의미하지 않습니다.
 
   </div>
 
@@ -804,9 +858,9 @@ footer{
 
 
 
-<!-- =========================================
-     ACTIONS
-========================================= -->
+<!-- =========================
+     BUTTONS
+========================= -->
 
 <div class="actions">
 
@@ -818,7 +872,6 @@ footer{
 
   </a>
 
-
   <a
     href="reading-test.html"
     class="btn btn-light">
@@ -826,7 +879,6 @@ footer{
     읽기 다시 수행하기
 
   </a>
-
 
   <a
     href="reading-research.html"
@@ -844,7 +896,6 @@ footer{
 </main>
 
 
-
 <footer>
   Chinese Flow Lab © 2026
 </footer>
@@ -859,17 +910,13 @@ footer{
 
 const domainNames = {
 
-  syntax:
-    "통사",
+  syntax:"통사",
 
-  vocabulary:
-    "어휘",
+  vocabulary:"어휘",
 
-  collocation:
-    "연어",
+  collocation:"연어",
 
-  discourse:
-    "담화"
+  discourse:"담화"
 
 };
 
@@ -877,13 +924,19 @@ const domainNames = {
 const featureNames = {
 
   relative_clause:
-    "관계절",
+    "관계절(RC)",
 
   ba_construction:
-    "把자문",
+    "把자문(BA)",
 
   bei_construction:
-    "被자문",
+    "被자문(BEI)",
+
+  serial_verb:
+    "연동문(SVC)",
+
+  pivotal:
+    "겸어문(PIV)",
 
   low_frequency:
     "저빈도 어휘",
@@ -891,26 +944,32 @@ const featureNames = {
   semantic_transparency:
     "의미투명도",
 
-  contextual_inference:
-    "문맥적 의미 추론",
+  collocation_1:
+    "연어 후보 1",
 
-  collocation_frequency:
-    "연어 빈도",
+  collocation_2:
+    "연어 후보 2",
 
-  association_strength:
-    "연어 결합강도",
+  collocation_3:
+    "연어 후보 3",
 
-  conventional_collocation:
-    "관습적 연어 결합",
+  collocation_4:
+    "연어 후보 4",
 
-  cohesion:
-    "담화 응집성",
+  contrast:
+    "역접 관계",
+
+  causal:
+    "인과 관계",
+
+  information_integration:
+    "정보 통합",
 
   information_density:
     "정보 밀도",
 
-  causal_reference:
-    "인과·지시 관계"
+  baseline:
+    "Baseline/Filler"
 
 };
 
@@ -926,14 +985,11 @@ const savedData =
   );
 
 
-if(
-  !savedData
-){
+if(!savedData){
 
   showEmpty();
 
-}
-else{
+}else{
 
   try{
 
@@ -942,19 +998,18 @@ else{
         savedData
       );
 
-
     createProfile(
       experiment
     );
 
   }
+
   catch(error){
 
     console.error(
-      "데이터 읽기 오류:",
+      "데이터 로드 오류:",
       error
     );
-
 
     showEmpty();
 
@@ -998,10 +1053,8 @@ function createProfile(
 ){
 
   /*
-    현재 reading-test.html에서는
-    실전 30문항만 results에 저장됨.
-
-    practiceResults는 분석에서 제외.
+    연습 결과는 제외.
+    실전 30문항만 사용.
   */
 
   const results =
@@ -1019,38 +1072,36 @@ function createProfile(
   }
 
 
-  /* =========================================
+  /* =========================
      OVERALL SUMMARY
-  ========================================= */
+  ========================= */
 
-  const avgReadingMs =
+  const avgReading =
     average(
       results.map(
-        r =>
-          r.readingTimeMs
+        item =>
+          item.readingTimeMs
       )
     );
 
 
-  const avgResponseMs =
+  const avgResponse =
     average(
       results.map(
-        r =>
-          r.responseTimeMs
+        item =>
+          item.responseTimeMs
       )
     );
 
 
   const correctCount =
     results.filter(
-      r =>
-        r.correct ===
-        true
+      item =>
+        item.correct
     ).length;
 
 
   const accuracy =
-
     correctCount
     /
     results.length;
@@ -1061,9 +1112,8 @@ function createProfile(
       "avgReadingTime"
     )
     .textContent =
-
       formatSeconds(
-        avgReadingMs
+        avgReading
       );
 
 
@@ -1072,7 +1122,6 @@ function createProfile(
       "accuracy"
     )
     .textContent =
-
       formatPercent(
         accuracy
       );
@@ -1083,9 +1132,8 @@ function createProfile(
       "avgResponseTime"
     )
     .textContent =
-
       formatSeconds(
-        avgResponseMs
+        avgResponse
       );
 
 
@@ -1094,15 +1142,81 @@ function createProfile(
       "completedItems"
     )
     .textContent =
-
       results.length
       +
       " / 30";
 
 
-  /* =========================================
-     DOMAIN DATA
-  ========================================= */
+  /* =========================
+     BASELINE
+  ========================= */
+
+  const baselineItems =
+    results.filter(
+      item =>
+        item.domain ===
+        "baseline"
+    );
+
+
+  const baselineReading =
+    average(
+      baselineItems.map(
+        item =>
+          item.readingTimeMs
+      )
+    );
+
+
+  const baselineResponse =
+    average(
+      baselineItems.map(
+        item =>
+          item.responseTimeMs
+      )
+    );
+
+
+  const baselineCorrect =
+    baselineItems.filter(
+      item =>
+        item.correct
+    ).length;
+
+
+  const baselineAccuracy =
+    baselineItems.length
+    ?
+    baselineCorrect
+    /
+    baselineItems.length
+    :
+    0;
+
+
+  document
+    .getElementById(
+      "baselineReading"
+    )
+    .textContent =
+      formatSeconds(
+        baselineReading
+      );
+
+
+  document
+    .getElementById(
+      "baselineAccuracy"
+    )
+    .textContent =
+      formatPercent(
+        baselineAccuracy
+      );
+
+
+  /* =========================
+     TARGET DOMAINS
+  ========================= */
 
   const domains = [
 
@@ -1117,8 +1231,7 @@ function createProfile(
   ];
 
 
-  const domainData =
-    {};
+  const domainData = {};
 
 
   domains.forEach(
@@ -1126,18 +1239,96 @@ function createProfile(
 
       const items =
         results.filter(
-          r =>
-            r.domain ===
+          item =>
+            item.domain ===
             domain
+        );
+
+
+      const avgReadingMs =
+        average(
+          items.map(
+            item =>
+              item.readingTimeMs
+          )
+        );
+
+
+      const avgResponseMs =
+        average(
+          items.map(
+            item =>
+              item.responseTimeMs
+          )
         );
 
 
       const correct =
         items.filter(
-          r =>
-            r.correct ===
-            true
+          item =>
+            item.correct
         ).length;
+
+
+      const domainAccuracy =
+        items.length
+        ?
+        correct /
+        items.length
+        :
+        0;
+
+
+      /*
+        Baseline 대비 읽기시간 증가율
+
+        예:
+        baseline = 3초
+        syntax = 4.2초
+
+        증가율 = 40%
+      */
+
+      const readingIncrease =
+
+        baselineReading > 0
+
+        ?
+
+        (
+          avgReadingMs
+          -
+          baselineReading
+        )
+        /
+        baselineReading
+
+        :
+
+        0;
+
+
+      /*
+        Baseline 대비 문항 반응시간 증가율
+      */
+
+      const responseIncrease =
+
+        baselineResponse > 0
+
+        ?
+
+        (
+          avgResponseMs
+          -
+          baselineResponse
+        )
+        /
+        baselineResponse
+
+        :
+
+        0;
 
 
       domainData[
@@ -1151,34 +1342,19 @@ function createProfile(
           items.length,
 
         avgReadingMs:
-          average(
-            items.map(
-              r =>
-                r.readingTimeMs
-            )
-          ),
+          avgReadingMs,
 
         avgResponseMs:
-          average(
-            items.map(
-              r =>
-                r.responseTimeMs
-            )
-          ),
+          avgResponseMs,
 
         accuracy:
+          domainAccuracy,
 
-          items.length
+        readingIncrease:
+          readingIncrease,
 
-          ?
-
-          correct
-          /
-          items.length
-
-          :
-
-          0,
+        responseIncrease:
+          responseIncrease,
 
         burdenScore:
           0
@@ -1189,59 +1365,15 @@ function createProfile(
   );
 
 
-  /* =========================================
-     RELATIVE BURDEN
+  /* =========================
+     PILOT BURDEN SCORE
 
-     현재는 파일럿용 상대지표
+     Baseline 대비 읽기 증가 55%
+     이해도 오류율         30%
+     반응시간 증가         15%
 
-     읽기시간       55%
-     이해도 오류율   30%
-     문항 반응시간   15%
-  ========================================= */
-
-
-  const readingTimes =
-    domains.map(
-      domain =>
-        domainData[
-          domain
-        ]
-        .avgReadingMs
-    );
-
-
-  const responseTimes =
-    domains.map(
-      domain =>
-        domainData[
-          domain
-        ]
-        .avgResponseMs
-    );
-
-
-  const minReading =
-    Math.min(
-      ...readingTimes
-    );
-
-
-  const maxReading =
-    Math.max(
-      ...readingTimes
-    );
-
-
-  const minResponse =
-    Math.min(
-      ...responseTimes
-    );
-
-
-  const maxResponse =
-    Math.max(
-      ...responseTimes
-    );
+     프로토타입용.
+  ========================= */
 
 
   domains.forEach(
@@ -1253,32 +1385,30 @@ function createProfile(
         ];
 
 
-      const normalizedReading =
-        normalize(
+      /*
+        음수값은 부담 증가로 보지 않으므로
+        최소 0 처리.
 
-          data.avgReadingMs,
+        100% 이상 증가는 1로 제한.
+      */
 
-          minReading,
-
-          maxReading
-
+      const readingComponent =
+        clamp(
+          data.readingIncrease,
+          0,
+          1
         );
 
 
-      const normalizedResponse =
-        normalize(
-
-          data.avgResponseMs,
-
-          minResponse,
-
-          maxResponse
-
+      const responseComponent =
+        clamp(
+          data.responseIncrease,
+          0,
+          1
         );
 
 
       const errorRate =
-
         1
         -
         data.accuracy;
@@ -1287,7 +1417,7 @@ function createProfile(
       const burden =
 
         (
-          normalizedReading
+          readingComponent
           *
           0.55
         )
@@ -1303,48 +1433,48 @@ function createProfile(
         +
 
         (
-          normalizedResponse
+          responseComponent
           *
           0.15
         );
 
 
       data.burdenScore =
-
         Math.round(
-
-          burden
-          *
+          burden *
           100
-
         );
 
     }
   );
 
 
-  /* =========================================
+  /* =========================
      RENDER
-  ========================================= */
+  ========================= */
 
-  renderDomainProfile(
+  renderProfile(
     domainData
   );
 
 
-  renderDomainDetails(
-    domainData
+  renderDetails(
+    domainData,
+    baselineReading
   );
 
 
   renderFeatureTable(
-    results
+    results,
+    baselineReading
   );
 
 
   renderXAI(
     domainData,
-    results
+    results,
+    baselineReading,
+    baselineAccuracy
   );
 
 }
@@ -1352,10 +1482,10 @@ function createProfile(
 
 
 /* =====================================================
-   DOMAIN PROFILE
+   PROFILE
 ===================================================== */
 
-function renderDomainProfile(
+function renderProfile(
   domainData
 ){
 
@@ -1447,16 +1577,16 @@ function renderDomainProfile(
 
             ·
 
-            이해도
-            ${formatPercent(
-              data.accuracy
+            Baseline 대비
+            ${formatDifference(
+              data.readingIncrease
             )}
 
             ·
 
-            평균 문항 반응시간
-            ${formatSeconds(
-              data.avgResponseMs
+            이해도
+            ${formatPercent(
+              data.accuracy
             )}
 
           </div>
@@ -1477,11 +1607,12 @@ function renderDomainProfile(
 
 
 /* =====================================================
-   DOMAIN DETAILS
+   DETAIL
 ===================================================== */
 
-function renderDomainDetails(
-  domainData
+function renderDetails(
+  domainData,
+  baselineReading
 ){
 
   const container =
@@ -1546,6 +1677,20 @@ function renderDomainDetails(
 
             <br>
 
+            개인 기준선:
+            ${formatSeconds(
+              baselineReading
+            )}
+
+            <br>
+
+            기준선 대비 읽기시간:
+            ${formatDifference(
+              data.readingIncrease
+            )}
+
+            <br>
+
             이해도 정답률:
             ${formatPercent(
               data.accuracy
@@ -1587,7 +1732,8 @@ function renderDomainDetails(
 ===================================================== */
 
 function renderFeatureTable(
-  results
+  results,
+  baselineReading
 ){
 
   const tbody =
@@ -1600,15 +1746,18 @@ function renderFeatureTable(
     "";
 
 
-  /*
-    feature별 그룹 생성
-  */
+  const targetResults =
+    results.filter(
+      item =>
+        item.domain !==
+        "baseline"
+    );
 
-  const grouped =
-    {};
+
+  const grouped = {};
 
 
-  results.forEach(
+  targetResults.forEach(
     item=>{
 
       const key =
@@ -1651,10 +1800,6 @@ function renderFeatureTable(
   );
 
 
-  /*
-    논문에서 보는 영역 순서에 맞게 정렬
-  */
-
   const featureOrder = [
 
     "relative_clause",
@@ -1663,23 +1808,29 @@ function renderFeatureTable(
 
     "bei_construction",
 
+    "serial_verb",
+
+    "pivotal",
+
     "low_frequency",
 
     "semantic_transparency",
 
-    "contextual_inference",
+    "collocation_1",
 
-    "collocation_frequency",
+    "collocation_2",
 
-    "association_strength",
+    "collocation_3",
 
-    "conventional_collocation",
+    "collocation_4",
 
-    "cohesion",
+    "contrast",
 
-    "information_density",
+    "causal",
 
-    "causal_reference"
+    "information_integration",
+
+    "information_density"
 
   ];
 
@@ -1708,7 +1859,25 @@ function renderFeatureTable(
         group.items;
 
 
-      const correctCount =
+      const avgReading =
+        average(
+          items.map(
+            item =>
+              item.readingTimeMs
+          )
+        );
+
+
+      const avgResponse =
+        average(
+          items.map(
+            item =>
+              item.responseTimeMs
+          )
+        );
+
+
+      const correct =
         items.filter(
           item =>
             item.correct
@@ -1716,34 +1885,27 @@ function renderFeatureTable(
 
 
       const accuracy =
-
-        correctCount
-        /
+        correct /
         items.length;
 
 
-      const avgReading =
+      const baselineDifference =
 
-        average(
+        baselineReading > 0
 
-          items.map(
-            item =>
-              item.readingTimeMs
-          )
+        ?
 
-        );
+        (
+          avgReading
+          -
+          baselineReading
+        )
+        /
+        baselineReading
 
+        :
 
-      const avgResponse =
-
-        average(
-
-          items.map(
-            item =>
-              item.responseTimeMs
-          )
-
-        );
+        0;
 
 
       const row =
@@ -1792,6 +1954,15 @@ function renderFeatureTable(
 
         <td>
 
+          ${formatDifference(
+            baselineDifference
+          )}
+
+        </td>
+
+
+        <td>
+
           ${formatPercent(
             accuracy
           )}
@@ -1828,7 +1999,9 @@ function renderFeatureTable(
 
 function renderXAI(
   domainData,
-  results
+  results,
+  baselineReading,
+  baselineAccuracy
 ){
 
   const domains =
@@ -1837,28 +2010,18 @@ function renderXAI(
     );
 
 
-  /*
-    처리 부담 높은 순
-  */
-
   const sortedDomains =
-
     [...domains]
     .sort(
       (a,b)=>
 
-        domainData[
-          b
-        ]
+        domainData[b]
         .burdenScore
 
         -
 
-        domainData[
-          a
-        ]
+        domainData[a]
         .burdenScore
-
     );
 
 
@@ -1877,9 +2040,7 @@ function renderXAI(
 
 
   /*
-    최고 영역 안에서
-    feature별 결과를 구해
-    상대적으로 부담이 큰 세부요소 탐색
+    최고 영역 내 feature별 탐색
   */
 
   const domainItems =
@@ -1926,8 +2087,16 @@ function renderXAI(
     null;
 
 
-  let difficultFeatureScore =
-    -1;
+  let highestFeatureScore =
+    -Infinity;
+
+
+  let difficultReading =
+    0;
+
+
+  let difficultAccuracy =
+    0;
 
 
   Object
@@ -1952,49 +2121,78 @@ function renderXAI(
           );
 
 
-        const accuracy =
-
+        const correct =
           items.filter(
             item =>
               item.correct
-          ).length
+          ).length;
 
-          /
 
+        const accuracy =
+          correct /
           items.length;
 
 
+        const readingIncrease =
+
+          baselineReading > 0
+
+          ?
+
+          (
+            avgReading
+            -
+            baselineReading
+          )
+          /
+          baselineReading
+
+          :
+
+          0;
+
+
         /*
-          해당 영역 안에서만
-          매우 간단한 탐색용 점수
+          세부 요소 탐색용 점수
+          공식 CDI 아님.
         */
 
-        const score =
+        const featureScore =
 
-          avgReading
-          *
-          (
+          clamp(
+            readingIncrease,
+            0,
             1
-            +
-            (
-              1
-              -
-              accuracy
-            )
-          );
+          )
+          *
+          0.7
+
+          +
+
+          (
+            1 -
+            accuracy
+          )
+          *
+          0.3;
 
 
         if(
-          score >
-          difficultFeatureScore
+          featureScore >
+          highestFeatureScore
         ){
 
-          difficultFeatureScore =
-            score;
-
+          highestFeatureScore =
+            featureScore;
 
           difficultFeature =
             feature;
+
+          difficultReading =
+            avgReading;
+
+          difficultAccuracy =
+            accuracy;
 
         }
 
@@ -2002,64 +2200,22 @@ function renderXAI(
     );
 
 
-  /*
-    세부 feature 정보
-  */
-
-  const difficultItems =
-
-    difficultFeature
-
-    ?
-
-    featureGroups[
-      difficultFeature
-    ]
-
-    :
-
-    [];
-
-
-  const difficultReading =
-    average(
-      difficultItems.map(
-        item =>
-          item.readingTimeMs
-      )
-    );
-
-
-  const difficultAccuracy =
-
-    difficultItems.length
-
-    ?
-
-    difficultItems.filter(
-      item =>
-        item.correct
-    ).length
-    /
-    difficultItems.length
-
-    :
-
-    0;
-
-
   let text = `
 
     이번 읽기 수행에서는
     <strong>${domainNames[highestDomain]} 영역</strong>에서
-    다른 영역에 비해 상대적으로 높은 처리 부담이 나타났습니다.
+    상대적으로 가장 높은 처리 부담이 나타났습니다.
 
-    해당 영역의 평균 읽기시간은
-    <strong>${formatSeconds(highData.avgReadingMs)}</strong>,
-    이해도 정답률은
-    <strong>${formatPercent(highData.accuracy)}</strong>,
-    평균 문항 반응시간은
-    <strong>${formatSeconds(highData.avgResponseMs)}</strong>입니다.
+    개인의 일반 문장 읽기 기준선은
+    <strong>${formatSeconds(baselineReading)}</strong>였으며,
+    ${domainNames[highestDomain]} 영역의 평균 읽기시간은
+    <strong>${formatSeconds(highData.avgReadingMs)}</strong>로 나타났습니다.
+
+    이는 기준선과 비교했을 때
+    <strong>${formatDifference(highData.readingIncrease)}</strong> 수준의 차이입니다.
+
+    해당 영역의 이해도 정답률은
+    <strong>${formatPercent(highData.accuracy)}</strong>입니다.
 
   `;
 
@@ -2072,9 +2228,9 @@ function renderXAI(
 
       세부적으로는
       <strong>${featureNames[difficultFeature]}</strong> 관련 문항에서
-      상대적으로 높은 부담이 관찰되었습니다.
+      상대적으로 높은 처리 부담이 나타났습니다.
 
-      해당 문항들의 평균 읽기시간은
+      해당 문항의 평균 읽기시간은
       <strong>${formatSeconds(difficultReading)}</strong>,
       이해도 정답률은
       <strong>${formatPercent(difficultAccuracy)}</strong>입니다.
@@ -2089,22 +2245,20 @@ function renderXAI(
 
       text += `
 
-        이해도는 비교적 안정적으로 유지되었으나
-        처리시간이 길게 나타난 경우,
-        해당 언어 요소를 이해하는 데 실패했다기보다
-        의미를 처리하는 과정에서 상대적으로 더 많은 시간이
-        필요했을 가능성이 있습니다.
+        이해도는 비교적 안정적으로 유지되었으므로,
+        해당 요소를 이해하지 못했다기보다
+        의미를 처리하는 데 상대적으로 더 많은 시간이 필요했을 가능성이 있습니다.
 
       `;
 
     }
+
     else{
 
       text += `
 
-        읽기시간뿐 아니라 이해도에서도 상대적으로 낮은 수행이 나타나
-        해당 언어 요소가 이번 읽기에서
-        취약 요인으로 작용했을 가능성이 있습니다.
+        읽기시간뿐 아니라 이해도에서도 상대적으로 낮은 수행이 나타나,
+        해당 언어 요소가 이번 읽기에서 취약 요인으로 작용했을 가능성이 있습니다.
 
       `;
 
@@ -2130,9 +2284,9 @@ function renderXAI(
 
   text += `
 
-    이러한 결과를 바탕으로 이후 개인맞춤형 읽기 지원에서는
-    상대적으로 부담이 높게 나타난 영역과 세부 언어 요소를 우선적으로 반영하여
-    읽기 자료와 설명 및 연습 활동을 제공할 수 있습니다.
+    이후 개인맞춤형 읽기 지원에서는
+    이러한 결과를 바탕으로 상대적으로 부담이 높게 나타난 영역과
+    세부 언어 요소를 중심으로 읽기 자료와 설명 및 연습 활동을 제공할 수 있습니다.
 
   `;
 
@@ -2156,13 +2310,9 @@ function getBurdenLevel(
   score
 ){
 
-  /*
-    파일럿 프로토타입 기준.
-    절대적 진단 기준이 아님.
-  */
-
   if(
-    score >= 65
+    score >=
+    60
   ){
 
     return{
@@ -2179,7 +2329,8 @@ function getBurdenLevel(
 
 
   if(
-    score >= 35
+    score >=
+    30
   ){
 
     return{
@@ -2241,7 +2392,7 @@ function average(
   }
 
 
-  return (
+  return(
 
     clean.reduce(
       (sum,value)=>
@@ -2259,49 +2410,18 @@ function average(
 
 
 
-function normalize(
+function clamp(
   value,
   min,
   max
 ){
 
-  if(
-    !Number.isFinite(
-      value
-    )
-  ){
-
-    return 0;
-
-  }
-
-
-  if(
-    max ===
-    min
-  ){
-
-    return 0;
-
-  }
-
-
-  return (
-
-    value
-    -
-    min
-
-  )
-
-  /
-
-  (
-
+  return Math.min(
+    Math.max(
+      value,
+      min
+    ),
     max
-    -
-    min
-
   );
 
 }
@@ -2328,7 +2448,7 @@ function formatSeconds(
   }
 
 
-  return (
+  return(
 
     milliseconds
     /
@@ -2362,11 +2482,10 @@ function formatPercent(
   }
 
 
-  return (
+  return(
 
     Math.round(
-      value
-      *
+      value *
       100
     )
 
@@ -2378,9 +2497,65 @@ function formatPercent(
 
 }
 
+
+
+function formatDifference(
+  value
+){
+
+  if(
+    !Number.isFinite(
+      value
+    )
+  ){
+
+    return "-";
+
+  }
+
+
+  const percent =
+    Math.round(
+      value *
+      100
+    );
+
+
+  if(
+    percent >
+    0
+  ){
+
+    return(
+      "+"
+      +
+      percent
+      +
+      "%"
+    );
+
+  }
+
+
+  if(
+    percent <
+    0
+  ){
+
+    return(
+      percent
+      +
+      "%"
+    );
+
+  }
+
+
+  return "0%";
+
+}
+
 </script>
 
 </body>
 </html>
-
-
