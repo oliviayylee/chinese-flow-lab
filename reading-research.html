@@ -739,6 +739,9 @@ footer{
 }
 
 </style>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
 </head>
 
 
@@ -1209,6 +1212,23 @@ footer{
 <script>
 
 /* =====================================================
+   SUPABASE
+===================================================== */
+
+const SUPABASE_URL =
+  "https://seusxaghpoaxjmlmzrgf.supabase.co";
+
+const SUPABASE_KEY =
+  "sb_publishable_ng-wxySHurKZzYaptvZcoQ_CmTb4dQk";
+
+const supabaseClient =
+  window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_KEY
+  );
+
+
+/* =====================================================
    STORAGE KEYS
 ===================================================== */
 
@@ -1250,12 +1270,11 @@ document.addEventListener(
 );
 
 
-
 /* =====================================================
    SAVE PARTICIPANT
 ===================================================== */
 
-function saveParticipant(){
+async function saveParticipant(){
 
   const input =
     document.getElementById(
@@ -1308,6 +1327,48 @@ function saveParticipant(){
   }
 
 
+  /*
+    Supabase participants 테이블에 참여자 ID 저장.
+    동일 participant_code가 이미 있으면 새 행을 만들지 않고 통과.
+  */
+
+  const {
+    error
+  } =
+    await supabaseClient
+      .from(
+        "participants"
+      )
+      .upsert(
+        {
+          participant_code:
+            participantId
+        },
+        {
+          onConflict:
+            "participant_code",
+          ignoreDuplicates:
+            true
+        }
+      );
+
+
+  if(error){
+
+    console.error(
+      "Supabase participant save error:",
+      error
+    );
+
+    alert(
+      "참여자 정보를 서버에 저장하지 못했습니다. 잠시 후 다시 시도해 주세요."
+    );
+
+    return false;
+
+  }
+
+
   localStorage.setItem(
     PARTICIPANT_KEY,
     participantId
@@ -1326,7 +1387,6 @@ function saveParticipant(){
   return true;
 
 }
-
 
 
 /* =====================================================
@@ -1363,12 +1423,11 @@ function showParticipantStatus(
 }
 
 
-
 /* =====================================================
    GET PARTICIPANT
 ===================================================== */
 
-function getParticipant(){
+async function getParticipant(){
 
   const input =
     document.getElementById(
@@ -1390,7 +1449,7 @@ function getParticipant(){
 
   /*
     입력창을 변경한 경우
-    새 ID를 저장하도록 함
+    새 ID를 Supabase와 localStorage에 저장
   */
 
   if(
@@ -1400,12 +1459,13 @@ function getParticipant(){
   ){
 
     const saved =
-      saveParticipant();
+      await saveParticipant();
 
 
     if(!saved){
 
       return null;
+
     }
 
 
@@ -1419,6 +1479,33 @@ function getParticipant(){
   if(savedId){
 
     return savedId;
+
+  }
+
+
+  /*
+    입력은 되어 있지만
+    아직 참여자 확인을 누르지 않은 경우에도
+    저장 후 다음 페이지로 이동 가능
+  */
+
+  if(typedId){
+
+    const saved =
+      await saveParticipant();
+
+
+    if(!saved){
+
+      return null;
+
+    }
+
+
+    return localStorage.getItem(
+      PARTICIPANT_KEY
+    );
+
   }
 
 
@@ -1434,28 +1521,29 @@ function getParticipant(){
 }
 
 
-
 /* =====================================================
    OPEN PAGE
 ===================================================== */
 
-function openPage(
+async function openPage(
   page
 ){
 
   const participantId =
-    getParticipant();
+    await getParticipant();
 
 
   if(!participantId){
 
     return;
+
   }
 
 
   /*
     participant ID를 URL에도 전달.
-    다음 단계에서 DB 연결 시 사용 가능.
+    reading-test / cognitive-profile /
+    xai-report / ai-reading에서 동일 ID 사용.
   */
 
   const target =
@@ -1477,7 +1565,6 @@ function openPage(
     target;
 
 }
-
 
 
 /* =====================================================
@@ -1518,3 +1605,7 @@ function escapeHTML(
 </body>
 </html>
  
+
+
+
+
