@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>XAI Report | Chinese Flow Lab</title>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <style>
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Arial,"Noto Sans KR",sans-serif;background:#f5f7fb;color:#172554}
+    header{background:linear-gradient(90deg,#173b78,#0878b8);color:white;padding:28px 8%}
+    header h1{margin:0 0 6px;font-size:28px}
+    header p{margin:0;opacity:.9}
+    main{max-width:1100px;margin:36px auto;padding:0 20px 60px}
+    .card{background:white;border:1px solid #dbe3ef;border-radius:22px;padding:28px;margin-bottom:22px;box-shadow:0 8px 28px rgba(15,23,42,.06)}
+    h2{margin-top:0;color:#173b78}
+    .meta{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:20px}
+    .pill{background:#edf4ff;border-radius:999px;padding:8px 13px;font-size:14px}
+    .summary{font-size:17px;line-height:1.85}
+    .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+    .domain{border:1px solid #dbe3ef;border-radius:18px;padding:20px}
+    .domain h3{margin:0 0 14px}
+    .metric{display:flex;justify-content:space-between;border-bottom:1px solid #eef2f7;padding:8px 0}
+    .metric:last-child{border-bottom:0}
+    .explain{background:#f8fafc;border-left:5px solid #1d4ed8;padding:18px 20px;border-radius:12px;line-height:1.8}
+    .weak{font-weight:700;color:#b42318}
+    .stable{font-weight:700;color:#067647}
+    .buttons{display:flex;gap:12px;flex-wrap:wrap;margin-top:25px}
+    button,a.btn{border:0;border-radius:999px;padding:13px 22px;font-weight:700;cursor:pointer;text-decoration:none}
+    .primary{background:#173b78;color:white}
+    .secondary{background:#eef2f7;color:#173b78}
+    #status{padding:16px;border-radius:12px;background:#fff7ed;color:#9a3412;margin-bottom:20px}
+    @media(max-width:760px){.grid{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+<header>
+  <h1>Chinese Flow Lab</h1>
+  <p>XAI 기반 읽기 수행 원인 설명</p>
+</header>
+<main>
+  <div id="status">참여자 데이터를 불러오는 중입니다.</div>
+
+  <section class="card">
+    <h2>XAI 분석 결과</h2>
+    <div class="meta">
+      <span class="pill" id="participantPill">Participant -</span>
+      <span class="pill" id="sessionPill">Session -</span>
+    </div>
+    <div class="summary" id="mainSummary">분석 중입니다.</div>
+  </section>
+
+  <section class="card">
+    <h2>영역별 근거</h2>
+    <div class="grid" id="domainGrid"></div>
+  </section>
+
+  <section class="card">
+    <h2>왜 이런 결과가 나타났을까?</h2>
+    <div class="explain" id="xaiExplanation">분석 중입니다.</div>
+  </section>
+
+  <section class="card">
+    <h2>해석 시 유의사항</h2>
+    <p style="line-height:1.8;margin-bottom:0">
+      이 설명은 해당 회차의 읽기시간, 이해도 정확도, 문항 반응시간을 개인 Baseline과 비교하여 생성한
+      규칙 기반 XAI 결과입니다. 단일 회차 결과만으로 학습자의 고정된 능력을 판단하지 않으며,
+      반복 측정에서 누적되는 수행 패턴과 함께 해석하는 것을 권장합니다.
+    </p>
+    <div class="buttons">
+      <a class="btn primary" id="profileBtn" href="cognitive-profile.html">인지 프로파일로 돌아가기</a>
+      <a class="btn secondary" href="reading-research.html">Reading Research로 돌아가기</a>
+    </div>
+  </section>
+</main>
+
+<script>
+const SUPABASE_URL = "https://seusxaghpoaxjmlmzrgf.supabase.co";
+const SUPABASE_KEY = "sb_publishable_ng-wxySHurKZzYaptvZcoQ_CmTb4dQk";
+const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+const params = new URLSearchParams(location.search);
+const participant = params.get("participant");
+const session = params.get("session");
+
+document.getElementById("participantPill").textContent = "Participant " + (participant || "-");
+document.getElementById("sessionPill").textContent = "Session " + (session || "-");
+document.getElementById("profileBtn").href =
+  `cognitive-profile.html?participant=${encodeURIComponent(participant || "")}&session=${encodeURIComponent(session || "")}`;
+
+const domainNames = {
+  syntax:"통사",
+  lexical:"어휘",
+  collocation:"연어",
+  discourse:"담화"
+};
+
+function mean(arr){
+  const xs = arr.filter(v => Number.isFinite(Number(v))).map(Number);
+  return xs.length ? xs.reduce((a,b)=>a+b,0)/xs.length : 0;
+}
+function pct(n){ return Math.round(n*100) + "%"; }
+function ms(n){ return Math.round(n) + " ms"; }
+
+async function load(){
+  if(!participant || !session){
+    showError("participant 또는 session 정보가 URL에 없습니다.");
+    return;
+  }
+
+  const { data, error } = await supabaseClient
+    .from("reading_results")
+    .select("*")
+    .eq("participant_code", participant)
+    .eq("session_id", session);
+
+  if(error){
+    showError("Supabase에서 읽기 결과를 불러오지 못했습니다: " + error.message);
+    return;
+  }
+  if(!data || !data.length){
+    showError("해당 참여자/세션의 읽기 결과가 없습니다.");
+    return;
+  }
+
+  document.getElementById("status").style.display="none";
+
+  const baselineRows = data.filter(r =>
+    String(r.domain || "").toLowerCase()==="baseline" ||
+    String(r.feature || "").toLowerCase()==="baseline"
+  );
+  const baselineRT = mean(baselineRows.map(r=>r.reading_time_ms));
+  const baseline = baselineRT || mean(data.map(r=>r.reading_time_ms));
+
+  const domains = ["syntax","lexical","collocation","discourse"];
+  const stats = domains.map(domain=>{
+    const rows = data.filter(r=>String(r.domain||"").toLowerCase()===domain);
+    const reading = mean(rows.map(r=>r.reading_time_ms));
+    const accuracy = rows.length ? mean(rows.map(r=>Number(r.correct||0))) : 0;
+    const response = mean(rows.map(r=>r.response_time_ms));
+    const ratio = baseline ? reading / baseline : 1;
+
+    const featureMap = {};
+    rows.forEach(r=>{
+      const f = r.feature || r.subfeature || r.item_type || "세부 특성";
+      (featureMap[f] ||= []).push(r);
+    });
+    const features = Object.entries(featureMap).map(([name,rs])=>({
+      name,
+      reading:mean(rs.map(r=>r.reading_time_ms)),
+      accuracy:mean(rs.map(r=>Number(r.correct||0)))
+    })).sort((a,b)=>b.reading-a.reading);
+
+    return {domain, rows, reading, accuracy, response, ratio, features};
+  }).filter(s=>s.rows.length);
+
+  if(!stats.length){
+    showError("영역별 분석에 필요한 domain 값이 없습니다.");
+    return;
+  }
+
+  const weakest = [...stats].sort((a,b)=>{
+    const scoreA=(a.ratio-1)*2+(1-a.accuracy);
+    const scoreB=(b.ratio-1)*2+(1-b.accuracy);
+    return scoreB-scoreA;
+  })[0];
+
+  const strongest = [...stats].sort((a,b)=>{
+    const scoreA=Math.abs(a.ratio-1)+(1-a.accuracy);
+    const scoreB=Math.abs(b.ratio-1)+(1-b.accuracy);
+    return scoreA-scoreB;
+  })[0];
+
+  document.getElementById("mainSummary").innerHTML =
+    `이 회차에서는 <span class="weak">${domainNames[weakest.domain]} 영역</span>에서 상대적으로 높은 처리 부담이 관찰되었습니다. `+
+    `평균 읽기시간은 개인 Baseline의 <b>${weakest.ratio.toFixed(2)}배</b>, 이해도 정확도는 <b>${pct(weakest.accuracy)}</b>였습니다. `+
+    `반면 <span class="stable">${domainNames[strongest.domain]} 영역</span>은 이번 회차에서 상대적으로 안정적인 처리 양상을 보였습니다.`;
+
+  const grid=document.getElementById("domainGrid");
+  grid.innerHTML="";
+  stats.forEach(s=>{
+    const topFeature=s.features[0];
+    const div=document.createElement("div");
+    div.className="domain";
+    div.innerHTML=`
+      <h3>${domainNames[s.domain]}</h3>
+      <div class="metric"><span>평균 읽기시간</span><b>${ms(s.reading)}</b></div>
+      <div class="metric"><span>Baseline 대비</span><b>${s.ratio.toFixed(2)}배</b></div>
+      <div class="metric"><span>이해도 정확도</span><b>${pct(s.accuracy)}</b></div>
+      <div class="metric"><span>평균 문항 반응시간</span><b>${ms(s.response)}</b></div>
+      ${topFeature ? `<p style="margin:15px 0 0;line-height:1.65"><b>주요 근거:</b> ${topFeature.name} 문항의 평균 읽기시간 ${ms(topFeature.reading)}, 정확도 ${pct(topFeature.accuracy)}</p>`:""}
+    `;
+    grid.appendChild(div);
+  });
+
+  const wf=weakest.features[0];
+  let reason =
+    `<b>핵심 판단 근거</b><br>`+
+    `① ${domainNames[weakest.domain]} 영역의 읽기시간이 개인 Baseline보다 ${Math.round((weakest.ratio-1)*100)}% `+
+    `${weakest.ratio>=1 ? "길었습니다" : "짧았습니다"}.<br>`+
+    `② 같은 영역의 이해도 정확도는 ${pct(weakest.accuracy)}였습니다.<br>`+
+    `③ 평균 문항 반응시간은 ${ms(weakest.response)}였습니다.`;
+
+  if(wf){
+    reason += `<br>④ 세부 특성 중 <b>${wf.name}</b>에서 상대적으로 긴 읽기시간(${ms(wf.reading)})이 관찰되어 이 영역의 처리 부담을 높인 주요 후보로 판단됩니다.`;
+  }
+
+  if(weakest.ratio>1.15 && weakest.accuracy>=0.8){
+    reason += `<br><br><b>해석:</b> 정확도는 유지했지만 더 많은 처리시간을 사용한 패턴입니다. 즉, 이해 실패보다는 정확한 해석을 위해 추가적인 인지 자원을 투입한 <b>속도–정확도 보상 패턴</b>으로 볼 수 있습니다.`;
+  } else if(weakest.accuracy<0.8){
+    reason += `<br><br><b>해석:</b> 처리시간 증가와 정확도 저하가 함께 나타났기 때문에 해당 영역의 처리 자동성이 충분하지 않거나 세부 특성에 대한 이해 부담이 존재할 가능성이 있습니다.`;
+  } else {
+    reason += `<br><br><b>해석:</b> 이번 회차에서는 큰 정확도 손실 없이 비교적 안정적으로 처리했으나, 반복 측정을 통해 동일한 양상이 지속되는지 확인할 필요가 있습니다.`;
+  }
+
+  document.getElementById("xaiExplanation").innerHTML=reason;
+}
+
+function showError(msg){
+  const s=document.getElementById("status");
+  s.textContent=msg;
+  s.style.background="#fef2f2";
+  s.style.color="#b42318";
+}
+
+load();
+</script>
+</body>
+</html>
