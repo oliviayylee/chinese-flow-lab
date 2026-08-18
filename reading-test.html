@@ -325,6 +325,7 @@ body{
 }
 
 </style>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 
 <body>
@@ -484,7 +485,9 @@ body{
     아래 버튼을 눌러 자신의 읽기 결과를 확인할 수 있습니다.
   </p>
 
-  <button class="btn" onclick="goToProfile()">
+  <div id="saveStatus" style="margin:18px 0;color:var(--subtext);font-size:14px;line-height:1.7;"></div>
+
+  <button class="btn" id="profileBtn" onclick="goToProfile()" disabled>
     나의 읽기 결과 확인하기
   </button>
 
@@ -493,6 +496,197 @@ body{
 </main>
 
 <script>
+
+/* =====================================================
+   SUPABASE
+===================================================== */
+
+const SUPABASE_URL =
+  "https://seusxaghpoaxjmlmzrgf.supabase.co";
+
+const SUPABASE_KEY =
+  "sb_publishable_ng-wxySHurKZzYaptvZcoQ_CmTb4dQk";
+
+const supabaseClient =
+  window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_KEY
+  );
+
+const PARTICIPANT_KEY =
+  "cflParticipantId";
+
+let participantCode = null;
+let participantUuid = null;
+let currentSessionId = null;
+let mainStartedAt = null;
+
+
+/* =====================================================
+   PARTICIPANT
+===================================================== */
+
+function getParticipantCode(){
+
+  const params =
+    new URLSearchParams(
+      window.location.search
+    );
+
+  const fromUrl =
+    params.get("participant");
+
+  const fromStorage =
+    localStorage.getItem(
+      PARTICIPANT_KEY
+    );
+
+  const code =
+    (fromUrl || fromStorage || "")
+      .trim()
+      .toUpperCase();
+
+  return code || null;
+}
+
+
+async function resolveParticipant(){
+
+  participantCode =
+    getParticipantCode();
+
+  if(!participantCode){
+
+    alert(
+      "참여자 ID를 확인할 수 없습니다. Reading Research 페이지에서 참여자 ID를 먼저 확인해 주세요."
+    );
+
+    window.location.href =
+      "reading-research.html";
+
+    return false;
+  }
+
+
+  localStorage.setItem(
+    PARTICIPANT_KEY,
+    participantCode
+  );
+
+
+  const {
+    data,
+    error
+  } =
+    await supabaseClient
+      .from("participants")
+      .select("id, participant_code")
+      .eq(
+        "participant_code",
+        participantCode
+      )
+      .maybeSingle();
+
+
+  if(error){
+
+    console.error(
+      "Participant lookup error:",
+      error
+    );
+
+    alert(
+      "참여자 정보를 불러오지 못했습니다. Supabase의 participants SELECT 정책을 확인해 주세요."
+    );
+
+    return false;
+  }
+
+
+  if(!data){
+
+    /*
+      Reading Research 페이지를 거치지 않고
+      직접 Reading Test에 들어온 경우를 대비해
+      참여자 행을 한 번 생성한 뒤 다시 조회한다.
+    */
+
+    const {
+      error: insertError
+    } =
+      await supabaseClient
+        .from("participants")
+        .insert({
+          participant_code:
+            participantCode
+        });
+
+
+    if(
+      insertError
+      &&
+      insertError.code !== "23505"
+    ){
+
+      console.error(
+        "Participant insert error:",
+        insertError
+      );
+
+      alert(
+        "참여자 정보를 저장하지 못했습니다."
+      );
+
+      return false;
+    }
+
+
+    const {
+      data: retryData,
+      error: retryError
+    } =
+      await supabaseClient
+        .from("participants")
+        .select("id, participant_code")
+        .eq(
+          "participant_code",
+          participantCode
+        )
+        .maybeSingle();
+
+
+    if(
+      retryError
+      ||
+      !retryData
+    ){
+
+      console.error(
+        "Participant retry lookup error:",
+        retryError
+      );
+
+      alert(
+        "참여자 정보를 확인하지 못했습니다."
+      );
+
+      return false;
+    }
+
+
+    participantUuid =
+      retryData.id;
+
+  }else{
+
+    participantUuid =
+      data.id;
+  }
+
+
+  return true;
+}
+
 
 /* =====================================================
    PRACTICE ITEMS
@@ -1309,7 +1503,17 @@ function prepareMainItems(){
    START PRACTICE
 ===================================================== */
 
-function startPractice(){
+async function startPractice(){
+
+  const participantReady =
+    await resolveParticipant();
+
+
+  if(!participantReady){
+
+    return;
+  }
+
 
   localStorage.removeItem(
     "readingExperimentData"
@@ -1330,6 +1534,13 @@ function startPractice(){
 
   mainResults =
     [];
+
+
+  currentSessionId =
+    null;
+
+  mainStartedAt =
+    null;
 
 
   preparePracticeItems();
@@ -1353,13 +1564,41 @@ function startPractice(){
    START MAIN
 ===================================================== */
 
-function startMainTest(){
+async function startMainTest(){
+
+  if(
+    !participantUuid
+  ){
+
+    const participantReady =
+      await resolveParticipant();
+
+
+    if(!participantReady){
+
+      return;
+    }
+  }
+
 
   mode =
     "main";
 
   mainIndex =
     0;
+
+
+  /*
+    세션 UUID는 브라우저에서 먼저 생성한다.
+    실제 reading_sessions 행은 검사가 끝난 뒤
+    평균값과 함께 한 번에 INSERT한다.
+  */
+
+  currentSessionId =
+    crypto.randomUUID();
+
+  mainStartedAt =
+    new Date().toISOString();
 
 
   prepareMainItems();
@@ -1652,7 +1891,7 @@ function selectAnswer(index){
    CONFIRM ANSWER
 ===================================================== */
 
-function confirmAnswer(){
+async function confirmAnswer(){
 
   if(selectedAnswer === null){
     return;
@@ -1791,7 +2030,7 @@ function confirmAnswer(){
 
     }else{
 
-      finishMainTest();
+      await finishMainTest();
     }
   }
 }
@@ -1823,7 +2062,7 @@ function finishPractice(){
    FINISH MAIN TEST
 ===================================================== */
 
-function finishMainTest(){
+async function finishMainTest(){
 
   document
     .getElementById("questionScreen")
@@ -1845,11 +2084,66 @@ function finishMainTest(){
     .classList.remove("hidden");
 
 
+  const saveStatus =
+    document.getElementById(
+      "saveStatus"
+    );
+
+  const profileBtn =
+    document.getElementById(
+      "profileBtn"
+    );
+
+
+  profileBtn.disabled =
+    true;
+
+  saveStatus.textContent =
+    "읽기 수행 결과를 저장하고 있습니다...";
+
+
   const correctCount =
     mainResults.filter(
       item =>
         item.correct
     ).length;
+
+
+  const accuracy =
+    mainResults.length
+    ?
+    correctCount /
+      mainResults.length
+    :
+    0;
+
+
+  const avgReadingTimeMs =
+    mainResults.length
+    ?
+    mainResults.reduce(
+      (sum,item)=>
+        sum + item.readingTimeMs,
+      0
+    )
+    /
+    mainResults.length
+    :
+    0;
+
+
+  const avgResponseTimeMs =
+    mainResults.length
+    ?
+    mainResults.reduce(
+      (sum,item)=>
+        sum + item.responseTimeMs,
+      0
+    )
+    /
+    mainResults.length
+    :
+    0;
 
 
   const baselineResults =
@@ -1894,16 +2188,32 @@ function finishMainTest(){
     );
 
 
+  const completedAt =
+    new Date().toISOString();
+
+
   const experimentData = {
 
     experiment:
       "ChineseFlowLab_Reading_Pilot",
 
     version:
-      "final30_random_item_and_option_order",
+      "final30_random_item_and_option_order_supabase",
+
+    participantCode:
+      participantCode,
+
+    participantUuid:
+      participantUuid,
+
+    sessionId:
+      currentSessionId,
+
+    startedAt:
+      mainStartedAt,
 
     completedAt:
-      new Date().toISOString(),
+      completedAt,
 
     practiceCount:
       randomizedPracticeItems.length,
@@ -1915,40 +2225,32 @@ function finishMainTest(){
       correctCount,
 
     accuracy:
-      mainResults.length
-      ?
-      correctCount /
-      mainResults.length
-      :
-      0,
+      accuracy,
+
+    avgReadingTimeMs:
+      avgReadingTimeMs,
+
+    avgResponseTimeMs:
+      avgResponseTimeMs,
 
     baselineAvgReadingTimeMs:
       baselineAvgReadingTime,
 
-    /*
-      문항 및 정답 위치의 실제 랜덤화 상태
-    */
-
     presentationSequence:
       presentationSequence,
 
-    /*
-      연습 결과:
-      프로파일 계산에서 제외
-    */
-
     practiceResults:
       practiceResults,
-
-    /*
-      실전 30문항 분석 데이터
-    */
 
     results:
       mainResults
 
   };
 
+
+  /*
+    브라우저 localStorage에도 기존 방식대로 보존
+  */
 
   localStorage.setItem(
     "readingExperimentData",
@@ -1958,10 +2260,144 @@ function finishMainTest(){
   );
 
 
+  localStorage.setItem(
+    "cflLatestReadingSessionId",
+    currentSessionId
+  );
+
+
   console.log(
     "Reading Experiment Data:",
     experimentData
   );
+
+
+  /*
+    1. reading_sessions 저장
+  */
+
+  const {
+    error: sessionError
+  } =
+    await supabaseClient
+      .from("reading_sessions")
+      .insert({
+
+        id:
+          currentSessionId,
+
+        participant_id:
+          participantUuid,
+
+        started_at:
+          mainStartedAt,
+
+        completed_at:
+          completedAt,
+
+        accuracy:
+          accuracy,
+
+        avg_reading_time_ms:
+          avgReadingTimeMs,
+
+        avg_response_time_ms:
+          avgResponseTimeMs
+
+      });
+
+
+  if(sessionError){
+
+    console.error(
+      "Reading session save error:",
+      sessionError
+    );
+
+    saveStatus.textContent =
+      "브라우저에는 결과가 저장되었지만 서버 저장에 실패했습니다. 관리자에게 알려 주세요.";
+
+    profileBtn.disabled =
+      false;
+
+    return;
+  }
+
+
+  /*
+    2. reading_results 30문항 저장
+  */
+
+  const resultRows =
+    mainResults.map(
+      item => ({
+
+        session_id:
+          currentSessionId,
+
+        item_id:
+          item.itemId,
+
+        presentation_order:
+          item.presentationOrder,
+
+        domain:
+          item.domain,
+
+        feature:
+          item.feature,
+
+        reading_time_ms:
+          item.readingTimeMs,
+
+        response_time_ms:
+          item.responseTimeMs,
+
+        correct:
+          item.correct,
+
+        selected_text:
+          item.selectedText,
+
+        correct_answer_text:
+          item.correctAnswerText
+
+      })
+    );
+
+
+  const {
+    error: resultsError
+  } =
+    await supabaseClient
+      .from("reading_results")
+      .insert(
+        resultRows
+      );
+
+
+  if(resultsError){
+
+    console.error(
+      "Reading results save error:",
+      resultsError
+    );
+
+    saveStatus.textContent =
+      "세션 정보는 저장되었지만 문항별 결과 저장에 실패했습니다. 관리자에게 알려 주세요.";
+
+    profileBtn.disabled =
+      false;
+
+    return;
+  }
+
+
+  saveStatus.textContent =
+    "읽기 수행 결과가 정상적으로 저장되었습니다.";
+
+  profileBtn.disabled =
+    false;
 }
 
 
@@ -2012,8 +2448,37 @@ function updateProgress(){
 
 function goToProfile(){
 
+  const params =
+    new URLSearchParams();
+
+  if(participantCode){
+
+    params.set(
+      "participant",
+      participantCode
+    );
+  }
+
+
+  if(currentSessionId){
+
+    params.set(
+      "session",
+      currentSessionId
+    );
+  }
+
+
   window.location.href =
-    "reading-profile.html";
+    "cognitive-profile.html"
+    +
+    (
+      params.toString()
+      ?
+      "?" + params.toString()
+      :
+      ""
+    );
 }
 
 
@@ -2049,3 +2514,6 @@ document.addEventListener(
 </body>
 </html>
  
+
+
+
