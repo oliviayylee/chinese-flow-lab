@@ -221,7 +221,7 @@ footer{text-align:center;padding:32px 20px;color:#8290A2;font-size:13px;}
     <h1>XAI 기반 결과 설명</h1>
     <p>
       읽기 수행 데이터와 문항의 언어학적 특성을 바탕으로 영역별 처리 특성을 설명하고,
-      파일럿 예측모형이 연결된 경우 SHAP 기반 주요 영향 요인을 함께 제시합니다.
+      현재 회차의 문항 수준 데이터를 이용한 탐색적 SHAP 분석 결과를 함께 제시합니다.
     </p>
   </div>
 </header>
@@ -253,8 +253,8 @@ footer{text-align:center;padding:32px 20px;color:#8290A2;font-size:13px;}
         <div>
           <h2 style="margin-bottom:6px;">SHAP 기반 주요 영향 요인</h2>
           <p class="card-desc" style="margin:0;">
-            파일럿 데이터로 학습한 문항 수준 수행 예측모형이 연결된 경우,
-            개별 예측에 기여한 변수의 방향과 상대적 크기를 표시합니다.
+            별도 SHAP 결과가 연결되어 있지 않으면 현재 회차의 문항 수준 수행 데이터를 이용해
+            탐색적 로지스틱 모형을 자동으로 적합하고, 개별 문항의 오답 분류에 기여한 요인을 표시합니다.
           </p>
         </div>
         <span class="shap-badge" id="shapStatusBadge">연결 확인 중</span>
@@ -272,8 +272,9 @@ footer{text-align:center;padding:32px 20px;color:#8290A2;font-size:13px;}
       <p class="card-desc">
         영역별 처리 특성은 해당 회차의 읽기시간과 의미판단 정확도를 개인 기준선과 비교하여 기술적으로 제시한 결과입니다.
         이는 단일 회차만으로 학습자의 고정된 능력을 판정하기 위한 것이 아닙니다.
-        SHAP 영역은 별도로 학습된 문항 수준 수행 예측모형의 설명 결과가 해당 회차와 연결된 경우에만 표시되며,
-        SHAP 값은 인과관계를 의미하지 않고 해당 예측에 대한 변수의 상대적 기여를 나타냅니다.
+        SHAP 영역은 별도 분석 결과가 연결된 경우 이를 우선 사용하고, 그렇지 않은 경우 현재 회차의 문항 수준 데이터를 이용한
+        탐색적 로지스틱 모형을 자동으로 적합하여 표시합니다. 단일 회차 자동 분석은 구현 가능성 확인을 위한 시범 결과이며,
+        일반화된 예측 성능을 의미하지 않습니다. SHAP 값은 인과관계를 의미하지 않고 해당 모형 안에서의 상대적 기여를 나타냅니다.
       </p>
       <div class="actions">
         <a class="btn" id="profileBtn" href="cognitive-profile.html">인지 프로파일로 돌아가기</a>
@@ -509,7 +510,7 @@ function renderReport(participant, sessionId, results){
     buildMainSummary(weakest, strongest, baselineReading);
 
   renderDomainCards(profiles);
-  renderSHAPSection(sessionId);
+  renderSHAPSection(sessionId, results, baselineReading);
   renderXAIExplanation(weakest, strongest, baselineReading);
 
   document.getElementById("statusBox").classList.add("hidden");
@@ -679,64 +680,72 @@ function renderDomainCards(profiles){
 
 /* =====================================================
    SHAP RESULT
-   실제 SHAP 값은 Python/서버 분석 후 localStorage에 연결
 
-   권장 데이터 예시:
-   {
-     sessionId:"...",
-     targetLabel:"오답 예측 확률",
-     prediction:0.68,
-     baseValue:0.32,
-     values:[
-       {key:"semantic_transparency", label:"의미투명도", shapValue:0.21, featureValue:"해당"},
-       {key:"baseline_reading_time", label:"개인 기준선 읽기시간", shapValue:0.12, featureValue:"4.50초"},
-       {key:"vocabulary_accuracy", label:"기존 어휘 정확도", shapValue:-0.08, featureValue:"88%"}
-     ]
-   }
+   1) Python/서버에서 계산된 SHAP 결과가 localStorage에 있으면 우선 사용
+   2) 별도 결과가 없으면 현재 회차의 target 문항 데이터를 이용해
+      탐색적 로지스틱 회귀를 브라우저에서 자동 적합
+   3) 선형 로지스틱 모형의 interventional Linear SHAP 형태로
+      log-odds 기여도 beta_j * (x_j - E[X_j])를 계산
+
+   주의:
+   - 현재 회차 자동분석은 단일 참여자/단일 회차의 in-sample 탐색 분석임
+   - 향후 파일럿 전체 자료가 쌓이면 Python에서 참여자 단위 검증을 거친
+     최종 예측모형의 SHAP 결과를 연결하는 것을 권장
 ===================================================== */
-function renderSHAPSection(sessionId){
+function renderSHAPSection(sessionId, results, baselineReading){
+  const stored = loadSHAPResult();
+
+  if(
+    stored
+    && (!stored.sessionId || !sessionId || stored.sessionId === sessionId)
+  ){
+    renderSHAPData(stored, false);
+    return;
+  }
+
+  const autoResult = buildExploratorySessionSHAP(
+    sessionId,
+    results,
+    baselineReading
+  );
+
+  if(!autoResult.ok){
+    const badge = document.getElementById("shapStatusBadge");
+    const content = document.getElementById("shapContent");
+
+    badge.textContent = "탐색 분석 불가";
+    content.innerHTML = `
+      <div class="note-box">
+        <strong>현재 회차에서 SHAP 자동분석을 생성하지 못했습니다.</strong><br>
+        ${escapeHTML(autoResult.message)}<br><br>
+        문항별 정오답에 변이가 충분한 파일럿 자료가 축적되면
+        문항 수준 예측모형과 SHAP 결과를 자동으로 표시할 수 있습니다.
+      </div>
+    `;
+    return;
+  }
+
+  renderSHAPData(autoResult.data, true);
+}
+
+function renderSHAPData(shapData, exploratory){
   const content = document.getElementById("shapContent");
   const badge = document.getElementById("shapStatusBadge");
-  const shapData = loadSHAPResult();
-
-  if(!shapData){
-    badge.textContent = "파일럿 분석 연결 대기";
-    content.innerHTML = `
-      <div class="note-box">
-        <strong>SHAP 분석 결과가 아직 연결되지 않았습니다.</strong><br>
-        파일럿 데이터로 문항 수준 수행 예측모형을 학습한 뒤,
-        해당 회차의 예측값과 SHAP 값을 연결하면 이 영역에 자동으로 표시됩니다.<br><br>
-        현재 위의 영역별 읽기시간·정확도·기준선 비교 결과는 실제 수행 데이터에 기반한 기술적 진단이며,
-        SHAP 결과를 임의로 생성하여 표시하지 않습니다.
-      </div>
-    `;
-    return;
-  }
-
-  if(shapData.sessionId && sessionId && shapData.sessionId !== sessionId){
-    badge.textContent = "다른 회차 결과";
-    content.innerHTML = `
-      <div class="note-box">
-        저장된 SHAP 분석 결과가 현재 읽기 회차와 일치하지 않습니다.
-        현재 회차의 예측모형 결과를 다시 연결해 주세요.
-      </div>
-    `;
-    return;
-  }
-
   const values = normalizeSHAPValues(shapData);
 
   if(values.length === 0){
     badge.textContent = "SHAP 값 없음";
     content.innerHTML = `
       <div class="note-box">
-        예측 결과는 연결되었지만 표시할 SHAP 기여도 값이 없습니다.
+        분석 결과는 생성되었지만 표시할 SHAP 기여도 값이 없습니다.
       </div>
     `;
     return;
   }
 
-  badge.textContent = "SHAP 연결 완료";
+  badge.textContent = exploratory
+    ? "단일 회차 탐색 SHAP"
+    : "SHAP 연결 완료";
 
   const targetLabel =
     shapData.targetLabel
@@ -786,28 +795,342 @@ function renderSHAPSection(sessionId){
     })
     .join("");
 
+  const explainedItem = shapData.explainedItemId
+    ? ` · 설명 문항 <strong>${escapeHTML(shapData.explainedItemId)}</strong>`
+    : "";
+
+  const actualText = shapData.actualCorrect === true
+    ? "정답"
+    : shapData.actualCorrect === false
+    ? "오답"
+    : null;
+
+  const actualHtml = actualText
+    ? ` · 실제 수행 <strong>${actualText}</strong>`
+    : "";
+
+  const modeNote = exploratory
+    ? `
+      <div class="note-box" style="margin-bottom:16px;">
+        <strong>탐색적 자동분석</strong><br>
+        현재 회차의 목표 문항만을 이용해 정오답 분류용 로지스틱 회귀를 시범 적합한 결과입니다.
+        읽기시간, 문항 반응시간, 제시 순서, 언어 영역 및 세부 특성을 설명변수로 사용했습니다.
+        이 결과는 <strong>동일 회차 자료에 적합된 구현 확인용 결과</strong>이며 일반화 성능을 의미하지 않습니다.
+      </div>
+    `
+    : "";
+
   content.innerHTML = `
+    ${modeNote}
     <div class="shap-summary">
       <strong>${escapeHTML(targetLabel)}</strong>
+      ${explainedItem}
+      ${actualHtml}
       ${
         Number.isFinite(prediction)
-        ? ` · 예측값 <strong>${formatPrediction(prediction)}</strong>`
+        ? ` · 모형 출력 <strong>${formatPrediction(prediction)}</strong>`
         : ""
       }
       ${
         Number.isFinite(baseValue)
-        ? ` · 기준값 ${formatPrediction(baseValue)}`
+        ? ` · 기준 예측 ${formatPrediction(baseValue)}`
         : ""
       }
     </div>
     ${rowsHtml}
     <div class="legend">
-      양(+)의 SHAP 값은 설정된 예측 목표의 가능성을 높이는 방향,
+      양(+)의 SHAP 값은 <strong>오답 분류 가능성을 높이는 방향</strong>,
       음(-)의 값은 낮추는 방향의 기여를 의미합니다.
-      절대값이 클수록 해당 개별 예측에 대한 상대적 기여가 큽니다.
-      SHAP 값은 인과효과가 아니라 예측모형 안에서의 기여도를 나타냅니다.
+      이 화면의 SHAP 값은 로지스틱 모형의 log-odds 척도 기여도입니다.
+      절대값이 클수록 해당 개별 분류에 대한 상대적 기여가 큽니다.
+      SHAP 값은 인과효과를 의미하지 않습니다.
     </div>
   `;
+}
+
+function buildExploratorySessionSHAP(sessionId, results, baselineReading){
+  const rows = results
+    .filter(row =>
+      row.domain !== "baseline"
+      && row.feature !== "baseline"
+      && Number.isFinite(Number(row.readingTimeMs))
+      && Number.isFinite(Number(row.responseTimeMs))
+    )
+    .map(row => ({...row}));
+
+  if(rows.length < 16){
+    return {
+      ok:false,
+      message:"목표 문항 수가 너무 적습니다. 최소 16개 이상의 유효 문항 결과가 필요합니다."
+    };
+  }
+
+  const errorCount = rows.filter(row => row.correct !== true).length;
+  const correctCount = rows.length - errorCount;
+
+  if(errorCount < 2 || correctCount < 2){
+    return {
+      ok:false,
+      message:`정오답 변이가 충분하지 않습니다. 현재 목표 문항에서 정답 ${correctCount}개, 오답 ${errorCount}개가 확인되었습니다.`
+    };
+  }
+
+  const domainKeys = ["syntax","vocabulary","collocation","discourse"];
+  const featureKeys = [...new Set(
+    rows
+      .map(row => row.feature)
+      .filter(feature => feature && feature !== "baseline")
+  )].sort();
+
+  const meanResponse = average(rows.map(row => Math.log1p(Number(row.responseTimeMs))));
+  const sdResponse = standardDeviation(
+    rows.map(row => Math.log1p(Number(row.responseTimeMs)))
+  ) || 1;
+
+  const maxOrder = Math.max(
+    ...rows.map(row => Number(row.presentationOrder) || 1),
+    1
+  );
+
+  const featureDefs = [
+    {
+      key:"reading_ratio",
+      label:"기준선 대비 해당 문항 읽기시간",
+      get:row => baselineReading > 0
+        ? Number(row.readingTimeMs) / baselineReading
+        : 1,
+      display:row => {
+        const ratio = baselineReading > 0
+          ? Number(row.readingTimeMs) / baselineReading
+          : 1;
+        return ratio.toFixed(2) + "배";
+      },
+      standardize:true
+    },
+    {
+      key:"response_time",
+      label:"문항 반응시간",
+      get:row => Math.log1p(Number(row.responseTimeMs)),
+      display:row => formatSeconds(Number(row.responseTimeMs)),
+      standardize:true,
+      presetMean:meanResponse,
+      presetSd:sdResponse
+    },
+    {
+      key:"presentation_order",
+      label:"문항 제시 순서",
+      get:row => (Number(row.presentationOrder) || 1) / maxOrder,
+      display:row => `${Number(row.presentationOrder) || 1}번째`,
+      standardize:true
+    },
+    ...domainKeys.map(domain => ({
+      key:`domain_${domain}`,
+      label:`영역: ${DOMAIN_LABELS[domain] || domain}`,
+      get:row => row.domain === domain ? 1 : 0,
+      display:row => row.domain === domain ? "해당" : "비해당",
+      standardize:false
+    })),
+    ...featureKeys.map(feature => ({
+      key:`feature_${feature}`,
+      label:`세부 특성: ${FEATURE_LABELS[feature] || prettifyKey(feature)}`,
+      get:row => row.feature === feature ? 1 : 0,
+      display:row => row.feature === feature ? "해당" : "비해당",
+      standardize:false
+    }))
+  ];
+
+  const rawMatrix = rows.map(row =>
+    featureDefs.map(def => Number(def.get(row)) || 0)
+  );
+
+  const stats = featureDefs.map((def,j) => {
+    const col = rawMatrix.map(row => row[j]);
+    const mean = def.presetMean !== undefined
+      ? def.presetMean
+      : average(col);
+    const sd = def.presetSd !== undefined
+      ? def.presetSd
+      : (standardDeviation(col) || 1);
+    return {mean,sd};
+  });
+
+  const X = rawMatrix.map(row =>
+    row.map((value,j) =>
+      featureDefs[j].standardize
+      ? (value - stats[j].mean) / stats[j].sd
+      : value
+    )
+  );
+
+  const y = rows.map(row => row.correct === true ? 0 : 1);
+
+  const model = fitLogisticRegression(X, y, {
+    iterations:3500,
+    learningRate:0.04,
+    lambda:0.18
+  });
+
+  if(!model || !Array.isArray(model.weights)){
+    return {
+      ok:false,
+      message:"탐색적 로지스틱 모형을 적합하지 못했습니다."
+    };
+  }
+
+  const predictions = X.map(x =>
+    sigmoid(model.intercept + dot(model.weights, x))
+  );
+
+  let explainIndex = -1;
+  let bestScore = -Infinity;
+
+  rows.forEach((row,index) => {
+    if(row.correct !== true && predictions[index] > bestScore){
+      explainIndex = index;
+      bestScore = predictions[index];
+    }
+  });
+
+  if(explainIndex < 0){
+    predictions.forEach((prediction,index) => {
+      if(prediction > bestScore){
+        explainIndex = index;
+        bestScore = prediction;
+      }
+    });
+  }
+
+  const backgroundMean = featureDefs.map((def,j) =>
+    average(X.map(row => row[j]))
+  );
+
+  const x = X[explainIndex];
+  const baseLogit =
+    model.intercept
+    + dot(model.weights, backgroundMean);
+
+  const shapValues = featureDefs.map((def,j) => ({
+    key:def.key,
+    label:def.label,
+    shapValue:model.weights[j] * (x[j] - backgroundMean[j]),
+    featureValue:def.display(rows[explainIndex])
+  }));
+
+  const reconstructedLogit =
+    baseLogit
+    + shapValues.reduce((sum,item) => sum + item.shapValue, 0);
+
+  const prediction = sigmoid(reconstructedLogit);
+
+  return {
+    ok:true,
+    data:{
+      sessionId,
+      analysisMode:"single_session_exploratory_logistic_linear_shap",
+      targetLabel:"오답 분류 가능성",
+      prediction,
+      baseValue:sigmoid(baseLogit),
+      explainedItemId:rows[explainIndex].itemId,
+      actualCorrect:rows[explainIndex].correct === true,
+      values:shapValues,
+      modelInfo:{
+        n:rows.length,
+        errorCount,
+        correctCount,
+        featureCount:featureDefs.length
+      }
+    }
+  };
+}
+
+function fitLogisticRegression(X, y, options={}){
+  const n = X.length;
+  const p = X[0] ? X[0].length : 0;
+  if(n === 0 || p === 0) return null;
+
+  const iterations = options.iterations || 3000;
+  const learningRate = options.learningRate || 0.03;
+  const lambda = options.lambda || 0.1;
+
+  let weights = new Array(p).fill(0);
+  let intercept = logit(
+    Math.min(0.95, Math.max(0.05, average(y)))
+  );
+
+  const positives = y.filter(value => value === 1).length;
+  const negatives = n - positives;
+
+  const positiveWeight = positives > 0
+    ? n / (2 * positives)
+    : 1;
+  const negativeWeight = negatives > 0
+    ? n / (2 * negatives)
+    : 1;
+
+  for(let iter=0; iter<iterations; iter++){
+    const gradW = new Array(p).fill(0);
+    let gradB = 0;
+
+    for(let i=0; i<n; i++){
+      const z = intercept + dot(weights, X[i]);
+      const pred = sigmoid(z);
+      const classWeight = y[i] === 1
+        ? positiveWeight
+        : negativeWeight;
+      const error = (pred - y[i]) * classWeight;
+
+      gradB += error;
+      for(let j=0; j<p; j++){
+        gradW[j] += error * X[i][j];
+      }
+    }
+
+    gradB /= n;
+
+    for(let j=0; j<p; j++){
+      gradW[j] = gradW[j] / n + lambda * weights[j];
+      weights[j] -= learningRate * gradW[j];
+    }
+
+    intercept -= learningRate * gradB;
+  }
+
+  return {weights,intercept};
+}
+
+function standardDeviation(values){
+  const valid = values
+    .map(Number)
+    .filter(Number.isFinite);
+
+  if(valid.length < 2) return 0;
+
+  const mean = average(valid);
+  const variance = valid.reduce(
+    (sum,value) => sum + Math.pow(value - mean, 2),
+    0
+  ) / valid.length;
+
+  return Math.sqrt(variance);
+}
+
+function dot(a,b){
+  let sum = 0;
+  const length = Math.min(a.length,b.length);
+  for(let i=0; i<length; i++){
+    sum += Number(a[i]) * Number(b[i]);
+  }
+  return sum;
+}
+
+function sigmoid(value){
+  const z = Math.max(-30, Math.min(30, Number(value)));
+  return 1 / (1 + Math.exp(-z));
+}
+
+function logit(probability){
+  const p = Math.min(0.999999, Math.max(0.000001, Number(probability)));
+  return Math.log(p / (1 - p));
 }
 
 function loadSHAPResult(){
