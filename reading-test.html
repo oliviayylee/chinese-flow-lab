@@ -361,17 +361,17 @@ body{
   <p>
     중국어 문장이 한 문장씩 제시됩니다.
     문장을 자연스럽게 읽은 뒤 다음으로 이동하면
-    방금 읽은 문장의 내용을 확인하는 한국어 문제가 제시됩니다.
+    방금 읽은 중국어 문장의 의미와 가장 일치하는 한국어 해석을 고르는 문제가 제시됩니다.
   </p>
 
   <div class="notice">
     • 먼저 연습문제 2문항을 진행합니다.<br>
-    • 연습 후 실전문제 30문항이 시작됩니다.<br>
+    • 연습 후 실전문제 40문항이 시작됩니다.<br>
     • 실전문제의 제시 순서는 무작위입니다.<br>
     • 각 확인 문제의 선택지 순서도 무작위로 제시됩니다.<br>
     • 중국어 문장을 충분히 읽은 뒤 <strong>다음</strong> 버튼을 눌러주세요.<br>
     • 읽기 화면에서는 <strong>Space</strong> 키도 사용할 수 있습니다.<br>
-    • 내용 확인 문제는 한국어로 제시됩니다.<br>
+    • 의미 판단 문제는 한국어 4지선다형으로 제시됩니다.<br>
     • 답변을 확정하기 전에는 선택을 변경할 수 있습니다.<br>
     • 평소와 비슷한 자연스러운 속도로 읽어주세요.
   </div>
@@ -417,11 +417,11 @@ body{
 <section class="card hidden" id="questionScreen">
 
   <h2 class="question-title">
-    내용 확인
+    문장 의미 판단
   </h2>
 
   <div class="question-sub" id="questionSub">
-    방금 읽은 중국어 문장의 내용을 확인해 주세요.
+    방금 읽은 중국어 문장의 의미와 가장 일치하는 해석을 골라주세요.
   </div>
 
   <div class="question" id="questionText"></div>
@@ -460,7 +460,7 @@ body{
 
   <p>
     이제 실전 읽기 수행을 시작합니다.<br>
-    총 30문항이 무작위 순서로 제시됩니다.
+    총 40문항이 무작위 순서로 제시됩니다.
   </p>
 
   <button class="btn" onclick="startMainTest()">
@@ -480,7 +480,7 @@ body{
   </h2>
 
   <p>
-    실전문제 30문항의 읽기시간,
+    실전문제 40문항의 읽기시간,
     이해도 및 문항 반응시간이 기록되었습니다.<br><br>
     아래 버튼을 눌러 자신의 읽기 결과를 확인할 수 있습니다.
   </p>
@@ -693,662 +693,645 @@ async function resolveParticipant(){
 ===================================================== */
 
 const practiceItems = [
-
-{
-  id:"PRA01",
-  sentence:"小林今天下午去学校图书馆里看书。",
-  charCount:15,
-
-  question:"샤오린은 오늘 오후에 어디에서 책을 읽습니까?",
-
-  options:[
-    "학교 도서관",
-    "집",
-    "회사",
-    "식당"
-  ],
-
-  answer:0
-},
-
-{
-  id:"PRA02",
-  sentence:"李华昨天晚上和朋友一起吃了晚饭。",
-  charCount:15,
-
-  question:"리화는 어젯밤 누구와 저녁을 먹었습니까?",
-
-  options:[
-    "친구",
-    "선생님",
-    "가족",
-    "혼자"
-  ],
-
-  answer:0
-}
-
+  {
+    "id": "PRA01",
+    "sentence": "小林今天下午在学校图书馆认真看书。",
+    "charCount": 16,
+    "question": "다음 중 방금 읽은 중국어 문장의 의미와 가장 일치하는 것을 고르세요.",
+    "options": [
+      "샤오린은 오늘 오후 학교 도서관에서 열심히 책을 읽었다.",
+      "샤오린은 오늘 오전 학교 도서관에서 열심히 책을 읽었다.",
+      "샤오린은 오늘 오후 학교 도서관에서 열심히 숙제를 했다.",
+      "샤오린은 오늘 오후 집에서 열심히 책을 읽었다."
+    ],
+    "answer": 0
+  },
+  {
+    "id": "PRA02",
+    "sentence": "李华昨天晚上和朋友一起吃了晚饭。",
+    "charCount": 15,
+    "question": "다음 중 방금 읽은 중국어 문장의 의미와 가장 일치하는 것을 고르세요.",
+    "options": [
+      "리화는 어젯밤 친구와 함께 저녁을 먹었다.",
+      "리화는 어젯밤 가족과 함께 저녁을 먹었다.",
+      "리화는 오늘 밤 친구와 함께 저녁을 먹었다.",
+      "리화는 어젯밤 친구와 함께 점심을 먹었다."
+    ],
+    "answer": 0
+  }
 ];
 
-
 /* =====================================================
-   MAIN ITEMS 30
+   MAIN ITEMS 40
+   - Syntax 8
+   - Vocabulary 8
+   - Collocation 8
+   - Discourse 8
+   - Baseline/Filler 8
 ===================================================== */
 
 const mainItems = [
-
-/* ---------- SYNTAX ---------- */
-
-{
-  id:"SYN01",
-  domain:"syntax",
-  feature:"relative_clause",
-  charCount:15,
-
-  sentence:"老师昨天介绍的那位新同学叫王明。",
-
-  question:"어제 선생님이 소개한 새 학생의 이름은 무엇입니까?",
-
-  options:[
-    "왕밍",
-    "리화",
-    "샤오장",
-    "샤오린"
-  ],
-
-  answer:0
-},
-
-{
-  id:"SYN02",
-  domain:"syntax",
-  feature:"relative_clause",
-  charCount:17,
-
-  sentence:"我昨天在图书馆看到的那个学生是李华。",
-
-  question:"화자가 어제 도서관에서 본 학생은 누구입니까?",
-
-  options:[
-    "리화",
-    "왕밍",
-    "선생님",
-    "친구"
-  ],
-
-  answer:0
-},
-
-{
-  id:"SYN03",
-  domain:"syntax",
-  feature:"ba_construction",
-  charCount:16,
-
-  sentence:"小王把老师送给他的中文书放在桌上。",
-
-  question:"샤오왕은 선생님이 준 중국어 책을 어디에 두었습니까?",
-
-  options:[
-    "책상 위",
-    "가방 안",
-    "책장 안",
-    "교실 밖"
-  ],
-
-  answer:0
-},
-
-{
-  id:"SYN04",
-  domain:"syntax",
-  feature:"ba_construction",
-  charCount:16,
-
-  sentence:"妈妈把今天刚买的水果放进冰箱里了。",
-
-  question:"어머니는 오늘 막 산 과일을 어디에 넣었습니까?",
-
-  options:[
-    "냉장고",
-    "책상",
-    "가방",
-    "자동차"
-  ],
-
-  answer:0
-},
-
-{
-  id:"SYN05",
-  domain:"syntax",
-  feature:"bei_construction",
-  charCount:16,
-
-  sentence:"小李的自行车昨天被他的弟弟骑走了。",
-
-  question:"샤오리의 자전거를 타고 간 사람은 누구입니까?",
-
-  options:[
-    "남동생",
-    "친구",
-    "선생님",
-    "아버지"
-  ],
-
-  answer:0
-},
-
-{
-  id:"SYN06",
-  domain:"syntax",
-  feature:"bei_construction",
-  charCount:15,
-
-  sentence:"教室的门今天早上被王老师打开了。",
-
-  question:"오늘 아침 교실 문을 연 사람은 누구입니까?",
-
-  options:[
-    "왕 선생님",
-    "학생",
-    "교장 선생님",
-    "리화"
-  ],
-
-  answer:0
-},
-
-{
-  id:"SYN07",
-  domain:"syntax",
-  feature:"serial_verb",
-  charCount:17,
-
-  sentence:"王明今天下课以后去图书馆借了一本书。",
-
-  question:"왕밍은 오늘 수업 후 무엇을 했습니까?",
-
-  options:[
-    "도서관에 가서 책을 빌렸다.",
-    "식당에 가서 밥을 먹었다.",
-    "집에 가서 잠을 잤다.",
-    "운동장에 가서 운동했다."
-  ],
-
-  answer:0
-},
-
-{
-  id:"SYN08",
-  domain:"syntax",
-  feature:"serial_verb",
-  charCount:17,
-
-  sentence:"小张昨天下班以后去超市买了一些水果。",
-
-  question:"샤오장은 어제 퇴근 후 무엇을 했습니까?",
-
-  options:[
-    "마트에 가서 과일을 샀다.",
-    "친구를 만나러 갔다.",
-    "도서관에 갔다.",
-    "집에서 저녁을 만들었다."
-  ],
-
-  answer:0
-},
-
-{
-  id:"SYN09",
-  domain:"syntax",
-  feature:"pivotal",
-  charCount:16,
-
-  sentence:"老师让小张今天下午来办公室找自己。",
-
-  question:"선생님은 샤오장에게 오늘 오후 무엇을 하라고 했습니까?",
-
-  options:[
-    "사무실로 오라고 했다.",
-    "집에 가라고 했다.",
-    "도서관에 가라고 했다.",
-    "수업에 늦게 오라고 했다."
-  ],
-
-  answer:0
-},
-
-{
-  id:"SYN10",
-  domain:"syntax",
-  feature:"pivotal",
-  charCount:16,
-
-  sentence:"妈妈叫弟弟今天晚上早点回家吃晚饭。",
-
-  question:"어머니는 남동생에게 오늘 저녁 어떻게 하라고 했습니까?",
-
-  options:[
-    "일찍 집에 와서 저녁을 먹으라고 했다.",
-    "친구와 외식하라고 했다.",
-    "늦게 집에 오라고 했다.",
-    "저녁을 먹지 말라고 했다."
-  ],
-
-  answer:0
-},
-
-/* ---------- VOCABULARY ---------- */
-
-{
-  id:"LEX01",
-  domain:"vocabulary",
-  feature:"low_frequency",
-  charCount:16,
-
-  sentence:"这个地区最近采取了严格的防范措施。",
-
-  question:"이 지역은 최근 어떤 조치를 취했습니까?",
-
-  options:[
-    "엄격한 예방 조치",
-    "교통 완화 조치",
-    "관광 장려 조치",
-    "가격 인하 조치"
-  ],
-
-  answer:0
-},
-
-{
-  id:"LEX02",
-  domain:"vocabulary",
-  feature:"low_frequency",
-  charCount:15,
-
-  sentence:"公司决定暂缓原来的海外投资计划。",
-
-  question:"회사는 기존 해외 투자 계획을 어떻게 하기로 했습니까?",
-
-  options:[
-    "잠시 미루기로 했다.",
-    "즉시 확대하기로 했다.",
-    "완전히 성공했다고 발표했다.",
-    "새로운 회사를 세우기로 했다."
-  ],
-
-  answer:0
-},
-
-{
-  id:"LEX03",
-  domain:"vocabulary",
-  feature:"semantic_transparency",
-  charCount:15,
-
-  sentence:"这件麻烦的事情现在终于有了眉目。",
-
-  question:"문맥상 '有了眉目'의 의미와 가장 가까운 것은 무엇입니까?",
-
-  options:[
-    "일의 실마리가 보이기 시작했다.",
-    "문제가 더 복잡해졌다.",
-    "일을 완전히 포기했다.",
-    "문제가 처음 생겼다."
-  ],
-
-  answer:0
-},
-
-{
-  id:"LEX04",
-  domain:"vocabulary",
-  feature:"semantic_transparency",
-  charCount:16,
-
-  sentence:"听到这个消息以后他心里很不是滋味。",
-
-  question:"이 소식을 들은 뒤 그의 마음 상태로 가장 적절한 것은 무엇입니까?",
-
-  options:[
-    "마음이 불편하고 좋지 않았다.",
-    "매우 기뻤다.",
-    "아무 느낌이 없었다.",
-    "매우 편안했다."
-  ],
-
-  answer:0
-},
-
-/* ---------- COLLOCATION ---------- */
-
-{
-  id:"COL01",
-  domain:"collocation",
-  feature:"collocation_1",
-  charCount:16,
-
-  sentence:"学校决定采取有效措施解决这个问题。",
-
-  question:"학교는 이 문제를 해결하기 위해 무엇을 하기로 했습니까?",
-
-  options:[
-    "효과적인 조치를 취하기로 했다.",
-    "문제를 무시하기로 했다.",
-    "수업을 취소하기로 했다.",
-    "학생 수를 줄이기로 했다."
-  ],
-
-  answer:0
-},
-
-{
-  id:"COL02",
-  domain:"collocation",
-  feature:"collocation_2",
-  charCount:16,
-
-  sentence:"这次活动受到了很多学生的广泛关注。",
-
-  question:"이번 활동은 학생들에게 어떤 반응을 얻었습니까?",
-
-  options:[
-    "많은 관심을 받았다.",
-    "거의 관심을 받지 못했다.",
-    "강한 반대를 받았다.",
-    "즉시 취소되었다."
-  ],
-
-  answer:0
-},
-
-{
-  id:"COL03",
-  domain:"collocation",
-  feature:"collocation_3",
-  charCount:17,
-
-  sentence:"他对这个新的学习方法产生了一些兴趣。",
-
-  question:"그는 새로운 학습 방법에 대해 어떤 태도를 보였습니까?",
-
-  options:[
-    "관심이 생겼다.",
-    "완전히 반대했다.",
-    "전혀 이해하지 못했다.",
-    "바로 포기했다."
-  ],
-
-  answer:0
-},
-
-{
-  id:"COL04",
-  domain:"collocation",
-  feature:"collocation_4",
-  charCount:16,
-
-  sentence:"老师对学生的回答进行了简单的评价。",
-
-  question:"선생님은 학생의 답변에 대해 무엇을 했습니까?",
-
-  options:[
-    "간단히 평가했다.",
-    "답변을 삭제했다.",
-    "다시 질문하지 않았다.",
-    "학생을 집에 보냈다."
-  ],
-
-  answer:0
-},
-
-/* ---------- DISCOURSE ---------- */
-
-{
-  id:"DIS01",
-  domain:"discourse",
-  feature:"contrast",
-  charCount:17,
-
-  sentence:"虽然今天一直下雨但是学生们按时到校。",
-
-  question:"오늘 계속 비가 왔지만 학생들은 어떻게 했습니까?",
-
-  options:[
-    "제시간에 학교에 왔다.",
-    "학교에 오지 않았다.",
-    "수업을 취소했다.",
-    "늦게 학교에 왔다."
-  ],
-
-  answer:0
-},
-
-{
-  id:"DIS02",
-  domain:"discourse",
-  feature:"causal",
-  charCount:16,
-
-  sentence:"因为今天身体不舒服小李没有来上课。",
-
-  question:"샤오리가 오늘 수업에 오지 않은 이유는 무엇입니까?",
-
-  options:[
-    "몸이 좋지 않아서",
-    "학교가 멀어서",
-    "친구를 만나서",
-    "비가 와서"
-  ],
-
-  answer:0
-},
-
-{
-  id:"DIS03",
-  domain:"discourse",
-  feature:"information_integration",
-  charCount:17,
-
-  sentence:"学校昨天公布了下学期课程和考试安排。",
-
-  question:"학교가 어제 발표한 내용은 무엇입니까?",
-
-  options:[
-    "다음 학기 수업과 시험 일정",
-    "학생 식사 메뉴",
-    "교내 행사 사진",
-    "새로운 교복"
-  ],
-
-  answer:0
-},
-
-{
-  id:"DIS04",
-  domain:"discourse",
-  feature:"information_density",
-  charCount:18,
-
-  sentence:"会议讨论了学生人数课程内容和教学方法。",
-
-  question:"회의에서 논의한 내용에 포함되지 않은 것은 무엇입니까?",
-
-  options:[
-    "학교 건물 색상",
-    "학생 수",
-    "수업 내용",
-    "교수 방법"
-  ],
-
-  answer:0
-},
-
-/* ---------- BASELINE / FILLER ---------- */
-
-{
-  id:"BF01",
-  domain:"baseline",
-  feature:"baseline",
-  charCount:16,
-
-  sentence:"李华每天早上都在学校认真学习中文。",
-
-  question:"리화는 매일 아침 학교에서 무엇을 합니까?",
-
-  options:[
-    "중국어를 공부한다.",
-    "운동한다.",
-    "영화를 본다.",
-    "점심을 먹는다."
-  ],
-
-  answer:0
-},
-
-{
-  id:"BF02",
-  domain:"baseline",
-  feature:"baseline",
-  charCount:15,
-
-  sentence:"妈妈昨天晚上在家给我们做了晚饭。",
-
-  question:"어머니는 어젯밤 집에서 무엇을 하셨습니까?",
-
-  options:[
-    "저녁을 만들었다.",
-    "책을 읽었다.",
-    "영화를 봤다.",
-    "운동을 했다."
-  ],
-
-  answer:0
-},
-
-{
-  id:"BF03",
-  domain:"baseline",
-  feature:"baseline",
-  charCount:16,
-
-  sentence:"爸爸每天早上七点从家里出门去上班。",
-
-  question:"아버지는 매일 아침 몇 시에 집을 나섭니까?",
-
-  options:[
-    "7시",
-    "6시",
-    "8시",
-    "9시"
-  ],
-
-  answer:0
-},
-
-{
-  id:"BF04",
-  domain:"baseline",
-  feature:"baseline",
-  charCount:17,
-
-  sentence:"弟弟每天晚上喜欢在自己的房间听音乐。",
-
-  question:"남동생은 매일 저녁 방에서 무엇을 하는 것을 좋아합니까?",
-
-  options:[
-    "음악을 듣는다.",
-    "중국어를 공부한다.",
-    "저녁을 만든다.",
-    "운동을 한다."
-  ],
-
-  answer:0
-},
-
-{
-  id:"BF05",
-  domain:"baseline",
-  feature:"baseline",
-  charCount:17,
-
-  sentence:"小林星期天和家人一起去了附近动物园。",
-
-  question:"샤오린은 일요일에 가족과 어디에 갔습니까?",
-
-  options:[
-    "근처 동물원",
-    "도서관",
-    "학교",
-    "회사"
-  ],
-
-  answer:0
-},
-
-{
-  id:"BF06",
-  domain:"baseline",
-  feature:"baseline",
-  charCount:17,
-
-  sentence:"王明昨天下午在商店买了一双新的鞋子。",
-
-  question:"왕밍은 어제 오후 상점에서 무엇을 샀습니까?",
-
-  options:[
-    "새 신발 한 켤레",
-    "새 책 한 권",
-    "과일",
-    "가방"
-  ],
-
-  answer:0
-},
-
-{
-  id:"BF07",
-  domain:"baseline",
-  feature:"baseline",
-  charCount:17,
-
-  sentence:"姐姐今天穿了一件自己新买的白色衣服。",
-
-  question:"누나는 오늘 어떤 옷을 입었습니까?",
-
-  options:[
-    "새로 산 흰색 옷",
-    "검은색 교복",
-    "빨간색 운동복",
-    "친구가 준 파란 옷"
-  ],
-
-  answer:0
-},
-
-{
-  id:"BF08",
-  domain:"baseline",
-  feature:"baseline",
-  charCount:17,
-
-  sentence:"我们星期六下午一起去电影院看了电影。",
-
-  question:"우리는 토요일 오후에 무엇을 했습니까?",
-
-  options:[
-    "영화관에서 영화를 봤다.",
-    "도서관에서 공부했다.",
-    "집에서 요리했다.",
-    "공원에서 운동했다."
-  ],
-
-  answer:0
-}
-
+  {
+    "id": "SYN01",
+    "domain": "syntax",
+    "feature": "relative_clause",
+    "charCount": 15,
+    "sentence": "老师昨天介绍的那位新同学叫王明。",
+    "question": "다음 중 방금 읽은 중국어 문장의 의미와 가장 일치하는 것을 고르세요.",
+    "options": [
+      "선생님이 어제 소개한 그 신입생은 왕밍이다.",
+      "왕밍이 어제 소개한 그 신입생은 선생님이다.",
+      "선생님이 어제 소개받은 그 신입생은 왕밍이다.",
+      "선생님은 어제 왕밍에게 그 신입생을 소개받았다."
+    ],
+    "answer": 0
+  },
+  {
+    "id": "SYN02",
+    "domain": "syntax",
+    "feature": "relative_clause",
+    "charCount": 17,
+    "sentence": "我昨天在图书馆看到的那个学生是李华。",
+    "question": "다음 중 방금 읽은 중국어 문장의 의미와 가장 일치하는 것을 고르세요.",
+    "options": [
+      "내가 어제 도서관에서 본 그 학생은 리화이다.",
+      "리화가 어제 도서관에서 본 그 학생은 나이다.",
+      "내가 어제 도서관에서 본 사람은 리화의 선생님이다.",
+      "내가 어제 리화를 본 뒤 그 학생이 도서관에 왔다."
+    ],
+    "answer": 0
+  },
+  {
+    "id": "SYN03",
+    "domain": "syntax",
+    "feature": "ba_construction",
+    "charCount": 16,
+    "sentence": "小王把老师送给他的中文书放在桌上。",
+    "question": "다음 중 방금 읽은 중국어 문장의 의미와 가장 일치하는 것을 고르세요.",
+    "options": [
+      "샤오왕은 선생님이 자신에게 준 중국어 책을 책상 위에 놓았다.",
+      "선생님은 샤오왕이 자신에게 준 중국어 책을 책상 위에 놓았다.",
+      "샤오왕은 선생님이 준 중국어 책을 책상에서 가져갔다.",
+      "샤오왕은 자신이 산 중국어 책을 선생님의 책상 위에 놓았다."
+    ],
+    "answer": 0
+  },
+  {
+    "id": "SYN04",
+    "domain": "syntax",
+    "feature": "ba_construction",
+    "charCount": 16,
+    "sentence": "妈妈把今天刚买的水果放进冰箱里了。",
+    "question": "다음 중 방금 읽은 중국어 문장의 의미와 가장 일치하는 것을 고르세요.",
+    "options": [
+      "엄마는 오늘 막 산 과일을 냉장고 안에 넣었다.",
+      "엄마는 오늘 막 산 과일을 냉장고에서 꺼냈다.",
+      "엄마는 오늘 막 산 냉장고 안에 과일을 넣었다.",
+      "엄마는 오늘 막 산 과일을 식탁 위에 놓았다."
+    ],
+    "answer": 0
+  },
+  {
+    "id": "SYN05",
+    "domain": "syntax",
+    "feature": "bei_construction",
+    "charCount": 16,
+    "sentence": "小李的自行车昨天被他的弟弟骑走了。",
+    "question": "다음 중 방금 읽은 중국어 문장의 의미와 가장 일치하는 것을 고르세요.",
+    "options": [
+      "샤오리의 자전거는 어제 그의 남동생이 타고 갔다.",
+      "샤오리는 어제 남동생의 자전거를 타고 갔다.",
+      "샤오리의 남동생은 어제 자신의 자전거를 샤오리에게 주었다.",
+      "샤오리의 자전거는 어제 남동생에게 돌려받았다."
+    ],
+    "answer": 0
+  },
+  {
+    "id": "SYN06",
+    "domain": "syntax",
+    "feature": "bei_construction",
+    "charCount": 15,
+    "sentence": "教室的门今天早上被王老师打开了。",
+    "question": "다음 중 방금 읽은 중국어 문장의 의미와 가장 일치하는 것을 고르세요.",
+    "options": [
+      "교실 문은 오늘 아침 왕 선생님이 열었다.",
+      "왕 선생님의 문은 오늘 아침 교실에서 열렸다.",
+      "교실 문은 오늘 아침 왕 선생님에 의해 닫혔다.",
+      "왕 선생님은 오늘 아침 교실 문이 열리는 것을 보았다."
+    ],
+    "answer": 0
+  },
+  {
+    "id": "SYN07",
+    "domain": "syntax",
+    "feature": "pivotal",
+    "charCount": 16,
+    "sentence": "老师让小张今天下午来办公室找自己。",
+    "question": "다음 중 방금 읽은 중국어 문장의 의미와 가장 일치하는 것을 고르세요.",
+    "options": [
+      "선생님은 샤오장에게 오늘 오후 사무실로 자신을 찾아오라고 했다.",
+      "샤오장은 선생님에게 오늘 오후 자신의 사무실로 오라고 했다.",
+      "선생님은 샤오장에게 오늘 오후 사무실에서 기다리라고 했다.",
+      "선생님은 오늘 오후 샤오장의 사무실로 그를 찾아가겠다고 했다."
+    ],
+    "answer": 0
+  },
+  {
+    "id": "SYN08",
+    "domain": "syntax",
+    "feature": "pivotal",
+    "charCount": 16,
+    "sentence": "妈妈叫弟弟今天晚上早点回家吃晚饭。",
+    "question": "다음 중 방금 읽은 중국어 문장의 의미와 가장 일치하는 것을 고르세요.",
+    "options": [
+      "엄마는 남동생에게 오늘 저녁 일찍 집에 와서 저녁을 먹으라고 했다.",
+      "남동생은 엄마에게 오늘 저녁 일찍 집에 와서 저녁을 먹으라고 했다.",
+      "엄마는 남동생에게 오늘 저녁 늦게 집에 와서 저녁을 먹으라고 했다.",
+      "엄마는 남동생에게 오늘 저녁 집에서 저녁을 만들라고 했다."
+    ],
+    "answer": 0
+  },
+  {
+    "id": "LEX01",
+    "domain": "vocabulary",
+    "feature": "low_frequency",
+    "charCount": 15,
+    "sentence": "学校决定暂缓今年秋季的交流活动。",
+    "question": "다음 중 방금 읽은 중국어 문장의 의미와 가장 일치하는 것을 고르세요.",
+    "options": [
+      "학교는 올해 가을 교류 활동을 잠시 미루기로 했다.",
+      "학교는 올해 가을 교류 활동을 계획보다 앞당기기로 했다.",
+      "학교는 올해 가을 교류 활동을 예정대로 바로 시작하기로 했다.",
+      "학교는 올해 가을 교류 활동을 완전히 취소하기로 했다."
+    ],
+    "answer": 0
+  },
+  {
+    "id": "LEX02",
+    "domain": "vocabulary",
+    "feature": "low_frequency",
+    "charCount": 15,
+    "sentence": "老师正在核实今年新生的报名信息。",
+    "question": "다음 중 방금 읽은 중국어 문장의 의미와 가장 일치하는 것을 고르세요.",
+    "options": [
+      "선생님은 올해 신입생들의 등록 정보를 확인하고 있다.",
+      "선생님은 올해 신입생들의 등록 정보를 새로 작성하고 있다.",
+      "선생님은 올해 신입생들에게 등록 정보를 알리고 있다.",
+      "선생님은 올해 신입생들의 등록 정보를 삭제하고 있다."
+    ],
+    "answer": 0
+  },
+  {
+    "id": "LEX03",
+    "domain": "vocabulary",
+    "feature": "low_frequency",
+    "charCount": 15,
+    "sentence": "公司准备暂时搁置原来的合作计划。",
+    "question": "다음 중 방금 읽은 중국어 문장의 의미와 가장 일치하는 것을 고르세요.",
+    "options": [
+      "회사는 기존의 협력 계획을 당분간 보류하려 한다.",
+      "회사는 기존의 협력 계획을 곧바로 실행하려 한다.",
+      "회사는 기존의 협력 계획을 완전히 폐기하려 한다.",
+      "회사는 기존의 협력 계획을 새로운 계획으로 교체하려 한다."
+    ],
+    "answer": 0
+  },
+  {
+    "id": "LEX04",
+    "domain": "vocabulary",
+    "feature": "low_frequency",
+    "charCount": 16,
+    "sentence": "学校最后正式驳回了学生的活动申请。",
+    "question": "다음 중 방금 읽은 중국어 문장의 의미와 가장 일치하는 것을 고르세요.",
+    "options": [
+      "학교는 학생의 활동 신청을 최종적으로 기각했다.",
+      "학교는 학생의 활동 신청을 최종적으로 승인했다.",
+      "학교는 학생의 활동 신청을 아직 검토하고 있다.",
+      "학교는 학생에게 활동 신청을 다시 작성하라고 했다."
+    ],
+    "answer": 0
+  },
+  {
+    "id": "LEX05",
+    "domain": "vocabulary",
+    "feature": "semantic_transparency",
+    "charCount": 15,
+    "sentence": "这件麻烦的事情现在终于有了眉目。",
+    "question": "다음 중 방금 읽은 중국어 문장의 의미와 가장 일치하는 것을 고르세요.",
+    "options": [
+      "그 골치 아픈 일은 이제 마침내 해결의 실마리가 보이기 시작했다.",
+      "그 골치 아픈 일은 이제 완전히 해결되어 더 이상 문제가 없다.",
+      "그 골치 아픈 일은 이제 더 복잡해져 방향을 잡기 어려워졌다.",
+      "그 골치 아픈 일은 이제 처음으로 문제가 있다는 사실이 드러났다."
+    ],
+    "answer": 0
+  },
+  {
+    "id": "LEX06",
+    "domain": "vocabulary",
+    "feature": "semantic_transparency",
+    "charCount": 16,
+    "sentence": "听到这个消息以后他心里很不是滋味。",
+    "question": "다음 중 방금 읽은 중국어 문장의 의미와 가장 일치하는 것을 고르세요.",
+    "options": [
+      "그는 이 소식을 듣고 마음이 씁쓸하고 편하지 않았다.",
+      "그는 이 소식을 듣고 마음이 놓여 편안해졌다.",
+      "그는 이 소식을 듣고 매우 기쁘고 들떴다.",
+      "그는 이 소식을 듣고 화가 풀려 아무렇지 않게 되었다."
+    ],
+    "answer": 0
+  },
+  {
+    "id": "LEX07",
+    "domain": "vocabulary",
+    "feature": "semantic_transparency",
+    "charCount": 16,
+    "sentence": "他昨天联系经理结果吃了一个闭门羹。",
+    "question": "다음 중 방금 읽은 중국어 문장의 의미와 가장 일치하는 것을 고르세요.",
+    "options": [
+      "그는 어제 매니저에게 연락했지만 결국 냉대를 당하거나 거절당했다.",
+      "그는 어제 매니저에게 연락한 뒤 함께 식사를 하게 되었다.",
+      "그는 어제 매니저에게 연락해 필요한 도움을 바로 받았다.",
+      "그는 어제 매니저에게 연락하자 매니저가 직접 찾아왔다."
+    ],
+    "answer": 0
+  },
+  {
+    "id": "LEX08",
+    "domain": "vocabulary",
+    "feature": "semantic_transparency",
+    "charCount": 16,
+    "sentence": "他昨天答应见面最后却放了我的鸽子。",
+    "question": "다음 중 방금 읽은 중국어 문장의 의미와 가장 일치하는 것을 고르세요.",
+    "options": [
+      "그는 어제 만나기로 약속해 놓고 결국 나를 바람맞혔다.",
+      "그는 어제 만나기로 약속한 뒤 약속 시간보다 늦게 나타났다.",
+      "그는 어제 만나기로 한 장소를 나중에 다른 곳으로 바꾸었다.",
+      "그는 어제 만나기로 한 약속을 다시 확인하고 제시간에 나왔다."
+    ],
+    "answer": 0
+  },
+  {
+    "id": "COL01",
+    "domain": "collocation",
+    "feature": "verb_noun",
+    "charCount": 15,
+    "sentence": "学校针对这个问题采取了新的措施。",
+    "question": "다음 중 방금 읽은 중국어 문장의 의미와 가장 일치하는 것을 고르세요.",
+    "options": [
+      "학교는 이 문제에 대응해 새로운 조치를 취했다.",
+      "학교는 이 문제 때문에 기존 조치를 취소했다.",
+      "학교는 이 문제에 대한 새로운 조치를 검토만 하고 실행하지 않았다.",
+      "학교는 새로운 조치보다 문제의 원인을 먼저 발표했다."
+    ],
+    "answer": 0
+  },
+  {
+    "id": "COL02",
+    "domain": "collocation",
+    "feature": "verb_noun",
+    "charCount": 15,
+    "sentence": "每个人都应该主动承担自己的责任。",
+    "question": "다음 중 방금 읽은 중국어 문장의 의미와 가장 일치하는 것을 고르세요.",
+    "options": [
+      "모든 사람은 자신의 책임을 적극적으로 져야 한다.",
+      "모든 사람은 자신의 책임을 다른 사람에게 맡겨야 한다.",
+      "모든 사람은 책임이 생기면 가능한 한 피해야 한다.",
+      "모든 사람은 자신의 일만 끝내면 책임을 질 필요가 없다."
+    ],
+    "answer": 0
+  },
+  {
+    "id": "COL03",
+    "domain": "collocation",
+    "feature": "adjective_noun",
+    "charCount": 17,
+    "sentence": "这次事故的重大影响大家现在都很清楚。",
+    "question": "다음 중 방금 읽은 중국어 문장의 의미와 가장 일치하는 것을 고르세요.",
+    "options": [
+      "모두가 이번 사고의 중대한 영향을 지금 분명히 알고 있다.",
+      "모두가 이번 사고의 주요 원인을 지금 분명히 알고 있다.",
+      "모두는 이번 사고의 영향이 크지 않다고 생각하고 있다.",
+      "모두는 이번 사고의 영향이 아직 분명하지 않다고 생각한다."
+    ],
+    "answer": 0
+  },
+  {
+    "id": "COL04",
+    "domain": "collocation",
+    "feature": "adjective_noun",
+    "charCount": 17,
+    "sentence": "这次活动的宝贵经验大家以后都会用到。",
+    "question": "다음 중 방금 읽은 중국어 문장의 의미와 가장 일치하는 것을 고르세요.",
+    "options": [
+      "모두는 이번 활동에서 얻은 소중한 경험을 앞으로 활용하게 된다.",
+      "모두는 이번 활동의 경험을 앞으로는 사용할 필요가 없다고 본다.",
+      "모두는 앞으로 경험을 얻기 위해 이번 활동을 다시 시작해야 한다.",
+      "모두는 이번 활동이 경험 부족 때문에 제대로 이루어지지 않았다고 본다."
+    ],
+    "answer": 0
+  },
+  {
+    "id": "COL05",
+    "domain": "collocation",
+    "feature": "adverb_verb",
+    "charCount": 15,
+    "sentence": "学校一直高度重视学生的安全问题。",
+    "question": "다음 중 방금 읽은 중국어 문장의 의미와 가장 일치하는 것을 고르세요.",
+    "options": [
+      "학교는 학생들의 안전 문제를 줄곧 매우 중요하게 여겨 왔다.",
+      "학생들은 학교의 안전 문제를 줄곧 높게 평가해 왔다.",
+      "학교는 최근부터 학생들의 안전 문제에 대한 관심을 줄이고 있다.",
+      "학교는 학생들의 안전 문제보다 다른 활동을 더 중요하게 여긴다."
+    ],
+    "answer": 0
+  },
+  {
+    "id": "COL06",
+    "domain": "collocation",
+    "feature": "adverb_verb",
+    "charCount": 15,
+    "sentence": "老师安排活动时充分考虑学生意见。",
+    "question": "다음 중 방금 읽은 중국어 문장의 의미와 가장 일치하는 것을 고르세요.",
+    "options": [
+      "선생님은 행사를 준비할 때 학생들의 의견을 충분히 고려했다.",
+      "학생들은 행사를 준비할 때 선생님의 의견을 충분히 고려했다.",
+      "선생님은 행사를 모두 정한 뒤에야 학생들의 의견을 들었다.",
+      "선생님은 학생들의 의견과 관계없이 행사 내용을 정했다."
+    ],
+    "answer": 0
+  },
+  {
+    "id": "COL07",
+    "domain": "collocation",
+    "feature": "adverb_adjective",
+    "charCount": 16,
+    "sentence": "两位老师对这个问题的看法高度一致。",
+    "question": "다음 중 방금 읽은 중국어 문장의 의미와 가장 일치하는 것을 고르세요.",
+    "options": [
+      "두 선생님의 이 문제에 대한 견해는 매우 일치한다.",
+      "두 선생님의 이 문제에 대한 견해는 서로 크게 다르다.",
+      "두 선생님 가운데 한 명만 이 문제에 대한 견해를 밝혔다.",
+      "두 선생님은 같은 문제를 보았지만 아직 의견을 정하지 못했다."
+    ],
+    "answer": 0
+  },
+  {
+    "id": "COL08",
+    "domain": "collocation",
+    "feature": "adverb_adjective",
+    "charCount": 16,
+    "sentence": "学习效果和每天的练习情况密切相关。",
+    "question": "다음 중 방금 읽은 중국어 문장의 의미와 가장 일치하는 것을 고르세요.",
+    "options": [
+      "학습 효과는 매일의 연습 상황과 밀접하게 관련되어 있다.",
+      "학습 효과는 매일의 연습 상황과 거의 관련이 없다.",
+      "학습 효과가 좋아야만 매일의 연습을 시작할 수 있다.",
+      "매일의 연습 상황은 학습 효과와 관계없이 정해진다."
+    ],
+    "answer": 0
+  },
+  {
+    "id": "DIS01",
+    "domain": "discourse",
+    "feature": "contrast",
+    "charCount": 17,
+    "sentence": "虽然今天一直下雨但是学生们按时到校。",
+    "question": "다음 중 방금 읽은 중국어 문장의 의미와 가장 일치하는 것을 고르세요.",
+    "options": [
+      "오늘 계속 비가 왔지만 학생들은 제시간에 학교에 도착했다.",
+      "오늘 계속 비가 와서 학생들은 학교에 늦게 도착했다.",
+      "오늘 비가 그친 뒤에야 학생들은 제시간에 학교에 도착했다.",
+      "학생들이 제시간에 학교에 도착한 뒤부터 비가 계속 내렸다."
+    ],
+    "answer": 0
+  },
+  {
+    "id": "DIS02",
+    "domain": "discourse",
+    "feature": "contrast",
+    "charCount": 16,
+    "sentence": "虽然时间已经很晚大家还是继续讨论。",
+    "question": "다음 중 방금 읽은 중국어 문장의 의미와 가장 일치하는 것을 고르세요.",
+    "options": [
+      "시간이 이미 늦었지만 모두는 계속 토론했다.",
+      "시간이 이미 늦어서 모두는 토론을 끝냈다.",
+      "모두가 토론을 끝낸 뒤에야 시간이 늦어졌다.",
+      "모두는 시간이 늦기 전까지만 토론을 계속했다."
+    ],
+    "answer": 0
+  },
+  {
+    "id": "DIS03",
+    "domain": "discourse",
+    "feature": "causal",
+    "charCount": 16,
+    "sentence": "因为今天身体不舒服小李没有来上课。",
+    "question": "다음 중 방금 읽은 중국어 문장의 의미와 가장 일치하는 것을 고르세요.",
+    "options": [
+      "샤오리는 오늘 몸이 좋지 않아서 수업에 오지 않았다.",
+      "샤오리는 오늘 수업에 오지 않은 뒤 몸이 좋지 않게 되었다.",
+      "샤오리는 오늘 몸이 좋지 않았지만 수업에는 왔다.",
+      "샤오리는 오늘 몸은 괜찮았지만 수업이 없어서 오지 않았다."
+    ],
+    "answer": 0
+  },
+  {
+    "id": "DIS04",
+    "domain": "discourse",
+    "feature": "causal",
+    "charCount": 17,
+    "sentence": "路上突然堵车所以他今天迟到了十分钟。",
+    "question": "다음 중 방금 읽은 중국어 문장의 의미와 가장 일치하는 것을 고르세요.",
+    "options": [
+      "길이 갑자기 막혀서 그는 오늘 10분 늦었다.",
+      "그가 오늘 10분 늦은 뒤에 길이 갑자기 막히기 시작했다.",
+      "길이 갑자기 막혔지만 그는 오늘 제시간에 도착했다.",
+      "길이 10분 동안 막혔지만 그는 오늘 오히려 일찍 도착했다."
+    ],
+    "answer": 0
+  },
+  {
+    "id": "DIS05",
+    "domain": "discourse",
+    "feature": "temporal_sequence",
+    "charCount": 16,
+    "sentence": "老师讲完以后学生才开始认真做练习。",
+    "question": "다음 중 방금 읽은 중국어 문장의 의미와 가장 일치하는 것을 고르세요.",
+    "options": [
+      "선생님의 설명이 끝난 뒤에야 학생들이 연습을 시작했다.",
+      "학생들이 연습을 끝낸 뒤에야 선생님이 설명을 시작했다.",
+      "선생님이 설명하는 동안 학생들은 이미 연습을 끝냈다.",
+      "학생들은 선생님의 설명이 끝나기 전에 연습을 모두 마쳤다."
+    ],
+    "answer": 0
+  },
+  {
+    "id": "DIS06",
+    "domain": "discourse",
+    "feature": "temporal_sequence",
+    "charCount": 15,
+    "sentence": "小李吃完晚饭以后才开始准备考试。",
+    "question": "다음 중 방금 읽은 중국어 문장의 의미와 가장 일치하는 것을 고르세요.",
+    "options": [
+      "샤오리는 저녁을 먹은 뒤에야 시험 준비를 시작했다.",
+      "샤오리는 시험 준비를 끝낸 뒤에야 저녁을 먹었다.",
+      "샤오리는 저녁을 먹는 동안 시험 준비를 모두 끝냈다.",
+      "샤오리는 저녁을 먹기 전에 시험 준비를 시작하고 끝냈다."
+    ],
+    "answer": 0
+  },
+  {
+    "id": "DIS07",
+    "domain": "discourse",
+    "feature": "information_density",
+    "charCount": 16,
+    "sentence": "会议讨论了课程内容费用和报名方法。",
+    "question": "다음 중 방금 읽은 중국어 문장의 의미와 가장 일치하는 것을 고르세요.",
+    "options": [
+      "회의에서는 수업 내용, 비용, 신청 방법을 논의했다.",
+      "회의에서는 수업 시간, 비용, 신청 방법을 논의했다.",
+      "회의에서는 수업 내용, 시험 범위, 신청 방법을 논의했다.",
+      "회의에서는 수업 내용, 비용, 시험 방법을 논의했다."
+    ],
+    "answer": 0
+  },
+  {
+    "id": "DIS08",
+    "domain": "discourse",
+    "feature": "information_density",
+    "charCount": 15,
+    "sentence": "通知列出活动时间地点费用和方法。",
+    "question": "다음 중 방금 읽은 중국어 문장의 의미와 가장 일치하는 것을 고르세요.",
+    "options": [
+      "공지에는 행사 시간, 장소, 비용, 방법이 적혀 있었다.",
+      "공지에는 행사 시간, 장소, 인원, 방법이 적혀 있었다.",
+      "공지에는 행사 시간, 날짜, 비용, 방법이 적혀 있었다.",
+      "공지에는 행사 대상, 장소, 비용, 방법이 적혀 있었다."
+    ],
+    "answer": 0
+  },
+  {
+    "id": "BF01",
+    "domain": "baseline",
+    "feature": "baseline",
+    "charCount": 15,
+    "sentence": "李华每天早上在学校认真学习中文。",
+    "question": "다음 중 방금 읽은 중국어 문장의 의미와 가장 일치하는 것을 고르세요.",
+    "options": [
+      "리화는 매일 아침 학교에서 열심히 중국어를 공부한다.",
+      "리화는 매일 저녁 학교에서 열심히 중국어를 공부한다.",
+      "리화는 매일 아침 집에서 열심히 중국어를 공부한다.",
+      "리화는 매일 아침 학교에서 열심히 영어를 공부한다."
+    ],
+    "answer": 0
+  },
+  {
+    "id": "BF02",
+    "domain": "baseline",
+    "feature": "baseline",
+    "charCount": 16,
+    "sentence": "妈妈昨天晚上在家准备了简单的晚饭。",
+    "question": "다음 중 방금 읽은 중국어 문장의 의미와 가장 일치하는 것을 고르세요.",
+    "options": [
+      "엄마는 어젯밤 집에서 간단한 저녁을 준비했다.",
+      "엄마는 오늘 밤 집에서 간단한 저녁을 준비했다.",
+      "엄마는 어젯밤 집에서 간단한 아침을 준비했다.",
+      "엄마는 어젯밤 식당에서 간단한 저녁을 준비했다."
+    ],
+    "answer": 0
+  },
+  {
+    "id": "BF03",
+    "domain": "baseline",
+    "feature": "baseline",
+    "charCount": 17,
+    "sentence": "爸爸每天早上七点准时开始自己的工作。",
+    "question": "다음 중 방금 읽은 중국어 문장의 의미와 가장 일치하는 것을 고르세요.",
+    "options": [
+      "아버지는 매일 아침 7시에 제시간에 자신의 일을 시작한다.",
+      "아버지는 매일 아침 7시에 제시간에 자신의 일을 끝낸다.",
+      "아버지는 매일 아침 8시에 제시간에 자신의 일을 시작한다.",
+      "아버지는 매일 저녁 7시에 제시간에 자신의 일을 시작한다."
+    ],
+    "answer": 0
+  },
+  {
+    "id": "BF04",
+    "domain": "baseline",
+    "feature": "baseline",
+    "charCount": 15,
+    "sentence": "弟弟每天晚上在房间里认真写作业。",
+    "question": "다음 중 방금 읽은 중국어 문장의 의미와 가장 일치하는 것을 고르세요.",
+    "options": [
+      "남동생은 매일 저녁 방에서 열심히 숙제를 한다.",
+      "남동생은 매일 아침 방에서 열심히 숙제를 한다.",
+      "남동생은 매일 저녁 거실에서 열심히 숙제를 한다.",
+      "남동생은 매일 저녁 방에서 열심히 책을 읽는다."
+    ],
+    "answer": 0
+  },
+  {
+    "id": "BF05",
+    "domain": "baseline",
+    "feature": "baseline",
+    "charCount": 16,
+    "sentence": "小林星期天下午和家人在公园里散步。",
+    "question": "다음 중 방금 읽은 중국어 문장의 의미와 가장 일치하는 것을 고르세요.",
+    "options": [
+      "샤오린은 일요일 오후 가족과 공원에서 산책했다.",
+      "샤오린은 토요일 오후 가족과 공원에서 산책했다.",
+      "샤오린은 일요일 오전 가족과 공원에서 산책했다.",
+      "샤오린은 일요일 오후 친구와 공원에서 산책했다."
+    ],
+    "answer": 0
+  },
+  {
+    "id": "BF06",
+    "domain": "baseline",
+    "feature": "baseline",
+    "charCount": 16,
+    "sentence": "王明昨天下午在商店买了一双运动鞋。",
+    "question": "다음 중 방금 읽은 중국어 문장의 의미와 가장 일치하는 것을 고르세요.",
+    "options": [
+      "왕밍은 어제 오후 상점에서 운동화 한 켤레를 샀다.",
+      "왕밍은 오늘 오후 상점에서 운동화 한 켤레를 샀다.",
+      "왕밍은 어제 오후 상점에서 흰색 외투 한 벌을 샀다.",
+      "왕밍은 어제 오후 학교에서 운동화 한 켤레를 샀다."
+    ],
+    "answer": 0
+  },
+  {
+    "id": "BF07",
+    "domain": "baseline",
+    "feature": "baseline",
+    "charCount": 17,
+    "sentence": "姐姐今天上午在学校穿了一件白色外套。",
+    "question": "다음 중 방금 읽은 중국어 문장의 의미와 가장 일치하는 것을 고르세요.",
+    "options": [
+      "누나는 오늘 오전 학교에서 흰색 외투를 입었다.",
+      "누나는 어제 오전 학교에서 흰색 외투를 입었다.",
+      "누나는 오늘 오전 학교에서 검은색 외투를 입었다.",
+      "누나는 오늘 오전 집에서 흰색 외투를 입었다."
+    ],
+    "answer": 0
+  },
+  {
+    "id": "BF08",
+    "domain": "baseline",
+    "feature": "baseline",
+    "charCount": 17,
+    "sentence": "我们星期六下午在电影院看了一部电影。",
+    "question": "다음 중 방금 읽은 중국어 문장의 의미와 가장 일치하는 것을 고르세요.",
+    "options": [
+      "우리는 토요일 오후 영화관에서 영화 한 편을 보았다.",
+      "우리는 일요일 오후 영화관에서 영화 한 편을 보았다.",
+      "우리는 토요일 오후 집에서 영화 한 편을 보았다.",
+      "우리는 토요일 오후 영화관에서 연극 한 편을 보았다."
+    ],
+    "answer": 0
+  }
 ];
-
 
 /* =====================================================
    STATE
@@ -1480,7 +1463,7 @@ function preparePracticeItems(){
    PREPARE MAIN
 
    1. 선택지 랜덤
-   2. 30문항 전체 순서 랜덤
+   2. 40문항 전체 순서 랜덤
 ===================================================== */
 
 function prepareMainItems(){
@@ -1776,21 +1759,21 @@ function showQuestion(){
     document
       .getElementById("questionSub")
       .textContent =
-        `연습 ${practiceIndex + 1} / ${randomizedPracticeItems.length} · 내용 확인`;
+        `연습 ${practiceIndex + 1} / ${randomizedPracticeItems.length} · 문장 의미 판단`;
 
   }else{
 
     document
       .getElementById("questionSub")
       .textContent =
-        `실전 ${mainIndex + 1} / ${randomizedMainItems.length} · 내용 확인`;
+        `실전 ${mainIndex + 1} / ${randomizedMainItems.length} · 문장 의미 판단`;
   }
 
 
   document
     .getElementById("progressRight")
     .textContent =
-      "내용 확인";
+      "문장 의미 판단";
 
 
   const optionsDiv =
@@ -2198,7 +2181,7 @@ async function finishMainTest(){
       "ChineseFlowLab_Reading_Pilot",
 
     version:
-      "final30_random_item_and_option_order_supabase",
+      "final40_interpretation_random_item_and_option_order_supabase",
 
     participantCode:
       participantCode,
@@ -2325,7 +2308,7 @@ async function finishMainTest(){
 
 
   /*
-    2. reading_results 30문항 저장
+    2. reading_results 40문항 저장
   */
 
   const resultRows =
@@ -2514,5 +2497,3 @@ document.addEventListener(
 </body>
 </html>
  
-
-
