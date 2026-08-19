@@ -3,11 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
- 
 <title>Chinese Flow Lab | XAI Report</title>
- 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
- 
 <style>
 :root{
   --primary:#2457A6;
@@ -22,39 +19,21 @@
   --success:#2F7D5A;
   --warning:#A66A24;
   --danger:#B34A4A;
+  --muted:#8A96A6;
 }
- 
-*{
-  box-sizing:border-box;
-}
- 
+*{box-sizing:border-box;}
 body{
   margin:0;
-  font-family:
-    "Pretendard",
-    "Noto Sans KR",
-    Arial,
-    sans-serif;
+  font-family:"Pretendard","Noto Sans KR",Arial,sans-serif;
   background:var(--background);
   color:var(--text);
 }
- 
 .header{
-  background:
-    linear-gradient(
-      135deg,
-      var(--primary-dark),
-      var(--accent)
-    );
-  color:white;
+  background:linear-gradient(135deg,var(--primary-dark),var(--accent));
+  color:#fff;
   padding:40px 8%;
 }
- 
-.header-inner{
-  max-width:1100px;
-  margin:auto;
-}
- 
+.header-inner{max-width:1100px;margin:auto;}
 .header-label{
   font-size:13px;
   font-weight:800;
@@ -62,73 +41,30 @@ body{
   opacity:.88;
   margin-bottom:8px;
 }
- 
-.header h1{
-  margin:0 0 8px;
-  font-size:34px;
-}
- 
-.header p{
-  margin:0;
-  opacity:.92;
-  line-height:1.75;
-}
- 
-.container{
-  max-width:1100px;
-  margin:auto;
-  padding:42px 6% 75px;
-}
- 
-.hidden{
-  display:none !important;
-}
- 
+.header h1{margin:0 0 8px;font-size:34px;}
+.header p{margin:0;opacity:.92;line-height:1.75;}
+.container{max-width:1100px;margin:auto;padding:42px 6% 75px;}
+.hidden{display:none !important;}
 .status{
-  background:white;
+  background:#fff;
   border:1px solid var(--border);
   border-radius:18px;
   padding:18px 20px;
   color:var(--subtext);
   margin-bottom:22px;
 }
- 
-.status.error{
-  background:#FFF1F1;
-  border-color:#F0CCCC;
-  color:var(--danger);
-}
- 
+.status.error{background:#FFF1F1;border-color:#F0CCCC;color:var(--danger);}
 .card{
-  background:white;
+  background:#fff;
   border:1px solid var(--border);
   border-radius:24px;
   padding:28px;
-  box-shadow:
-    0 8px 24px
-    rgba(24,61,117,.06);
+  box-shadow:0 8px 24px rgba(24,61,117,.06);
   margin-bottom:22px;
 }
- 
-.card h2{
-  margin:0 0 12px;
-  color:var(--primary);
-  font-size:25px;
-}
- 
-.card-desc{
-  color:var(--subtext);
-  line-height:1.8;
-  margin:0 0 20px;
-}
- 
-.meta{
-  display:flex;
-  flex-wrap:wrap;
-  gap:9px;
-  margin-bottom:20px;
-}
- 
+.card h2{margin:0 0 12px;color:var(--primary);font-size:25px;}
+.card-desc{color:var(--subtext);line-height:1.8;margin:0 0 20px;}
+.meta{display:flex;flex-wrap:wrap;gap:9px;margin-bottom:20px;}
 .pill{
   padding:8px 12px;
   border-radius:999px;
@@ -137,7 +73,6 @@ body{
   font-size:13px;
   font-weight:750;
 }
- 
 .summary-box{
   background:#F7FAFE;
   border:1px solid #DFE8F4;
@@ -146,99 +81,26 @@ body{
   color:#4D6078;
   line-height:1.9;
 }
- 
-.summary-box strong{
-  color:var(--primary-dark);
-}
- 
-.domain-grid{
-  display:grid;
-  grid-template-columns:
-    repeat(2,1fr);
-  gap:18px;
-}
- 
+.summary-box strong{color:var(--primary-dark);}
+.domain-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;}
 .domain-card{
   border:1px solid var(--border);
   border-radius:20px;
   padding:22px;
   background:#FCFDFF;
 }
- 
-.domain-top{
-  display:flex;
-  justify-content:space-between;
-  gap:12px;
-  align-items:center;
-  margin-bottom:14px;
-}
- 
-.domain-name{
-  font-size:20px;
-  font-weight:850;
-  color:var(--primary-dark);
-}
- 
-.burden{
-  border-radius:999px;
-  padding:7px 10px;
-  font-size:12px;
-  font-weight:800;
-}
- 
-.burden-high{
-  background:#FCEEEE;
-  color:var(--danger);
-}
- 
-.burden-mid{
-  background:#FFF4E4;
-  color:var(--warning);
-}
- 
-.burden-low{
-  background:#EAF7F0;
-  color:var(--success);
-}
- 
-.metric{
-  display:flex;
-  justify-content:space-between;
-  gap:12px;
-  padding:9px 0;
-  border-bottom:
-    1px solid
-    #E9EFF6;
-  font-size:14px;
-}
- 
-.metric:last-of-type{
-  border-bottom:none;
-}
- 
-.metric span{
-  color:var(--subtext);
-}
- 
-.metric strong{
-  color:var(--text);
-}
- 
-.feature-box{
-  margin-top:16px;
-  padding-top:14px;
-  border-top:
-    1px solid
-    #E9EFF6;
-}
- 
-.feature-title{
-  font-size:13px;
-  font-weight:800;
-  color:#52657C;
-  margin-bottom:8px;
-}
- 
+.domain-top{display:flex;justify-content:space-between;gap:12px;align-items:center;margin-bottom:14px;}
+.domain-name{font-size:20px;font-weight:850;color:var(--primary-dark);}
+.burden{border-radius:999px;padding:7px 10px;font-size:12px;font-weight:800;white-space:nowrap;}
+.burden-high{background:#FCEEEE;color:var(--danger);}
+.burden-mid{background:#FFF4E4;color:var(--warning);}
+.burden-low{background:#EAF7F0;color:var(--success);}
+.metric{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-bottom:1px solid #E9EFF6;font-size:14px;}
+.metric:last-of-type{border-bottom:none;}
+.metric span{color:var(--subtext);}
+.metric strong{color:var(--text);}
+.feature-box{margin-top:16px;padding-top:14px;border-top:1px solid #E9EFF6;}
+.feature-title{font-size:13px;font-weight:800;color:#52657C;margin-bottom:8px;}
 .feature-tag{
   display:inline-block;
   margin:0 6px 6px 0;
@@ -248,127 +110,85 @@ body{
   color:#53677F;
   font-size:12px;
 }
- 
 .xai-box{
   background:#F8FBFF;
-  border-left:
-    5px solid
-    var(--primary);
+  border-left:5px solid var(--primary);
   border-radius:14px;
   padding:22px;
   line-height:1.9;
   color:#4B5F77;
 }
- 
-.xai-box strong{
-  color:var(--primary-dark);
-}
-
-/* SHAP */
-.shap-panel{
-  background:#FBFCFF;
+.xai-box strong{color:var(--primary-dark);}
+.note-box{
+  background:#FAFBFD;
   border:1px solid var(--border);
-  border-radius:18px;
-  padding:22px;
+  border-radius:16px;
+  padding:18px 20px;
+  color:var(--subtext);
+  line-height:1.8;
 }
-
-.shap-meta{
+.shap-head{
   display:flex;
   flex-wrap:wrap;
-  gap:8px;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
   margin-bottom:18px;
 }
-
-.shap-prediction{
-  background:#F5F8FC;
+.shap-badge{
+  display:inline-flex;
+  align-items:center;
+  padding:7px 11px;
+  border-radius:999px;
+  font-size:12px;
+  font-weight:800;
+  background:#EEF4FB;
+  color:var(--primary-dark);
+}
+.shap-summary{
+  background:#F7FAFE;
   border:1px solid #DFE8F4;
   border-radius:16px;
   padding:18px 20px;
-  margin-bottom:20px;
   line-height:1.8;
+  margin-bottom:18px;
   color:#4D6078;
 }
-
-.shap-prediction strong{
-  color:var(--primary-dark);
-}
-
-.shap-list{
-  display:grid;
-  gap:14px;
-}
-
 .shap-row{
   display:grid;
-  grid-template-columns:minmax(150px,220px) 1fr 74px;
-  gap:14px;
+  grid-template-columns:minmax(140px,220px) 1fr 90px;
+  gap:12px;
   align-items:center;
+  margin:12px 0;
 }
-
-.shap-label{
-  font-size:14px;
-  color:#4D6078;
-  line-height:1.45;
-}
-
+.shap-label{font-size:14px;font-weight:750;color:#40536B;}
 .shap-track{
   position:relative;
-  height:12px;
+  height:22px;
   border-radius:999px;
-  background:#E9EFF6;
+  background:#EEF2F7;
   overflow:hidden;
 }
-
-.shap-fill{
-  height:100%;
+.shap-track::after{
+  content:"";
+  position:absolute;
+  left:50%;
+  top:0;
+  bottom:0;
+  width:1px;
+  background:#B9C7D8;
+}
+.shap-bar{
+  position:absolute;
+  top:4px;
+  bottom:4px;
   border-radius:999px;
-  min-width:3px;
 }
-
-.shap-fill.positive{
-  background:var(--danger);
-}
-
-.shap-fill.negative{
-  background:var(--success);
-}
-
-.shap-value{
-  font-size:13px;
-  font-weight:800;
-  text-align:right;
-}
-
-.shap-value.positive{
-  color:var(--danger);
-}
-
-.shap-value.negative{
-  color:var(--success);
-}
-
-.shap-legend{
-  margin-top:16px;
-  color:var(--subtext);
-  font-size:12px;
-  line-height:1.7;
-}
-
-.shap-empty{
-  padding:18px;
-  border-radius:14px;
-  background:#F7FAFE;
-  color:var(--subtext);
-  line-height:1.8;
-}
- 
-.actions{
-  display:flex;
-  gap:12px;
-  flex-wrap:wrap;
-  margin-top:22px;
-}
- 
+.shap-bar.positive{left:50%;background:#C86B6B;}
+.shap-bar.negative{right:50%;background:#5C86C9;}
+.shap-value{text-align:right;font-size:13px;font-weight:800;color:#45586F;}
+.legend{margin-top:16px;font-size:12px;color:var(--muted);line-height:1.7;}
+.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px;}
 .btn{
   display:inline-flex;
   align-items:center;
@@ -382,1887 +202,842 @@ body{
   text-decoration:none;
   cursor:pointer;
   background:var(--primary);
-  color:white;
+  color:#fff;
 }
- 
-.btn:hover{
-  background:var(--primary-dark);
-}
- 
-.btn-light{
-  background:var(--primary-light);
-  color:var(--primary);
-  border:
-    1px solid
-    #CADDF5;
-}
- 
-footer{
-  text-align:center;
-  padding:32px 20px;
-  color:#8290A2;
-  font-size:13px;
-}
- 
+.btn:hover{background:var(--primary-dark);}
+.btn-light{background:var(--primary-light);color:var(--primary);border:1px solid #CADDF5;}
+footer{text-align:center;padding:32px 20px;color:#8290A2;font-size:13px;}
 @media(max-width:800px){
- 
-  .domain-grid{
-    grid-template-columns:1fr;
-  }
-
-  .shap-row{
-    grid-template-columns:1fr;
-    gap:6px;
-  }
-
-  .shap-value{
-    text-align:left;
-  }
- 
+  .domain-grid{grid-template-columns:1fr;}
+  .shap-row{grid-template-columns:1fr;gap:6px;}
+  .shap-value{text-align:left;}
 }
 </style>
 </head>
- 
 <body>
- 
 <header class="header">
- 
   <div class="header-inner">
- 
-    <div class="header-label">
-      CHINESE FLOW LAB
-    </div>
- 
-    <h1>
-      SHAP 기반 XAI 원인 설명
-    </h1>
- 
+    <div class="header-label">CHINESE FLOW LAB</div>
+    <h1>XAI 기반 결과 설명</h1>
     <p>
-      읽기 수행 데이터와 문항의 언어학적 특성을 바탕으로
-      영역별 처리 특성과 수행 예측의 주요 영향 요인을 설명합니다.
+      읽기 수행 데이터와 문항의 언어학적 특성을 바탕으로 영역별 처리 특성을 설명하고,
+      파일럿 예측모형이 연결된 경우 SHAP 기반 주요 영향 요인을 함께 제시합니다.
     </p>
- 
   </div>
- 
 </header>
- 
- 
+
 <main class="container">
- 
-  <div
-    class="status"
-    id="statusBox">
-    읽기 수행 결과를 불러오고 있습니다.
-  </div>
- 
- 
-  <div
-    class="hidden"
-    id="reportContent">
- 
- 
+  <div class="status" id="statusBox">읽기 수행 결과를 불러오고 있습니다.</div>
+
+  <div class="hidden" id="reportContent">
     <section class="card">
- 
-      <h2>
-        읽기 수행 및 XAI 분석 결과
-      </h2>
- 
+      <h2>읽기 수행 및 XAI 분석 결과</h2>
       <div class="meta">
- 
-        <span
-          class="pill"
-          id="participantPill">
-          Participant -
-        </span>
- 
-        <span
-          class="pill"
-          id="sessionPill">
-          Session -
-        </span>
- 
+        <span class="pill" id="participantPill">Participant -</span>
+        <span class="pill" id="sessionPill">Session -</span>
       </div>
- 
-      <div
-        class="summary-box"
-        id="mainSummary">
-      </div>
- 
+      <div class="summary-box" id="mainSummary"></div>
     </section>
- 
- 
-    <section class="card">
- 
-      <h2>
-        영역별 근거
-      </h2>
- 
-      <p class="card-desc">
-        각 영역의 평균 읽기시간, 의미판단 정확도,
-        문항 반응시간과 개인 기준선(Baseline) 대비 처리시간을 함께 비교합니다.
-      </p>
- 
-      <div
-        class="domain-grid"
-        id="domainGrid">
-      </div>
- 
-    </section>
- 
- 
-    <section class="card" id="shapCard">
-
-      <h2>
-        SHAP 기반 주요 영향 요인
-      </h2>
-
-      <p class="card-desc">
-        파일럿 데이터로 구축한 문항 수준 수행 예측모형의 결과가 연결되면,
-        각 변수의 SHAP 값을 이용하여 개별 예측에 기여한 요인의 방향과 상대적 크기를 제시합니다.
-      </p>
-
-      <div class="shap-panel">
-
-        <div class="shap-meta" id="shapMeta"></div>
-
-        <div class="shap-prediction" id="shapPrediction"></div>
-
-        <div class="shap-list" id="shapList"></div>
-
-        <div class="shap-legend" id="shapLegend"></div>
-
-      </div>
-
-    </section>
-
 
     <section class="card">
- 
-      <h2>
-        인지 프로파일 기반 해석
-      </h2>
- 
-      <div
-        class="xai-box"
-        id="xaiExplanation">
-      </div>
- 
-    </section>
- 
- 
-    <section class="card">
- 
-      <h2>
-        해석 시 유의사항
-      </h2>
- 
+      <h2>영역별 근거</h2>
       <p class="card-desc">
-        영역별 처리 특성은 해당 회차의 읽기시간, 의미판단 정확도 및 문항 반응시간을
-        개인 기준선과 비교하여 기술적으로 제시합니다. SHAP 설명은 별도로 학습된
-        문항 수준 수행 예측모형의 출력값이 연결된 경우에만 표시됩니다.
-        파일럿 분석은 구현 가능성을 탐색하기 위한 것으로, 단일 회차나 소규모 표본만으로
-        학습자의 고정된 능력 또는 예측모형의 일반화 성능을 확정적으로 판단하지 않습니다.
+        통사·어휘·연어·담화 영역의 평균 읽기시간, 의미판단 정확도, 평균 문항 반응시간을
+        개인 기준선(Baseline)의 읽기시간과 함께 비교합니다. 영역 간 순위와 상태 판정은 구분하여 제시합니다.
       </p>
- 
+      <div class="domain-grid" id="domainGrid"></div>
+    </section>
+
+    <section class="card">
+      <div class="shap-head">
+        <div>
+          <h2 style="margin-bottom:6px;">SHAP 기반 주요 영향 요인</h2>
+          <p class="card-desc" style="margin:0;">
+            파일럿 데이터로 학습한 문항 수준 수행 예측모형이 연결된 경우,
+            개별 예측에 기여한 변수의 방향과 상대적 크기를 표시합니다.
+          </p>
+        </div>
+        <span class="shap-badge" id="shapStatusBadge">연결 확인 중</span>
+      </div>
+      <div id="shapContent"></div>
+    </section>
+
+    <section class="card">
+      <h2>인지 프로파일 기반 해석</h2>
+      <div class="xai-box" id="xaiExplanation"></div>
+    </section>
+
+    <section class="card">
+      <h2>해석 시 유의사항</h2>
+      <p class="card-desc">
+        영역별 처리 특성은 해당 회차의 읽기시간과 의미판단 정확도를 개인 기준선과 비교하여 기술적으로 제시한 결과입니다.
+        이는 단일 회차만으로 학습자의 고정된 능력을 판정하기 위한 것이 아닙니다.
+        SHAP 영역은 별도로 학습된 문항 수준 수행 예측모형의 설명 결과가 해당 회차와 연결된 경우에만 표시되며,
+        SHAP 값은 인과관계를 의미하지 않고 해당 예측에 대한 변수의 상대적 기여를 나타냅니다.
+      </p>
       <div class="actions">
- 
-        <a
-          class="btn"
-          id="profileBtn"
-          href="cognitive-profile.html">
-          인지 프로파일로 돌아가기
-        </a>
- 
-        <a
-          class="btn btn-light"
-          href="reading-research.html">
-          Reading Research로 돌아가기
-        </a>
- 
+        <a class="btn" id="profileBtn" href="cognitive-profile.html">인지 프로파일로 돌아가기</a>
+        <a class="btn btn-light" href="reading-research.html">Reading Research로 돌아가기</a>
       </div>
- 
     </section>
- 
- 
   </div>
- 
 </main>
- 
- 
-<footer>
-  Chinese Flow Lab © 2026
-</footer>
- 
- 
+
+<footer>Chinese Flow Lab © 2026</footer>
+
 <script>
- 
 /* =====================================================
    SUPABASE
 ===================================================== */
- 
 const SUPABASE_URL =
   "https://seusxaghpoaxjmlmzrgf.supabase.co";
- 
+
 const SUPABASE_KEY =
   "sb_publishable_ng-wxySHurKZzYaptvZcoQ_CmTb4dQk";
- 
+
 const supabaseClient =
   window.supabase.createClient(
     SUPABASE_URL,
     SUPABASE_KEY
   );
- 
- 
+
 /* =====================================================
    STORAGE
 ===================================================== */
- 
-const PARTICIPANT_KEY =
-  "cflParticipantId";
- 
-const SESSION_KEY =
-  "cflLatestReadingSessionId";
+const PARTICIPANT_KEY = "cflParticipantId";
+const SESSION_KEY = "cflLatestReadingSessionId";
+const SHAP_STORAGE_KEYS = [
+  "cflShapResult",
+  "readingShapResult"
+];
 
-const SHAP_STORAGE_KEY =
-  "cflShapResult";
- 
- 
 /* =====================================================
    LABELS
+   reading-test.html의 현재 feature 코드와 일치시킴
 ===================================================== */
- 
 const DOMAIN_LABELS = {
- 
-  syntax:
-    "통사",
- 
-  vocabulary:
-    "어휘",
- 
-  collocation:
-    "연어",
- 
-  discourse:
-    "담화"
- 
+  syntax:"통사",
+  vocabulary:"어휘",
+  collocation:"연어",
+  discourse:"담화"
 };
- 
- 
+
 const FEATURE_LABELS = {
-
-  relative_clause:
-    "관계절",
-
-  ba_construction:
-    "把자문",
-
-  bei_construction:
-    "被자문",
-
-  pivotal:
-    "겸어문",
-
-  low_frequency:
-    "저빈도 어휘",
-
-  semantic_transparency:
-    "의미투명도",
-
-  verb_noun:
-    "동사+명사",
-
-  adjective_noun:
-    "형용사+명사",
-
-  adverb_verb:
-    "부사+동사",
-
-  adverb_adjective:
-    "부사+형용사",
-
-  contrast:
-    "역접 관계",
-
-  causal:
-    "인과 관계",
-
-  temporal_sequence:
-    "시간·순서 관계",
-
-  information_density:
-    "정보 밀도",
-
-  baseline:
-    "기준선"
-
+  relative_clause:"관계절",
+  ba_construction:"把자문",
+  bei_construction:"被자문",
+  pivotal:"겸어문",
+  low_frequency:"저빈도 어휘",
+  semantic_transparency:"의미투명도",
+  verb_noun:"동사+명사",
+  adjective_noun:"형용사+명사",
+  adverb_verb:"부사+동사",
+  adverb_adjective:"부사+형용사",
+  contrast:"역접 관계",
+  causal:"인과 관계",
+  temporal_sequence:"시간·순서 관계",
+  information_density:"정보 밀도",
+  baseline:"기준선"
 };
- 
- 
+
 /* =====================================================
    INIT
 ===================================================== */
- 
-document.addEventListener(
-  "DOMContentLoaded",
-  initReport
-);
- 
- 
+document.addEventListener("DOMContentLoaded", initReport);
+
 async function initReport(){
- 
-  const params =
-    new URLSearchParams(
-      window.location.search
-    );
- 
- 
-  const participant =
-    (
-      params.get(
-        "participant"
-      )
-      ||
-      localStorage.getItem(
-        PARTICIPANT_KEY
-      )
-      ||
-      ""
-    )
-      .trim()
-      .toUpperCase();
- 
- 
+  const params = new URLSearchParams(window.location.search);
+
+  const participant = (
+    params.get("participant")
+    || localStorage.getItem(PARTICIPANT_KEY)
+    || ""
+  ).trim().toUpperCase();
+
   const sessionId =
-    params.get(
-      "session"
-    )
-    ||
-    localStorage.getItem(
-      SESSION_KEY
-    );
- 
- 
+    params.get("session")
+    || localStorage.getItem(SESSION_KEY);
+
   if(participant){
- 
-    localStorage.setItem(
-      PARTICIPANT_KEY,
-      participant
-    );
+    localStorage.setItem(PARTICIPANT_KEY, participant);
   }
- 
- 
+
   if(sessionId){
- 
-    localStorage.setItem(
-      SESSION_KEY,
-      sessionId
-    );
+    localStorage.setItem(SESSION_KEY, sessionId);
   }
- 
- 
-  document
-    .getElementById(
-      "participantPill"
-    )
-    .textContent =
-      "Participant "
-      +
-      (
-        participant
-        ||
-        "-"
-      );
- 
- 
-  document
-    .getElementById(
-      "sessionPill"
-    )
-    .textContent =
-      "Session "
-      +
-      (
-        sessionId
-        ||
-        "-"
-      );
- 
- 
-  const profileParams =
-    new URLSearchParams();
- 
- 
-  if(participant){
- 
-    profileParams.set(
-      "participant",
-      participant
-    );
-  }
- 
- 
+
+  document.getElementById("participantPill").textContent =
+    "Participant " + (participant || "-");
+
+  document.getElementById("sessionPill").textContent =
+    "Session " + (sessionId || "-");
+
+  const profileParams = new URLSearchParams();
+  if(participant) profileParams.set("participant", participant);
+  if(sessionId) profileParams.set("session", sessionId);
+
+  document.getElementById("profileBtn").href =
+    "cognitive-profile.html"
+    + (profileParams.toString() ? "?" + profileParams.toString() : "");
+
+  let loaded = false;
+
   if(sessionId){
- 
-    profileParams.set(
-      "session",
-      sessionId
-    );
+    loaded = await loadFromSupabase(participant, sessionId);
   }
- 
- 
-  document
-    .getElementById(
-      "profileBtn"
-    )
-    .href =
-      "cognitive-profile.html"
-      +
-      (
-        profileParams.toString()
-        ?
-        "?"
-        +
-        profileParams.toString()
-        :
-        ""
-      );
- 
- 
-  let loaded =
-    false;
- 
- 
-  /*
-    중요:
-    reading_results 테이블에는 participant_code 컬럼이 없다.
-    따라서 session_id만 사용하여 해당 회차의 결과를 조회한다.
-  */
- 
-  if(sessionId){
- 
-    loaded =
-      await loadFromSupabase(
-        participant,
-        sessionId
-      );
- 
-  }
- 
- 
-  /*
-    Supabase SELECT 정책 또는 네트워크 문제에 대비하여
-    동일 브라우저의 localStorage 결과를 fallback으로 사용한다.
-  */
- 
+
   if(!loaded){
- 
-    loaded =
-      loadFromLocalStorage(
-        participant,
-        sessionId
-      );
- 
+    loaded = loadFromLocalStorage(participant, sessionId);
   }
- 
- 
+
   if(!loaded){
- 
     showError(
       "읽기 수행 결과를 불러오지 못했습니다. 먼저 Reading Test를 완료한 뒤 다시 확인해 주세요."
     );
- 
   }
- 
 }
- 
- 
+
 /* =====================================================
-   SUPABASE LOAD
+   LOAD: SUPABASE
 ===================================================== */
- 
-async function loadFromSupabase(
-  participant,
-  sessionId
-){
- 
+async function loadFromSupabase(participant, sessionId){
   try{
- 
-    const {
-      data,
-      error
-    } =
-      await supabaseClient
-        .from(
-          "reading_results"
-        )
-        .select(
-          "item_id, presentation_order, domain, feature, reading_time_ms, response_time_ms, correct, selected_text, correct_answer_text"
-        )
-        .eq(
-          "session_id",
-          sessionId
-        )
-        .order(
-          "presentation_order",
-          {
-            ascending:true
-          }
-        );
- 
- 
-    if(error){
- 
-      console.warn(
-        "Supabase XAI load error:",
-        error
-      );
- 
-      return false;
-    }
- 
- 
-    if(
-      !data
-      ||
-      data.length === 0
-    ){
- 
-      return false;
-    }
- 
- 
-    const results =
-      data.map(
-        row => ({
- 
-          itemId:
-            row.item_id,
- 
-          presentationOrder:
-            row.presentation_order,
- 
-          domain:
-            row.domain,
- 
-          feature:
-            row.feature,
- 
-          readingTimeMs:
-            Number(
-              row.reading_time_ms
-            ),
- 
-          responseTimeMs:
-            Number(
-              row.response_time_ms
-            ),
- 
-          correct:
-            row.correct === true,
- 
-          selectedText:
-            row.selected_text,
- 
-          correctAnswerText:
-            row.correct_answer_text
- 
-        })
-      );
- 
- 
-    renderReport(
-      participant,
-      sessionId,
-      results
-    );
- 
- 
-    return true;
- 
-  }
-  catch(error){
- 
-    console.warn(
-      "Supabase connection error:",
-      error
-    );
- 
-    return false;
-  }
- 
-}
- 
- 
-/* =====================================================
-   LOCAL STORAGE FALLBACK
-===================================================== */
- 
-function loadFromLocalStorage(
-  participant,
-  sessionId
-){
- 
-  try{
- 
-    const raw =
-      localStorage.getItem(
-        "readingExperimentData"
-      );
- 
- 
-    if(!raw){
- 
-      return false;
-    }
- 
- 
-    const data =
-      JSON.parse(
-        raw
-      );
- 
- 
-    if(
-      sessionId
-      &&
-      data.sessionId
-      &&
-      sessionId !== data.sessionId
-    ){
- 
-      return false;
-    }
- 
- 
-    if(
-      !Array.isArray(
-        data.results
+    const {data,error} = await supabaseClient
+      .from("reading_results")
+      .select(
+        "item_id, presentation_order, domain, feature, reading_time_ms, response_time_ms, correct, selected_text, correct_answer_text"
       )
-      ||
-      data.results.length === 0
-    ){
- 
+      .eq("session_id", sessionId)
+      .order("presentation_order", {ascending:true});
+
+    if(error){
+      console.warn("Supabase XAI load error:", error);
       return false;
     }
- 
- 
-    renderReport(
- 
-      participant
-      ||
-      data.participantCode
-      ||
-      "참여자",
- 
-      sessionId
-      ||
-      data.sessionId,
- 
-      data.results
- 
-    );
- 
- 
+
+    if(!data || data.length === 0){
+      return false;
+    }
+
+    const results = data.map(row => ({
+      itemId:row.item_id,
+      presentationOrder:row.presentation_order,
+      domain:row.domain,
+      feature:row.feature,
+      readingTimeMs:Number(row.reading_time_ms),
+      responseTimeMs:Number(row.response_time_ms),
+      correct:row.correct === true,
+      selectedText:row.selected_text,
+      correctAnswerText:row.correct_answer_text
+    }));
+
+    renderReport(participant, sessionId, results);
     return true;
- 
-  }
-  catch(error){
- 
-    console.error(
-      "Local XAI load error:",
-      error
-    );
- 
+  }catch(error){
+    console.warn("Supabase connection error:", error);
     return false;
   }
- 
 }
- 
- 
+
+/* =====================================================
+   LOAD: LOCALSTORAGE FALLBACK
+===================================================== */
+function loadFromLocalStorage(participant, sessionId){
+  try{
+    const raw = localStorage.getItem("readingExperimentData");
+    if(!raw) return false;
+
+    const data = JSON.parse(raw);
+
+    if(sessionId && data.sessionId && sessionId !== data.sessionId){
+      return false;
+    }
+
+    if(!Array.isArray(data.results) || data.results.length === 0){
+      return false;
+    }
+
+    renderReport(
+      participant || data.participantCode || "참여자",
+      sessionId || data.sessionId,
+      data.results
+    );
+
+    return true;
+  }catch(error){
+    console.error("Local XAI load error:", error);
+    return false;
+  }
+}
+
 /* =====================================================
    RENDER REPORT
 ===================================================== */
- 
-function renderReport(
-  participant,
-  sessionId,
-  results
-){
- 
-  const baselineRows =
-    results.filter(
-      row =>
-        row.domain === "baseline"
-        ||
-        row.feature === "baseline"
-    );
- 
- 
-  const baselineReading =
-    average(
-      baselineRows.map(
-        row =>
-          Number(
-            row.readingTimeMs
-          )
-      )
-    )
-    ||
-    average(
-      results.map(
-        row =>
-          Number(
-            row.readingTimeMs
-          )
-      )
-    );
- 
- 
-  const domains =
-    [
-      "syntax",
-      "vocabulary",
-      "collocation",
-      "discourse"
-    ];
- 
- 
-  const profiles =
-    domains
-      .map(
-        domain =>
-          buildDomainProfile(
-            domain,
-            results,
-            baselineReading
-          )
-      )
-      .filter(
-        profile =>
-          profile.count > 0
-      );
- 
- 
-  if(
-    profiles.length === 0
-  ){
- 
-    showError(
-      "영역별 분석에 필요한 결과 데이터가 없습니다."
-    );
- 
+function renderReport(participant, sessionId, results){
+  const baselineRows = results.filter(row =>
+    row.domain === "baseline" || row.feature === "baseline"
+  );
+
+  if(baselineRows.length === 0){
+    showError("개인 기준선 문항 결과가 없어 XAI 분석을 생성할 수 없습니다.");
     return;
   }
- 
- 
-  const ranked =
-    [...profiles]
-      .sort(
-        (a,b) =>
-          burdenScore(b)
-          -
-          burdenScore(a)
-      );
- 
- 
-  const weakest =
-    ranked[0];
- 
- 
-  const strongest =
-    [...profiles]
-      .sort(
-        (a,b) =>
-          burdenScore(a)
-          -
-          burdenScore(b)
-      )[0];
- 
- 
-  const topFeature =
-    weakest.featureStats[
-      0
-    ];
- 
- 
-  document
-    .getElementById(
-      "mainSummary"
-    )
-    .innerHTML = `
- 
-      이번 회차에서는
-      <strong>${escapeHTML(weakest.label)} 영역</strong>에서
-      상대적으로 높은 처리 부담이 나타났습니다.
- 
-      이 영역의 평균 읽기시간은 개인 기준선의
-      <strong>${weakest.readingRatio.toFixed(2)}배</strong>였으며,
-      의미판단 정확도는
-      <strong>${Math.round(weakest.accuracy * 100)}%</strong>였습니다.
- 
-      ${
-        topFeature
-        ?
-        `세부적으로는 <strong>${escapeHTML(topFeature.label)}</strong> 문항에서
-        상대적으로 긴 읽기시간이 관찰되었습니다.`
-        :
-        ""
-      }
- 
-      반면
-      <strong>${escapeHTML(strongest.label)} 영역</strong>은
-      이번 회차에서 상대적으로 안정적인 처리 양상을 보였습니다.
- 
-    `;
- 
- 
-  renderDomainCards(
-    profiles
+
+  const baselineReading = average(
+    baselineRows.map(row => Number(row.readingTimeMs))
   );
 
+  const domains = ["syntax","vocabulary","collocation","discourse"];
 
-  renderShapSection(
-    sessionId
+  const profiles = domains
+    .map(domain => buildDomainProfile(domain, results, baselineReading))
+    .filter(profile => profile.count > 0);
+
+  if(profiles.length === 0){
+    showError("영역별 분석에 필요한 결과 데이터가 없습니다.");
+    return;
+  }
+
+  const ranked = [...profiles].sort(
+    (a,b) => burdenScore(b) - burdenScore(a)
   );
- 
- 
-  renderXAIExplanation(
-    weakest,
-    strongest,
-    baselineReading
-  );
- 
- 
-  document
-    .getElementById(
-      "statusBox"
-    )
-    .classList.add(
-      "hidden"
-    );
- 
- 
-  document
-    .getElementById(
-      "reportContent"
-    )
-    .classList.remove(
-      "hidden"
-    );
- 
+
+  const weakest = ranked[0];
+  const strongest = ranked[ranked.length - 1];
+
+  document.getElementById("mainSummary").innerHTML =
+    buildMainSummary(weakest, strongest, baselineReading);
+
+  renderDomainCards(profiles);
+  renderSHAPSection(sessionId);
+  renderXAIExplanation(weakest, strongest, baselineReading);
+
+  document.getElementById("statusBox").classList.add("hidden");
+  document.getElementById("reportContent").classList.remove("hidden");
 }
- 
- 
+
+function buildMainSummary(weakest, strongest, baselineReading){
+  const pattern = interpretationPattern(weakest);
+  const topFeature = weakest.featureStats[0];
+
+  return `
+    이번 회차에서 네 영역 가운데
+    <strong>${escapeHTML(weakest.label)} 영역</strong>의 상대 부담 점수가 가장 높게 나타났습니다.
+    이 영역의 평균 읽기시간은 개인 기준선
+    (<strong>${formatSeconds(baselineReading)}</strong>)의
+    <strong>${weakest.readingRatio.toFixed(2)}배</strong>였고,
+    의미판단 정확도는 <strong>${Math.round(weakest.accuracy * 100)}%</strong>였습니다.
+    ${pattern.summary}
+    ${
+      topFeature
+      ? `세부 특성 중에서는 <strong>${escapeHTML(topFeature.label)}</strong> 문항의 수행 부담 점수가 가장 높게 관찰되었습니다.`
+      : ""
+    }
+    반면 <strong>${escapeHTML(strongest.label)} 영역</strong>은 이번 회차에서 상대적으로 안정적인 수행 양상을 보였습니다.
+  `;
+}
+
 /* =====================================================
    DOMAIN PROFILE
 ===================================================== */
- 
-function buildDomainProfile(
-  domain,
-  results,
-  baselineReading
-){
- 
-  const rows =
-    results.filter(
-      row =>
-        row.domain === domain
-    );
- 
- 
-  const avgReading =
-    average(
-      rows.map(
-        row =>
-          Number(
-            row.readingTimeMs
-          )
-      )
-    );
- 
- 
-  const avgResponse =
-    average(
-      rows.map(
-        row =>
-          Number(
-            row.responseTimeMs
-          )
-      )
-    );
- 
- 
-  const accuracy =
-    rateCorrect(
-      rows
-    );
- 
- 
-  const readingRatio =
-    baselineReading > 0
-    ?
-    avgReading
-    /
-    baselineReading
-    :
-    1;
- 
- 
-  let burden =
-    "낮음";
- 
- 
-  if(
-    readingRatio >= 1.35
-    ||
-    accuracy < 0.60
-  ){
- 
-    burden =
-      "높음";
- 
-  }
-  else if(
-    readingRatio >= 1.15
-    ||
-    accuracy < 0.80
-  ){
- 
-    burden =
-      "보통";
- 
-  }
- 
- 
-  return{
- 
-    domain:
-      domain,
- 
-    label:
-      DOMAIN_LABELS[
-        domain
-      ]
-      ||
-      domain,
- 
-    count:
-      rows.length,
- 
-    avgReading:
-      avgReading,
- 
-    avgResponse:
-      avgResponse,
- 
-    accuracy:
-      accuracy,
- 
-    readingRatio:
-      readingRatio,
- 
-    burden:
-      burden,
- 
-    featureStats:
-      buildFeatureStats(
-        rows
-      )
- 
+function buildDomainProfile(domain, results, baselineReading){
+  const rows = results.filter(row => row.domain === domain);
+  const avgReading = average(rows.map(row => Number(row.readingTimeMs)));
+  const avgResponse = average(rows.map(row => Number(row.responseTimeMs)));
+  const accuracy = rateCorrect(rows);
+  const readingRatio = baselineReading > 0 ? avgReading / baselineReading : 1;
+
+  const profile = {
+    domain,
+    label:DOMAIN_LABELS[domain] || domain,
+    count:rows.length,
+    avgReading,
+    avgResponse,
+    accuracy,
+    readingRatio,
+    featureStats:[]
   };
- 
+
+  profile.status = classifyStatus(profile);
+  profile.featureStats = buildFeatureStats(rows, baselineReading);
+
+  return profile;
 }
- 
- 
-/* =====================================================
-   FEATURE PROFILE
-===================================================== */
- 
-function buildFeatureStats(
-  rows
-){
- 
-  const groups =
-    {};
- 
- 
-  rows.forEach(
-    row => {
- 
-      const feature =
-        row.feature
-        ||
-        "other";
- 
- 
-      if(
-        !groups[
-          feature
-        ]
-      ){
- 
-        groups[
-          feature
-        ] =
-          [];
- 
-      }
- 
- 
-      groups[
-        feature
-      ].push(
-        row
+
+function classifyStatus(profile){
+  if(
+    profile.accuracy < 0.60
+    || (profile.readingRatio >= 1.35 && profile.accuracy < 0.80)
+  ){
+    return {label:"높은 부담", css:"burden-high"};
+  }
+
+  if(
+    profile.accuracy < 0.80
+    || profile.readingRatio >= 1.15
+  ){
+    return {label:"관찰 필요", css:"burden-mid"};
+  }
+
+  return {label:"안정", css:"burden-low"};
+}
+
+function buildFeatureStats(rows, baselineReading){
+  const groups = {};
+
+  rows.forEach(row => {
+    const feature = row.feature || "other";
+    if(!groups[feature]) groups[feature] = [];
+    groups[feature].push(row);
+  });
+
+  return Object.entries(groups)
+    .map(([feature,items]) => {
+      const avgReading = average(
+        items.map(item => Number(item.readingTimeMs))
       );
- 
-    }
-  );
- 
- 
-  return Object
-    .entries(
-      groups
-    )
-    .map(
-      ([feature,items]) => ({
- 
-        feature:
-          feature,
- 
-        label:
-          FEATURE_LABELS[
-            feature
-          ]
-          ||
-          feature,
- 
-        avgReading:
-          average(
-            items.map(
-              item =>
-                Number(
-                  item.readingTimeMs
-                )
-            )
-          ),
- 
-        avgResponse:
-          average(
-            items.map(
-              item =>
-                Number(
-                  item.responseTimeMs
-                )
-            )
-          ),
- 
-        accuracy:
-          rateCorrect(
-            items
-          )
- 
-      })
-    )
-    .sort(
-      (a,b) =>
-        b.avgReading
-        -
-        a.avgReading
-    );
- 
+      const accuracy = rateCorrect(items);
+      const avgResponse = average(
+        items.map(item => Number(item.responseTimeMs))
+      );
+      const readingRatio = baselineReading > 0
+        ? avgReading / baselineReading
+        : 1;
+
+      return {
+        feature,
+        label:FEATURE_LABELS[feature] || "기타 특성",
+        avgReading,
+        avgResponse,
+        accuracy,
+        readingRatio,
+        score:featureBurdenScore(readingRatio, accuracy)
+      };
+    })
+    .sort((a,b) => b.score - a.score);
 }
- 
- 
+
 /* =====================================================
    DOMAIN CARDS
 ===================================================== */
- 
-function renderDomainCards(
-  profiles
-){
- 
-  const grid =
-    document.getElementById(
-      "domainGrid"
-    );
- 
- 
-  grid.innerHTML =
-    "";
- 
- 
-  profiles.forEach(
-    profile => {
- 
-      const card =
-        document.createElement(
-          "article"
-        );
- 
- 
-      card.className =
-        "domain-card";
- 
- 
-      const burdenClass =
-        profile.burden === "높음"
-        ?
-        "burden-high"
-        :
-        profile.burden === "보통"
-        ?
-        "burden-mid"
-        :
-        "burden-low";
- 
- 
-      const featureHtml =
-        profile.featureStats
-          .slice(
-            0,
-            3
-          )
-          .map(
-            feature => `
- 
-              <span class="feature-tag">
- 
-                ${escapeHTML(feature.label)}
-                · ${Math.round(feature.avgReading)}ms
-                · ${Math.round(feature.accuracy * 100)}%
- 
-              </span>
- 
-            `
-          )
-          .join(
-            ""
-          );
- 
- 
-      card.innerHTML = `
- 
-        <div class="domain-top">
- 
-          <div class="domain-name">
-            ${escapeHTML(profile.label)}
-          </div>
- 
-          <div class="burden ${burdenClass}">
-            상대 처리 부담 ${profile.burden}
-          </div>
- 
+function renderDomainCards(profiles){
+  const grid = document.getElementById("domainGrid");
+  grid.innerHTML = "";
+
+  profiles.forEach(profile => {
+    const card = document.createElement("article");
+    card.className = "domain-card";
+
+    const featureHtml = profile.featureStats
+      .slice(0,3)
+      .map(feature => `
+        <span class="feature-tag">
+          ${escapeHTML(feature.label)}
+          · ${formatSeconds(feature.avgReading)}
+          · ${Math.round(feature.accuracy * 100)}%
+        </span>
+      `)
+      .join("");
+
+    card.innerHTML = `
+      <div class="domain-top">
+        <div class="domain-name">${escapeHTML(profile.label)}</div>
+        <div class="burden ${profile.status.css}">
+          ${profile.status.label}
         </div>
- 
- 
-        <div class="metric">
- 
-          <span>
-            평균 읽기시간
-          </span>
- 
-          <strong>
-            ${Math.round(profile.avgReading)} ms
-          </strong>
- 
-        </div>
- 
- 
-        <div class="metric">
- 
-          <span>
-            기준선 대비
-          </span>
- 
-          <strong>
-            ${profile.readingRatio.toFixed(2)}배
-          </strong>
- 
-        </div>
- 
- 
-        <div class="metric">
- 
-          <span>
-            의미판단 정확도
-          </span>
- 
-          <strong>
-            ${Math.round(profile.accuracy * 100)}%
-          </strong>
- 
-        </div>
- 
- 
-        <div class="metric">
- 
-          <span>
-            평균 문항 반응시간
-          </span>
- 
-          <strong>
-            ${Math.round(profile.avgResponse)} ms
-          </strong>
- 
-        </div>
- 
- 
-        <div class="feature-box">
- 
-          <div class="feature-title">
-            주요 세부 특성
-          </div>
- 
-          ${
-            featureHtml
-            ||
-            '<span class="feature-tag">자료 없음</span>'
-          }
- 
-        </div>
- 
-      `;
- 
- 
-      grid.appendChild(
-        card
-      );
- 
-    }
-  );
- 
+      </div>
+
+      <div class="metric">
+        <span>평균 읽기시간</span>
+        <strong>${formatSeconds(profile.avgReading)}</strong>
+      </div>
+
+      <div class="metric">
+        <span>기준선 대비</span>
+        <strong>${profile.readingRatio.toFixed(2)}배</strong>
+      </div>
+
+      <div class="metric">
+        <span>의미판단 정확도</span>
+        <strong>${Math.round(profile.accuracy * 100)}%</strong>
+      </div>
+
+      <div class="metric">
+        <span>평균 문항 반응시간</span>
+        <strong>${formatSeconds(profile.avgResponse)}</strong>
+      </div>
+
+      <div class="feature-box">
+        <div class="feature-title">주요 세부 특성</div>
+        ${featureHtml || '<span class="feature-tag">자료 없음</span>'}
+      </div>
+    `;
+
+    grid.appendChild(card);
+  });
 }
- 
- 
+
 /* =====================================================
    SHAP RESULT
+   실제 SHAP 값은 Python/서버 분석 후 localStorage에 연결
 
-   실제 SHAP 계산은 Python/서버의 예측모형에서 수행한 뒤
-   아래 형식의 JSON을 localStorage 또는 추후 Supabase 결과 테이블에
-   저장하여 이 화면에 연결한다.
-
-   예시 형식:
+   권장 데이터 예시:
    {
-     "sessionId":"...",
-     "modelName":"Logistic Regression",
-     "targetLabel":"문항 오답 가능성",
-     "predictionProbability":0.68,
-     "predictedLabel":"오답 가능성 높음",
-     "baseValue":0.41,
-     "features":[
-       {
-         "key":"relative_clause",
-         "label":"관계절 구조",
-         "featureValue":"해당",
-         "shapValue":0.18
-       }
+     sessionId:"...",
+     targetLabel:"오답 예측 확률",
+     prediction:0.68,
+     baseValue:0.32,
+     values:[
+       {key:"semantic_transparency", label:"의미투명도", shapValue:0.21, featureValue:"해당"},
+       {key:"baseline_reading_time", label:"개인 기준선 읽기시간", shapValue:0.12, featureValue:"4.50초"},
+       {key:"vocabulary_accuracy", label:"기존 어휘 정확도", shapValue:-0.08, featureValue:"88%"}
      ]
    }
 ===================================================== */
+function renderSHAPSection(sessionId){
+  const content = document.getElementById("shapContent");
+  const badge = document.getElementById("shapStatusBadge");
+  const shapData = loadSHAPResult();
 
-function renderShapSection(
-  sessionId
-){
-
-  const payload =
-    loadShapPayload(
-      sessionId
-    );
-
-
-  if(!payload){
-
-    renderShapEmptyState();
-    return;
-
-  }
-
-
-  const features =
-    Array.isArray(
-      payload.features
-    )
-    ?
-    payload.features
-      .filter(
-        item =>
-          Number.isFinite(
-            Number(
-              item.shapValue
-            )
-          )
-      )
-      .sort(
-        (a,b) =>
-          Math.abs(
-            Number(
-              b.shapValue
-            )
-          )
-          -
-          Math.abs(
-            Number(
-              a.shapValue
-            )
-          )
-      )
-      .slice(
-        0,
-        8
-      )
-    :
-    [];
-
-
-  document
-    .getElementById(
-      "shapMeta"
-    )
-    .innerHTML = `
-      <span class="pill">
-        모델 ${escapeHTML(payload.modelName || "-")}
-      </span>
-      <span class="pill">
-        목표 ${escapeHTML(payload.targetLabel || "문항 수행")}
-      </span>
-    `;
-
-
-  const probability =
-    Number(
-      payload.predictionProbability
-    );
-
-
-  const probabilityText =
-    Number.isFinite(
-      probability
-    )
-    ?
-    `${Math.round(probability * 100)}%`
-    :
-    "-";
-
-
-  document
-    .getElementById(
-      "shapPrediction"
-    )
-    .innerHTML = `
-      <strong>개별 예측 결과</strong><br>
-      ${escapeHTML(payload.predictedLabel || "예측 결과")}
-      · 예측 확률
-      <strong>${probabilityText}</strong>
-      ${
-        Number.isFinite(
-          Number(
-            payload.baseValue
-          )
-        )
-        ?
-        `<br>모형의 기준값(base value):
-         <strong>${Number(payload.baseValue).toFixed(3)}</strong>`
-        :
-        ""
-      }
-    `;
-
-
-  const list =
-    document.getElementById(
-      "shapList"
-    );
-
-
-  if(features.length === 0){
-
-    list.innerHTML = `
-      <div class="shap-empty">
-        표시할 SHAP 기여도 값이 없습니다.
+  if(!shapData){
+    badge.textContent = "파일럿 분석 연결 대기";
+    content.innerHTML = `
+      <div class="note-box">
+        <strong>SHAP 분석 결과가 아직 연결되지 않았습니다.</strong><br>
+        파일럿 데이터로 문항 수준 수행 예측모형을 학습한 뒤,
+        해당 회차의 예측값과 SHAP 값을 연결하면 이 영역에 자동으로 표시됩니다.<br><br>
+        현재 위의 영역별 읽기시간·정확도·기준선 비교 결과는 실제 수행 데이터에 기반한 기술적 진단이며,
+        SHAP 결과를 임의로 생성하여 표시하지 않습니다.
       </div>
     `;
-
-    document
-      .getElementById(
-        "shapLegend"
-      )
-      .textContent =
-        "";
-
     return;
   }
 
-
-  const maxAbs =
-    Math.max(
-      ...features.map(
-        item =>
-          Math.abs(
-            Number(
-              item.shapValue
-            )
-          )
-      ),
-      0.000001
-    );
-
-
-  list.innerHTML =
-    features
-      .map(
-        item => {
-
-          const value =
-            Number(
-              item.shapValue
-            );
-
-          const direction =
-            value >= 0
-            ?
-            "positive"
-            :
-            "negative";
-
-          const width =
-            Math.max(
-              3,
-              Math.round(
-                Math.abs(value)
-                /
-                maxAbs
-                *
-                100
-              )
-            );
-
-          const label =
-            item.label
-            ||
-            FEATURE_LABELS[
-              item.key
-            ]
-            ||
-            item.key
-            ||
-            "변수";
-
-          const featureValue =
-            item.featureValue !== undefined
-            &&
-            item.featureValue !== null
-            ?
-            ` · ${item.featureValue}`
-            :
-            "";
-
-
-          return `
-            <div class="shap-row">
-              <div class="shap-label">
-                <strong>${escapeHTML(label)}</strong>${escapeHTML(featureValue)}
-              </div>
-
-              <div class="shap-track">
-                <div
-                  class="shap-fill ${direction}"
-                  style="width:${width}%">
-                </div>
-              </div>
-
-              <div class="shap-value ${direction}">
-                ${value >= 0 ? "+" : ""}${value.toFixed(3)}
-              </div>
-            </div>
-          `;
-        }
-      )
-      .join(
-        ""
-      );
-
-
-  document
-    .getElementById(
-      "shapLegend"
-    )
-    .innerHTML =
-      "양(+)의 SHAP 값은 설정된 예측 목표의 가능성을 높이는 방향, 음(-)의 값은 낮추는 방향의 기여를 의미합니다. 절대값이 클수록 해당 개별 예측에 대한 상대적 기여가 큽니다.";
-
-}
-
-
-function loadShapPayload(
-  sessionId
-){
-
-  try{
-
-    const raw =
-      localStorage.getItem(
-        SHAP_STORAGE_KEY
-      );
-
-
-    if(!raw){
-      return null;
-    }
-
-
-    const payload =
-      JSON.parse(
-        raw
-      );
-
-
-    if(
-      sessionId
-      &&
-      payload.sessionId
-      &&
-      sessionId !== payload.sessionId
-    ){
-      return null;
-    }
-
-
-    return payload;
-
-  }
-  catch(error){
-
-    console.warn(
-      "SHAP result load error:",
-      error
-    );
-
-    return null;
-  }
-
-}
-
-
-function renderShapEmptyState(){
-
-  document
-    .getElementById(
-      "shapMeta"
-    )
-    .innerHTML = `
-      <span class="pill">
-        파일럿 분석 연결 대기
-      </span>
-    `;
-
-
-  document
-    .getElementById(
-      "shapPrediction"
-    )
-    .innerHTML = `
-      <strong>SHAP 분석 결과가 아직 연결되지 않았습니다.</strong><br>
-      파일럿 데이터를 이용해 문항 수준 수행 예측모형을 학습한 뒤,
-      해당 회차의 예측 확률과 SHAP 값을 연결하면 자동으로 표시됩니다.
-    `;
-
-
-  document
-    .getElementById(
-      "shapList"
-    )
-    .innerHTML = `
-      <div class="shap-empty">
-        현재 영역별 읽기시간·정확도·기준선 비교 결과는 그대로 확인할 수 있으며,
-        이 영역에는 실제 예측모형에서 산출된 SHAP 값만 표시하도록 구성하였습니다.
+  if(shapData.sessionId && sessionId && shapData.sessionId !== sessionId){
+    badge.textContent = "다른 회차 결과";
+    content.innerHTML = `
+      <div class="note-box">
+        저장된 SHAP 분석 결과가 현재 읽기 회차와 일치하지 않습니다.
+        현재 회차의 예측모형 결과를 다시 연결해 주세요.
       </div>
     `;
-
-
-  document
-    .getElementById(
-      "shapLegend"
-    )
-    .textContent =
-      "";
-
-}
-
-
-/* =====================================================
-   PROFILE-BASED INTERPRETATION
-===================================================== */
- 
-function renderXAIExplanation(
-  weakest,
-  strongest,
-  baselineReading
-){
- 
-  const feature =
-    weakest.featureStats[
-      0
-    ];
- 
- 
-  const increase =
-    Math.round(
-      (
-        weakest.readingRatio
-        -
-        1
-      )
-      *
-      100
-    );
- 
- 
-  let interpretation =
-    "";
- 
- 
-  if(
-    weakest.readingRatio > 1.15
-    &&
-    weakest.accuracy >= 0.80
-  ){
- 
-    interpretation = `
-      정확도는 비교적 유지되었지만 처리시간이 증가한 패턴입니다.
-      따라서 이해 실패보다는 정확한 해석을 위해 추가적인 처리시간을 사용한
-      <strong>속도–정확도 보상 패턴</strong>으로 해석할 수 있습니다.
-    `;
- 
+    return;
   }
-  else if(
-    weakest.accuracy < 0.80
-  ){
- 
-    interpretation = `
-      처리시간 증가와 정확도 저하가 함께 나타났습니다.
-      따라서 해당 영역의 처리 자동성이 충분하지 않거나
-      세부 언어 요소에서 이해 부담이 발생했을 가능성이 있습니다.
-    `;
- 
-  }
-  else{
- 
-    interpretation = `
-      큰 정확도 손실 없이 비교적 안정적으로 처리되었습니다.
-      다만 한 회차의 결과이므로 반복 측정을 통해
-      동일한 양상이 지속되는지 확인할 필요가 있습니다.
-    `;
- 
-  }
- 
- 
-  document
-    .getElementById(
-      "xaiExplanation"
-    )
-    .innerHTML = `
- 
-      <strong>핵심 판단 근거</strong>
-      <br><br>
- 
-      ① 가장 높은 상대 처리 부담은
-      <strong>${escapeHTML(weakest.label)} 영역</strong>에서 나타났습니다.
-      평균 읽기시간은 개인 기준선
-      (${Math.round(baselineReading)}ms)의
-      <strong>${weakest.readingRatio.toFixed(2)}배</strong>였습니다.
- 
-      <br>
- 
-      ② 기준선 대비 읽기시간 변화는
-      <strong>${increase >= 0 ? "+" : ""}${increase}%</strong>였습니다.
- 
-      <br>
- 
-      ③ 이 영역의 의미판단 정확도는
-      <strong>${Math.round(weakest.accuracy * 100)}%</strong>,
-      평균 문항 반응시간은
-      <strong>${Math.round(weakest.avgResponse)}ms</strong>였습니다.
- 
-      ${
-        feature
-        ?
-        `
- 
-          <br>
- 
-          ④ 세부 특성 중
-          <strong>${escapeHTML(feature.label)}</strong>에서
-          평균 읽기시간
-          <strong>${Math.round(feature.avgReading)}ms</strong>가 나타나
-          이 영역의 처리 부담을 높인 주요 후보로 판단됩니다.
- 
-        `
-        :
-        ""
-      }
- 
-      <br><br>
- 
-      <strong>해석</strong>
-      <br>
- 
-      ${interpretation}
- 
-      <br><br>
- 
-      반면
-      <strong>${escapeHTML(strongest.label)} 영역</strong>은
-      이번 회차에서 상대적으로 안정적인 처리 양상을 보였습니다.
- 
-    `;
- 
-}
- 
- 
-/* =====================================================
-   SCORE
-===================================================== */
- 
-function burdenScore(
-  profile
-){
 
-  return (
-    profile.readingRatio
-    +
-    (
-      1
-      -
-      profile.accuracy
-    )
+  const values = normalizeSHAPValues(shapData);
+
+  if(values.length === 0){
+    badge.textContent = "SHAP 값 없음";
+    content.innerHTML = `
+      <div class="note-box">
+        예측 결과는 연결되었지만 표시할 SHAP 기여도 값이 없습니다.
+      </div>
+    `;
+    return;
+  }
+
+  badge.textContent = "SHAP 연결 완료";
+
+  const targetLabel =
+    shapData.targetLabel
+    || shapData.target
+    || "문항 수행 예측";
+
+  const prediction = Number(shapData.prediction);
+  const baseValue = Number(shapData.baseValue);
+
+  const maxAbs = Math.max(
+    ...values.map(item => Math.abs(item.shapValue)),
+    0.0001
   );
 
+  const rowsHtml = values
+    .slice()
+    .sort((a,b) => Math.abs(b.shapValue) - Math.abs(a.shapValue))
+    .slice(0,8)
+    .map(item => {
+      const width = Math.max(
+        2,
+        Math.min(50, Math.abs(item.shapValue) / maxAbs * 50)
+      );
+      const positive = item.shapValue >= 0;
+
+      return `
+        <div class="shap-row">
+          <div class="shap-label">
+            ${escapeHTML(item.label)}
+            ${
+              item.featureValue !== undefined && item.featureValue !== null
+              ? `<div style="font-size:11px;color:#8996A6;font-weight:500;margin-top:2px;">${escapeHTML(item.featureValue)}</div>`
+              : ""
+            }
+          </div>
+          <div class="shap-track">
+            <div
+              class="shap-bar ${positive ? "positive" : "negative"}"
+              style="width:${width}%;">
+            </div>
+          </div>
+          <div class="shap-value">
+            ${item.shapValue >= 0 ? "+" : ""}${item.shapValue.toFixed(3)}
+          </div>
+        </div>
+      `;
+    })
+    .join("");
+
+  content.innerHTML = `
+    <div class="shap-summary">
+      <strong>${escapeHTML(targetLabel)}</strong>
+      ${
+        Number.isFinite(prediction)
+        ? ` · 예측값 <strong>${formatPrediction(prediction)}</strong>`
+        : ""
+      }
+      ${
+        Number.isFinite(baseValue)
+        ? ` · 기준값 ${formatPrediction(baseValue)}`
+        : ""
+      }
+    </div>
+    ${rowsHtml}
+    <div class="legend">
+      양(+)의 SHAP 값은 설정된 예측 목표의 가능성을 높이는 방향,
+      음(-)의 값은 낮추는 방향의 기여를 의미합니다.
+      절대값이 클수록 해당 개별 예측에 대한 상대적 기여가 큽니다.
+      SHAP 값은 인과효과가 아니라 예측모형 안에서의 기여도를 나타냅니다.
+    </div>
+  `;
 }
- 
- 
+
+function loadSHAPResult(){
+  for(const key of SHAP_STORAGE_KEYS){
+    try{
+      const raw = localStorage.getItem(key);
+      if(!raw) continue;
+      const parsed = JSON.parse(raw);
+      if(parsed) return parsed;
+    }catch(error){
+      console.warn("SHAP result load error:", key, error);
+    }
+  }
+  return null;
+}
+
+function normalizeSHAPValues(shapData){
+  const source =
+    Array.isArray(shapData.values)
+    ? shapData.values
+    : Array.isArray(shapData.items)
+    ? shapData.items
+    : [];
+
+  return source
+    .map(item => {
+      const key = item.key || item.feature || item.name || "other";
+      const shapValue = Number(
+        item.shapValue !== undefined
+        ? item.shapValue
+        : item.value
+      );
+
+      return {
+        key,
+        label:
+          item.label
+          || FEATURE_LABELS[key]
+          || prettifyKey(key),
+        shapValue,
+        featureValue:
+          item.featureValue !== undefined
+          ? item.featureValue
+          : item.inputValue
+      };
+    })
+    .filter(item => Number.isFinite(item.shapValue));
+}
+
+/* =====================================================
+   COGNITIVE-PROFILE-BASED EXPLANATION
+   SHAP과 구분하여 실제 수행 데이터만 해석
+===================================================== */
+function renderXAIExplanation(weakest, strongest, baselineReading){
+  const topFeature = weakest.featureStats[0];
+  const changePercent = Math.round((weakest.readingRatio - 1) * 100);
+  const pattern = interpretationPattern(weakest);
+
+  const featureText = topFeature
+    ? `
+      <br>
+      ④ 세부 특성 중 <strong>${escapeHTML(topFeature.label)}</strong> 문항에서
+      평균 읽기시간 <strong>${formatSeconds(topFeature.avgReading)}</strong>,
+      의미판단 정확도 <strong>${Math.round(topFeature.accuracy * 100)}%</strong>가 관찰되었습니다.
+      이는 해당 세부 특성의 수행 양상을 기술적으로 보여주는 것이며,
+      원인 기여도에 대한 판단은 위의 SHAP 분석 결과와 구분하여 해석해야 합니다.
+    `
+    : "";
+
+  document.getElementById("xaiExplanation").innerHTML = `
+    <strong>핵심 판단 근거</strong><br><br>
+
+    ① 네 영역 가운데 상대 부담 점수가 가장 높은 영역은
+    <strong>${escapeHTML(weakest.label)}</strong>이었습니다.
+    평균 읽기시간은 개인 기준선
+    (<strong>${formatSeconds(baselineReading)}</strong>)의
+    <strong>${weakest.readingRatio.toFixed(2)}배</strong>였습니다.
+    <br>
+
+    ② 기준선 대비 읽기시간 변화는
+    <strong>${changePercent >= 0 ? "+" : ""}${changePercent}%</strong>였습니다.
+    <br>
+
+    ③ 이 영역의 의미판단 정확도는
+    <strong>${Math.round(weakest.accuracy * 100)}%</strong>,
+    평균 문항 반응시간은
+    <strong>${formatSeconds(weakest.avgResponse)}</strong>였습니다.
+
+    ${featureText}
+
+    <br><br>
+    <strong>해석</strong><br>
+    ${pattern.detail}
+
+    <br><br>
+    반면 <strong>${escapeHTML(strongest.label)} 영역</strong>은
+    이번 회차에서 상대적으로 안정적인 수행 양상을 보였습니다.
+  `;
+}
+
+function interpretationPattern(profile){
+  const slower = profile.readingRatio >= 1.15;
+  const muchSlower = profile.readingRatio >= 1.35;
+  const faster = profile.readingRatio < 0.95;
+  const lowAccuracy = profile.accuracy < 0.80;
+  const veryLowAccuracy = profile.accuracy < 0.60;
+
+  if((muchSlower && lowAccuracy) || veryLowAccuracy){
+    return {
+      type:"처리 부담형",
+      summary:
+        "읽기시간 증가와 정확도 저하가 함께 나타나 처리 부담이 상대적으로 큰 패턴으로 볼 수 있습니다.",
+      detail:
+        "읽기시간 증가와 정확도 저하가 함께 나타났습니다. 따라서 해당 영역에서는 처리시간을 더 사용했음에도 의미판단 정확성이 충분히 유지되지 않은 양상이 관찰되었습니다. 반복 측정을 통해 동일한 패턴이 지속되는지 확인할 필요가 있습니다."
+    };
+  }
+
+  if(slower && !lowAccuracy){
+    return {
+      type:"속도-정확도 보상형",
+      summary:
+        "정확도는 유지되었으나 기준선보다 더 긴 처리시간을 사용한 보상적 패턴이 나타났습니다.",
+      detail:
+        "의미판단 정확도는 비교적 유지되었지만 기준선보다 긴 읽기시간이 나타났습니다. 이는 정확한 이해를 위해 추가적인 처리시간을 사용한 속도-정확도 보상 패턴으로 해석할 수 있습니다."
+    };
+  }
+
+  if(faster && lowAccuracy){
+    return {
+      type:"속도-정확도 불균형형",
+      summary:
+        "읽기시간은 기준선보다 짧았지만 정확도가 낮아, 처리시간 증가보다는 의미 해석의 정확성 저하가 두드러졌습니다.",
+      detail:
+        "평균 읽기시간은 개인 기준선보다 짧았으나 의미판단 정확도가 낮게 나타났습니다. 따라서 단순한 처리시간 증가보다는 상대적으로 빠른 읽기 과정에서 의미 처리가 충분히 이루어지지 않았을 가능성을 고려할 수 있습니다."
+    };
+  }
+
+  if(lowAccuracy){
+    return {
+      type:"정확도 취약형",
+      summary:
+        "읽기시간의 뚜렷한 증가는 없었지만 의미판단 정확도가 낮게 나타났습니다.",
+      detail:
+        "기준선 대비 읽기시간에는 큰 증가가 없었으나 의미판단 정확도가 낮게 나타났습니다. 따라서 이 영역에서는 처리속도보다는 의미 해석의 정확성 측면에서 상대적인 취약성이 관찰되었습니다."
+    };
+  }
+
+  return {
+    type:"안정형",
+    summary:
+      "기준선과 비교했을 때 큰 정확도 손실 없이 비교적 안정적인 수행 양상이 나타났습니다.",
+    detail:
+      "큰 정확도 손실 없이 비교적 안정적으로 처리되었습니다. 다만 한 회차의 결과이므로 반복 측정을 통해 동일한 양상이 지속되는지 확인하는 것이 적절합니다."
+  };
+}
+
+/* =====================================================
+   SCORES
+   - 영역/세부특성의 상대적 순위 산출용
+   - 기준선보다 빠르다는 이유만으로 점수를 낮추지 않고,
+     정확도 저하는 별도의 부담으로 반영
+===================================================== */
+function burdenScore(profile){
+  return featureBurdenScore(
+    profile.readingRatio,
+    profile.accuracy
+  );
+}
+
+function featureBurdenScore(readingRatio, accuracy){
+  const timeBurden = Math.max(0, readingRatio - 1);
+  const accuracyBurden = Math.max(0, 1 - accuracy);
+  return timeBurden + accuracyBurden;
+}
+
 /* =====================================================
    UTILITIES
 ===================================================== */
- 
-function average(
-  values
-){
- 
-  const valid =
-    values.filter(
-      value =>
-        Number.isFinite(
-          Number(
-            value
-          )
-        )
-    )
-    .map(
-      value =>
-        Number(
-          value
-        )
-    );
- 
- 
-  if(
-    valid.length === 0
-  ){
- 
-    return 0;
- 
+function average(values){
+  const valid = values
+    .filter(value => Number.isFinite(Number(value)))
+    .map(value => Number(value));
+
+  if(valid.length === 0) return 0;
+
+  return valid.reduce((sum,value) => sum + value, 0) / valid.length;
+}
+
+function rateCorrect(rows){
+  if(!rows || rows.length === 0) return 0;
+  return rows.filter(row => row.correct === true).length / rows.length;
+}
+
+function formatSeconds(ms){
+  const value = Number(ms);
+  if(!Number.isFinite(value)) return "-";
+  return (value / 1000).toFixed(2) + "초";
+}
+
+function formatPrediction(value){
+  const number = Number(value);
+  if(!Number.isFinite(number)) return "-";
+
+  if(number >= 0 && number <= 1){
+    return Math.round(number * 100) + "%";
   }
- 
- 
-  return valid.reduce(
-    (sum,value) =>
-      sum + value,
-    0
-  )
-  /
-  valid.length;
- 
+
+  return number.toFixed(3);
 }
- 
- 
-function rateCorrect(
-  rows
-){
- 
-  if(
-    !rows
-    ||
-    rows.length === 0
-  ){
- 
-    return 0;
- 
-  }
- 
- 
-  return rows.filter(
-    row =>
-      row.correct === true
-  ).length
-  /
-  rows.length;
- 
+
+function prettifyKey(key){
+  return String(key || "기타 특성")
+    .replace(/_/g," ")
+    .replace(/\b\w/g, char => char.toUpperCase());
 }
- 
- 
-function showError(
-  message
-){
- 
-  const box =
-    document.getElementById(
-      "statusBox"
-    );
- 
- 
-  box.textContent =
-    message;
- 
- 
-  box.classList.add(
-    "error"
-  );
- 
+
+function showError(message){
+  const box = document.getElementById("statusBox");
+  box.textContent = message;
+  box.classList.add("error");
 }
- 
- 
-function escapeHTML(
-  value
-){
- 
-  return String(
-    value
-  )
-    .replace(
-      /&/g,
-      "&amp;"
-    )
-    .replace(
-      /</g,
-      "&lt;"
-    )
-    .replace(
-      />/g,
-      "&gt;"
-    )
-    .replace(
-      /"/g,
-      "&quot;"
-    )
-    .replace(
-      /'/g,
-      "&#039;"
-    );
- 
+
+function escapeHTML(value){
+  return String(value)
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
 }
- 
 </script>
- 
 </body>
 </html>
-
-
