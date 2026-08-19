@@ -263,6 +263,104 @@ body{
 .xai-box strong{
   color:var(--primary-dark);
 }
+
+/* SHAP */
+.shap-panel{
+  background:#FBFCFF;
+  border:1px solid var(--border);
+  border-radius:18px;
+  padding:22px;
+}
+
+.shap-meta{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin-bottom:18px;
+}
+
+.shap-prediction{
+  background:#F5F8FC;
+  border:1px solid #DFE8F4;
+  border-radius:16px;
+  padding:18px 20px;
+  margin-bottom:20px;
+  line-height:1.8;
+  color:#4D6078;
+}
+
+.shap-prediction strong{
+  color:var(--primary-dark);
+}
+
+.shap-list{
+  display:grid;
+  gap:14px;
+}
+
+.shap-row{
+  display:grid;
+  grid-template-columns:minmax(150px,220px) 1fr 74px;
+  gap:14px;
+  align-items:center;
+}
+
+.shap-label{
+  font-size:14px;
+  color:#4D6078;
+  line-height:1.45;
+}
+
+.shap-track{
+  position:relative;
+  height:12px;
+  border-radius:999px;
+  background:#E9EFF6;
+  overflow:hidden;
+}
+
+.shap-fill{
+  height:100%;
+  border-radius:999px;
+  min-width:3px;
+}
+
+.shap-fill.positive{
+  background:var(--danger);
+}
+
+.shap-fill.negative{
+  background:var(--success);
+}
+
+.shap-value{
+  font-size:13px;
+  font-weight:800;
+  text-align:right;
+}
+
+.shap-value.positive{
+  color:var(--danger);
+}
+
+.shap-value.negative{
+  color:var(--success);
+}
+
+.shap-legend{
+  margin-top:16px;
+  color:var(--subtext);
+  font-size:12px;
+  line-height:1.7;
+}
+
+.shap-empty{
+  padding:18px;
+  border-radius:14px;
+  background:#F7FAFE;
+  color:var(--subtext);
+  line-height:1.8;
+}
  
 .actions{
   display:flex;
@@ -311,6 +409,15 @@ footer{
   .domain-grid{
     grid-template-columns:1fr;
   }
+
+  .shap-row{
+    grid-template-columns:1fr;
+    gap:6px;
+  }
+
+  .shap-value{
+    text-align:left;
+  }
  
 }
 </style>
@@ -327,12 +434,12 @@ footer{
     </div>
  
     <h1>
-      XAI 기반 원인 설명
+      SHAP 기반 XAI 원인 설명
     </h1>
  
     <p>
-      학습자의 읽기 수행 결과와 세부 언어학적 특성을 연결하여
-      상대적으로 높은 처리 부담이 나타난 원인을 설명합니다.
+      읽기 수행 데이터와 문항의 언어학적 특성을 바탕으로
+      영역별 처리 특성과 수행 예측의 주요 영향 요인을 설명합니다.
     </p>
  
   </div>
@@ -357,7 +464,7 @@ footer{
     <section class="card">
  
       <h2>
-        XAI 분석 결과
+        읽기 수행 및 XAI 분석 결과
       </h2>
  
       <div class="meta">
@@ -391,8 +498,8 @@ footer{
       </h2>
  
       <p class="card-desc">
-        각 영역의 평균 읽기시간, 이해도 정확도,
-        문항 반응시간과 개인 Baseline 대비 처리시간을 함께 비교합니다.
+        각 영역의 평균 읽기시간, 의미판단 정확도,
+        문항 반응시간과 개인 기준선(Baseline) 대비 처리시간을 함께 비교합니다.
       </p>
  
       <div
@@ -403,10 +510,36 @@ footer{
     </section>
  
  
+    <section class="card" id="shapCard">
+
+      <h2>
+        SHAP 기반 주요 영향 요인
+      </h2>
+
+      <p class="card-desc">
+        파일럿 데이터로 구축한 문항 수준 수행 예측모형의 결과가 연결되면,
+        각 변수의 SHAP 값을 이용하여 개별 예측에 기여한 요인의 방향과 상대적 크기를 제시합니다.
+      </p>
+
+      <div class="shap-panel">
+
+        <div class="shap-meta" id="shapMeta"></div>
+
+        <div class="shap-prediction" id="shapPrediction"></div>
+
+        <div class="shap-list" id="shapList"></div>
+
+        <div class="shap-legend" id="shapLegend"></div>
+
+      </div>
+
+    </section>
+
+
     <section class="card">
  
       <h2>
-        왜 이런 결과가 나타났을까?
+        인지 프로파일 기반 해석
       </h2>
  
       <div
@@ -424,10 +557,11 @@ footer{
       </h2>
  
       <p class="card-desc">
-        이 설명은 해당 회차의 읽기시간, 이해도 정확도 및 문항 반응시간을
-        개인 Baseline과 비교하여 생성한 규칙 기반 XAI 결과입니다.
-        단일 회차만으로 학습자의 고정된 능력을 판단하지 않으며,
-        반복 측정에서 누적되는 수행 패턴과 함께 해석하는 것이 적절합니다.
+        영역별 처리 특성은 해당 회차의 읽기시간, 의미판단 정확도 및 문항 반응시간을
+        개인 기준선과 비교하여 기술적으로 제시합니다. SHAP 설명은 별도로 학습된
+        문항 수준 수행 예측모형의 출력값이 연결된 경우에만 표시됩니다.
+        파일럿 분석은 구현 가능성을 탐색하기 위한 것으로, 단일 회차나 소규모 표본만으로
+        학습자의 고정된 능력 또는 예측모형의 일반화 성능을 확정적으로 판단하지 않습니다.
       </p>
  
       <div class="actions">
@@ -488,6 +622,9 @@ const PARTICIPANT_KEY =
  
 const SESSION_KEY =
   "cflLatestReadingSessionId";
+
+const SHAP_STORAGE_KEY =
+  "cflShapResult";
  
  
 /* =====================================================
@@ -512,52 +649,52 @@ const DOMAIN_LABELS = {
  
  
 const FEATURE_LABELS = {
- 
+
   relative_clause:
     "관계절",
- 
+
   ba_construction:
     "把자문",
- 
+
   bei_construction:
     "被자문",
- 
-  serial_verb:
-    "연동문",
- 
+
   pivotal:
     "겸어문",
- 
+
   low_frequency:
     "저빈도 어휘",
- 
+
   semantic_transparency:
-    "의미 투명도",
- 
-  collocation_1:
-    "연어 1",
- 
-  collocation_2:
-    "연어 2",
- 
-  collocation_3:
-    "연어 3",
- 
-  collocation_4:
-    "연어 4",
- 
+    "의미투명도",
+
+  verb_noun:
+    "동사+명사",
+
+  adjective_noun:
+    "형용사+명사",
+
+  adverb_verb:
+    "부사+동사",
+
+  adverb_adjective:
+    "부사+형용사",
+
   contrast:
-    "대조",
- 
+    "역접 관계",
+
   causal:
-    "인과",
- 
-  information_integration:
-    "정보 통합",
- 
+    "인과 관계",
+
+  temporal_sequence:
+    "시간·순서 관계",
+
   information_density:
-    "정보 밀도"
- 
+    "정보 밀도",
+
+  baseline:
+    "기준선"
+
 };
  
  
@@ -1058,9 +1195,9 @@ function renderReport(
       <strong>${escapeHTML(weakest.label)} 영역</strong>에서
       상대적으로 높은 처리 부담이 나타났습니다.
  
-      이 영역의 평균 읽기시간은 개인 Baseline의
+      이 영역의 평균 읽기시간은 개인 기준선의
       <strong>${weakest.readingRatio.toFixed(2)}배</strong>였으며,
-      이해도 정확도는
+      의미판단 정확도는
       <strong>${Math.round(weakest.accuracy * 100)}%</strong>였습니다.
  
       ${
@@ -1081,6 +1218,11 @@ function renderReport(
  
   renderDomainCards(
     profiles
+  );
+
+
+  renderShapSection(
+    sessionId
   );
  
  
@@ -1429,7 +1571,7 @@ function renderDomainCards(
         <div class="metric">
  
           <span>
-            Baseline 대비
+            기준선 대비
           </span>
  
           <strong>
@@ -1442,7 +1584,7 @@ function renderDomainCards(
         <div class="metric">
  
           <span>
-            이해도 정확도
+            의미판단 정확도
           </span>
  
           <strong>
@@ -1493,7 +1635,361 @@ function renderDomainCards(
  
  
 /* =====================================================
-   XAI EXPLANATION
+   SHAP RESULT
+
+   실제 SHAP 계산은 Python/서버의 예측모형에서 수행한 뒤
+   아래 형식의 JSON을 localStorage 또는 추후 Supabase 결과 테이블에
+   저장하여 이 화면에 연결한다.
+
+   예시 형식:
+   {
+     "sessionId":"...",
+     "modelName":"Logistic Regression",
+     "targetLabel":"문항 오답 가능성",
+     "predictionProbability":0.68,
+     "predictedLabel":"오답 가능성 높음",
+     "baseValue":0.41,
+     "features":[
+       {
+         "key":"relative_clause",
+         "label":"관계절 구조",
+         "featureValue":"해당",
+         "shapValue":0.18
+       }
+     ]
+   }
+===================================================== */
+
+function renderShapSection(
+  sessionId
+){
+
+  const payload =
+    loadShapPayload(
+      sessionId
+    );
+
+
+  if(!payload){
+
+    renderShapEmptyState();
+    return;
+
+  }
+
+
+  const features =
+    Array.isArray(
+      payload.features
+    )
+    ?
+    payload.features
+      .filter(
+        item =>
+          Number.isFinite(
+            Number(
+              item.shapValue
+            )
+          )
+      )
+      .sort(
+        (a,b) =>
+          Math.abs(
+            Number(
+              b.shapValue
+            )
+          )
+          -
+          Math.abs(
+            Number(
+              a.shapValue
+            )
+          )
+      )
+      .slice(
+        0,
+        8
+      )
+    :
+    [];
+
+
+  document
+    .getElementById(
+      "shapMeta"
+    )
+    .innerHTML = `
+      <span class="pill">
+        모델 ${escapeHTML(payload.modelName || "-")}
+      </span>
+      <span class="pill">
+        목표 ${escapeHTML(payload.targetLabel || "문항 수행")}
+      </span>
+    `;
+
+
+  const probability =
+    Number(
+      payload.predictionProbability
+    );
+
+
+  const probabilityText =
+    Number.isFinite(
+      probability
+    )
+    ?
+    `${Math.round(probability * 100)}%`
+    :
+    "-";
+
+
+  document
+    .getElementById(
+      "shapPrediction"
+    )
+    .innerHTML = `
+      <strong>개별 예측 결과</strong><br>
+      ${escapeHTML(payload.predictedLabel || "예측 결과")}
+      · 예측 확률
+      <strong>${probabilityText}</strong>
+      ${
+        Number.isFinite(
+          Number(
+            payload.baseValue
+          )
+        )
+        ?
+        `<br>모형의 기준값(base value):
+         <strong>${Number(payload.baseValue).toFixed(3)}</strong>`
+        :
+        ""
+      }
+    `;
+
+
+  const list =
+    document.getElementById(
+      "shapList"
+    );
+
+
+  if(features.length === 0){
+
+    list.innerHTML = `
+      <div class="shap-empty">
+        표시할 SHAP 기여도 값이 없습니다.
+      </div>
+    `;
+
+    document
+      .getElementById(
+        "shapLegend"
+      )
+      .textContent =
+        "";
+
+    return;
+  }
+
+
+  const maxAbs =
+    Math.max(
+      ...features.map(
+        item =>
+          Math.abs(
+            Number(
+              item.shapValue
+            )
+          )
+      ),
+      0.000001
+    );
+
+
+  list.innerHTML =
+    features
+      .map(
+        item => {
+
+          const value =
+            Number(
+              item.shapValue
+            );
+
+          const direction =
+            value >= 0
+            ?
+            "positive"
+            :
+            "negative";
+
+          const width =
+            Math.max(
+              3,
+              Math.round(
+                Math.abs(value)
+                /
+                maxAbs
+                *
+                100
+              )
+            );
+
+          const label =
+            item.label
+            ||
+            FEATURE_LABELS[
+              item.key
+            ]
+            ||
+            item.key
+            ||
+            "변수";
+
+          const featureValue =
+            item.featureValue !== undefined
+            &&
+            item.featureValue !== null
+            ?
+            ` · ${item.featureValue}`
+            :
+            "";
+
+
+          return `
+            <div class="shap-row">
+              <div class="shap-label">
+                <strong>${escapeHTML(label)}</strong>${escapeHTML(featureValue)}
+              </div>
+
+              <div class="shap-track">
+                <div
+                  class="shap-fill ${direction}"
+                  style="width:${width}%">
+                </div>
+              </div>
+
+              <div class="shap-value ${direction}">
+                ${value >= 0 ? "+" : ""}${value.toFixed(3)}
+              </div>
+            </div>
+          `;
+        }
+      )
+      .join(
+        ""
+      );
+
+
+  document
+    .getElementById(
+      "shapLegend"
+    )
+    .innerHTML =
+      "양(+)의 SHAP 값은 설정된 예측 목표의 가능성을 높이는 방향, 음(-)의 값은 낮추는 방향의 기여를 의미합니다. 절대값이 클수록 해당 개별 예측에 대한 상대적 기여가 큽니다.";
+
+}
+
+
+function loadShapPayload(
+  sessionId
+){
+
+  try{
+
+    const raw =
+      localStorage.getItem(
+        SHAP_STORAGE_KEY
+      );
+
+
+    if(!raw){
+      return null;
+    }
+
+
+    const payload =
+      JSON.parse(
+        raw
+      );
+
+
+    if(
+      sessionId
+      &&
+      payload.sessionId
+      &&
+      sessionId !== payload.sessionId
+    ){
+      return null;
+    }
+
+
+    return payload;
+
+  }
+  catch(error){
+
+    console.warn(
+      "SHAP result load error:",
+      error
+    );
+
+    return null;
+  }
+
+}
+
+
+function renderShapEmptyState(){
+
+  document
+    .getElementById(
+      "shapMeta"
+    )
+    .innerHTML = `
+      <span class="pill">
+        파일럿 분석 연결 대기
+      </span>
+    `;
+
+
+  document
+    .getElementById(
+      "shapPrediction"
+    )
+    .innerHTML = `
+      <strong>SHAP 분석 결과가 아직 연결되지 않았습니다.</strong><br>
+      파일럿 데이터를 이용해 문항 수준 수행 예측모형을 학습한 뒤,
+      해당 회차의 예측 확률과 SHAP 값을 연결하면 자동으로 표시됩니다.
+    `;
+
+
+  document
+    .getElementById(
+      "shapList"
+    )
+    .innerHTML = `
+      <div class="shap-empty">
+        현재 영역별 읽기시간·정확도·기준선 비교 결과는 그대로 확인할 수 있으며,
+        이 영역에는 실제 예측모형에서 산출된 SHAP 값만 표시하도록 구성하였습니다.
+      </div>
+    `;
+
+
+  document
+    .getElementById(
+      "shapLegend"
+    )
+    .textContent =
+      "";
+
+}
+
+
+/* =====================================================
+   PROFILE-BASED INTERPRETATION
 ===================================================== */
  
 function renderXAIExplanation(
@@ -1570,18 +2066,18 @@ function renderXAIExplanation(
  
       ① 가장 높은 상대 처리 부담은
       <strong>${escapeHTML(weakest.label)} 영역</strong>에서 나타났습니다.
-      평균 읽기시간은 개인 Baseline
+      평균 읽기시간은 개인 기준선
       (${Math.round(baselineReading)}ms)의
       <strong>${weakest.readingRatio.toFixed(2)}배</strong>였습니다.
  
       <br>
  
-      ② Baseline 대비 읽기시간 변화는
+      ② 기준선 대비 읽기시간 변화는
       <strong>${increase >= 0 ? "+" : ""}${increase}%</strong>였습니다.
  
       <br>
  
-      ③ 이 영역의 이해도 정확도는
+      ③ 이 영역의 의미판단 정확도는
       <strong>${Math.round(weakest.accuracy * 100)}%</strong>,
       평균 문항 반응시간은
       <strong>${Math.round(weakest.avgResponse)}ms</strong>였습니다.
@@ -1629,16 +2125,17 @@ function renderXAIExplanation(
 function burdenScore(
   profile
 ){
- 
-  return
+
+  return (
     profile.readingRatio
     +
     (
       1
       -
       profile.accuracy
-    );
- 
+    )
+  );
+
 }
  
  
@@ -1767,3 +2264,5 @@ function escapeHTML(
  
 </body>
 </html>
+
+
